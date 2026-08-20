@@ -1,11 +1,11 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { Smartphone, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HomeCTA = () => {
   return (
     <section className="w-full bg-[#0a0f0a] py-20 px-6 md:px-10">
-      <div className="max-w-5xl mx-auto bg-gradient-to-r from-[#112211] to-[#1a331a] rounded-[40px] p-10 md:p-16 text-center border border-[#2d5a27] shadow-2xl relative overflow-hidden">
+      <div className="max-w-6xl mx-auto bg-gradient-to-r from-[#112211] to-[#1a331a] rounded-[40px] p-10 md:p-16 border border-[#2d5a27] shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between">
         
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
@@ -13,19 +13,59 @@ const HomeCTA = () => {
           <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-[#71d924] rounded-full mix-blend-screen filter blur-[120px] opacity-20"></div>
         </div>
 
-        <div className="relative z-10">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Your Property. <br className="md:hidden" />
-            <span className="text-[#7ce225]">Your Financial Goals.</span>
-          </h2>
+        <div className="relative z-10 md:w-2/3 mb-10 md:mb-0">
+          <div className="flex items-center gap-3 mb-4">
+            <Smartphone className="text-[#1cf200]" size={32} />
+            <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+              Manage Your Loans <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#eef200] to-[#1cf200]">On The Go</span>
+            </h2>
+          </div>
           
-          <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
-            A property can represent both a place to live and a valuable financial asset. With the right information and responsible planning, you can explore financial solutions that align with your long-term goals.
+          <p className="text-gray-300 text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">
+            Download the NGM Finance app to easily track your EMI payments, apply for new loans, and manage your account anytime, anywhere.
           </p>
 
-          <Link to="/about" className="inline-flex items-center justify-center gap-3 bg-[#7ce225] hover:bg-[#68c61e] text-black font-bold py-4 px-10 rounded-xl shadow-[0_0_20px_rgba(124,226,37,0.3)] transition-all duration-300 hover:scale-105 text-lg">
-            Explore Property Finance Today <ArrowRight size={22} />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <div className="flex items-center gap-2 text-gray-300">
+              <CheckCircle className="text-[#5bc116]" size={20} />
+              <span>Instant Approvals</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-300">
+              <CheckCircle className="text-[#5bc116]" size={20} />
+              <span>Easy EMI Tracking</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-300">
+              <CheckCircle className="text-[#5bc116]" size={20} />
+              <span>24/7 Support</span>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-4">
+            <Link to="/download-app" className="bg-white hover:bg-gray-100 text-black font-bold py-3 px-6 rounded-lg transition-colors flex items-center gap-2">
+              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.523 15.3414c-.0352-2.7303 2.2227-4.0416 2.327-4.1033-1.2612-1.8492-3.2185-2.1158-3.9213-2.148-1.666-.171-3.2536.9855-4.105.9855-.8516 0-2.1558-1.0028-3.5284-.9753-1.7828.0267-3.4243 1.0366-4.3418 2.6393-1.854 3.23-.4734 8.01 1.3323 10.6385.8824 1.2828 1.9168 2.73 3.2662 2.678 1.2983-.053 1.8028-.8414 3.272-.8414 1.469 0 1.9218.8414 3.2986.8155 1.4287-.027 2.33-1.3094 3.208-2.5936 1.0182-1.4925 1.4363-2.94 1.4552-3.0163-.0333-.012-2.8277-1.085-2.8628-4.0789zM15.115 6.3045c.7126-.867 1.1925-2.072 1.0617-3.2713-1.031.042-2.2858.6874-3.02 1.543-.6583.754-1.233 1.986-1.0772 3.167 1.1492.089 2.3218-.57 3.0355-1.4387z" />
+              </svg>
+              App Store
+            </Link>
+            <Link to="/download-app" className="bg-white hover:bg-gray-100 text-black font-bold py-3 px-6 rounded-lg transition-colors flex items-center gap-2">
+              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.523 15.3414c-.0352-2.7303 2.2227-4.0416 2.327-4.1033-1.2612-1.8492-3.2185-2.1158-3.9213-2.148-1.666-.171-3.2536.9855-4.105.9855-.8516 0-2.1558-1.0028-3.5284-.9753-1.7828.0267-3.4243 1.0366-4.3418 2.6393-1.854 3.23-.4734 8.01 1.3323 10.6385.8824 1.2828 1.9168 2.73 3.2662 2.678 1.2983-.053 1.8028-.8414 3.272-.8414 1.469 0 1.9218.8414 3.2986.8155 1.4287-.027 2.33-1.3094 3.208-2.5936 1.0182-1.4925 1.4363-2.94 1.4552-3.0163-.0333-.012-2.8277-1.085-2.8628-4.0789zM15.115 6.3045c.7126-.867 1.1925-2.072 1.0617-3.2713-1.031.042-2.2858.6874-3.02 1.543-.6583.754-1.233 1.986-1.0772 3.167 1.1492.089 2.3218-.57 3.0355-1.4387z" className="hidden"/>
+                <path d="M3.195 21.056c-.328-.323-.5-.778-.5-1.332V4.276c0-.554.172-1.01.5-1.332L11.5 12l-8.305 9.056z" fill="#00f076"/>
+                <path d="M15.719 16.273l-4.219-4.273 4.219-4.273 4.962 2.863c1.171.677 1.171 1.776 0 2.453l-4.962 2.863z" fill="#ffc900"/>
+                <path d="M3.195 21.056l12.524-7.276-4.219-4.273L3.195 21.056z" fill="#ff3a44"/>
+                <path d="M3.195 2.944l12.524 7.276-4.219 4.273L3.195 2.944z" fill="#00a0ff"/>
+              </svg>
+              Google Play
+            </Link>
+          </div>
+        </div>
+        
+        {/* Mockup area (simulated) */}
+        <div className="relative z-10 md:w-1/3 flex justify-center mt-8 md:mt-0">
+          <div className="w-48 h-96 border-4 border-gray-800 rounded-[2.5rem] bg-[#030706] relative overflow-hidden shadow-2xl flex items-center justify-center">
+             <span className="text-[#5bc116] font-bold text-2xl">NGM App</span>
+          </div>
         </div>
 
       </div>

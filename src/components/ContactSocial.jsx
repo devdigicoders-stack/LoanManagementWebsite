@@ -21,11 +21,11 @@ const ContactSocial = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-3 text-gray-300">
               <Phone size={18} className="text-[#5bc116]" />
-              <span className="text-[15px]">+91 1234567890</span>
+              <span className="text-[15px]">+91 9755 766 018</span>
             </div>
             <div className="flex items-center gap-3 text-gray-300">
               <Mail size={18} className="text-[#5bc116]" />
-              <span className="text-[15px]">info@ngmhousing.com</span>
+              <span className="text-[15px]">haustouch@hausnuo.com</span>
             </div>
             <div className="flex items-start gap-3 text-gray-300">
               <MapPin size={18} className="text-[#5bc116] mt-1" />

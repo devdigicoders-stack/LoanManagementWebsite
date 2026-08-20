@@ -4,53 +4,72 @@ import { Link } from 'react-router-dom';
 
 const ServiceDetailsHero = ({ title, breadcrumbs, description, imageUrl, cardData }) => {
   return (
-    <section className="w-full bg-[#fcfcfc] py-10 px-6 md:px-10">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10">
+    <section className="relative w-full h-[auto] min-h-[450px] md:min-h-[550px] bg-[#050b06] flex items-center overflow-hidden py-12 md:py-0">
+      
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 w-full h-full"
+        style={{
+          backgroundImage: `url(${imageUrl || 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80'})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      ></div>
+      
+      {/* Dark gradient overlay for perfect readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#030706] via-[#030706]/90 to-[#030706]/50"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-[#030706] via-transparent to-transparent md:hidden"></div>
+
+      <div className="max-w-7xl mx-auto w-full px-6 md:px-10 relative z-30 flex flex-col lg:flex-row items-center justify-between gap-10 mt-10 md:mt-0">
         
-        {/* Left Side */}
+        {/* Left Side (Text content) */}
         <div className="w-full lg:w-1/2 flex flex-col">
-          {/* Breadcrumbs */}
-          <div className="flex items-center flex-wrap gap-2 text-[13px] md:text-[14px] font-medium text-gray-500 mb-8">
-            <Link to="/" className="hover:text-[#5bc116] transition-colors">Home</Link>
+          
+          <div className="flex items-center flex-wrap gap-2 text-[12px] md:text-[14px] font-bold text-[#1cf200] mb-4 uppercase drop-shadow">
+            <Link to="/" className="hover:text-white transition-colors">Home</Link>
             <ChevronRight size={14} />
-            <Link to="/services" className="hover:text-[#5bc116] transition-colors">Our Services</Link>
+            <Link to="/services" className="hover:text-white transition-colors">Our Services</Link>
             <ChevronRight size={14} />
-            <span className="text-[#5bc116]">{title}</span>
+            <span className="text-white">{title}</span>
           </div>
 
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-[56px] font-extrabold text-white mb-6 leading-tight drop-shadow-lg">
             {title}
           </h1>
 
-          <p className="text-gray-600 text-[15px] md:text-base leading-relaxed mb-8 max-w-lg">
+          <p className="text-gray-300 text-[15px] md:text-lg leading-relaxed mb-8 max-w-lg drop-shadow">
             {description}
           </p>
-        </div>
-
-        {/* Right Side (Image and Card) */}
-        <div className="w-full lg:w-1/2 relative flex justify-center lg:justify-end">
-          <div className="relative w-full max-w-[500px]">
-            <img 
-              src={imageUrl || "/aboutus/heroimage.png"} 
-              alt={title} 
-              className="w-full h-auto rounded-3xl object-cover shadow-xl"
-            />
-            {cardData && (
-              <div className="absolute -bottom-8 -left-8 md:-bottom-10 md:-left-12 bg-white rounded-2xl p-6 shadow-2xl border border-gray-100 flex flex-col w-[280px]">
-                <h4 className="text-black font-bold text-[18px] mb-2 leading-tight">
-                  Unlock the Financial<br/>Potential of Your Property
-                </h4>
-                <p className="text-gray-500 text-[13px] leading-relaxed mb-5">
-                  Explore secured financing options against eligible residential or commercial property.
-                </p>
-                <button className="bg-[#0b0f0e] hover:bg-gray-800 text-white text-[13px] font-bold py-2.5 px-6 rounded-lg transition-colors w-max">
-                  Check Your Requirement →
-                </button>
-              </div>
-            )}
+          
+          <div>
+            <button className="inline-block bg-[#1cf200] hover:bg-[#5bc116] text-black font-bold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-[0_4px_15px_rgba(28,242,0,0.3)]">
+              Apply Now
+            </button>
           </div>
         </div>
 
+        {/* Right Side (Card Data if exists) */}
+        {cardData && (
+          <div className="w-full lg:w-[350px] relative flex justify-center lg:justify-end mt-8 lg:mt-0">
+            <div className="bg-[#0b150e]/90 backdrop-blur-md rounded-2xl p-8 shadow-2xl border border-[#1cf200]/20 flex flex-col w-full transform transition-all hover:scale-105">
+              <h4 className="text-[#1cf200] font-bold text-[20px] mb-3 leading-tight drop-shadow">
+                {cardData.title}
+              </h4>
+              <p className="text-gray-300 text-[14px] leading-relaxed mb-5">
+                {cardData.subtitle}
+              </p>
+              <ul className="space-y-4">
+                {cardData.points.map((point, index) => (
+                  <li key={index} className="flex items-start gap-3 text-[14px] text-gray-200">
+                    <span className="w-2 h-2 rounded-full bg-[#1cf200] mt-1.5 flex-shrink-0 shadow-[0_0_8px_rgba(28,242,0,0.8)]"></span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
+        
       </div>
     </section>
   );

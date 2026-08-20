@@ -59,7 +59,8 @@ const ContactInfo = () => {
             <p className="text-gray-500 text-[14px] leading-relaxed">
               Srinivas Nagar, Kapra, Dr. AS Rao Nagar,<br />
               Medchal-Malkajgiri, Secunderabad,<br />
-              Hyderabad – 500 062, TG, India
+              Hyderabad – 500 062, TG, India<br/>
+              CIN: U70200TS2025PLC202763
             </p>
           </div>
 

@@ -65,7 +65,7 @@ const AboutBottomStats = () => {
               className="relative flex flex-col items-center justify-center text-center px-4"
             >
               <div className="flex flex-col items-center gap-4">
-                <div className="w-16 h-16 rounded-full border border-[#7ce225]/30 bg-[#11240c]/40 flex items-center justify-center text-[#e5a030] shadow-[0_0_15px_rgba(229,160,48,0.1)] relative overflow-hidden">
+                <div className="w-16 h-16 rounded-full border border-[#1cf200]/30 bg-[#11240c]/40 flex items-center justify-center text-[#e5a030] shadow-[0_0_15px_rgba(229,160,48,0.1)] relative overflow-hidden">
                   <div className="drop-shadow-[0_0_8px_rgba(229,160,48,0.5)]">
                     {stat.icon}
                   </div>

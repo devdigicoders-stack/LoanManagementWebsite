@@ -24,7 +24,6 @@ const PrivacyPolicyPage = () => {
   return (
     <div className="w-full bg-[#fcfcfc] min-h-screen pt-32 pb-20 px-6 md:px-10 text-gray-800">
       <div className="max-w-7xl mx-auto">
-        
         {/* Privacy Policy Page Header */}
         <div className="mb-10 border-b border-gray-200 pb-8">
           <div className="inline-flex items-center gap-2 bg-[#e8fbe9] text-[#4a9b12] px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
@@ -62,7 +61,7 @@ const PrivacyPolicyPage = () => {
               {/* SectionHeading reusable style applied inline via className on h2 */}
               {/* Introduction Text */}
               <p>
-                This website <a href="http://www.nghpl.com" target="_blank" rel="noreferrer" className="text-[#5bc116] no-underline hover:underline font-semibold">(www.nghpl.com)</a>, the HAUS Money & NUO-Pay Mobile Application and other related/associated internet based applications (collectively referred to as “Website” or “App”) is owned and operated by <strong>NuoG Housing Payments Limited</strong>, (hereinafter referred to as “We”, or “Us” or “Our” or “HAUS Money & NUO-Pay”), a company incorporated under Companies Act, 1956 and having its registered office at unit No. 260, Srinivas Nagar, Kapra, Dr. AS Rao Nagar, Secundrabad, Hyderabad - 500 062, Telangana.
+                This website <a href="http://www.nghpl.com" target="_blank" rel="noreferrer" className="text-[#5bc116] no-underline hover:underline font-semibold">(www.nghpl.com)</a>, the HAUS Money & NUO-Pay Mobile Application and other related/associated internet based applications (collectively referred to as “Website” or “App”) is owned and operated by <strong>NuoG Housing Payment&apos;s Limited (HAUS NUO-Pay)</strong>, (hereinafter referred to as “We”, or “Us” or “Our”), a company incorporated under Companies Act, 1956 and having its registered office at Srinivas Nagar, Kapra, Dr. AS Rao Nagar, Medchal-Malkajgiri, Secunderabad, Hyderabad - 500 062, TG, India.
               </p>
               <p>
                 This Privacy Policy gives you (“You” or “Your” or “User” or “Customer”), the user of the Website details behind the collection of Your information and its usage as well as the manner in which We collect, use, store and share information about You. You are advised to read this privacy policy along with and in conjunction with the Terms of Use and other information in the Website/App.
@@ -337,7 +336,6 @@ const PrivacyPolicyPage = () => {
             </table>
           </div>
         </div>
-
       </div>
     </div>
   );

@@ -28,7 +28,7 @@ const ContactForm = () => {
                   <div className="w-10 h-10 rounded-full bg-[#f4fdf5] border border-[#e8fbe9] flex items-center justify-center text-[#5bc116] group-hover:bg-[#5bc116] group-hover:text-white transition-colors shrink-0">
                     <Phone size={18} />
                   </div>
-                  <span className="text-gray-700 font-medium text-[15px]">+91 98765 43210</span>
+                  <span className="text-gray-700 font-medium text-[15px]">+91 9755 766 018</span>
                 </div>
                 
                 <div className="flex items-center gap-4 group">

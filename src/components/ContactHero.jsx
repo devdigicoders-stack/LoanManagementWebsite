@@ -3,35 +3,36 @@ import { PhoneCall } from 'lucide-react';
 
 const ContactHero = () => {
   return (
-    <section className="w-full bg-[#030706] pt-32 pb-20 px-6 md:px-10 relative overflow-hidden">
+    <section className="relative w-full h-[350px] md:h-[450px] lg:h-[500px] bg-[#050b06] flex items-center overflow-hidden">
       
-      {/* Decorative Gradients */}
-      <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-[#5bc116] rounded-full blur-[180px] opacity-10 pointer-events-none"></div>
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 w-full h-full"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1516387938699-a93567ec168e?auto=format&fit=crop&w=1600&q=80')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      ></div>
+      
+      {/* Dark gradient overlay for perfect readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#030706] via-[#030706]/80 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-[#030706] via-transparent to-transparent md:hidden"></div>
 
-      <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center text-center">
+      <div className="max-w-7xl mx-auto w-full px-6 md:px-10 relative z-30 flex flex-col justify-center">
         
-        <div className="inline-flex items-center gap-2 bg-[#0b150e] border border-[#1a2e1d] text-[#71d924] px-5 py-2 rounded-full mb-8">
+        <div className="inline-flex items-center gap-2 bg-[#0b150e]/80 border border-[#1cf200]/30 text-[#1cf200] px-4 py-2 rounded-full mb-6 backdrop-blur-sm self-start">
           <PhoneCall size={16} />
           <span className="text-sm font-bold tracking-widest uppercase">Contact Us</span>
         </div>
 
-        <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight max-w-4xl">
-          Let's Talk About Your <br className="hidden md:block"/> <span className="text-[#5bc116]">Financial Goals</span>
+        <h1 className="text-4xl md:text-5xl lg:text-[56px] font-extrabold text-white mb-6 leading-tight max-w-4xl drop-shadow-lg">
+          Let's Talk About Your <br className="hidden md:block"/> <span className="text-[#1cf200]">Financial Goals</span>
         </h1>
         
-        <p className="text-gray-400 text-[16px] md:text-lg leading-relaxed max-w-3xl mb-8">
-          Have questions about property finance, home loans, Loan Against Property, construction finance, renovation finance or our digital services?
+        <p className="text-gray-300 text-[15px] md:text-lg leading-relaxed max-w-2xl mb-8 drop-shadow">
+          Have questions about property finance, home loans, Loan Against Property, construction finance, renovation finance or our digital services? The NGM Housing Payments Limited team is here to help you understand our services and provide assistance with your enquiries.
         </p>
-
-        <p className="text-gray-400 text-[16px] md:text-lg leading-relaxed max-w-3xl mb-8">
-          The NGM Housing Payments Limited team is here to help you understand our services and provide assistance with your enquiries.
-        </p>
-
-        <div className="bg-[#0b0f0e] border border-[#1a241c] p-6 rounded-2xl max-w-3xl mx-auto">
-          <p className="text-[#5bc116] text-[15px] font-medium leading-relaxed">
-            Whether you are planning to purchase a property, looking for financing against an eligible property, or simply want to understand your available options, feel free to get in touch with us.
-          </p>
-        </div>
 
       </div>
     </section>

@@ -37,7 +37,7 @@ const AppSupport = () => {
                   </div>
                   <div>
                     <div className="text-gray-500 text-[12px] font-bold uppercase tracking-wider mb-1">Phone</div>
-                    <div className="text-white font-medium">+91 1234567890</div>
+                    <div className="text-white font-medium">+91 9755 766 018</div>
                   </div>
                 </div>
                 
@@ -47,7 +47,7 @@ const AppSupport = () => {
                   </div>
                   <div>
                     <div className="text-gray-500 text-[12px] font-bold uppercase tracking-wider mb-1">Email</div>
-                    <a href="mailto:info@ngmhousing.com" className="text-white font-medium hover:text-[#5bc116] transition-colors">info@ngmhousing.com</a>
+                    <a href="mailto:haustouch@hausnuo.com" className="text-white font-medium hover:text-[#5bc116] transition-colors">haustouch@hausnuo.com</a>
                   </div>
                 </div>
 

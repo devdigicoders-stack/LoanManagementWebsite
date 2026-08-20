@@ -25,7 +25,7 @@ const AboutUs = () => {
             At NGM Housing Payment's Limited, we help you explore property-focused financial solutions and understand important aspects such as eligibility, documentation, repayment, interest, tenure, and applicable charges.
           </p>
 
-          <button className="flex items-center justify-center gap-2 bg-[#7ce225] hover:bg-[#68c61e] text-white font-semibold py-3 px-6 rounded-md shadow-md transition-all duration-300">
+          <button className="flex items-center justify-center gap-2 bg-gradient-to-r from-[#eef200] to-[#1cf200] hover:from-[#d5d900] hover:to-[#17cc00] text-black font-semibold py-3 px-6 rounded-md shadow-md transition-all duration-300">
             Know More About Us <ArrowRight size={18} />
           </button>
         </div>

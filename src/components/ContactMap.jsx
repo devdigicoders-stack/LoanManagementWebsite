@@ -1,51 +1,51 @@
-import React from 'react';
-import { MapPin, ExternalLink } from 'lucide-react';
+import React, { useState } from 'react';
+import { MapPin, Search, Phone, Navigation } from 'lucide-react';
+
+const branches = [
+  {
+    id: 1,
+    name: "Head Office - Hyderabad",
+    address: "Srinivas Nagar, Kapra, Dr. AS Rao Nagar, Medchal-Malkajgiri, Secunderabad, Hyderabad – 500 062, TG, India",
+    phone: "+91 9755 766 018",
+    lat: "17.4839",
+    lng: "78.5528",
+    isHeadOffice: true
+  }
+];
 
 const ContactMap = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [activeBranch, setActiveBranch] = useState(branches[0]);
+
+  const filteredBranches = branches.filter(branch => 
+    branch.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    branch.address.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <section className="w-full bg-[#fcfcfc] py-20 px-6 md:px-10 border-t border-gray-100">
       <div className="max-w-7xl mx-auto">
 
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-[#e8fbe9] text-[#4a9b12] rounded-full px-4 py-1 text-sm font-bold tracking-wider mb-4 uppercase">
-            <MapPin size={14} /> Find Us
+            <MapPin size={14} /> Branch Locator
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
-            Our <span className="text-[#5bc116]">Location</span>
+            Find an <span className="text-[#5bc116]">NGM Branch</span> Near You
           </h2>
           <p className="text-gray-500 text-base max-w-xl mx-auto">
-            Visit our registered office at Srinivas Nagar, Kapra, Secunderabad, Hyderabad.
+            We have a growing network of branches across India. Visit us at a location near you for personalized assistance.
           </p>
         </div>
 
-        <div className="rounded-3xl overflow-hidden border border-gray-200 shadow-lg">
-
-          {/* Address bar above map */}
-          <div className="bg-white px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-gray-100">
-            <div className="flex items-start gap-3">
-              <div className="w-9 h-9 bg-[#e8fbe9] rounded-lg flex items-center justify-center shrink-0 mt-0.5">
-                <MapPin size={18} className="text-[#5bc116]" />
-              </div>
-              <div>
-                <p className="font-bold text-gray-900 text-sm">NuoG Housing Payment's Limited <span className="text-[#5bc116]">(HAUS NUO-Pay)</span></p>
-                <p className="text-gray-500 text-sm">Srinivas Nagar, Kapra, Dr. AS Rao Nagar, Medchal-Malkajgiri, Secunderabad, Hyderabad – 500 062, TG, India</p>
-              </div>
-            </div>
-            <a
-              href="https://maps.google.com/?q=Srinivas+Nagar,+Kapra,+Dr+AS+Rao+Nagar,+Secunderabad,+Hyderabad,+Telangana+500062"
-              target="_blank"
-              rel="noreferrer"
-              className="shrink-0 flex items-center gap-2 bg-[#5bc116] text-[#0b0f0e] font-bold text-sm px-4 py-2 rounded-xl hover:bg-[#4aaa10] transition-colors"
-            >
-              <ExternalLink size={15} /> Open in Maps
-            </a>
-          </div>
-
-          {/* Map embed */}
-          <div className="w-full h-[450px]">
+        <div className="bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-[0_8px_30px_rgba(0,0,0,0.04)] h-[500px] relative">
+          
+          {/* Map */}
+          <div className="w-full h-full relative bg-gray-100">
+            {/* Map Embed - Using a generic query for the active branch's city for simulation */}
             <iframe
-              title="NuoG Housing Payment's Limited Office Location"
-              src="https://maps.google.com/maps?q=Srinivas+Nagar,+Kapra,+Dr+AS+Rao+Nagar,+Secunderabad,+Hyderabad,+Telangana+500062&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              title={`Location map for ${activeBranch.name}`}
+              src={`https://maps.google.com/maps?q=${activeBranch.lat},${activeBranch.lng}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -53,6 +53,21 @@ const ContactMap = () => {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
+            
+            <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-gray-100 flex flex-col md:flex-row md:items-center justify-between gap-4 max-w-lg">
+               <div>
+                  <h4 className="font-bold text-gray-900 text-sm mb-1">{activeBranch.name}</h4>
+                  <p className="text-xs text-gray-500 max-w-sm truncate">{activeBranch.address}</p>
+               </div>
+               <a 
+                 href={`https://maps.google.com/?q=${activeBranch.lat},${activeBranch.lng}`}
+                 target="_blank"
+                 rel="noreferrer"
+                 className="flex items-center gap-2 bg-[#5bc116] text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-[#4aaa10] transition-colors"
+               >
+                 <Navigation size={14} /> Get Directions
+               </a>
+            </div>
           </div>
 
         </div>
