@@ -71,7 +71,7 @@ const HeroSlider = () => {
   }, [numSlides]);
 
   return (
-    <div className="relative w-full h-[450px] md:h-[550px] bg-[#050806] overflow-hidden group">
+    <div className="relative w-full h-[350px] md:h-[450px] bg-[#050806] overflow-hidden group">
       
       {/* Slides Container */}
       {slides.map((slide, index) => {

@@ -39,7 +39,7 @@ const ContactEnquiryForm = () => {
                   <label className="text-[14px] font-bold text-gray-700 ml-1">Full Name</label>
                   <div className="relative">
                     <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-                    <input type="text" placeholder="Enter your full name" className="w-full pl-11 pr-4 py-3 bg-[#fcfcfc] border border-gray-200 rounded-xl focus:outline-none focus:border-[#5bc116] focus:ring-1 focus:ring-[#5bc116] transition-all" />
+                    <input type="text" placeholder="Enter your full name" className="w-full pl-11 pr-4 py-3 bg-[#fcfcfc] border border-gray-200 rounded-xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#5bc116] focus:ring-1 focus:ring-[#5bc116] transition-all" />
                   </div>
                 </div>
 
@@ -47,7 +47,7 @@ const ContactEnquiryForm = () => {
                   <label className="text-[14px] font-bold text-gray-700 ml-1">Mobile Number</label>
                   <div className="relative">
                     <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-                    <input type="tel" placeholder="Enter your mobile number" className="w-full pl-11 pr-4 py-3 bg-[#fcfcfc] border border-gray-200 rounded-xl focus:outline-none focus:border-[#5bc116] focus:ring-1 focus:ring-[#5bc116] transition-all" />
+                    <input type="tel" placeholder="Enter your mobile number" className="w-full pl-11 pr-4 py-3 bg-[#fcfcfc] border border-gray-200 rounded-xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#5bc116] focus:ring-1 focus:ring-[#5bc116] transition-all" />
                   </div>
                 </div>
               </div>
@@ -57,7 +57,7 @@ const ContactEnquiryForm = () => {
                   <label className="text-[14px] font-bold text-gray-700 ml-1">Email Address</label>
                   <div className="relative">
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-                    <input type="email" placeholder="Enter your email address" className="w-full pl-11 pr-4 py-3 bg-[#fcfcfc] border border-gray-200 rounded-xl focus:outline-none focus:border-[#5bc116] focus:ring-1 focus:ring-[#5bc116] transition-all" />
+                    <input type="email" placeholder="Enter your email address" className="w-full pl-11 pr-4 py-3 bg-[#fcfcfc] border border-gray-200 rounded-xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#5bc116] focus:ring-1 focus:ring-[#5bc116] transition-all" />
                   </div>
                 </div>
                 
@@ -65,7 +65,7 @@ const ContactEnquiryForm = () => {
                   <label className="text-[14px] font-bold text-gray-700 ml-1">City / Location</label>
                   <div className="relative">
                     <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-                    <input type="text" placeholder="Enter your city" className="w-full pl-11 pr-4 py-3 bg-[#fcfcfc] border border-gray-200 rounded-xl focus:outline-none focus:border-[#5bc116] focus:ring-1 focus:ring-[#5bc116] transition-all" />
+                    <input type="text" placeholder="Enter your city" className="w-full pl-11 pr-4 py-3 bg-[#fcfcfc] border border-gray-200 rounded-xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#5bc116] focus:ring-1 focus:ring-[#5bc116] transition-all" />
                   </div>
                 </div>
               </div>
@@ -88,7 +88,7 @@ const ContactEnquiryForm = () => {
                 <label className="text-[14px] font-bold text-gray-700 ml-1">Message</label>
                 <div className="relative">
                   <MessageSquare className="absolute left-4 top-4 text-gray-400" size={18} />
-                  <textarea rows="4" placeholder="How can we help you?" className="w-full pl-11 pr-4 py-3 bg-[#fcfcfc] border border-gray-200 rounded-xl focus:outline-none focus:border-[#5bc116] focus:ring-1 focus:ring-[#5bc116] transition-all resize-none"></textarea>
+                  <textarea rows="4" placeholder="How can we help you?" className="w-full pl-11 pr-4 py-3 bg-[#fcfcfc] border border-gray-200 rounded-xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#5bc116] focus:ring-1 focus:ring-[#5bc116] transition-all resize-none"></textarea>
                 </div>
               </div>
 

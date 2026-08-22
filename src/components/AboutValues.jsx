@@ -1,22 +1,27 @@
 import React from 'react';
-import { Handshake, Award, Lightbulb, User, Users } from 'lucide-react';
+import { Handshake, Award, Lightbulb, User, Users, ShieldCheck } from 'lucide-react';
 
 const AboutValues = () => {
   const values = [
     {
       icon: <Award size={28} strokeWidth={1.5} />,
-      title: "Our Mission",
-      description: "To make property finance simple, transparent and accessible for everyone."
+      title: "Execution Excellence",
+      description: "It’s Not Just Our Standard, But Our Culture. From Planing to Delivery, We Ensure Every Detail is Aligned to Achieve Meaningful Outcomes."
     },
     {
-      icon: <Lightbulb size={28} strokeWidth={1.5} />,
-      title: "Our Vision",
-      description: "To build a trusted digital ecosystem for property financing in India."
+      icon: <User size={28} strokeWidth={1.5} />,
+      title: "People Focus",
+      description: "We Prioritize employees' growth and well-being. Our people-centric approach drives innovation and productivity. We value diversity and inclusion."
+    },
+    {
+      icon: <ShieldCheck size={28} strokeWidth={1.5} />,
+      title: "Integrity",
+      description: "We Operate With integrity, upholding high ethical standards. Our actions are guided by honesty and accountability. We build trust through consistent behavior."
     },
     {
       icon: <Users size={28} strokeWidth={1.5} />,
-      title: "Our Values",
-      description: "Transparency, trust, technology, simplicity and responsibility."
+      title: "Customer Centricity",
+      description: "It Our Promise to listen, understand and deliver what truly matters. We build lasting relationships by consistently putting customer needs first."
     }
   ];
 
@@ -27,13 +32,22 @@ const AboutValues = () => {
           
           {/* Header */}
           <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-[34px] font-bold text-gray-900 leading-tight mb-4">
+              Our Vision
+            </h2>
+            <h3 className="text-xl md:text-2xl font-semibold text-[#5bc116] mb-4">
+              EMPOWERING EMERGING INDIA WITH EASY ACCESS TO LOANS
+            </h3>
+            <p className="text-gray-600 text-sm md:text-base leading-relaxed max-w-3xl mx-auto mb-8">
+              In the dynamic world of lending, HAUS NUO-Pay stands resolute at the crossroads of growth and opportunities. Anchored to our vision, we adeptly navigate economic change, tapping into underserved markets and bridging crucial credit gaps. Our expansion across the length and breadth of India and focus on the aspiring self-employed segment signifies not just growth but a commitment to accessibility and empowerment.
+            </p>
             <h2 className="text-3xl md:text-[34px] font-bold text-gray-900 leading-tight">
-              Our Mission, Vision & Values
+              Our Values
             </h2>
           </div>
           
           {/* Values Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {values.map((value, index) => (
               <div key={index} className="bg-[#fffdf9] p-8 rounded-2xl flex flex-col items-center text-center shadow-sm border border-[#fbf3e5]">
                 

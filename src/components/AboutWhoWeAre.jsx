@@ -15,10 +15,16 @@ const AboutWhoWeAre = () => {
           
           {/* Paragraphs */}
           <p className="text-gray-600 text-sm md:text-[15px] leading-relaxed mb-4 pr-4">
-            Property financing involves important decisions. From purchasing a home to obtaining finance against an existing property, borrowers need to understand multiple factors before proceeding.
+            HAUS NUO-Pay is an Indian Multinational Financial Institution’s, Real Estate’s Management, Start-Up Growth Registration, Online Deliveries and Digital Payments Transaction Technology of Establishing a Domestic, Open and Multilateral System of Payments Company Headquartered in Bengaluru, Karnataka, India.
+          </p>
+          <p className="text-gray-600 text-sm md:text-[15px] leading-relaxed mb-4 pr-4">
+            It was Founded in October 2014, By Aaditya Raj Singh, Shewlee Paul and Binay Kumar Paul. The NuoG Growth App, That Provides at Mobile Phone Based on the Unified Payments Interface System and Digital Wallet, Went Live in August 2025.
+          </p>
+          <p className="text-gray-600 text-sm md:text-[15px] leading-relaxed mb-4 pr-4">
+            The Reserve Bank of India Authorized the Company’s Use of the HAUS NUO-Pay Wallet and In April 2025 the Company Began Providing Small Loans to Consumers as Part of Its Services.
           </p>
           <p className="text-gray-600 text-sm md:text-[15px] leading-relaxed mb-10 pr-4">
-            Our platform brings together useful information about home loans, property loans, loan against property, construction finance, renovation finance, and other property-related financial solutions.
+            HAUS NUO-Pay was Founded with the Mission to Create a Digital ECOSYSTEM of Financial Services Accessible to Anyone. We are a Leading Fintech Company and A Wholly 100% Owned Subsidiary of NuoG Housing Payment’s Limited. Some of Our Products Include Digital Payments Accepting Online & Offline Payments from their Consumers.
           </p>
         </div>
 
@@ -72,3 +78,5 @@ const AboutWhoWeAre = () => {
 };
 
 export default AboutWhoWeAre;
+
+

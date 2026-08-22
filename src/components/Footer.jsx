@@ -6,23 +6,23 @@ const Footer = () => {
   return (
     <footer className="w-full bg-[#0b0f0e] border-t border-[#1a241c] pt-16 pb-6 px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
-        
+
         {/* Top Section - Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
+
           {/* Column 1: Logo & Info */}
           <div className="flex flex-col lg:border-r border-[#1a241c] pr-4">
             <Link to="/">
-              <img 
-                src="/loanlogo.png" 
-                alt="NGM Housing Payment's Limited" 
+              <img
+                src="/loanlogo.png"
+                alt="NGM Housing Payment's Limited"
                 className="h-16 w-auto object-contain mb-6 self-start"
               />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6 pr-4">
               Your trusted partner for secure and reliable housing payment solutions. Empowering your financial journey.
             </p>
-            
+
             {/* Social Icons */}
             <div className="flex items-center gap-3 mb-8">
               <a href="#" className="w-9 h-9 rounded-full border border-[#2d3a30] flex items-center justify-center text-gray-400 hover:text-[#5bc116] hover:border-[#5bc116] transition-colors">
@@ -48,43 +48,42 @@ const Footer = () => {
                 </Link>
                 <Link to="/download-app" className="bg-[#1a241c] hover:bg-[#2d3a30] border border-[#2d3a30] text-white rounded-lg p-2 flex items-center justify-center transition-colors">
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.523 15.3414c-.0352-2.7303 2.2227-4.0416 2.327-4.1033-1.2612-1.8492-3.2185-2.1158-3.9213-2.148-1.666-.171-3.2536.9855-4.105.9855-.8516 0-2.1558-1.0028-3.5284-.9753-1.7828.0267-3.4243 1.0366-4.3418 2.6393-1.854 3.23-.4734 8.01 1.3323 10.6385.8824 1.2828 1.9168 2.73 3.2662 2.678 1.2983-.053 1.8028-.8414 3.272-.8414 1.469 0 1.9218.8414 3.2986.8155 1.4287-.027 2.33-1.3094 3.208-2.5936 1.0182-1.4925 1.4363-2.94 1.4552-3.0163-.0333-.012-2.8277-1.085-2.8628-4.0789zM15.115 6.3045c.7126-.867 1.1925-2.072 1.0617-3.2713-1.031.042-2.2858.6874-3.02 1.543-.6583.754-1.233 1.986-1.0772 3.167 1.1492.089 2.3218-.57 3.0355-1.4387z" className="hidden"/>
-                    <path d="M3.195 21.056c-.328-.323-.5-.778-.5-1.332V4.276c0-.554.172-1.01.5-1.332L11.5 12l-8.305 9.056z" fill="#00f076"/>
-                    <path d="M15.719 16.273l-4.219-4.273 4.219-4.273 4.962 2.863c1.171.677 1.171 1.776 0 2.453l-4.962 2.863z" fill="#ffc900"/>
-                    <path d="M3.195 21.056l12.524-7.276-4.219-4.273L3.195 21.056z" fill="#ff3a44"/>
-                    <path d="M3.195 2.944l12.524 7.276-4.219 4.273L3.195 2.944z" fill="#00a0ff"/>
+                    <path d="M17.523 15.3414c-.0352-2.7303 2.2227-4.0416 2.327-4.1033-1.2612-1.8492-3.2185-2.1158-3.9213-2.148-1.666-.171-3.2536.9855-4.105.9855-.8516 0-2.1558-1.0028-3.5284-.9753-1.7828.0267-3.4243 1.0366-4.3418 2.6393-1.854 3.23-.4734 8.01 1.3323 10.6385.8824 1.2828 1.9168 2.73 3.2662 2.678 1.2983-.053 1.8028-.8414 3.272-.8414 1.469 0 1.9218.8414 3.2986.8155 1.4287-.027 2.33-1.3094 3.208-2.5936 1.0182-1.4925 1.4363-2.94 1.4552-3.0163-.0333-.012-2.8277-1.085-2.8628-4.0789zM15.115 6.3045c.7126-.867 1.1925-2.072 1.0617-3.2713-1.031.042-2.2858.6874-3.02 1.543-.6583.754-1.233 1.986-1.0772 3.167 1.1492.089 2.3218-.57 3.0355-1.4387z" className="hidden" />
+                    <path d="M3.195 21.056c-.328-.323-.5-.778-.5-1.332V4.276c0-.554.172-1.01.5-1.332L11.5 12l-8.305 9.056z" fill="#00f076" />
+                    <path d="M15.719 16.273l-4.219-4.273 4.219-4.273 4.962 2.863c1.171.677 1.171 1.776 0 2.453l-4.962 2.863z" fill="#ffc900" />
+                    <path d="M3.195 21.056l12.524-7.276-4.219-4.273L3.195 21.056z" fill="#ff3a44" />
+                    <path d="M3.195 2.944l12.524 7.276-4.219 4.273L3.195 2.944z" fill="#00a0ff" />
                   </svg>
                 </Link>
               </div>
             </div>
 
           </div>
-          
-          {/* Column 2: Products */}
-          <div className="flex flex-col lg:pl-8">
-            <h4 className="text-white font-semibold text-lg mb-6">Our Products</h4>
-            <ul className="flex flex-col gap-4">
-              <li><Link to="/services/home-loan" className="text-gray-400 hover:text-[#5bc116] transition-colors text-sm">Home Loan</Link></li>
-              <li><Link to="/services/car-loan" className="text-gray-400 hover:text-[#5bc116] transition-colors text-sm">Car Loan</Link></li>
-              <li><Link to="/services/sme-loan" className="text-gray-400 hover:text-[#5bc116] transition-colors text-sm">SME / MSME Loan</Link></li>
-              <li><Link to="/services/loan-against-property" className="text-gray-400 hover:text-[#5bc116] transition-colors text-sm">Loan Against Property</Link></li>
-              <li><Link to="/services/two-wheeler" className="text-gray-400 hover:text-[#5bc116] transition-colors text-sm">Two Wheeler Loan</Link></li>
-              <li><Link to="/services/commercial-vehicle" className="text-gray-400 hover:text-[#5bc116] transition-colors text-sm">Commercial Vehicle</Link></li>
-            </ul>
-          </div>
 
-          {/* Column 3: Quick Links & Important Links */}
+          {/* Column 2: Properties Management & Quick Links */}
           <div className="flex flex-col">
-            <h4 className="text-white font-semibold text-lg mb-6">Quick Links</h4>
-            <ul className="flex flex-col gap-4">
+            <h4 className="text-white font-semibold text-lg mb-4">Properties Management</h4>
+            <div className="mb-6 space-y-4">
+              <div>
+                <p className="text-[#5bc116] text-xs font-bold mb-1 uppercase">Rental Pay</p>
+                <p className="text-gray-400 text-sm">Home-Owner/Landlord, Renter/Tenant</p>
+              </div>
+              <div>
+                <p className="text-[#5bc116] text-xs font-bold mb-1 uppercase">Soceities Insured</p>
+                <p className="text-gray-400 text-sm">Soceities, Builder's</p>
+              </div>
+              <div>
+                <p className="text-[#5bc116] text-xs font-bold mb-1 uppercase">NUO-HAUS</p>
+              </div>
+            </div>
+
+            <h4 className="text-white font-semibold text-lg mb-4 mt-2">Quick Links</h4>
+            <ul className="grid grid-cols-2 gap-2">
               <li><Link to="/about" className="text-gray-400 hover:text-[#5bc116] transition-colors text-sm">About Us</Link></li>
               <li><Link to="/contact" className="text-gray-400 hover:text-[#5bc116] transition-colors text-sm">Contact Us</Link></li>
               <li><Link to="/terms" className="text-gray-400 hover:text-[#5bc116] transition-colors text-sm">Terms &amp; Conditions</Link></li>
               <li><Link to="/privacy" className="text-gray-400 hover:text-[#5bc116] transition-colors text-sm">Privacy Policy</Link></li>
               <li><Link to="/disclaimer" className="text-gray-400 hover:text-[#5bc116] transition-colors text-sm">Disclaimer</Link></li>
-              <li><Link to="/advisory" className="text-gray-400 hover:text-[#5bc116] transition-colors text-sm">Advisory Note</Link></li>
-              <li><Link to="/cancellation" className="text-gray-400 hover:text-[#5bc116] transition-colors text-sm">NACH/eNACH Cancellation</Link></li>
-              <li><Link to="/refund" className="text-gray-400 hover:text-[#5bc116] transition-colors text-sm">Refund Policy</Link></li>
             </ul>
           </div>
 
@@ -119,7 +118,7 @@ const Footer = () => {
 
         {/* Legal Disclaimer & Registered Office */}
         <div className="border-t border-[#1a241c] pt-8 mb-6 space-y-5">
-          
+
           {/* Disclaimer Text */}
           <p className="text-gray-400 text-[12px] leading-relaxed">
             <span className="text-[#5bc116] font-bold">HAUS NUO-Pay</span> — Use of the Technologies Digital Partner Platform Journey Built By, Operated &amp; Managed Under the Trade Name &amp; Brand Owned by{' '}
@@ -140,7 +139,7 @@ const Footer = () => {
               <span className="text-white font-semibold">NuoG Housing Payment's Limited </span>
               <span className="text-[#5bc116]">(HAUS NUO-Pay)</span>
               <br />
-              Srinivas Nagar, Kapra, Dr. AS Rao Nagar, Medchal-Malkajgiri, Secunderabad, Hyderabad – 500 062, TG, India<br/>
+              Srinivas Nagar, Kapra, Dr. AS Rao Nagar, Medchal-Malkajgiri, Secunderabad, Hyderabad – 500 062, TG, India<br />
               CIN: U70200TS2025PLC202763
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-4 text-sm mt-3 md:mt-0">

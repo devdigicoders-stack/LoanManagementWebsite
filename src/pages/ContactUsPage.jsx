@@ -18,14 +18,14 @@ const ContactUsPage = () => {
   return (
     <div className="bg-[#fcfcfc] min-h-screen">
       <ContactHero />
-      <ScrollReveal><ContactInfo /></ScrollReveal>
-      <ScrollReveal><ContactMap /></ScrollReveal>
       <ScrollReveal><ContactEnquiryForm /></ScrollReveal>
+      <ScrollReveal><ContactInfo /></ScrollReveal>
       <ScrollReveal><ContactSupport /></ScrollReveal>
       <ScrollReveal><ContactFAQ /></ScrollReveal>
       <ScrollReveal><CompanyStats /></ScrollReveal>
       <ScrollReveal><HappyClients /></ScrollReveal>
       <ScrollReveal><NewsAndPress /></ScrollReveal>
+      <ScrollReveal><ContactMap /></ScrollReveal>
     </div>
   );
 };

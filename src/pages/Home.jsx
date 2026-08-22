@@ -1,5 +1,6 @@
 import React from 'react';
 import HeroSlider from '../components/HeroSlider';
+import PayEmiCheck from '../components/PayEmiCheck';
 import QuickActions from '../components/QuickActions';
 import Services from '../components/Services';
 import EmiCalculator from '../components/EmiCalculator';
@@ -17,6 +18,7 @@ const Home = () => {
   return (
     <div className="bg-[#0b0f0e]">
       <HeroSlider />
+      <PayEmiCheck />
       <ScrollReveal><QuickActions /></ScrollReveal>
       <ScrollReveal><Services /></ScrollReveal>
       <ScrollReveal><EmiCalculator /></ScrollReveal>

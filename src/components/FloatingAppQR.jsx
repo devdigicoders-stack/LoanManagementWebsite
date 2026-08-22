@@ -1,32 +1,28 @@
 import React, { useState } from 'react';
-import { MessageSquareText, X } from 'lucide-react';
+import { QrCode, X, Smartphone, Users } from 'lucide-react';
 
-const FloatingChatButton = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const FloatingAppQR = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <div className="fixed bottom-20 right-6 z-50">
-        {/* Fixed Floating Button */}
-        <button 
-          onClick={() => setIsModalOpen(true)}
-          className="bg-[#034488] hover:bg-[#1cf200] text-white hover:text-black p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center border-2 border-transparent hover:border-black"
-          aria-label="Open Chat"
-        >
-          <MessageSquareText size={32} />
-          {/* Notification Dot */}
-          <span className="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span>
-        </button>
-      </div>
+      {/* Floating Button */}
+      <button
+        onClick={() => setIsOpen(true)}
+        className="fixed bottom-24 right-6 md:right-8 z-50 bg-[#1cf200] hover:bg-[#5bc116] text-[#0b0f0e] w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110"
+        title="Download Apps"
+      >
+        <QrCode size={26} className="animate-pulse" />
+      </button>
 
-      {/* WhatsApp QR Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">
-          <div className="bg-white rounded-3xl w-full max-w-2xl overflow-y-auto max-h-[90vh] relative shadow-2xl animate-fade-in-up">
+      {/* Modal Overlay */}
+      {isOpen && (
+        <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl w-full max-w-2xl overflow-hidden relative shadow-2xl animate-fade-in-up">
             
             {/* Close Button */}
             <button 
-              onClick={() => setIsModalOpen(false)}
+              onClick={() => setIsOpen(false)}
               className="absolute top-4 right-4 text-gray-500 hover:text-red-500 bg-gray-100 hover:bg-red-50 rounded-full p-2 transition-colors z-10"
             >
               <X size={20} />
@@ -46,7 +42,7 @@ const FloatingChatButton = () => {
               {/* User App Section */}
               <div className="flex-1 p-8 flex flex-col items-center text-center group hover:bg-white transition-colors cursor-pointer">
                 <div className="w-12 h-12 bg-[#eaf7e3] text-[#5bc116] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <MessageSquareText size={24} />
+                  <Smartphone size={24} />
                 </div>
                 <h3 className="font-bold text-gray-900 text-lg mb-1">Customer App</h3>
                 <p className="text-gray-500 text-[13px] mb-6">Manage loans, EMIs & more</p>
@@ -73,7 +69,7 @@ const FloatingChatButton = () => {
               {/* Employee App Section */}
               <div className="flex-1 p-8 flex flex-col items-center text-center group hover:bg-white transition-colors cursor-pointer">
                 <div className="w-12 h-12 bg-gray-100 text-gray-700 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <MessageSquareText size={24} />
+                  <Users size={24} />
                 </div>
                 <h3 className="font-bold text-gray-900 text-lg mb-1">Employee App</h3>
                 <p className="text-gray-500 text-[13px] mb-6">Internal portal for NuoG Staff</p>
@@ -105,4 +101,4 @@ const FloatingChatButton = () => {
   );
 };
 
-export default FloatingChatButton;
+export default FloatingAppQR;

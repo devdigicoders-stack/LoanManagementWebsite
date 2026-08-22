@@ -37,7 +37,7 @@ const Terms = () => {
             <div className="prose prose-green max-w-none prose-headings:text-[#0b0f0e] prose-h2:text-xl prose-h2:font-bold prose-h2:mt-10 prose-h2:mb-4 prose-p:text-gray-500 prose-p:text-[14px] prose-p:leading-relaxed prose-li:text-gray-500 prose-li:text-[14px]">
           
           <p className="font-semibold text-[#0b0f0e]">
-            THIS WEBSITE <a href="http://www.nuobnk.com" className="text-[#5bc116] hover:underline font-bold">www.nuobnk.com</a> (http://www.nghpl.com) AND OTHER RELATED INTERNET BASED APPLICATIONS (COLLECTIVELY REFERRED TO AS "WEBSITE" OR "SERVICES") OWNED AND OPERATED BY NUOG HOUSING PAYMENT&apos;S LIMITED (HAUS NUO-PAY), A COMPANY INCORPORATED UNDER THE LAWS OF REPUBLIC OF INDIA HAVING ITS REGISTERED OFFICE AT SRINIVAS NAGAR, KAPRA, DR. AS RAO NAGAR, MEDCHAL-MALKAJGIRI, SECUNDERABAD, HYDERABAD - 500062, TG, INDIA (HEREINAFTER REFERRED TO AS "WE", OR "US" OR "OUR").
+            THIS WEBSITE <a href="http://www.nuobnk.com" className="text-[#5bc116] hover:underline font-bold">www.nuobnk.com</a> (http://www.HAUS NUO-Paypl.com) AND OTHER RELATED INTERNET BASED APPLICATIONS (COLLECTIVELY REFERRED TO AS "WEBSITE" OR "SERVICES") OWNED AND OPERATED BY NUOG HOUSING PAYMENT&apos;S LIMITED (HAUS NUO-PAY), A COMPANY INCORPORATED UNDER THE LAWS OF REPUBLIC OF INDIA HAVING ITS REGISTERED OFFICE AT SRINIVAS NAGAR, KAPRA, DR. AS RAO NAGAR, MEDCHAL-MALKAJGIRI, SECUNDERABAD, HYDERABAD - 500062, TG, INDIA (HEREINAFTER REFERRED TO AS "WE", OR "US" OR "OUR").
           </p>
           
           <p>
@@ -203,7 +203,7 @@ const Terms = () => {
 
           {/* Section 15 */}
           <h2 id="section-15" className="scroll-mt-32 mt-12 mb-4 flex items-center gap-3 text-2xl font-extrabold text-[#0b0f0e] border-l-4 border-[#5bc116] pl-4">15. FEEDBACK</h2>
-          <p>Your feedback makes use of NuoG’s Services and Services better; please feel free to share it with NuoG on <a href="mailto:support@nghpl.com" className="text-[#5bc116] hover:underline font-medium">support@nuobnk.com</a>. Unless specifically admitted by NuoG or as required by law all feedback shall be non-confidential in nature.</p>
+          <p>Your feedback makes use of NuoG’s Services and Services better; please feel free to share it with NuoG on <a href="mailto:support@HAUS NUO-Paypl.com" className="text-[#5bc116] hover:underline font-medium">support@nuobnk.com</a>. Unless specifically admitted by NuoG or as required by law all feedback shall be non-confidential in nature.</p>
           <p>NuoG will assume no responsibility for reviewing unsolicited ideas and will not incur any liability as a result of any similarities between those ideas and materials that may appear in future programs of NuoG.</p>
           <p>Please do not reveal trade secrets or other confidential information in your messages to NuoG. Any and all rights to materials submitted to NuoG become the exclusive property of NuoG.</p>
 
@@ -338,3 +338,5 @@ const Terms = () => {
 };
 
 export default Terms;
+
+

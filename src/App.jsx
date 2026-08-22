@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import FloatingChatButton from './components/FloatingChatButton';
-// import FloatingAppButtons from './components/FloatingAppButtons';
+// import FloatingAppQR from './components/FloatingAppQR';
 import Home from './pages/Home';
 import AboutUsPage from './pages/AboutUsPage';
 import ServicesPage from './pages/ServicesPage';
@@ -29,7 +29,6 @@ function App() {
       <div className="min-h-screen bg-[#0b0f0e] text-white font-sans flex flex-col">
         <Header />
         <FloatingChatButton />
-        {/* <FloatingAppButtons /> */}
         
         <main className="flex-grow">
           <Routes>

@@ -66,7 +66,7 @@ const AdvisoryNotePage = () => {
                 </li>
                 <li className="flex gap-3 items-start">
                   <CheckCircle2 className="text-[#5bc116] shrink-0 mt-0.5" size={18} />
-                  <span className="text-[#2e5e15] font-medium text-sm">Once You are Sure as to the Fraudulent Nature of the Advertisement, Report the Same to the Police and Intimate us of the Same by e-Mail at <a href="mailto:support@nuobnk.com" className="font-bold underline hover:text-[#1a380b]">support@nuobnk.com</a> (or support@nghpl.com).</span>
+                  <span className="text-[#2e5e15] font-medium text-sm">Once You are Sure as to the Fraudulent Nature of the Advertisement, Report the Same to the Police and Intimate us of the Same by e-Mail at <a href="mailto:support@nuobnk.com" className="font-bold underline hover:text-[#1a380b]">support@nuobnk.com</a> (or support@HAUS NUO-Paypl.com).</span>
                 </li>
               </ul>
             </div>
@@ -79,3 +79,4 @@ const AdvisoryNotePage = () => {
 };
 
 export default AdvisoryNotePage;
+

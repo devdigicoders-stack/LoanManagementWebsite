@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import AboutHero from '../components/AboutHero';
 import AboutWhoWeAre from '../components/AboutWhoWeAre';
+import AboutBusinessOverview from '../components/AboutBusinessOverview';
 import AboutValues from '../components/AboutValues';
 import AboutJourney from '../components/AboutJourney';
 import AboutTeam from '../components/AboutTeam';
@@ -32,6 +33,7 @@ const AboutUsPage = () => {
     <>
       <AboutHero />
       <section id="who-we-are"><ScrollReveal><AboutWhoWeAre /></ScrollReveal></section>
+      <section id="business-overview"><ScrollReveal><AboutBusinessOverview /></ScrollReveal></section>
       <section id="our-values"><ScrollReveal><AboutValues /></ScrollReveal></section>
       <section id="our-journey"><ScrollReveal><AboutJourney /></ScrollReveal></section>
       <section id="our-team"><ScrollReveal><AboutTeam /></ScrollReveal></section>

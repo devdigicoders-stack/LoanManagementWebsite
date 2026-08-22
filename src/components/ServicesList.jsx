@@ -128,6 +128,47 @@ const ServicesList = () => {
           })}
         </div>
 
+        {/* Financial Services List */}
+        <div className="mt-24 w-full relative">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#f4fdf5] rounded-[3rem] -z-10"></div>
+          <div className="max-w-6xl mx-auto px-6 py-16 border border-[#e8fbe9] bg-white/50 backdrop-blur-xl rounded-[3rem] shadow-sm text-center">
+            
+            <div className="mb-12">
+              <span className="inline-block bg-[#e8fbe9] text-[#4a9b12] rounded-full px-4 py-1 text-sm font-bold tracking-wider mb-4 uppercase">
+                Explore More
+              </span>
+              <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Other Financial Services</h3>
+              <p className="text-[#5bc116] text-[15px] font-bold uppercase tracking-widest">HAUS NUO-Pay Un-Secured Morgatage</p>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {[
+                "Multi-Single EMI",
+                "Business Loan",
+                "Gold Loan",
+                "Salary Against Loan",
+                "Personal Loan",
+                "Home Loan",
+                "Top-Up & BT Loan",
+                "Doctor's Loan",
+                "Loan Against Properties",
+                'Hospfinsure Loan ("हॉस्पिफाइन्श्योर")',
+                "Equipment's Loan"
+              ].map((item, idx) => (
+                <div 
+                  key={idx} 
+                  className="group relative bg-white hover:bg-[#5bc116] border border-gray-100 hover:border-[#5bc116] rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-xl cursor-pointer flex items-center justify-center text-center"
+                >
+                  <span className="text-gray-800 font-bold group-hover:text-white transition-colors duration-300">
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </section>
   );

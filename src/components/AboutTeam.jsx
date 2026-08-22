@@ -19,28 +19,16 @@ const Twitter = ({ size = 24 }) => (
 const AboutTeam = () => {
   const team = [
     {
-      name: "Rajesh Kumar",
-      role: "Chief Executive Officer",
+      name: "Aaditya Raj Singh",
+      role: "MD & CEO",
       description: "Leading with vision and driving innovation.",
       image: "/team/member1.jpg"
     },
     {
-      name: "Priya Sharma",
-      role: "Chief Operations Officer",
+      name: "Shewlee Paul",
+      role: "WTD & COO",
       description: "Focused on operational excellence and growth.",
       image: "/team/member2.jpg"
-    },
-    {
-      name: "Amit Verma",
-      role: "Chief Technology Officer",
-      description: "Building secure and scalable technology.",
-      image: "/team/member3.jpg"
-    },
-    {
-      name: "Neha Singh",
-      role: "Head of Customer Success",
-      description: "Committed to customer satisfaction and trust.",
-      image: "/team/member4.jpg"
     }
   ];
 
@@ -60,7 +48,7 @@ const AboutTeam = () => {
             OUR TEAM
           </div>
           <h2 className="text-[32px] md:text-4xl lg:text-[40px] font-bold text-gray-900 leading-tight">
-            Meet the People Behind <span className="text-[#5bc116]">NGM</span>
+            Meet the People Behind <span className="text-[#5bc116]">HAUS NUO-Pay</span>
           </h2>
         </motion.div>
 
@@ -134,3 +122,5 @@ const AboutTeam = () => {
 };
 
 export default AboutTeam;
+
+
