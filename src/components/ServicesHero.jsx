@@ -31,7 +31,7 @@ const ServicesHero = () => {
         </h1>
         
         <p className="text-gray-200 text-[15px] md:text-lg leading-relaxed max-w-3xl mb-8 drop-shadow">
-          At NGM Housing Payments Limited, we aim to make property-related financial information easier to understand and access. Whether you are planning to purchase a home, construct a property, renovate your existing home, or explore financing against an eligible property, our platform helps you understand available financial solutions and important considerations.
+          At HAUS NUO-Pay, we aim to make property-related financial information easier to understand and access. Whether you are planning to purchase a home, construct a property, renovate your existing home, or explore financing against an eligible property, our platform helps you understand available financial solutions and important considerations.
         </p>
 
       </div>

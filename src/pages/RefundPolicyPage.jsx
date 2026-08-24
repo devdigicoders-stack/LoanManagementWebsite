@@ -16,7 +16,7 @@ const RefundPolicyPage = () => {
         <div className="w-full bg-white p-8 md:p-12 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-[#e8f5e9]">
           <div className="prose prose-green max-w-none prose-p:text-gray-500 prose-p:text-[14px] prose-p:leading-relaxed">
             <h2 className="mt-4 mb-4 flex items-center gap-3 text-2xl font-extrabold text-slate-900 border-l-4 border-[#0EA5E9] pl-4">REFUND &amp; CANCELLATION POLICY</h2>
-            <p>Welcome to NuoG Housing Payments Limited (HAUS NUO-Pay).</p>
+            <p>Welcome to NuoG Housing Payments Limited.</p>
             <p>Please read our Refund Policy carefully. By using our website, services, and making any payments to NuoG Housing Payments Limited, you agree to this policy.</p>
             
             <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 my-8">

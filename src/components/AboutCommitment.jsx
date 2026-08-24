@@ -20,7 +20,7 @@ const AboutCommitment = () => {
             Clear Information & <span className="text-[#0EA5E9]">Simple Financing</span>
           </h2>
           <p className="text-slate-600 text-[15px] leading-relaxed mb-6">
-            At NGM Housing Payments Limited, we believe that property financing should be simple, transparent and easy to understand. Our commitment is to provide customers with clear information and a convenient digital experience while they explore financial solutions for their property and personal requirements.
+            At HAUS NUO-Pay, we believe that property financing should be simple, transparent and easy to understand. Our commitment is to provide customers with clear information and a convenient digital experience while they explore financial solutions for their property and personal requirements.
           </p>
           <p className="text-slate-600 text-[15px] leading-relaxed">
             We aim to help customers understand the important aspects of financing before they make a decision — including eligibility, documentation, repayment, interest rates, tenure and applicable charges.

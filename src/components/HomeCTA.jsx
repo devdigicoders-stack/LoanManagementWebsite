@@ -23,7 +23,7 @@ const HomeCTA = () => {
           </div>
           
           <p className="text-slate-700 text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">
-            Download the NGM Finance app to easily track your EMI payments, apply for new loans, and manage your account anytime, anywhere.
+            Download the HAUS NUO-Pay app to easily track your EMI payments, apply for new loans, and manage your account anytime, anywhere.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -64,7 +64,7 @@ const HomeCTA = () => {
         {/* Mockup area (simulated) */}
         <div className="relative z-10 md:w-1/3 flex justify-center mt-8 md:mt-0">
           <div className="w-48 h-96 border-4 border-gray-800 rounded-[2.5rem] bg-[#F0F9FF] relative overflow-hidden shadow-2xl flex items-center justify-center">
-             <span className="text-[#0EA5E9] font-bold text-2xl">NGM App</span>
+             <span className="text-[#0EA5E9] font-bold text-2xl">HAUS NUO-Pay App</span>
           </div>
         </div>
 

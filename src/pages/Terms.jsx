@@ -37,7 +37,7 @@ const Terms = () => {
             <div className="prose prose-green max-w-none prose-headings:text-slate-900 prose-h2:text-xl prose-h2:font-bold prose-h2:mt-10 prose-h2:mb-4 prose-p:text-gray-500 prose-p:text-[14px] prose-p:leading-relaxed prose-li:text-gray-500 prose-li:text-[14px]">
 
               <p className="font-semibold text-slate-900">
-                THIS WEBSITE <a href="http://https://hausnuo.com" className="text-[#0EA5E9] hover:underline font-bold">https://hausnuo.com</a> AND OTHER RELATED INTERNET BASED APPLICATIONS (COLLECTIVELY REFERRED TO AS "WEBSITE" OR "SERVICES") OWNED AND OPERATED BY NUOG HOUSING PAYMENT&apos;S LIMITED (HAUS NUO-PAY), A COMPANY INCORPORATED UNDER THE LAWS OF REPUBLIC OF INDIA HAVING ITS REGISTERED OFFICE AT SRINIVAS NAGAR, KAPRA, DR. AS RAO NAGAR, MEDCHAL-MALKAJGIRI, SECUNDERABAD, HYDERABAD - 500062, TG, INDIA (HEREINAFTER REFERRED TO AS "WE", OR "US" OR "OUR").
+                THIS WEBSITE <a href="http://https://hausnuo.com" className="text-[#0EA5E9] hover:underline font-bold">https://hausnuo.com</a> AND OTHER RELATED INTERNET BASED APPLICATIONS (COLLECTIVELY REFERRED TO AS "WEBSITE" OR "SERVICES") OWNED AND OPERATED BY NUOG HOUSING PAYMENT&apos;S LIMITED, A COMPANY INCORPORATED UNDER THE LAWS OF REPUBLIC OF INDIA HAVING ITS REGISTERED OFFICE AT SRINIVAS NAGAR, KAPRA, DR. AS RAO NAGAR, MEDCHAL-MALKAJGIRI, SECUNDERABAD, HYDERABAD - 500062, TG, INDIA (HEREINAFTER REFERRED TO AS "WE", OR "US" OR "OUR").
               </p>
 
               <p>

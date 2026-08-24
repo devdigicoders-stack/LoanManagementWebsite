@@ -6,7 +6,7 @@ const ContactFAQ = () => {
 
   const faqs = [
     {
-      q: "How can I contact NGM Housing Payments Limited?",
+      q: "How can I contact HAUS NUO-Pay?",
       a: "You can contact us through phone, email or the enquiry form available on this page."
     },
     {

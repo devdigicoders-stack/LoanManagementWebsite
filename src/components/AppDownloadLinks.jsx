@@ -17,7 +17,7 @@ const AppDownloadLinks = () => {
         </h2>
         
         <p className="text-gray-600 text-[16px] leading-relaxed mb-12 max-w-2xl mx-auto">
-          Take control of your property finance information with the NGM Housing Payments Limited mobile application.
+          Take control of your property finance information with the HAUS NUO-Pay mobile application.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">

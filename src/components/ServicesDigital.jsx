@@ -31,7 +31,7 @@ const ServicesDigital = () => {
     {
       icon: <Smartphone size={24} strokeWidth={1.5} />,
       title: "Mobile Experience",
-      desc: "Access supported services and information through the NGM Housing mobile application."
+      desc: "Access supported services and information through the HAUS NUO-Pay mobile application."
     }
  ;
 

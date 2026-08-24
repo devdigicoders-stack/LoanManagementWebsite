@@ -12,10 +12,10 @@ const ContactSocial = () => {
             <span className="text-sm font-bold tracking-widest uppercase">Connect With Us</span>
           </div>
           <h2 className="text-3xl font-bold text-slate-900 mb-6">
-            Stay Connected with <span className="text-[#0EA5E9]">NGM Housing</span>
+            Stay Connected with <span className="text-[#0EA5E9]">HAUS NUO-Pay</span>
           </h2>
           <p className="text-slate-600 text-[15px] leading-relaxed mb-8">
-            Stay connected with NGM Housing Payments Limited for updates and information about our services.
+            Stay connected with HAUS NUO-Pay for updates and information about our services.
           </p>
 
           <div className="space-y-4">

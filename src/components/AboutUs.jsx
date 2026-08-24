@@ -22,7 +22,7 @@ const AboutUs = () => {
           </p>
 
           <p className="text-gray-500 text-[15px] md:text-base mb-10 leading-relaxed max-w-[480px]">
-            At NGM Housing Payment's Limited, we help you explore property-focused financial solutions and understand important aspects such as eligibility, documentation, repayment, interest, tenure, and applicable charges.
+            At HAUS NUO-Pay, we help you explore property-focused financial solutions and understand important aspects such as eligibility, documentation, repayment, interest, tenure, and applicable charges.
           </p>
 
           <button className="flex items-center justify-center gap-2  hover:] hover:] text-black font-semibold py-3 px-6 rounded-md shadow-md transition-all duration-300">

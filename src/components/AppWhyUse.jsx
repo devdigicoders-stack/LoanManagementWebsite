@@ -37,7 +37,7 @@ const AppWhyUse = () => {
         {/* Left Content */}
         <div className="w-full lg:w-1/3 sticky top-32">
           <div className="inline-block bg-[#E0F2FE] text-[#0369A1] rounded-full px-4 py-1 text-sm font-bold tracking-wider mb-6 uppercase">
-            Why Use The NGM Housing App?
+            Why Use The HAUS NUO-Pay App?
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
             Financial Information <br className="hidden lg:block"/>

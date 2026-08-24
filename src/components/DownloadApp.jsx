@@ -27,7 +27,7 @@ const DownloadApp = () => {
           </h2>
           
           <p className="text-gray-500 text-[14px] md:text-[15px] leading-relaxed mb-10 max-w-md">
-            Download the NGM App and enjoy a smooth, secure and convenient payment experience.
+            Download the HAUS NUO-Pay App and enjoy a smooth, secure and convenient payment experience.
           </p>
 
           <div className="flex flex-wrap lg:flex-nowrap items-center gap-3 lg:gap-4">
@@ -76,7 +76,7 @@ const DownloadApp = () => {
         <div className="lg:w-1/2 relative min-h-[350px] lg:min-h-[400px] flex items-end justify-center lg:justify-end z-10 pt-10 lg:pt-0 lg:pr-16">
           <img 
             src="/home/phone.png" 
-            alt="NGM Mobile App" 
+            alt="HAUS NUO-Pay App" 
             className="w-auto h-[350px] md:h-[400px] lg:h-[480px] object-contain object-bottom transform -rotate-6 lg:-rotate-12 translate-y-6 drop-shadow-2xl"
           />
         </div>

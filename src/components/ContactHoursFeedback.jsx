@@ -55,7 +55,7 @@ const ContactHoursFeedback = () => {
               We continuously work to improve our services and digital experience.
             </p>
             <p className="text-gray-600 text-[14px] leading-relaxed">
-              If you have a suggestion, concern or feedback about your experience with NGM Housing Payments Limited, we encourage you to share it with us.
+              If you have a suggestion, concern or feedback about your experience with HAUS NUO-Pay, we encourage you to share it with us.
             </p>
             <p className="text-gray-600 text-[14px] leading-relaxed">
               Your feedback helps us understand what is working well and where we can improve.

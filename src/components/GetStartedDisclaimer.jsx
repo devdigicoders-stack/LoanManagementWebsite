@@ -18,7 +18,7 @@ const GetStartedDisclaimer = () => {
               Loan approval, eligibility, loan amount, interest rate, tenure, property valuation, processing fees and other applicable terms are determined by the respective lender or financial institution based on its policies, assessment and applicable requirements.
             </p>
             <p className="text-[#92400e] text-[14px] leading-relaxed mb-4">
-              NGM Housing Payments Limited does not guarantee approval or any specific financial terms unless expressly stated in the applicable agreement.
+              HAUS NUO-Pay does not guarantee approval or any specific financial terms unless expressly stated in the applicable agreement.
             </p>
             <p className="text-[#92400e] text-[14px] leading-relaxed font-semibold">
               Customers are advised to carefully review all applicable terms and conditions before accepting any financial product.

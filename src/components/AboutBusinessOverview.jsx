@@ -16,7 +16,7 @@ const AboutBusinessOverview = () => {
         <div className="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100">
           <div className="space-y-6 text-gray-600 text-[15px] leading-relaxed">
             <p>
-              <strong className="text-gray-900">NuoG Housing Payment’s Limited (HAUS NUO-PayPL)</strong>, is one of India’s fastest-growing non-banking financial companies (NBFCs) offering tailored financial solutions to a wide range of customers under retail, MSME & wholesale verticals.
+              <strong className="text-gray-900">NuoG Housing Payment’s Limited</strong>, is one of India’s fastest-growing non-banking financial companies (NBFCs) offering tailored financial solutions to a wide range of customers under retail, MSME & wholesale verticals.
             </p>
             <p>
               We constantly strive to meet the unique financial needs of customers through our diversified product offerings. Retail portfolio of products includes Loan against Property, Home Loan, Personal Loan and Business Loan. Our MSME vertical focuses on small-ticket corporate loans and loans backed by a variety of collaterals, especially in non-metro markets. Wholesale lending portfolio encompasses a range of financial solutions including corporate loans, collateralised loans, and real estate financing.

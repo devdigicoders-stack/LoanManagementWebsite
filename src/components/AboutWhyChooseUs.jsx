@@ -35,7 +35,7 @@ const AboutWhyChooseUs = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Why Choose NGM Housing?
+            Why Choose HAUS NUO-Pay?
           </h2>
           <div className="w-20 h-1 bg-[#0EA5E9] mx-auto rounded-full"></div>
         </div>

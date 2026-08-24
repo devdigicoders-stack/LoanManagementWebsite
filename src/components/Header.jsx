@@ -42,7 +42,7 @@ const Header = () => {
           <Link to="/" onClick={() => setActive('Home')}>
             <img 
               src="/loanlogo.png" 
-              alt="NGM Logo" 
+              alt="HAUS NUO-Pay Logo" 
               className="h-12 object-contain"
             />
           </Link>

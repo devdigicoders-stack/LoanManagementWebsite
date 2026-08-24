@@ -15,7 +15,7 @@ const Footer = () => {
             <Link to="/">
               <img
                 src="/loanlogo.png"
-                alt="NGM Housing Payment's Limited"
+                alt="HAUS NUO-Pay"
                 className="h-16 w-auto object-contain mb-6 self-start"
               />
             </Link>
@@ -137,11 +137,9 @@ const Footer = () => {
         {/* Bottom Section - CIN & GSTIN Row */}
         <div className="border-t border-[#E0F2FE] pt-6 pb-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-2 text-xs">
-            <span className="text-slate-900 font-bold">NUOG HOUSING PAYMENTS LIMITED <span className="text-[#0EA5E9]">(HAUS NUO-Pay)</span></span>
+            <span className="text-slate-900 font-bold">NUOG HOUSING PAYMENTS LIMITED</span>
             <span className="hidden lg:inline text-[#3a5040]">|</span>
             <span className="text-slate-700"><span className="text-[#0EA5E9] font-semibold">CIN:</span> U70200TS2025PLC202763</span>
-            <span className="hidden lg:inline text-[#3a5040]">|</span>
-            <span className="text-slate-700"><span className="text-[#0EA5E9] font-semibold">GSTIN:</span> 22AAKCN7722G1ZJ</span>
           </div>
           <p className="text-gray-500 text-xs text-center md:text-right">
             Crafted with ❤️ by <span className="text-[#0EA5E9] hover:underline font-bold"><a href='https://digicoders.in' target='_blank'>Team Digicoders</a></span>

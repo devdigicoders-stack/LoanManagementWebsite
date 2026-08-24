@@ -35,8 +35,8 @@ const ContactSupport = () => {
               <AlertCircle size={24} />
             </div>
             <div>
-              <h4 className="text-slate-900 font-bold text-[15px] mb-2">Important Note</h4>
-              <p className="text-slate-600 text-[13px] leading-relaxed">
+              <h4 className="text-white font-bold text-[15px] mb-2">Important Note</h4>
+              <p className="text-gray-600 text-[13px] leading-relaxed">
                 For matters related to a specific loan application, please keep your application or reference details available when contacting our support team.
               </p>
             </div>
@@ -49,7 +49,7 @@ const ContactSupport = () => {
             
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#0EA5E9] rounded-full blur-[150px] opacity-10 pointer-events-none"></div>
 
-            <h3 className="text-xl font-bold text-slate-900 mb-8">Our support team can help with:</h3>
+            <h3 className="text-xl font-bold text-white mb-8">Our support team can help with:</h3>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-10">
               {supportItems.map((item, index) => (

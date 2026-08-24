@@ -24,7 +24,7 @@ const AppHero = () => {
           </h1>
           
           <p className="text-gray-300 text-[16px] md:text-lg leading-relaxed mb-8">
-            Access your property-related financial information and supported services anytime, anywhere with the NGM Housing Payments Limited mobile application.
+            Access your property-related financial information and supported services anytime, anywhere with the HAUS NUO-Pay mobile application.
           </p>
           <p className="text-gray-300 text-[16px] md:text-lg leading-relaxed mb-10">
             Designed with simplicity, convenience and accessibility in mind, our mobile app provides a seamless digital experience for exploring financial solutions, managing supported services and staying updated.

@@ -25,7 +25,7 @@ const GetStartedHero = () => {
           Take the first step toward understanding your property and financial requirements.
         </p>
         <p className="text-gray-300 text-[16px] md:text-lg leading-relaxed mb-10 max-w-3xl mx-auto">
-          Whether you are planning to purchase a home, construct a property, renovate your existing property, or explore financing against an eligible property, NGM Housing Payments Limited provides a simple digital experience to help you get started.
+          Whether you are planning to purchase a home, construct a property, renovate your existing property, or explore financing against an eligible property, HAUS NUO-Pay provides a simple digital experience to help you get started.
         </p>
         
         <div className="text-xl md:text-2xl font-bold text-white mb-12">

@@ -15,7 +15,7 @@ const AppFinalCTA = () => {
         
         <p className="text-slate-600 text-[16px] leading-relaxed mb-10 max-w-2xl mx-auto">
           Explore. Understand. Enquire. Stay Informed.<br/>
-          Download the NGM Housing Payments Limited App and experience a simpler way to access property-focused financial information and supported digital services.
+          Download the HAUS NUO-Pay App and experience a simpler way to access property-focused financial information and supported digital services.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">

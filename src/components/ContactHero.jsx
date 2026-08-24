@@ -31,7 +31,7 @@ const ContactHero = () => {
         </h1>
         
         <p className="text-gray-200 text-[15px] md:text-lg leading-relaxed max-w-2xl mb-8 drop-shadow">
-          Have questions about property finance, home loans, Loan Against Property, construction finance, renovation finance or our digital services? The NGM Housing Payments Limited team is here to help you understand our services and provide assistance with your enquiries.
+          Have questions about property finance, home loans, Loan Against Property, construction finance, renovation finance or our digital services? The HAUS NUO-Pay team is here to help you understand our services and provide assistance with your enquiries.
         </p>
 
       </div>

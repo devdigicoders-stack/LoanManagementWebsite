@@ -6,7 +6,7 @@ const AppHowItWorks = () => {
     {
       num: "01",
       title: "Download",
-      desc: "Download the NGM Housing Payments Limited application from the appropriate app store.",
+      desc: "Download the HAUS NUO-Pay application from the appropriate app store.",
       icon: Download
     },
     {
