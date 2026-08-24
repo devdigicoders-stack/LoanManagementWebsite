@@ -6,7 +6,7 @@ const CompanyStats = () => {
   const stats = [
     {
       icon: Award,
-      value: "48",
+      value: "14yr+",
       label: "Years of Excellence"
     },
     {
@@ -16,45 +16,45 @@ const CompanyStats = () => {
     },
     {
       icon: Users,
-      value: "71,260+",
+      value: "374+",
       label: "Strong Workforce"
     },
     {
       icon: Building2,
-      value: "1820",
+      value: "21",
       label: "Branches"
     },
     {
       icon: Landmark,
-      value: "₹2.54+ lakh Cr",
+      value: "₹0.74+ lakh Cr",
       label: "Assets Under Management"
     },
     {
       icon: Smile,
-      value: "44.7 lakh+",
+      value: "14.79lakh+",
       label: "Happy Customers"
     }
-  ];
+ ];
 
   return (
     <section className="w-full bg-[#fcfcfc] py-16 px-6 md:px-10">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row shadow-lg border border-gray-200">
         
         {/* Left Section (Brand) */}
-        <div className="lg:w-1/3 bg-[#0b0f0e] text-white p-10 md:p-14 flex flex-col justify-center relative overflow-hidden">
+        <div className="lg:w-1/3 bg-[#FDFBF7] text-slate-900 p-10 md:p-14 flex flex-col justify-center relative overflow-hidden">
           {/* Accent decoration */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-[#1cf200] opacity-10 rounded-full blur-[40px] -translate-y-1/2 translate-x-1/2"></div>
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[#0284C7] opacity-10 rounded-full blur-[40px] -translate-y-1/2 translate-x-1/2"></div>
           
           <h2 className="text-4xl md:text-5xl font-bold mb-4 z-10 leading-tight">
             Why <br /> NuoG?
           </h2>
-          <p className="text-gray-400 text-lg mb-10 z-10 font-light max-w-[200px]">
+          <p className="text-slate-600 text-lg mb-10 z-10 font-light max-w-[200px]">
             There's more than one reason to be confident
           </p>
           
-          <Link to="/about" className="inline-flex items-center gap-2 text-sm font-medium hover:text-[#1cf200] transition-colors w-max z-10 group">
+          <Link to="/about" className="inline-flex items-center gap-2 text-sm font-medium hover:text-[#0284C7] transition-colors w-max z-10 group">
             Know More 
-            <span className="bg-[#1cf200] text-black p-1 rounded-sm group-hover:bg-[#5bc116] transition-colors">
+            <span className="bg-[#0284C7] text-black p-1 rounded-sm group-hover:bg-[#0EA5E9] transition-colors">
               <ArrowRight size={14} strokeWidth={3} />
             </span>
           </Link>

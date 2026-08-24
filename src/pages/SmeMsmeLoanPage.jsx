@@ -31,14 +31,14 @@ const SmeMsmeLoanPage = () => {
           title: "Customized Repayment",
           desc: "Flexible repayment structures designed around your business cash flow cycles to ensure smooth operations."
         }
-      ]}
+     ]}
       eligibility={[
         "Registered MSME/SME units (Manufacturing, Trading, or Services).",
         "Minimum business vintage of 3 years.",
         "Positive net worth and profitable operations for the last 2 years.",
         "Satisfactory credit history of the promoters and the company.",
         "Udyam Registration Certificate."
-      ]}
+     ]}
       documents={[
         "Company KYC (COI, MOA, AOA, Partnership Deed)",
         "Promoter KYC (Aadhaar, PAN of Directors/Partners)",
@@ -46,7 +46,7 @@ const SmeMsmeLoanPage = () => {
         "GST Returns for the last 12 months",
         "Bank statements for the last 6 months",
         "Udyam Registration & CMA Data (for larger loans)"
-      ]}
+     ]}
     />
   );
 };

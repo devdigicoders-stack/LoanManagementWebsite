@@ -23,7 +23,7 @@ const ContactCategories = () => {
       title: "Commercial",
       desc: "Property financial solutions."
     }
-  ];
+ ;
 
   return (
     <section className="w-full bg-white py-20 px-6 md:px-10">
@@ -37,8 +37,8 @@ const ContactCategories = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {categories.map((cat, index) => (
-            <div key={index} className="flex flex-col items-center bg-[#fcfcfc] border border-gray-100 p-8 rounded-2xl hover:border-[#5bc116] hover:shadow-lg transition-all cursor-pointer group">
-              <div className="w-14 h-14 bg-[#f4fdf5] border border-[#e8fbe9] text-[#5bc116] rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+            <div key={index} className="flex flex-col items-center bg-[#fcfcfc] border border-gray-100 p-8 rounded-2xl hover:border-[#0EA5E9] hover:shadow-lg transition-all cursor-pointer group">
+              <div className="w-14 h-14 bg-[#F8FAFC] border border-[#E0F2FE] text-[#0EA5E9] rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                 {cat.icon}
               </div>
               <h4 className="text-gray-900 font-bold text-[15px] mb-1">{cat.title}</h4>

@@ -4,39 +4,39 @@ import { Link } from 'react-router-dom';
 
 const HomeCTA = () => {
   return (
-    <section className="w-full bg-[#0a0f0a] py-20 px-6 md:px-10">
-      <div className="max-w-6xl mx-auto bg-gradient-to-r from-[#112211] to-[#1a331a] rounded-[40px] p-10 md:p-16 border border-[#2d5a27] shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between">
+    <section className="w-full bg-[#FDFBF7] py-20 px-6 md:px-10">
+      <div className="max-w-6xl mx-auto  rounded-[40px] p-10 md:p-16 border border-[#BAE6FD] shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between">
         
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute -top-24 -left-24 w-64 h-64 bg-[#71d924] rounded-full mix-blend-screen filter blur-[120px] opacity-20"></div>
-          <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-[#71d924] rounded-full mix-blend-screen filter blur-[120px] opacity-20"></div>
+          <div className="absolute -top-24 -left-24 w-64 h-64 bg-[#0369A1] rounded-full mix-blend-screen filter blur-[120px] opacity-20"></div>
+          <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-[#0369A1] rounded-full mix-blend-screen filter blur-[120px] opacity-20"></div>
         </div>
 
         <div className="relative z-10 md:w-2/3 mb-10 md:mb-0">
           <div className="flex items-center gap-3 mb-4">
-            <Smartphone className="text-[#1cf200]" size={32} />
-            <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+            <Smartphone className="text-[#0284C7]" size={32} />
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 leading-tight">
               Manage Your Loans <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#eef200] to-[#1cf200]">On The Go</span>
+              <span className="text-transparent bg-clip-text ">On The Go</span>
             </h2>
           </div>
           
-          <p className="text-gray-300 text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">
+          <p className="text-slate-700 text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">
             Download the NGM Finance app to easily track your EMI payments, apply for new loans, and manage your account anytime, anywhere.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
-            <div className="flex items-center gap-2 text-gray-300">
-              <CheckCircle className="text-[#5bc116]" size={20} />
+            <div className="flex items-center gap-2 text-slate-700">
+              <CheckCircle className="text-[#0EA5E9]" size={20} />
               <span>Instant Approvals</span>
             </div>
-            <div className="flex items-center gap-2 text-gray-300">
-              <CheckCircle className="text-[#5bc116]" size={20} />
+            <div className="flex items-center gap-2 text-slate-700">
+              <CheckCircle className="text-[#0EA5E9]" size={20} />
               <span>Easy EMI Tracking</span>
             </div>
-            <div className="flex items-center gap-2 text-gray-300">
-              <CheckCircle className="text-[#5bc116]" size={20} />
+            <div className="flex items-center gap-2 text-slate-700">
+              <CheckCircle className="text-[#0EA5E9]" size={20} />
               <span>24/7 Support</span>
             </div>
           </div>
@@ -63,8 +63,8 @@ const HomeCTA = () => {
         
         {/* Mockup area (simulated) */}
         <div className="relative z-10 md:w-1/3 flex justify-center mt-8 md:mt-0">
-          <div className="w-48 h-96 border-4 border-gray-800 rounded-[2.5rem] bg-[#030706] relative overflow-hidden shadow-2xl flex items-center justify-center">
-             <span className="text-[#5bc116] font-bold text-2xl">NGM App</span>
+          <div className="w-48 h-96 border-4 border-gray-800 rounded-[2.5rem] bg-[#F0F9FF] relative overflow-hidden shadow-2xl flex items-center justify-center">
+             <span className="text-[#0EA5E9] font-bold text-2xl">NGM App</span>
           </div>
         </div>
 

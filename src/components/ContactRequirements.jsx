@@ -39,25 +39,25 @@ const ContactRequirements = () => {
       link: "/services/commercial-finance",
       linkText: "Explore Commercial Finance"
     }
-  ];
+ ;
 
   return (
-    <section className="w-full bg-[#f4fdf5] py-24 px-6 md:px-10 border-b border-[#e8fbe9]">
+    <section className="w-full bg-[#F8FAFC] py-24 px-6 md:px-10 border-b border-[#E0F2FE]">
       <div className="max-w-7xl mx-auto">
         
         <div className="text-center mb-16">
-          <div className="inline-block bg-[#e8fbe9] text-[#4a9b12] rounded-full px-4 py-1 text-sm font-bold tracking-wider mb-4 uppercase">
+          <div className="inline-block bg-[#E0F2FE] text-[#0369A1] rounded-full px-4 py-1 text-sm font-bold tracking-wider mb-4 uppercase">
             How Can We Help You?
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-            Choose Your <span className="text-[#5bc116]">Requirement</span>
+            Choose Your <span className="text-[#0EA5E9]">Requirement</span>
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {reqs.map((item, index) => (
-            <div key={index} className="bg-white p-8 rounded-3xl border border-[#e8fbe9] shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col h-full hover:-translate-y-1 transition-transform duration-300">
-              <div className="w-14 h-14 bg-[#f0fbf0] text-[#5bc116] rounded-2xl flex items-center justify-center mb-6 shrink-0">
+            <div key={index} className="bg-white p-8 rounded-3xl border border-[#E0F2FE] shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col h-full hover:-translate-y-1 transition-transform duration-300">
+              <div className="w-14 h-14 bg-[#f0fbf0] text-[#0EA5E9] rounded-2xl flex items-center justify-center mb-6 shrink-0">
                 {item.icon}
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
@@ -65,7 +65,7 @@ const ContactRequirements = () => {
               
               <Link 
                 to={item.link}
-                className="inline-flex items-center gap-2 text-[#5bc116] font-bold text-[14px] hover:text-[#4a9b12] transition-colors mt-auto group"
+                className="inline-flex items-center gap-2 text-[#0EA5E9] font-bold text-[14px] hover:text-[#0369A1] transition-colors mt-auto group"
               >
                 {item.linkText} <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </Link>

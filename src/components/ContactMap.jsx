@@ -27,11 +27,11 @@ const ContactMap = () => {
       <div className="max-w-7xl mx-auto">
 
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-[#e8fbe9] text-[#4a9b12] rounded-full px-4 py-1 text-sm font-bold tracking-wider mb-4 uppercase">
+          <div className="inline-flex items-center gap-2 bg-[#E0F2FE] text-[#0369A1] rounded-full px-4 py-1 text-sm font-bold tracking-wider mb-4 uppercase">
             <MapPin size={14} /> Branch Locator
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
-            Find an <span className="text-[#5bc116]">NGM Branch</span> Near You
+            Find an <span className="text-[#0EA5E9]">HAUS NUO-Pay Branch</span> Near You
           </h2>
           <p className="text-gray-500 text-base max-w-xl mx-auto">
             We have a growing network of branches across India. Visit us at a location near you for personalized assistance.
@@ -63,7 +63,7 @@ const ContactMap = () => {
                  href={`https://maps.google.com/?q=${activeBranch.lat},${activeBranch.lng}`}
                  target="_blank"
                  rel="noreferrer"
-                 className="flex items-center gap-2 bg-[#5bc116] text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-[#4aaa10] transition-colors"
+                 className="flex items-center gap-2 bg-[#0EA5E9] text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-[#4aaa10] transition-colors"
                >
                  <Navigation size={14} /> Get Directions
                </a>

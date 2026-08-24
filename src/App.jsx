@@ -22,11 +22,39 @@ import SelfConstructionLoanPage from './pages/SelfConstructionLoanPage';
 import HomeExtensionLoanPage from './pages/HomeExtensionLoanPage';
 import SmeMsmeLoanPage from './pages/SmeMsmeLoanPage';
 
+// New HAUS Nuo-Pay Service Pages
+import MultiSingleEmiPage from './pages/MultiSingleEmiPage';
+import SalaryAgainstLoanPage from './pages/SalaryAgainstLoanPage';
+import TopUpBtLoanPage from './pages/TopUpBtLoanPage';
+import HospfinsureLoanPage from './pages/HospfinsureLoanPage';
+
+import TerminatedVendorsPage from './pages/TerminatedVendorsPage';
+import NachCancellationPage from './pages/NachCancellationPage';
+import CareersPage from './pages/CareersPage';
+
+// New Un-Secured Service Pages
+import BusinessLoanPage from './pages/BusinessLoanPage';
+import PersonalLoanPage from './pages/PersonalLoanPage';
+import DoctorsLoanPage from './pages/DoctorsLoanPage';
+import EquipmentLoanPage from './pages/EquipmentLoanPage';
+
+// New Morgatage Service Pages
+import GoldLoanPage from './pages/GoldLoanPage';
+import HomeLoanPage from './pages/HomeLoanPage';
+import LoanAgainstPropertiesPage from './pages/LoanAgainstPropertiesPage';
+
+// New Properties Management Pages
+import RentalPayLandlordPage from './pages/RentalPayLandlordPage';
+import RentalPayTenantPage from './pages/RentalPayTenantPage';
+import SocietiesInsuredPage from './pages/SocietiesInsuredPage';
+import NuoHausBuilderPage from './pages/NuoHausBuilderPage';
+import NuoHausIndividualPage from './pages/NuoHausIndividualPage';
+
 function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen bg-[#0b0f0e] text-white font-sans flex flex-col">
+      <div className="min-h-screen bg-[#FDFBF7] text-slate-900 font-sans flex flex-col">
         <Header />
         <FloatingChatButton />
         
@@ -51,6 +79,34 @@ function App() {
             <Route path="/services/self-construction" element={<SelfConstructionLoanPage />} />
             <Route path="/services/home-extension" element={<HomeExtensionLoanPage />} />
             <Route path="/services/sme-msme-loan" element={<SmeMsmeLoanPage />} />
+            <Route path="/terminated-vendors" element={<TerminatedVendorsPage />} />
+            <Route path="/nach-cancellation" element={<NachCancellationPage />} />
+            <Route path="/careers" element={<CareersPage />} />
+            
+            {/* HAUS Nuo-Pay Routes */}
+            <Route path="/services/multi-single-emi" element={<MultiSingleEmiPage />} />
+            <Route path="/services/salary-against-loan" element={<SalaryAgainstLoanPage />} />
+            <Route path="/services/top-up-bt-loan" element={<TopUpBtLoanPage />} />
+            <Route path="/services/hospfinsure-loan" element={<HospfinsureLoanPage />} />
+            
+            {/* Un-Secured Routes */}
+            <Route path="/services/business-loan" element={<BusinessLoanPage />} />
+            <Route path="/services/personal-loan" element={<PersonalLoanPage />} />
+            <Route path="/services/doctors-loan" element={<DoctorsLoanPage />} />
+            <Route path="/services/equipment-loan" element={<EquipmentLoanPage />} />
+            
+            {/* Morgatage Routes */}
+            <Route path="/services/gold-loan" element={<GoldLoanPage />} />
+            <Route path="/services/home-loan" element={<HomeLoanPage />} />
+            <Route path="/services/loan-against-properties" element={<LoanAgainstPropertiesPage />} />
+            
+            {/* Properties Management Routes */}
+            <Route path="/services/properties/rental-pay-landlord" element={<RentalPayLandlordPage />} />
+            <Route path="/services/properties/rental-pay-tenant" element={<RentalPayTenantPage />} />
+            <Route path="/services/properties/societies-insured" element={<SocietiesInsuredPage />} />
+            <Route path="/services/properties/nuo-haus-builder" element={<NuoHausBuilderPage />} />
+            <Route path="/services/properties/nuo-haus-individual" element={<NuoHausIndividualPage />} />
+
           </Routes>
         </main>
         

@@ -8,7 +8,7 @@ const ServiceSuitableFor = () => {
     { icon: <Stethoscope size={24} strokeWidth={1.5} />, title: "Medical Emergency" },
     { icon: <Landmark size={24} strokeWidth={1.5} />, title: "Property Renovation" },
     { icon: <HeartHandshake size={24} strokeWidth={1.5} />, title: "Working Capital" }
-  ];
+ ;
 
   return (
     <section className="w-full bg-[#fcfcfc] py-20 px-6 md:px-10">

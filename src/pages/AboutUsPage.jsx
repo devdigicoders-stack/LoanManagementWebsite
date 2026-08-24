@@ -38,8 +38,6 @@ const AboutUsPage = () => {
       <section id="our-journey"><ScrollReveal><AboutJourney /></ScrollReveal></section>
       <section id="our-team"><ScrollReveal><AboutTeam /></ScrollReveal></section>
       <ScrollReveal><AboutBottomStats /></ScrollReveal>
-      <ScrollReveal><CompanyStats /></ScrollReveal>
-      <ScrollReveal><HappyClients /></ScrollReveal>
       <ScrollReveal><NewsAndPress /></ScrollReveal>
       <ScrollReveal><HomeCTA /></ScrollReveal>
     </>

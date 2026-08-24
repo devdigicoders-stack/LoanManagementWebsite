@@ -5,11 +5,11 @@ const AboutBusinessOverview = () => {
     <section className="w-full bg-[#f8fcf5] py-20 px-6 md:px-10 border-t border-b border-[#eaf7e3]">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
-          <div className="inline-block bg-[#eaf7e3] text-[#5bc116] font-bold text-[10px] md:text-[11px] uppercase tracking-widest py-1.5 px-4 rounded-full mb-4">
+          <div className="inline-block bg-[#eaf7e3] text-[#0EA5E9] font-bold text-[10px] md:text-[11px] uppercase tracking-widest py-1.5 px-4 rounded-full mb-4">
             OVERVIEW
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Business <span className="text-[#5bc116]">Overview</span>
+            Business <span className="text-[#0EA5E9]">Overview</span>
           </h2>
         </div>
 
@@ -25,9 +25,9 @@ const AboutBusinessOverview = () => {
               A nationwide presence enables us to serve better and provide a smooth experience to customers. Our decentralized lending approach in retail & MSME makes our branches more efficient, enabling faster processing, quicker turnaround and increased productivity.
             </p>
             <p>
-              At <strong className="text-[#5bc116]">HAUS NUO-Pay</strong>, we have built a customer-centric franchise while aspiring to set new industry benchmarks across growth, asset quality, operating metrics, service delivery standards and shareholder return. As we strive to become a partner of choice for all our customers, employees, and vendors, we have prioritized three focus areas i.e., people, product, process and platform. We are actively investing in these areas and devised specific strategies that will help us realise our vision.
+              At <strong className="text-[#0EA5E9]">HAUS NUO-Pay</strong>, we have built a customer-centric franchise while aspiring to set new industry benchmarks across growth, asset quality, operating metrics, service delivery standards and shareholder return. As we strive to become a partner of choice for all our customers, employees, and vendors, we have prioritized three focus areas i.e., people, product, process and platform. We are actively investing in these areas and devised specific strategies that will help us realise our vision.
             </p>
-            <div className="bg-[#f4fdf5] p-6 rounded-2xl border border-[#e8fbe9] mt-8 text-center">
+            <div className="bg-[#F8FAFC] p-6 rounded-2xl border border-[#E0F2FE] mt-8 text-center">
               <p className="font-semibold text-gray-800">
                 HAUS NUO-Pay Focuses on Small Time Retail Customers Mainly in Metro, Tier-1,2,3 & 4 Cities, Offering them Tailor Made Solutions to Earn their Livehood with Competitive Pricing & Transparent Terms.
               </p>

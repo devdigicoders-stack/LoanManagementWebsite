@@ -74,7 +74,7 @@ const Services = () => {
               className="bg-white rounded-2xl p-6 shadow-[0_5px_20px_rgba(0,0,0,0.04)] border border-[#f0f5ef] hover:shadow-[0_15px_30px_rgba(91,193,22,0.1)] transition-all duration-300 group flex flex-col h-full"
             >
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-14 h-14 bg-[#f0fbf0] text-[#5bc116] rounded-xl flex items-center justify-center group-hover:bg-[#5bc116] group-hover:text-white transition-colors duration-300">
+                <div className="w-14 h-14 bg-[#f0fbf0] text-[#0EA5E9] rounded-xl flex items-center justify-center group-hover:bg-[#0EA5E9] group-hover:text-white transition-colors duration-300">
                   <service.icon size={28} strokeWidth={2} />
                 </div>
                 <h3 className="text-xl font-bold text-black">{service.title}</h3>
@@ -85,10 +85,10 @@ const Services = () => {
               </p>
 
               <div className="flex items-center justify-between border-t border-gray-100 pt-4 mt-auto">
-                <Link to={service.link} className="text-black font-semibold hover:text-[#5bc116] transition-colors text-sm flex items-center gap-1">
+                <Link to={service.link} className="text-black font-semibold hover:text-[#0EA5E9] transition-colors text-sm flex items-center gap-1">
                   Know More
                 </Link>
-                <Link to="/get-started" className="text-[#5bc116] font-semibold hover:text-[#419822] transition-colors text-sm flex items-center gap-1">
+                <Link to="/get-started" className="text-[#0EA5E9] font-semibold hover:text-[#419822] transition-colors text-sm flex items-center gap-1">
                   Apply Now <ArrowRight size={16} />
                 </Link>
               </div>

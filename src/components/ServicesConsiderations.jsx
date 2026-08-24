@@ -35,7 +35,7 @@ const ServicesConsiderations = () => {
       title: "Total Financial Cost",
       desc: "Look beyond the loan amount and understand the overall repayment obligation."
     }
-  ];
+ ;
 
   return (
     <section className="w-full bg-white py-24 px-6 md:px-10">
@@ -44,7 +44,7 @@ const ServicesConsiderations = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             What You Should Consider <br className="hidden md:block"/>
-            <span className="text-[#5bc116]">Before Taking a Loan</span>
+            <span className="text-[#0EA5E9]">Before Taking a Loan</span>
           </h2>
           <p className="text-gray-600 text-[16px] leading-relaxed max-w-2xl mx-auto">
             Before choosing a financial product, consider the following key aspects:
@@ -56,7 +56,7 @@ const ServicesConsiderations = () => {
             {items.map((item, index) => (
               <div key={index} className="flex gap-4">
                 <div className="mt-1">
-                  <CheckCircle2 className="text-[#5bc116]" size={20} strokeWidth={2} />
+                  <CheckCircle2 className="text-[#0EA5E9]" size={20} strokeWidth={2} />
                 </div>
                 <div>
                   <h4 className="text-gray-900 font-bold text-[16px] mb-2">{item.title}</h4>

@@ -31,7 +31,7 @@ const AboutWhoWeAre = () => {
         {/* Right Side - List */}
         <div className="w-full lg:w-[45%] flex flex-col gap-4">
           <div className="bg-white border border-gray-100 p-5 rounded-2xl shadow-sm flex items-start gap-4">
-            <div className="w-12 h-12 bg-[#f4fbf0] rounded-xl flex items-center justify-center text-[#5bc116] shrink-0">
+            <div className="w-12 h-12 bg-[#f4fbf0] rounded-xl flex items-center justify-center text-[#0EA5E9] shrink-0">
               <ShieldCheck size={24} strokeWidth={2} />
             </div>
             <div>
@@ -41,7 +41,7 @@ const AboutWhoWeAre = () => {
           </div>
 
           <div className="bg-white border border-gray-100 p-5 rounded-2xl shadow-sm flex items-start gap-4">
-            <div className="w-12 h-12 bg-[#f4fbf0] rounded-xl flex items-center justify-center text-[#5bc116] shrink-0">
+            <div className="w-12 h-12 bg-[#f4fbf0] rounded-xl flex items-center justify-center text-[#0EA5E9] shrink-0">
               <Target size={24} strokeWidth={2} />
             </div>
             <div>
@@ -51,7 +51,7 @@ const AboutWhoWeAre = () => {
           </div>
 
           <div className="bg-white border border-gray-100 p-5 rounded-2xl shadow-sm flex items-start gap-4">
-            <div className="w-12 h-12 bg-[#f4fbf0] rounded-xl flex items-center justify-center text-[#5bc116] shrink-0">
+            <div className="w-12 h-12 bg-[#f4fbf0] rounded-xl flex items-center justify-center text-[#0EA5E9] shrink-0">
               <Rocket size={24} strokeWidth={2} />
             </div>
             <div>
@@ -61,7 +61,7 @@ const AboutWhoWeAre = () => {
           </div>
 
           <div className="bg-white border border-gray-100 p-5 rounded-2xl shadow-sm flex items-start gap-4">
-            <div className="w-12 h-12 bg-[#f4fbf0] rounded-xl flex items-center justify-center text-[#5bc116] shrink-0">
+            <div className="w-12 h-12 bg-[#f4fbf0] rounded-xl flex items-center justify-center text-[#0EA5E9] shrink-0">
               <Users size={24} strokeWidth={2} />
             </div>
             <div>

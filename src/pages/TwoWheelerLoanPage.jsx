@@ -31,21 +31,21 @@ const TwoWheelerLoanPage = () => {
           title: "Zero Foreclosure",
           desc: "Pay off your loan early without any penalty after the initial lock-in period."
         }
-      ]}
+     ]}
       eligibility={[
         "Indian resident aged 18 to 65 years.",
         "Salaried employees or self-employed individuals.",
         "Minimum gross income of ₹10,000 per month.",
         "Residing in the current city for at least 1 year.",
         "Valid contact number and active bank account."
-      ]}
+     ]}
       documents={[
         "Passport size photograph",
         "Photo Identity Proof (Aadhaar, PAN, Passport)",
         "Address Proof (Aadhaar, Voter ID, Utility Bill)",
         "Income Proof (Latest salary slip or ITR)",
         "Latest bank statement showing income credit"
-      ]}
+     ]}
     />
   );
 };

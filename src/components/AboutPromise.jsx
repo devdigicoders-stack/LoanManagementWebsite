@@ -28,7 +28,7 @@ const AboutPromise = () => {
       title: "Stay Informed",
       desc: "Throughout your financial journey."
     }
-  ];
+ ;
 
   return (
     <section className="w-full bg-[#fcfcfc] py-20 px-6 md:px-10 border-b border-gray-100">
@@ -38,7 +38,7 @@ const AboutPromise = () => {
         <div className="w-full lg:w-1/2">
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
             Our Promise: <br/>
-            <span className="text-[#5bc116]">We Promise to Keep Things Simple.</span>
+            <span className="text-[#0EA5E9]">We Promise to Keep Things Simple.</span>
           </h2>
           <p className="text-gray-500 text-[16px] leading-relaxed mb-8">
             We aim to provide a digital experience where customers can confidently navigate their property financing needs.
@@ -51,7 +51,7 @@ const AboutPromise = () => {
             <div className="flex flex-col gap-6">
               {promises.map((item, index) => (
                 <div key={index} className="flex items-center gap-5 group">
-                  <div className="w-12 h-12 rounded-full bg-[#f4fdf5] border border-[#e8fbe9] text-[#5bc116] flex items-center justify-center shrink-0 group-hover:bg-[#5bc116] group-hover:text-white transition-colors">
+                  <div className="w-12 h-12 rounded-full bg-[#F8FAFC] border border-[#E0F2FE] text-[#0EA5E9] flex items-center justify-center shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition-colors">
                     {item.icon}
                   </div>
                   <div>

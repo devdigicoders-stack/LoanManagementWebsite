@@ -23,7 +23,7 @@ const AboutValues = () => {
       title: "Customer Centricity",
       description: "It Our Promise to listen, understand and deliver what truly matters. We build lasting relationships by consistently putting customer needs first."
     }
-  ];
+ ];
 
   return (
     <section className="w-full bg-white pb-20 px-6 md:px-10">
@@ -35,7 +35,7 @@ const AboutValues = () => {
             <h2 className="text-3xl md:text-[34px] font-bold text-gray-900 leading-tight mb-4">
               Our Vision
             </h2>
-            <h3 className="text-xl md:text-2xl font-semibold text-[#5bc116] mb-4">
+            <h3 className="text-xl md:text-2xl font-semibold text-[#0EA5E9] mb-4">
               EMPOWERING EMERGING INDIA WITH EASY ACCESS TO LOANS
             </h3>
             <p className="text-gray-600 text-sm md:text-base leading-relaxed max-w-3xl mx-auto mb-8">

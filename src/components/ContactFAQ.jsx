@@ -40,15 +40,15 @@ const ContactFAQ = () => {
   };
 
   return (
-    <section className="w-full bg-[#f4fdf5] py-24 px-6 md:px-10 border-t border-[#e8fbe9]">
+    <section className="w-full bg-[#F8FAFC] py-24 px-6 md:px-10 border-t border-[#E0F2FE]">
       <div className="max-w-4xl mx-auto">
         
         <div className="text-center mb-16">
-          <div className="inline-block bg-[#e8fbe9] text-[#4a9b12] rounded-full px-4 py-1 text-sm font-bold tracking-wider mb-4 uppercase">
+          <div className="inline-block bg-[#E0F2FE] text-[#0369A1] rounded-full px-4 py-1 text-sm font-bold tracking-wider mb-4 uppercase">
             FAQ
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-            Frequently Asked <span className="text-[#5bc116]">Questions</span>
+            Frequently Asked <span className="text-[#0EA5E9]">Questions</span>
           </h2>
         </div>
 
@@ -56,16 +56,16 @@ const ContactFAQ = () => {
           {faqs.map((faq, index) => (
             <div 
               key={index} 
-              className={`bg-white rounded-2xl border ${openIndex === index ? 'border-[#5bc116] shadow-md' : 'border-gray-100 shadow-sm'} overflow-hidden transition-all duration-300`}
+              className={`bg-white rounded-2xl border ${openIndex === index ? 'border-[#0EA5E9] shadow-md' : 'border-gray-100 shadow-sm'} overflow-hidden transition-all duration-300`}
             >
               <button 
                 className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none"
                 onClick={() => toggleFaq(index)}
               >
-                <span className={`font-bold text-[16px] pr-4 ${openIndex === index ? 'text-[#5bc116]' : 'text-gray-900'}`}>
+                <span className={`font-bold text-[16px] pr-4 ${openIndex === index ? 'text-[#0EA5E9]' : 'text-gray-900'}`}>
                   {faq.q}
                 </span>
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${openIndex === index ? 'bg-[#5bc116] text-white' : 'bg-[#f4fdf5] text-[#5bc116]'}`}>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${openIndex === index ? 'bg-[#0EA5E9] text-slate-900' : 'bg-[#F8FAFC] text-[#0EA5E9]'}`}>
                   {openIndex === index ? <Minus size={18} strokeWidth={2.5} /> : <Plus size={18} strokeWidth={2.5} />}
                 </div>
               </button>

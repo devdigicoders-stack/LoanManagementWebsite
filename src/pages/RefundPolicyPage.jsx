@@ -6,16 +6,16 @@ const RefundPolicyPage = () => {
     <div className="w-full bg-[#fcfcfc] min-h-screen pt-32 pb-20 px-6 md:px-10 text-gray-800">
       <div className="max-w-7xl mx-auto">
         <div className="mb-10 border-b border-gray-200 pb-8">
-          <div className="inline-flex items-center gap-2 bg-[#e8fbe9] text-[#4a9b12] px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+          <div className="inline-flex items-center gap-2 bg-[#E0F2FE] text-[#0369A1] px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
             <FileText size={14} /> Official Documentation
           </div>
-          <h1 className="text-3xl md:text-5xl font-extrabold text-[#0b0f0e] mb-3">Refund Policy</h1>
+          <h1 className="text-3xl md:text-5xl font-extrabold text-[#FDFBF7] mb-3">Refund Policy</h1>
           <p className="text-gray-500 text-base">Important information regarding refunds for payments and services.</p>
         </div>
 
         <div className="w-full bg-white p-8 md:p-12 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-[#e8f5e9]">
           <div className="prose prose-green max-w-none prose-p:text-gray-500 prose-p:text-[14px] prose-p:leading-relaxed">
-            <h2 className="mt-4 mb-4 flex items-center gap-3 text-2xl font-extrabold text-[#0b0f0e] border-l-4 border-[#5bc116] pl-4">REFUND &amp; CANCELLATION POLICY</h2>
+            <h2 className="mt-4 mb-4 flex items-center gap-3 text-2xl font-extrabold text-[#FDFBF7] border-l-4 border-[#0EA5E9] pl-4">REFUND &amp; CANCELLATION POLICY</h2>
             <p>Welcome to NuoG Housing Payments Limited (HAUS NUO-Pay).</p>
             <p>Please read our Refund Policy carefully. By using our website, services, and making any payments to NuoG Housing Payments Limited, you agree to this policy.</p>
             
@@ -37,9 +37,9 @@ const RefundPolicyPage = () => {
               </ul>
             </div>
 
-            <div className="bg-[#f4fdf5] p-6 rounded-xl border border-[#c3f2cd] my-8">
-              <h3 className="font-bold text-[#2e5e15] mb-2 text-lg">Contact for Refund Queries</h3>
-              <p className="text-[#3b791b] mb-2 text-[14px]">For any query regarding refunds or payments, please write to <a href="mailto:haustouch@hausnuo.com" className="font-bold hover:underline">haustouch@hausnuo.com</a> or call us on <strong className="font-bold">9755 766 018</strong> (Monday to Friday - 10 AM to 06 PM).</p>
+            <div className="bg-[#F8FAFC] p-6 rounded-xl border border-[#BAE6FD] my-8">
+              <h3 className="font-bold text-[#0369A1] mb-2 text-lg">Contact for Refund Queries</h3>
+              <p className="text-[#0284C7] mb-2 text-[14px]">For any query regarding refunds or payments, please write to <a href="mailto:haustouch@hausnuo.com" className="font-bold hover:underline">haustouch@hausnuo.com</a> or call us on <strong className="font-bold">9755 766 018</strong> (Monday to Friday - 10 AM to 06 PM).</p>
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const DownloadHero = () => {
   return (
-    <section className="relative w-full h-[auto] min-h-[500px] md:min-h-[600px] bg-[#050b06] flex items-center overflow-hidden py-12 md:py-0">
+    <section className="relative w-full h-[auto] min-h-[500px] md:min-h-[600px] bg-[#F0F9FF] flex items-center overflow-hidden py-12 md:py-0">
       
       {/* Background Image */}
       <div 
@@ -17,24 +17,24 @@ const DownloadHero = () => {
       ></div>
       
       {/* Dark gradient overlay for perfect readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#030706] via-[#030706]/90 to-[#030706]/60"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-[#030706] via-transparent to-transparent md:hidden"></div>
+      <div className="absolute inset-0 bg-slate-900/60"></div>
+      <div className="absolute inset-0 bg-slate-900/70 md:hidden"></div>
 
       <div className="max-w-7xl mx-auto w-full px-6 md:px-10 relative z-30 flex flex-col lg:flex-row items-center gap-10">
         
         {/* Left Side */}
         <div className="w-full lg:w-1/2 flex flex-col pt-4">
           
-          <div className="text-[#1cf200] font-bold text-[12px] tracking-widest mb-4 uppercase drop-shadow">
+          <div className="text-[#0284C7] font-bold text-[12px] tracking-widest mb-4 uppercase drop-shadow">
             DOWNLOAD APP
           </div>
 
           <h1 className="text-4xl md:text-5xl lg:text-[56px] font-extrabold text-white mb-6 leading-[1.1] drop-shadow-lg">
             Your Financial Journey, <br />
-            <span className="text-[#1cf200]">In Your Pocket</span>
+            <span className="text-[#0284C7]">In Your Pocket</span>
           </h1>
 
-          <p className="text-gray-300 text-[15px] md:text-lg leading-relaxed mb-10 max-w-lg drop-shadow">
+          <p className="text-gray-200 text-[15px] md:text-lg leading-relaxed mb-10 max-w-lg drop-shadow">
             Access customized financial and property-related services through our mobile application.
           </p>
 
@@ -61,13 +61,13 @@ const DownloadHero = () => {
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-gray-900 rounded-b-2xl z-20"></div>
               
               {/* Screen Content */}
-              <div className="flex-1 bg-gradient-to-br from-[#0b0f0e] to-[#132015] w-full flex flex-col items-center justify-center p-6 text-center">
+              <div className="flex-1  w-full flex flex-col items-center justify-center p-6 text-center">
                 <img src="/loanlogo.png" alt="Logo" className="h-8 mb-8" />
                 <h3 className="text-white font-bold text-xl mb-2">Welcome Back</h3>
-                <p className="text-gray-400 text-sm mb-8">Login to manage your loans</p>
+                <p className="text-gray-300 text-sm mb-8">Login to manage your loans</p>
                 <div className="w-full h-12 bg-white/10 rounded-xl mb-4 backdrop-blur-md"></div>
                 <div className="w-full h-12 bg-white/10 rounded-xl mb-6 backdrop-blur-md"></div>
-                <div className="w-full h-12 bg-[#5bc116] rounded-xl text-white font-bold flex items-center justify-center">Login</div>
+                <div className="w-full h-12 bg-[#0EA5E9] rounded-xl text-white font-bold flex items-center justify-center">Login</div>
               </div>
             </div>
           </div>

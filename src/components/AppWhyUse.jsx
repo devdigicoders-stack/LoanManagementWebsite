@@ -28,7 +28,7 @@ const AppWhyUse = () => {
       title: "Better Communication",
       desc: "Stay connected through notifications and available customer support channels."
     }
-  ];
+ ;
 
   return (
     <section className="w-full bg-[#fcfcfc] py-24 px-6 md:px-10 border-b border-gray-100">
@@ -36,12 +36,12 @@ const AppWhyUse = () => {
         
         {/* Left Content */}
         <div className="w-full lg:w-1/3 sticky top-32">
-          <div className="inline-block bg-[#e8fbe9] text-[#4a9b12] rounded-full px-4 py-1 text-sm font-bold tracking-wider mb-6 uppercase">
+          <div className="inline-block bg-[#E0F2FE] text-[#0369A1] rounded-full px-4 py-1 text-sm font-bold tracking-wider mb-6 uppercase">
             Why Use The NGM Housing App?
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
             Financial Information <br className="hidden lg:block"/>
-            <span className="text-[#5bc116]">Made Convenient</span>
+            <span className="text-[#0EA5E9]">Made Convenient</span>
           </h2>
         </div>
 
@@ -49,12 +49,12 @@ const AppWhyUse = () => {
         <div className="w-full lg:w-2/3">
           <div className="space-y-6">
             {reasons.map((item, index) => (
-              <div key={index} className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm flex flex-col md:flex-row gap-6 items-start hover:border-[#5bc116] hover:shadow-md transition-all group">
-                <div className="w-16 h-16 bg-[#f4fdf5] border border-[#e8fbe9] text-[#5bc116] rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-[#5bc116] group-hover:text-white transition-colors">
+              <div key={index} className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm flex flex-col md:flex-row gap-6 items-start hover:border-[#0EA5E9] hover:shadow-md transition-all group">
+                <div className="w-16 h-16 bg-[#F8FAFC] border border-[#E0F2FE] text-[#0EA5E9] rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition-colors">
                   {item.icon}
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#5bc116] transition-colors">{item.title}</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0EA5E9] transition-colors">{item.title}</h3>
                   <p className="text-gray-500 text-[15px] leading-relaxed">
                     {item.desc}
                   </p>

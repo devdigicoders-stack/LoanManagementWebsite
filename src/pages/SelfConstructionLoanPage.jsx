@@ -31,14 +31,14 @@ const SelfConstructionLoanPage = () => {
           title: "Plot + Construction",
           desc: "We offer composite loans that cover both the purchase of a residential plot and the construction cost."
         }
-      ]}
+     ]}
       eligibility={[
         "Indian residents or NRIs aged 21 to 65 years.",
         "Stable source of income (Salaried or Self-employed).",
         "Clear title of the plot in the applicant's name.",
         "Approved construction plan from local municipal authorities.",
         "Estimate of construction cost from a certified architect/engineer."
-      ]}
+     ]}
       documents={[
         "Standard KYC and Income Proof documents",
         "Sale deed or allotment letter of the plot",
@@ -46,7 +46,7 @@ const SelfConstructionLoanPage = () => {
         "Detailed construction cost estimate",
         "No Objection Certificate (NOC) from builder/society",
         "Title search report and encumbrance certificate"
-      ]}
+     ]}
     />
   );
 };

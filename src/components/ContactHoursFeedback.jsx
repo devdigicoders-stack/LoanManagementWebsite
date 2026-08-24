@@ -13,15 +13,15 @@ const ContactHoursFeedback = () => {
             <span className="text-sm font-bold tracking-widest uppercase">Business Hours</span>
           </div>
           <h2 className="text-3xl font-bold text-gray-900 mb-8">
-            Our Support <span className="text-[#5bc116]">Availability</span>
+            Our Support <span className="text-[#0EA5E9]">Availability</span>
           </h2>
           
           <div className="flex-grow space-y-6">
             <div className="flex items-start gap-4">
-              <Clock className="text-[#5bc116] shrink-0 mt-1" size={24} />
+              <Clock className="text-[#0EA5E9] shrink-0 mt-1" size={24} />
               <div>
                 <p className="font-bold text-gray-900 text-[16px] mb-1">Monday – Saturday</p>
-                <p className="text-[#5bc116] font-bold text-lg">9:00 AM – 6:00 PM</p>
+                <p className="text-[#0EA5E9] font-bold text-lg">9:00 AM – 6:00 PM</p>
               </div>
             </div>
             
@@ -42,12 +42,12 @@ const ContactHoursFeedback = () => {
         </div>
 
         {/* Customer Feedback */}
-        <div className="bg-[#f4fdf5] border border-[#e8fbe9] rounded-3xl p-8 md:p-10 shadow-sm flex flex-col hover:shadow-md transition-shadow">
-          <div className="inline-flex items-center gap-2 text-[#4a9b12] mb-6">
+        <div className="bg-[#F8FAFC] border border-[#E0F2FE] rounded-3xl p-8 md:p-10 shadow-sm flex flex-col hover:shadow-md transition-shadow">
+          <div className="inline-flex items-center gap-2 text-[#0369A1] mb-6">
             <span className="text-sm font-bold tracking-widest uppercase">Customer Feedback</span>
           </div>
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Your Feedback <span className="text-[#5bc116]">Matters</span>
+            Your Feedback <span className="text-[#0EA5E9]">Matters</span>
           </h2>
           
           <div className="flex-grow space-y-4">
@@ -65,7 +65,7 @@ const ContactHoursFeedback = () => {
           <div className="mt-8">
             <Link 
               to="/feedback" 
-              className="inline-flex items-center gap-2 bg-[#5bc116] text-[#0b0f0e] px-6 py-3 rounded-full font-bold hover:bg-[#4a9b12] transition-colors group"
+              className="inline-flex items-center gap-2 bg-[#0EA5E9] text-[#FDFBF7] px-6 py-3 rounded-full font-bold hover:bg-[#0369A1] transition-colors group"
             >
               <MessageSquareHeart size={18} />
               Share Your Feedback

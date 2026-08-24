@@ -43,7 +43,7 @@ const AllServices = () => {
       title: "Documentation Support",
       description: "We help you with documentation."
     }
-  ];
+ ;
 
   return (
     <section className="w-full bg-[#fcfcfc] py-16 px-6 md:px-10">
@@ -51,7 +51,7 @@ const AllServices = () => {
         
         {/* Header */}
         <div className="mb-14 text-left">
-          <div className="text-[#5bc116] font-bold text-[12px] tracking-widest mb-4 uppercase">
+          <div className="text-[#0EA5E9] font-bold text-[12px] tracking-widest mb-4 uppercase">
             OUR SERVICES
           </div>
           <h1 className="text-3xl md:text-5xl lg:text-[50px] font-bold text-gray-900 mb-6 leading-[1.2]">
@@ -69,7 +69,7 @@ const AllServices = () => {
               key={index} 
               className="bg-white border border-gray-100 p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col"
             >
-              <div className="w-14 h-14 bg-[#f4fbf0] group-hover:bg-[#5bc116] rounded-2xl flex items-center justify-center text-[#5bc116] group-hover:text-white transition-colors duration-300 mb-6">
+              <div className="w-14 h-14 bg-[#f4fbf0] group-hover:bg-[#0EA5E9] rounded-2xl flex items-center justify-center text-[#0EA5E9] group-hover:text-white transition-colors duration-300 mb-6">
                 {service.icon}
               </div>
               <h3 className="text-black font-bold text-[18px] mb-3 leading-snug">

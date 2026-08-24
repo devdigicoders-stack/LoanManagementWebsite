@@ -59,7 +59,7 @@ const HeroSlider = () => {
       btnText: 'Know More',
       link: '/services/loan-against-property'
     }
-  ];
+ ];
 
   const numSlides = slides.length;
 
@@ -71,7 +71,7 @@ const HeroSlider = () => {
   }, [numSlides]);
 
   return (
-    <div className="relative w-full h-[350px] md:h-[450px] bg-[#050806] overflow-hidden group">
+    <div className="relative w-full h-[350px] md:h-[450px] bg-[#F0F9FF] overflow-hidden group">
       
       {/* Slides Container */}
       {slides.map((slide, index) => {
@@ -92,25 +92,26 @@ const HeroSlider = () => {
               }}
             ></div>
             
-            {/* Dark Gradient Overlay for perfect readability */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#030706] via-[#030706]/80 to-transparent"></div>
-            {/* Mobile bottom gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#030706] via-transparent to-transparent md:hidden"></div>
+            {/* Solid Dark Overlay for perfect readability (No gradients) */}
+            <div className="absolute inset-0 bg-slate-900/40"></div>
+            
+            {/* Mobile bottom overlay */}
+            <div className="absolute inset-0 bg-slate-900/50 md:hidden"></div>
 
             {/* Text Content */}
             <div className="relative z-30 w-full h-full max-w-7xl mx-auto px-6 md:px-10 flex flex-col justify-center">
               <div className="max-w-2xl mt-8 md:mt-0">
-                <p className="text-[#1cf200] font-bold tracking-wider uppercase text-sm md:text-base mb-3 drop-shadow">
+                <p className="text-[#0EA5E9] font-bold tracking-wider uppercase text-sm md:text-base mb-3 drop-shadow">
                   {slide.subtitle}
                 </p>
                 <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 leading-tight drop-shadow-lg">
                   {slide.title}
                 </h1>
-                <p className="text-gray-300 text-sm md:text-lg mb-8 max-w-xl drop-shadow">
+                <p className="text-gray-200 text-sm md:text-lg mb-8 max-w-xl drop-shadow">
                   {slide.desc}
                 </p>
                 <div>
-                  <Link to={slide.link} className="inline-block bg-[#1cf200] hover:bg-[#5bc116] text-black font-bold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-[0_4px_15px_rgba(28,242,0,0.3)]">
+                  <Link to={slide.link} className="inline-block bg-[#0EA5E9] hover:bg-[#0284C7] text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-[0_4px_15px_rgba(14,165,233,0.3)]">
                     {slide.btnText}
                   </Link>
                 </div>
@@ -126,7 +127,7 @@ const HeroSlider = () => {
           e.stopPropagation();
           setCurrentSlide((prev) => (prev - 1 + numSlides) % numSlides);
         }}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-40 w-12 h-12 bg-[#0b150e]/60 hover:bg-[#1cf200] text-white hover:text-black rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-sm"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-40 w-12 h-12 bg-[#E0F2FE]/60 hover:bg-[#0284C7] text-white hover:text-black rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-sm"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
       </button>
@@ -136,7 +137,7 @@ const HeroSlider = () => {
           e.stopPropagation();
           setCurrentSlide((prev) => (prev + 1) % numSlides);
         }}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-40 w-12 h-12 bg-[#0b150e]/60 hover:bg-[#1cf200] text-white hover:text-black rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-sm"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-40 w-12 h-12 bg-[#E0F2FE]/60 hover:bg-[#0284C7] text-white hover:text-black rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-sm"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
       </button>
@@ -150,7 +151,7 @@ const HeroSlider = () => {
               e.stopPropagation();
               setCurrentSlide(index);
             }}
-            className={`h-2 transition-all duration-300 rounded-full shadow-lg ${index === currentSlide ? 'w-10 bg-[#1cf200]' : 'w-2 bg-gray-500 hover:bg-white'}`}
+            className={`h-2 transition-all duration-300 rounded-full shadow-lg ${index === currentSlide ? 'w-10 bg-[#0284C7]' : 'w-2 bg-gray-500 hover:bg-white'}`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}

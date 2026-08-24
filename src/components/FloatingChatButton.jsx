@@ -10,7 +10,7 @@ const FloatingChatButton = () => {
         {/* Fixed Floating Button */}
         <button 
           onClick={() => setIsModalOpen(true)}
-          className="bg-[#034488] hover:bg-[#1cf200] text-white hover:text-black p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center border-2 border-transparent hover:border-black"
+          className="bg-[#034488] hover:bg-[#0284C7] text-white hover:text-black p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center border-2 border-transparent hover:border-black"
           aria-label="Open Chat"
         >
           <MessageSquareText size={32} />
@@ -34,7 +34,7 @@ const FloatingChatButton = () => {
 
             <div className="p-8 md:p-10 text-center border-b border-gray-100">
               <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-2">
-                Download <span className="text-[#5bc116]">HAUS NUO-Pay</span> Apps
+                Download <span className="text-[#0EA5E9]">HAUS NUO-Pay</span> Apps
               </h2>
               <p className="text-gray-500 text-sm md:text-base max-w-md mx-auto">
                 Scan the QR code below or tap to download our apps directly from the Google Play Store.
@@ -45,7 +45,7 @@ const FloatingChatButton = () => {
               
               {/* User App Section */}
               <div className="flex-1 p-8 flex flex-col items-center text-center group hover:bg-white transition-colors cursor-pointer">
-                <div className="w-12 h-12 bg-[#eaf7e3] text-[#5bc116] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 bg-[#eaf7e3] text-[#0EA5E9] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <MessageSquareText size={24} />
                 </div>
                 <h3 className="font-bold text-gray-900 text-lg mb-1">Customer App</h3>
@@ -64,7 +64,7 @@ const FloatingChatButton = () => {
                   href="https://play.google.com/store/apps/details?id=com.hausnuopay.customer" 
                   target="_blank" 
                   rel="noreferrer"
-                  className="bg-black hover:bg-gray-800 text-white text-sm font-semibold py-2 px-6 rounded-full flex items-center gap-2 transition-colors w-full justify-center"
+                  className="bg-black hover:bg-gray-800 text-slate-900 text-sm font-semibold py-2 px-6 rounded-full flex items-center gap-2 transition-colors w-full justify-center"
                 >
                   <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" className="h-6" />
                 </a>
@@ -91,7 +91,7 @@ const FloatingChatButton = () => {
                   href="https://play.google.com/store/apps/details?id=com.hausnuopay.employee" 
                   target="_blank" 
                   rel="noreferrer"
-                  className="bg-black hover:bg-gray-800 text-white text-sm font-semibold py-2 px-6 rounded-full flex items-center gap-2 transition-colors w-full justify-center"
+                  className="bg-black hover:bg-gray-800 text-slate-900 text-sm font-semibold py-2 px-6 rounded-full flex items-center gap-2 transition-colors w-full justify-center"
                 >
                   <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" className="h-6" />
                 </a>

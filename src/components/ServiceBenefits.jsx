@@ -8,7 +8,7 @@ const ServiceBenefits = () => {
     "Flexible repayment tenure up to 15 years.",
     "Multiple end-use options for personal or business needs.",
     "Simple and transparent process with quick approval."
-  ];
+ ;
 
   return (
     <section className="w-full bg-white py-20 px-6 md:px-10">
@@ -22,7 +22,7 @@ const ServiceBenefits = () => {
           <div className="flex flex-col gap-5">
             {benefits.map((benefit, index) => (
               <div key={index} className="flex items-start gap-4">
-                <div className="w-6 h-6 rounded-full bg-[#5bc116] text-white flex items-center justify-center shrink-0 mt-0.5 shadow-md shadow-[#5bc116]/30">
+                <div className="w-6 h-6 rounded-full bg-[#0EA5E9] text-white flex items-center justify-center shrink-0 mt-0.5 shadow-md shadow-[#0EA5E9]/30">
                   <Check size={14} strokeWidth={3} />
                 </div>
                 <p className="text-gray-700 text-[15px] md:text-base leading-relaxed">
@@ -37,7 +37,7 @@ const ServiceBenefits = () => {
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
           <div className="relative">
             {/* Background decorative square */}
-            <div className="absolute top-4 -right-4 md:top-6 md:-right-6 w-full h-full border-2 border-[#5bc116]/20 rounded-3xl z-0"></div>
+            <div className="absolute top-4 -right-4 md:top-6 md:-right-6 w-full h-full border-2 border-[#0EA5E9]/20 rounded-3xl z-0"></div>
             <img 
               src="/aboutus/unity.png" 
               alt="Property Benefits" 

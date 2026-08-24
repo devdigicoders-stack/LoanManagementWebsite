@@ -11,7 +11,7 @@ const AboutWhyChooseUs = () => {
     {
       icon: <Eye size={24} strokeWidth={1.5} />,
       title: "Clear & Transparent Information",
-      desc: "We believe customers should understand the financial product they are considering. That's why we focus on presenting important information in a simple and easy-to-understand manner."
+      desc: "We believe customers should understand the financial product they are considering. That's why we focus on presenting important information in a simple and easy- manner."
     },
     {
       icon: <Smartphone size={24} strokeWidth={1.5} />,
@@ -28,7 +28,7 @@ const AboutWhyChooseUs = () => {
       title: "Responsible Financial Approach",
       desc: "We encourage customers to understand their repayment obligations, applicable charges and financial commitments before proceeding with any loan or financial product."
     }
-  ];
+ ;
 
   return (
     <section className="w-full bg-white py-20 px-6 md:px-10">
@@ -37,13 +37,13 @@ const AboutWhyChooseUs = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Why Choose NGM Housing?
           </h2>
-          <div className="w-20 h-1 bg-[#5bc116] mx-auto rounded-full"></div>
+          <div className="w-20 h-1 bg-[#0EA5E9] mx-auto rounded-full"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((item, index) => (
             <div key={index} className="flex flex-col bg-[#fcfcfc] p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow group">
-              <div className="w-14 h-14 bg-[#f4fdf5] border border-[#e8fbe9] text-[#5bc116] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <div className="w-14 h-14 bg-[#F8FAFC] border border-[#E0F2FE] text-[#0EA5E9] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 {item.icon}
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>

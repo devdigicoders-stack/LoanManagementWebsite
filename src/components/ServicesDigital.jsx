@@ -33,19 +33,19 @@ const ServicesDigital = () => {
       title: "Mobile Experience",
       desc: "Access supported services and information through the NGM Housing mobile application."
     }
-  ];
+ ;
 
   return (
-    <section className="w-full bg-[#f4fdf5] py-20 px-6 md:px-10 border-b border-[#e8fbe9]">
+    <section className="w-full bg-[#F8FAFC] py-20 px-6 md:px-10 border-b border-[#E0F2FE]">
       <div className="max-w-7xl mx-auto">
         
         <div className="text-center mb-16">
-          <div className="inline-block bg-[#e8fbe9] text-[#4a9b12] rounded-full px-4 py-1 text-sm font-bold tracking-wider mb-4 uppercase">
+          <div className="inline-block bg-[#E0F2FE] text-[#0369A1] rounded-full px-4 py-1 text-sm font-bold tracking-wider mb-4 uppercase">
             Our Digital Services
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
             A Simpler Way to Explore <br className="hidden md:block"/>
-            <span className="text-[#5bc116]">Financial Solutions</span>
+            <span className="text-[#0EA5E9]">Financial Solutions</span>
           </h2>
           <p className="text-gray-600 text-[16px] leading-relaxed max-w-2xl mx-auto">
             Our digital platform is designed to make property finance information accessible and convenient.
@@ -54,8 +54,8 @@ const ServicesDigital = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((item, index) => (
-            <div key={index} className="bg-white p-8 rounded-3xl border border-[#e8fbe9] shadow-sm hover:shadow-md transition-shadow group flex items-start gap-5">
-              <div className="w-12 h-12 rounded-full bg-[#f0fbf0] text-[#5bc116] flex items-center justify-center shrink-0 group-hover:bg-[#5bc116] group-hover:text-white transition-colors duration-300">
+            <div key={index} className="bg-white p-8 rounded-3xl border border-[#E0F2FE] shadow-sm hover:shadow-md transition-shadow group flex items-start gap-5">
+              <div className="w-12 h-12 rounded-full bg-[#f0fbf0] text-[#0EA5E9] flex items-center justify-center shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition-colors duration-300">
                 {item.icon}
               </div>
               <div>

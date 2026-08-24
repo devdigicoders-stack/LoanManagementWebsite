@@ -23,7 +23,7 @@ const AboutPhilosophy = () => {
       title: "Support",
       desc: "Remain available through appropriate customer support channels."
     }
-  ];
+ ;
 
   return (
     <section className="w-full bg-[#fcfcfc] py-20 px-6 md:px-10 border-b border-gray-100">
@@ -39,7 +39,7 @@ const AboutPhilosophy = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {principles.map((item, index) => (
             <div key={index} className="flex flex-col items-center p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:-translate-y-2 transition-transform duration-300">
-              <div className="w-20 h-20 bg-[#f4fdf5] border border-[#e8fbe9] text-[#5bc116] rounded-full flex items-center justify-center mb-6">
+              <div className="w-20 h-20 bg-[#F8FAFC] border border-[#E0F2FE] text-[#0EA5E9] rounded-full flex items-center justify-center mb-6">
                 {item.icon}
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
@@ -50,7 +50,7 @@ const AboutPhilosophy = () => {
           ))}
         </div>
 
-        <div className="mt-16 inline-block bg-[#0b0f0e] text-white px-8 py-4 rounded-full font-semibold shadow-lg shadow-green-900/10 border border-[#1a241c]">
+        <div className="mt-16 inline-block bg-[#FDFBF7] text-slate-900 px-8 py-4 rounded-full font-semibold shadow-lg shadow-green-900/10 border border-[#E0F2FE]">
           Better information leads to better financial decisions.
         </div>
 

@@ -4,29 +4,29 @@ import { Link } from 'react-router-dom';
 
 const AppHero = () => {
   return (
-    <section className="w-full bg-[#030706] pt-32 pb-24 px-6 md:px-10 relative overflow-hidden">
+    <section className="w-full bg-[#F0F9FF] pt-32 pb-24 px-6 md:px-10 relative overflow-hidden">
       
       {/* Decorative Gradients */}
-      <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] bg-[#5bc116] rounded-full blur-[150px] opacity-10 pointer-events-none"></div>
+      <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] bg-[#0EA5E9] rounded-full blur-[150px] opacity-10 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 relative z-10">
         
         {/* Left Content */}
         <div className="w-full lg:w-1/2 text-center lg:text-left">
-          <div className="inline-flex items-center gap-2 bg-[#0b150e] border border-[#1a2e1d] text-[#71d924] px-5 py-2 rounded-full mb-6 shadow-[0_0_15px_rgba(91,193,22,0.1)]">
+          <div className="inline-flex items-center gap-2 bg-[#E0F2FE] border border-[#E0F2FE] text-[#0369A1] px-5 py-2 rounded-full mb-6 shadow-[0_0_15px_rgba(91,193,22,0.1)]">
             <Smartphone size={16} />
             <span className="text-sm font-bold tracking-widest uppercase">Download App</span>
           </div>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight tracking-wide">
             Your Property Finance Journey, <br className="hidden md:block"/>
-            <span className="text-[#5bc116] drop-shadow-[0_0_15px_rgba(91,193,22,0.4)]">Right in Your Hands</span>
+            <span className="text-[#0EA5E9] drop-shadow-[0_0_15px_rgba(91,193,22,0.4)]">Right in Your Hands</span>
           </h1>
           
-          <p className="text-gray-400 text-[16px] md:text-lg leading-relaxed mb-8">
+          <p className="text-gray-300 text-[16px] md:text-lg leading-relaxed mb-8">
             Access your property-related financial information and supported services anytime, anywhere with the NGM Housing Payments Limited mobile application.
           </p>
-          <p className="text-gray-400 text-[16px] md:text-lg leading-relaxed mb-10">
+          <p className="text-gray-300 text-[16px] md:text-lg leading-relaxed mb-10">
             Designed with simplicity, convenience and accessibility in mind, our mobile app provides a seamless digital experience for exploring financial solutions, managing supported services and staying updated.
           </p>
 
@@ -44,7 +44,7 @@ const AppHero = () => {
                 </svg>
               </div>
               <div className="text-left">
-                <div className="text-[10px] uppercase tracking-wide font-medium leading-tight text-gray-300">GET IT ON</div>
+                <div className="text-[10px] uppercase tracking-wide font-medium leading-tight text-gray-200">GET IT ON</div>
                 <div className="text-xl font-semibold leading-tight tracking-tight font-sans">Google Play</div>
               </div>
             </Link>
@@ -58,7 +58,7 @@ const AppHero = () => {
                 </svg>
               </div>
               <div className="text-left">
-                <div className="text-[10px] tracking-wide font-medium leading-tight text-gray-300">Download on the</div>
+                <div className="text-[10px] tracking-wide font-medium leading-tight text-gray-200">Download on the</div>
                 <div className="text-xl font-semibold leading-tight tracking-tight font-sans">App Store</div>
               </div>
             </Link>
@@ -67,32 +67,32 @@ const AppHero = () => {
 
         {/* Right Content - Phone Mockup Graphic */}
         <div className="w-full lg:w-1/2 flex justify-center relative">
-          <div className="relative w-72 h-[600px] bg-[#0b0f0e] rounded-[3rem] border-8 border-[#1a241c] shadow-2xl flex flex-col overflow-hidden">
-            <div className="absolute top-0 inset-x-0 h-6 bg-[#1a241c] rounded-b-3xl mx-16 z-20"></div>
+          <div className="relative w-72 h-[600px] bg-[#FDFBF7] rounded-[3rem] border-8 border-[#E0F2FE] shadow-2xl flex flex-col overflow-hidden">
+            <div className="absolute top-0 inset-x-0 h-6 bg-[#E0F2FE] rounded-b-3xl mx-16 z-20"></div>
             
             {/* Fake App Screen */}
-            <div className="flex-1 bg-[#f4fdf5] flex flex-col relative z-10 pt-10 px-5">
+            <div className="flex-1 bg-[#F8FAFC] flex flex-col relative z-10 pt-10 px-5">
               <div className="text-xl font-bold text-gray-900 mb-6">Welcome back,</div>
               
-              <div className="bg-[#0b0f0e] rounded-2xl p-5 mb-6 shadow-lg shadow-[#5bc116]/10 relative overflow-hidden">
-                <div className="absolute right-0 top-0 w-24 h-24 bg-[#5bc116] rounded-full blur-2xl opacity-20"></div>
-                <div className="text-gray-400 text-sm mb-1">Your Enquiry Status</div>
+              <div className="bg-[#FDFBF7] rounded-2xl p-5 mb-6 shadow-lg shadow-[#0EA5E9]/10 relative overflow-hidden">
+                <div className="absolute right-0 top-0 w-24 h-24 bg-[#0EA5E9] rounded-full blur-2xl opacity-20"></div>
+                <div className="text-gray-300 text-sm mb-1">Your Enquiry Status</div>
                 <div className="text-white font-bold text-2xl mb-4">Under Review</div>
-                <div className="flex items-center gap-2 text-[#5bc116] text-sm font-bold">
+                <div className="flex items-center gap-2 text-[#0EA5E9] text-sm font-bold">
                   <CheckCircle2 size={16} /> Details Submitted
                 </div>
               </div>
 
               <div className="text-sm font-bold text-gray-900 mb-4">Explore Options</div>
               <div className="grid grid-cols-2 gap-3 mb-6">
-                <div className="bg-white rounded-xl p-4 border border-[#e8fbe9] shadow-sm">
-                  <div className="w-8 h-8 rounded-full bg-[#f0fbf0] text-[#5bc116] flex items-center justify-center mb-2">
+                <div className="bg-white rounded-xl p-4 border border-[#E0F2FE] shadow-sm">
+                  <div className="w-8 h-8 rounded-full bg-[#f0fbf0] text-[#0EA5E9] flex items-center justify-center mb-2">
                     <Smartphone size={14} />
                   </div>
                   <div className="text-xs font-bold text-gray-900">Home Loan</div>
                 </div>
-                <div className="bg-white rounded-xl p-4 border border-[#e8fbe9] shadow-sm">
-                  <div className="w-8 h-8 rounded-full bg-[#f0fbf0] text-[#5bc116] flex items-center justify-center mb-2">
+                <div className="bg-white rounded-xl p-4 border border-[#E0F2FE] shadow-sm">
+                  <div className="w-8 h-8 rounded-full bg-[#f0fbf0] text-[#0EA5E9] flex items-center justify-center mb-2">
                     <Smartphone size={14} />
                   </div>
                   <div className="text-xs font-bold text-gray-900">LAP</div>

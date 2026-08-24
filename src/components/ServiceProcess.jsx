@@ -33,7 +33,7 @@ const ServiceProcess = () => {
       title: "Final Verification",
       desc: "Post-disbursement review."
     }
-  ];
+ ;
 
   return (
     <section className="w-full bg-white py-20 px-6 md:px-10">
@@ -50,7 +50,7 @@ const ServiceProcess = () => {
           
           {steps.map((step, index) => (
             <div key={index} className="flex flex-col items-center text-center relative z-10 snap-center shrink-0 w-[160px]">
-              <div className="w-20 h-20 bg-[#f4fdf5] border border-[#e8fbe9] rounded-2xl flex items-center justify-center text-[#5bc116] mb-5 shadow-sm group hover:scale-105 transition-transform">
+              <div className="w-20 h-20 bg-[#F8FAFC] border border-[#E0F2FE] rounded-2xl flex items-center justify-center text-[#0EA5E9] mb-5 shadow-sm group hover:scale-105 transition-transform">
                 {step.icon}
               </div>
               <h4 className="text-gray-900 font-bold text-[14px] mb-2">{step.title}</h4>

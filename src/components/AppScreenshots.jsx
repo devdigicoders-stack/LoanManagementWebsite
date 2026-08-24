@@ -30,8 +30,8 @@ const AppScreenshots = () => {
         </div>
 
         {/* CTA Bottom Banner */}
-        <div className="mt-10 w-full bg-[#0b0f0e] rounded-[2rem] py-12 px-6 text-center shadow-2xl">
-          <h3 className="text-2xl font-bold text-white mb-6">
+        <div className="mt-10 w-full bg-[#FDFBF7] rounded-[2rem] py-12 px-6 text-center shadow-2xl">
+          <h3 className="text-2xl font-bold text-slate-900 mb-6">
             Download the App and Simplify<br />Your Financial Journey
           </h3>
           <div className="flex items-center justify-center gap-4">

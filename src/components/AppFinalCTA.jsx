@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom';
 
 const AppFinalCTA = () => {
   return (
-    <section className="w-full bg-[#0b0f0e] py-24 px-6 md:px-10 relative overflow-hidden">
+    <section className="w-full bg-[#FDFBF7] py-24 px-6 md:px-10 relative overflow-hidden">
       <div className="max-w-4xl mx-auto relative z-10 text-center">
         
-        <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+        <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
           YOUR PROPERTY.<br className="hidden md:block"/>
           YOUR FINANCIAL GOALS.<br className="hidden md:block"/>
-          <span className="text-[#5bc116]">YOUR APP.</span>
+          <span className="text-[#0EA5E9]">YOUR APP.</span>
         </h2>
         
-        <p className="text-gray-400 text-[16px] leading-relaxed mb-10 max-w-2xl mx-auto">
+        <p className="text-slate-600 text-[16px] leading-relaxed mb-10 max-w-2xl mx-auto">
           Explore. Understand. Enquire. Stay Informed.<br/>
           Download the NGM Housing Payments Limited App and experience a simpler way to access property-focused financial information and supported digital services.
         </p>
@@ -22,7 +22,7 @@ const AppFinalCTA = () => {
           
           <Link 
             to="#"
-            className="w-full sm:w-auto inline-flex items-center justify-center bg-black text-white rounded-xl px-5 py-2.5 hover:bg-gray-900 transition-colors border border-gray-800 shadow-lg shadow-black/20 group"
+            className="w-full sm:w-auto inline-flex items-center justify-center bg-black text-slate-900 rounded-xl px-5 py-2.5 hover:bg-gray-900 transition-colors border border-gray-800 shadow-lg shadow-black/20 group"
           >
             <div className="mr-3">
               <svg viewBox="0 0 512 512" width="28" height="28" fill="currentColor">
@@ -33,14 +33,14 @@ const AppFinalCTA = () => {
               </svg>
             </div>
             <div className="text-left">
-              <div className="text-[10px] uppercase tracking-wide font-medium leading-tight text-gray-300">GET IT ON</div>
+              <div className="text-[10px] uppercase tracking-wide font-medium leading-tight text-slate-700">GET IT ON</div>
               <div className="text-xl font-semibold leading-tight tracking-tight font-sans">Google Play</div>
             </div>
           </Link>
           
           <Link 
             to="#"
-            className="w-full sm:w-auto inline-flex items-center justify-center bg-black text-white rounded-xl px-5 py-2.5 hover:bg-gray-900 transition-colors border border-gray-800 shadow-lg shadow-black/20 group"
+            className="w-full sm:w-auto inline-flex items-center justify-center bg-black text-slate-900 rounded-xl px-5 py-2.5 hover:bg-gray-900 transition-colors border border-gray-800 shadow-lg shadow-black/20 group"
           >
             <div className="mr-3">
               <svg viewBox="0 0 384 512" width="30" height="30" fill="currentColor">
@@ -48,14 +48,14 @@ const AppFinalCTA = () => {
               </svg>
             </div>
             <div className="text-left">
-              <div className="text-[10px] tracking-wide font-medium leading-tight text-gray-300">Download on the</div>
+              <div className="text-[10px] tracking-wide font-medium leading-tight text-slate-700">Download on the</div>
               <div className="text-xl font-semibold leading-tight tracking-tight font-sans">App Store</div>
             </div>
           </Link>
 
         </div>
 
-        <Link to="/contact" className="inline-flex items-center gap-2 text-[#5bc116] font-bold hover:text-[#4a9b12] transition-colors group">
+        <Link to="/contact" className="inline-flex items-center gap-2 text-[#0EA5E9] font-bold hover:text-[#0369A1] transition-colors group">
           Need Assistance? Contact Us <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
         </Link>
 

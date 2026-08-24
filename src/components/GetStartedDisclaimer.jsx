@@ -3,7 +3,7 @@ import { AlertCircle } from 'lucide-react';
 
 const GetStartedDisclaimer = () => {
   return (
-    <section className="w-full bg-[#f4fdf5] py-16 px-6 md:px-10 border-t border-[#e8fbe9]">
+    <section className="w-full bg-[#F8FAFC] py-16 px-6 md:px-10 border-t border-[#E0F2FE]">
       <div className="max-w-4xl mx-auto">
         <div className="bg-[#fff9e6] border border-[#ffecb3] rounded-2xl p-6 md:p-8 flex gap-4 md:gap-6 items-start shadow-sm">
           <div className="text-[#f59e0b] mt-1 shrink-0">

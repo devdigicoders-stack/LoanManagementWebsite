@@ -23,15 +23,15 @@ const AboutStats = () => {
       title: "Responsibility",
       desc: "We promote informed and responsible borrowing."
     }
-  ];
+ ;
 
   return (
     <section className="w-full">
       {/* Dark Banner */}
-      <div className="bg-[#0b0f0e] w-full py-20 px-6 text-center border-t border-b border-[#1a241c]">
-        <h2 className="text-2xl md:text-4xl font-bold text-white leading-relaxed max-w-4xl mx-auto">
+      <div className="bg-[#FDFBF7] w-full py-20 px-6 text-center border-t border-b border-[#E0F2FE]">
+        <h2 className="text-2xl md:text-4xl font-bold text-slate-900 leading-relaxed max-w-4xl mx-auto">
           Because Financial Decisions <br className="hidden md:block" />
-          <span className="text-[#5bc116]">Become Easier When Information Is Clear.</span>
+          <span className="text-[#0EA5E9]">Become Easier When Information Is Clear.</span>
         </h2>
       </div>
 
@@ -40,7 +40,7 @@ const AboutStats = () => {
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {principles.map((p, index) => (
             <div key={index} className="flex flex-col items-center text-center">
-              <div className="w-16 h-16 rounded-full bg-[#f0fbf0] text-[#5bc116] flex items-center justify-center mb-6">
+              <div className="w-16 h-16 rounded-full bg-[#f0fbf0] text-[#0EA5E9] flex items-center justify-center mb-6">
                 {p.icon}
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-3">{p.title}</h3>

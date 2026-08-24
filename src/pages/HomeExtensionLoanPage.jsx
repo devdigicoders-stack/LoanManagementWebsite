@@ -31,21 +31,21 @@ const HomeExtensionLoanPage = () => {
           title: "Long Tenure",
           desc: "Spread the cost of your home upgrades over a long tenure of up to 20 years, making EMIs easily manageable."
         }
-      ]}
+     ]}
       eligibility={[
         "Individuals owning a residential property in their name.",
         "Age between 21 and 65 years at loan maturity.",
         "Clear and marketable title of the existing property.",
         "Stable income to support the additional EMI burden.",
         "Estimate of extension work from a qualified civil engineer."
-      ]}
+     ]}
       documents={[
         "Standard KYC (Aadhaar, PAN, Voter ID)",
         "Proof of income and employment",
         "Original title deeds of the existing property",
         "Approved plan for the proposed extension (if required by local laws)",
         "Detailed cost estimate from an architect/engineer"
-      ]}
+     ]}
     />
   );
 };

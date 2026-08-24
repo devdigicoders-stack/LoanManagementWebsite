@@ -31,14 +31,14 @@ const CarLoanPage = () => {
           title: "Transparent Charges",
           desc: "No hidden fees. We maintain complete transparency regarding processing fees, prepayment charges, and interest rates."
         }
-      ]}
+     ]}
       eligibility={[
         "Salaried individuals aged 21 to 60 years.",
         "Self-employed professionals aged 21 to 65 years.",
         "Minimum net monthly income of ₹25,000.",
         "At least 1 year of continuous employment or business vintage.",
         "A healthy credit score (CIBIL 700+ preferred)."
-      ]}
+     ]}
       documents={[
         "Valid Identity Proof (Aadhaar, Passport, Voter ID)",
         "Address Proof (Utility Bill, Rental Agreement)",
@@ -46,7 +46,7 @@ const CarLoanPage = () => {
         "Last 2 years ITR and Financials (Self-Employed)",
         "Last 6 months bank account statements",
         "Proforma Invoice from the authorized dealer"
-      ]}
+     ]}
     />
   );
 };

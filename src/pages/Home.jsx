@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HeroSlider from '../components/HeroSlider';
 import PayEmiCheck from '../components/PayEmiCheck';
 import QuickActions from '../components/QuickActions';
@@ -15,11 +15,16 @@ import FAQ from '../components/FAQ';
 import ScrollReveal from '../components/ScrollReveal';
 
 const Home = () => {
+  const [isEmiModalOpen, setIsEmiModalOpen] = useState(false);
+
   return (
-    <div className="bg-[#0b0f0e]">
+    <div className="bg-[#FDFBF7]">
       <HeroSlider />
-      <PayEmiCheck />
-      <ScrollReveal><QuickActions /></ScrollReveal>
+      
+      <ScrollReveal>
+        <QuickActions onPayEmiClick={() => setIsEmiModalOpen(true)} />
+      </ScrollReveal>
+      
       <ScrollReveal><Services /></ScrollReveal>
       <ScrollReveal><EmiCalculator /></ScrollReveal>
       <ScrollReveal><WhyChooseUs /></ScrollReveal>
@@ -30,6 +35,12 @@ const Home = () => {
       <ScrollReveal><NewsAndPress /></ScrollReveal>
       <ScrollReveal><HappyClients /></ScrollReveal>
       <ScrollReveal><FAQ /></ScrollReveal>
+
+      {/* EMI Modal */}
+      <PayEmiCheck 
+        isOpen={isEmiModalOpen} 
+        onClose={() => setIsEmiModalOpen(false)} 
+      />
     </div>
   );
 };

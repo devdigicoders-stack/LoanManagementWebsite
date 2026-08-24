@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Briefcase, MousePointerClick, Smartphone, PhoneCall, MapPin, MessageSquareWarning } from 'lucide-react';
 
-const QuickActions = () => {
+const QuickActions = ({ onPayEmiClick }) => {
   const actions = [
     {
       icon: Briefcase,
@@ -20,7 +20,11 @@ const QuickActions = () => {
       icon: Smartphone,
       title: "Pay EMI",
       subtitle: "Online",
-      link: "#"
+      link: "#",
+      onClick: (e) => {
+        e.preventDefault();
+        if (onPayEmiClick) onPayEmiClick();
+      }
     },
     {
       icon: PhoneCall,
@@ -40,7 +44,7 @@ const QuickActions = () => {
       subtitle: "Grievance",
       link: "/contact"
     }
-  ];
+ ];
 
   return (
     <div className="w-full flex flex-col z-40 bg-white border-b border-gray-200">
@@ -55,15 +59,16 @@ const QuickActions = () => {
       </div>
 
       {/* Action Cards Section */}
-      <div className="w-full bg-gradient-to-b from-gray-50 to-white shadow-sm overflow-x-auto no-scrollbar">
+      <div className="w-full shadow-sm overflow-x-auto no-scrollbar">
         <div className="max-w-7xl mx-auto flex items-center justify-between min-w-max md:min-w-0">
           {actions.map((action, idx) => (
             <Link 
               to={action.link} 
               key={idx}
+              onClick={action.onClick}
               className="flex items-center gap-3 py-4 px-6 md:px-4 lg:px-6 hover:bg-gray-50 transition-all duration-150 active:scale-95 group min-w-[200px] md:min-w-0 flex-1 justify-center border-r border-gray-100 last:border-r-0 cursor-pointer"
             >
-              <div className="text-[#034488] group-hover:text-[#1cf200] transition-colors">
+              <div className="text-[#034488] group-hover:text-[#0284C7] transition-colors">
                 <action.icon size={28} strokeWidth={1.5} />
               </div>
               <div className="flex flex-col text-[#034488] leading-tight">

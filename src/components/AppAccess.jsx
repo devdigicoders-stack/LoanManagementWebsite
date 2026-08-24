@@ -43,7 +43,7 @@ const AppAccess = () => {
       title: "Secure Experience",
       desc: "We use appropriate technical and organizational measures designed to help protect your information."
     }
-  ];
+ ;
 
   return (
     <section className="w-full bg-white py-24 px-6 md:px-10 border-b border-gray-100">
@@ -51,12 +51,12 @@ const AppAccess = () => {
         
         {/* Left Content */}
         <div className="w-full lg:w-1/3 sticky top-32">
-          <div className="inline-block bg-[#e8fbe9] text-[#4a9b12] rounded-full px-4 py-1 text-sm font-bold tracking-wider mb-6 uppercase">
+          <div className="inline-block bg-[#E0F2FE] text-[#0369A1] rounded-full px-4 py-1 text-sm font-bold tracking-wider mb-6 uppercase">
             Smarter Financial Access
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
             Everything You Need, <br className="hidden lg:block"/>
-            <span className="text-[#5bc116]">Right From Your Mobile</span>
+            <span className="text-[#0EA5E9]">Right From Your Mobile</span>
           </h2>
           <p className="text-gray-600 text-[16px] leading-relaxed mb-8">
             Our mobile application is designed to make your financial journey more convenient and accessible.
@@ -67,8 +67,8 @@ const AppAccess = () => {
         <div className="w-full lg:w-2/3">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {accessItems.map((item, index) => (
-              <div key={index} className="bg-[#fcfcfc] p-6 rounded-3xl border border-gray-100 hover:border-[#5bc116] hover:shadow-md transition-all duration-300 group">
-                <div className="w-12 h-12 bg-[#f0fbf0] text-[#5bc116] rounded-xl flex items-center justify-center mb-5 group-hover:bg-[#5bc116] group-hover:text-white transition-colors">
+              <div key={index} className="bg-[#fcfcfc] p-6 rounded-3xl border border-gray-100 hover:border-[#0EA5E9] hover:shadow-md transition-all duration-300 group">
+                <div className="w-12 h-12 bg-[#f0fbf0] text-[#0EA5E9] rounded-xl flex items-center justify-center mb-5 group-hover:bg-[#0EA5E9] group-hover:text-white transition-colors">
                   {item.icon}
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-3">{item.title}</h3>

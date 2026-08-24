@@ -34,8 +34,6 @@ const ServicesPage = () => {
       <ScrollReveal><ServicesProcess /></ScrollReveal>
       <ScrollReveal><ServicesWhyChoose /></ScrollReveal>
       <ScrollReveal><ServicesFAQ /></ScrollReveal>
-      <ScrollReveal><CompanyStats /></ScrollReveal>
-      <ScrollReveal><HappyClients /></ScrollReveal>
       <ScrollReveal><NewsAndPress /></ScrollReveal>
       <ScrollReveal><ServicesCTA /></ScrollReveal>
     </div>

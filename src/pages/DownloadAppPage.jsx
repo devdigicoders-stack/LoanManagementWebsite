@@ -21,8 +21,6 @@ const DownloadAppPage = () => {
       <ScrollReveal><AppFeatures /></ScrollReveal>
       <ScrollReveal><AppHowItWorks /></ScrollReveal>
       <ScrollReveal><AppDownloadLinks /></ScrollReveal>
-      <ScrollReveal><CompanyStats /></ScrollReveal>
-      <ScrollReveal><HappyClients /></ScrollReveal>
       <ScrollReveal><NewsAndPress /></ScrollReveal>
       <ScrollReveal><AppSupport /></ScrollReveal>
       <ScrollReveal><AppFinalCTA /></ScrollReveal>

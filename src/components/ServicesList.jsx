@@ -51,7 +51,7 @@ const ServicesList = () => {
       bullets: ["Working capital finance", "Equipment finance", "Supply chain finance", "Customized repayment"],
       link: "/services/sme-loan"
     }
-  ];
+ ];
 
   const filteredServices = activeTab === 'All' ? services : services.filter(s => s.category === activeTab);
 
@@ -61,7 +61,7 @@ const ServicesList = () => {
         
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
-            Explore Our <span className="text-[#5bc116]">Loan Products</span>
+            Explore Our <span className="text-[#0EA5E9]">Loan Products</span>
           </h2>
           
           {/* Tabs */}
@@ -72,8 +72,8 @@ const ServicesList = () => {
                 onClick={() => setActiveTab(tab)}
                 className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
                   activeTab === tab 
-                  ? 'bg-[#5bc116] text-white shadow-lg'
-                  : 'bg-white text-gray-600 border border-gray-200 hover:border-[#5bc116] hover:text-[#5bc116]'
+                  ? 'bg-[#0EA5E9] text-slate-900 shadow-lg'
+                  : 'bg-white text-gray-600 border border-gray-200 hover:border-[#0EA5E9] hover:text-[#0EA5E9]'
                 }`}
               >
                 {tab} Loans
@@ -88,12 +88,12 @@ const ServicesList = () => {
             return (
             <div id={cardId} key={index} className="bg-white p-8 rounded-3xl border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_15px_40px_rgba(91,193,22,0.1)] transition-all duration-300 group flex flex-col h-full">
               
-              <div className="w-16 h-16 bg-[#f4fdf5] border border-[#e8fbe9] text-[#5bc116] rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#5bc116] group-hover:text-white transition-colors duration-300 shrink-0">
+              <div className="w-16 h-16 bg-[#F8FAFC] border border-[#E0F2FE] text-[#0EA5E9] rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#0EA5E9] group-hover:text-white transition-colors duration-300 shrink-0">
                 {service.icon}
               </div>
               
               <h3 className="text-2xl font-bold text-gray-900 mb-2">{service.title}</h3>
-              <p className="text-[#5bc116] font-semibold text-sm mb-4">{service.subtitle}</p>
+              <p className="text-[#0EA5E9] font-semibold text-sm mb-4">{service.subtitle}</p>
               <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
                 {service.desc}
               </p>
@@ -102,7 +102,7 @@ const ServicesList = () => {
                 <ul className="space-y-2">
                   {service.bullets.map((bullet, idx) => (
                     <li key={idx} className="flex items-start gap-2">
-                      <CheckCircle2 className="text-[#5bc116] shrink-0 mt-0.5" size={16} />
+                      <CheckCircle2 className="text-[#0EA5E9] shrink-0 mt-0.5" size={16} />
                       <span className="text-gray-600 text-xs font-medium">{bullet}</span>
                     </li>
                   ))}
@@ -112,13 +112,13 @@ const ServicesList = () => {
               <div className="flex items-center justify-between mt-auto">
                  <Link 
                   to={service.link}
-                  className="inline-flex items-center gap-1 text-gray-500 font-semibold hover:text-[#5bc116] transition-colors text-sm"
+                  className="inline-flex items-center gap-1 text-gray-500 font-semibold hover:text-[#0EA5E9] transition-colors text-sm"
                 >
                   Know More
                 </Link>
                 <Link 
                   to="/get-started"
-                  className="inline-flex items-center gap-1 text-[#5bc116] font-bold hover:text-[#4a9b12] transition-colors text-sm"
+                  className="inline-flex items-center gap-1 text-[#0EA5E9] font-bold hover:text-[#0369A1] transition-colors text-sm"
                 >
                   Apply Now <ArrowRight size={16} />
                 </Link>
@@ -130,15 +130,15 @@ const ServicesList = () => {
 
         {/* Financial Services List */}
         <div className="mt-24 w-full relative">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#f4fdf5] rounded-[3rem] -z-10"></div>
-          <div className="max-w-6xl mx-auto px-6 py-16 border border-[#e8fbe9] bg-white/50 backdrop-blur-xl rounded-[3rem] shadow-sm text-center">
+          <div className="absolute inset-0 rounded-[3rem] -z-10"></div>
+          <div className="max-w-6xl mx-auto px-6 py-16 border border-[#E0F2FE] bg-white/50 backdrop-blur-xl rounded-[3rem] shadow-sm text-center">
             
             <div className="mb-12">
-              <span className="inline-block bg-[#e8fbe9] text-[#4a9b12] rounded-full px-4 py-1 text-sm font-bold tracking-wider mb-4 uppercase">
+              <span className="inline-block bg-[#E0F2FE] text-[#0369A1] rounded-full px-4 py-1 text-sm font-bold tracking-wider mb-4 uppercase">
                 Explore More
               </span>
               <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Other Financial Services</h3>
-              <p className="text-[#5bc116] text-[15px] font-bold uppercase tracking-widest">HAUS NUO-Pay Un-Secured Morgatage</p>
+              <p className="text-[#0EA5E9] text-[15px] font-bold uppercase tracking-widest">HAUS NUO-Pay Un-Secured Morgatage</p>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -157,9 +157,9 @@ const ServicesList = () => {
               ].map((item, idx) => (
                 <div 
                   key={idx} 
-                  className="group relative bg-white hover:bg-[#5bc116] border border-gray-100 hover:border-[#5bc116] rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-xl cursor-pointer flex items-center justify-center text-center"
+                  className="group relative bg-white hover:bg-[#0EA5E9] border border-gray-100 hover:border-[#0EA5E9] rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-xl cursor-pointer flex items-center justify-center text-center"
                 >
-                  <span className="text-gray-800 font-bold group-hover:text-white transition-colors duration-300">
+                  <span className="text-gray-800 font-bold group-hover:text-slate-900 transition-colors duration-300">
                     {item}
                   </span>
                 </div>

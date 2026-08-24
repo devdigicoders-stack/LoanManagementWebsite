@@ -31,14 +31,14 @@ const CommercialVehicleLoanPage = () => {
           title: "Fast Processing",
           desc: "Experience hassle-free and swift loan processing with minimal documentation so your vehicles hit the road faster."
         }
-      ]}
+     ]}
       eligibility={[
         "Individuals, Partnership Firms, and Private/Public Limited Companies.",
         "Minimum 2 years of experience in the same line of business.",
         "Good repayment track record if there are existing loans.",
         "Valid driving license and KYC documents for individuals.",
         "Satisfactory financial statements for business entities."
-      ]}
+     ]}
       documents={[
         "KYC Documents (Aadhaar, PAN, Voter ID)",
         "Last 6 months bank statements",
@@ -46,7 +46,7 @@ const CommercialVehicleLoanPage = () => {
         "Vehicle quotation from authorized dealer",
         "Route permit (if applicable)",
         "Latest ITR for self-employed/companies"
-      ]}
+     ]}
     />
   );
 };

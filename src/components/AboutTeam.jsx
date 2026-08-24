@@ -30,7 +30,7 @@ const AboutTeam = () => {
       description: "Focused on operational excellence and growth.",
       image: "/team/member2.jpg"
     }
-  ];
+ ];
 
   return (
     <section className="w-full bg-[#fcfcfc] py-24 px-6 md:px-10 relative overflow-x-clip">
@@ -44,11 +44,11 @@ const AboutTeam = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16 flex flex-col items-center"
         >
-          <div className="inline-block bg-[#eaf7e3] text-[#5bc116] font-bold text-[10px] md:text-[11px] uppercase tracking-widest py-1.5 px-4 rounded-full mb-4">
+          <div className="inline-block bg-[#eaf7e3] text-[#0EA5E9] font-bold text-[10px] md:text-[11px] uppercase tracking-widest py-1.5 px-4 rounded-full mb-4">
             OUR TEAM
           </div>
           <h2 className="text-[32px] md:text-4xl lg:text-[40px] font-bold text-gray-900 leading-tight">
-            Meet the People Behind <span className="text-[#5bc116]">HAUS NUO-Pay</span>
+            Meet the People Behind <span className="text-[#0EA5E9]">HAUS NUO-Pay</span>
           </h2>
         </motion.div>
 
@@ -56,7 +56,7 @@ const AboutTeam = () => {
         <div className="relative flex items-center">
           
           {/* Left Arrow (Desktop only) */}
-          <button className="hidden xl:flex absolute -left-12 w-10 h-10 items-center justify-center text-[#5bc116] hover:scale-110 transition-transform">
+          <button className="hidden xl:flex absolute -left-12 w-10 h-10 items-center justify-center text-[#0EA5E9] hover:scale-110 transition-transform">
             <ArrowLeft size={28} strokeWidth={2.5} />
           </button>
 
@@ -85,7 +85,7 @@ const AboutTeam = () => {
                 <div className="flex flex-col justify-between flex-grow">
                   <div>
                     <h4 className="text-black font-bold text-[15px]">{member.name}</h4>
-                    <p className="text-[#5bc116] text-[11px] font-semibold mb-2">{member.role}</p>
+                    <p className="text-[#0EA5E9] text-[11px] font-semibold mb-2">{member.role}</p>
                     <p className="text-gray-500 text-[11px] leading-snug mb-3">
                       {member.description}
                     </p>
@@ -93,13 +93,13 @@ const AboutTeam = () => {
                   
                   {/* Social Icons */}
                   <div className="flex gap-2">
-                    <button className="w-6 h-6 bg-[#edf7e8] rounded-md flex items-center justify-center text-black hover:bg-[#5bc116] hover:text-white transition-colors">
+                    <button className="w-6 h-6 bg-[#edf7e8] rounded-md flex items-center justify-center text-black hover:bg-[#0EA5E9] hover:text-white transition-colors">
                       <Linkedin size={12} />
                     </button>
-                    <button className="w-6 h-6 bg-[#edf7e8] rounded-md flex items-center justify-center text-black hover:bg-[#5bc116] hover:text-white transition-colors">
+                    <button className="w-6 h-6 bg-[#edf7e8] rounded-md flex items-center justify-center text-black hover:bg-[#0EA5E9] hover:text-white transition-colors">
                       <Twitter size={12} />
                     </button>
-                    <button className="w-6 h-6 bg-[#edf7e8] rounded-md flex items-center justify-center text-black hover:bg-[#5bc116] hover:text-white transition-colors">
+                    <button className="w-6 h-6 bg-[#edf7e8] rounded-md flex items-center justify-center text-black hover:bg-[#0EA5E9] hover:text-white transition-colors">
                       <Mail size={12} />
                     </button>
                   </div>
@@ -110,7 +110,7 @@ const AboutTeam = () => {
           </div>
 
           {/* Right Arrow (Desktop only) */}
-          <button className="hidden xl:flex absolute -right-12 w-10 h-10 items-center justify-center text-[#5bc116] hover:scale-110 transition-transform">
+          <button className="hidden xl:flex absolute -right-12 w-10 h-10 items-center justify-center text-[#0EA5E9] hover:scale-110 transition-transform">
             <ArrowRight size={28} strokeWidth={2.5} />
           </button>
 

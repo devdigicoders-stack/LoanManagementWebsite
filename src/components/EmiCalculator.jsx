@@ -38,11 +38,11 @@ const EmiCalculator = () => {
         
         {/* Left Side: Text and Controls */}
         <div className="w-full lg:w-1/2">
-          <div className="inline-block bg-[#f0fbf0] text-[#5bc116] rounded-full px-4 py-1.5 text-xs font-bold tracking-wider mb-4">
+          <div className="inline-block bg-[#f0fbf0] text-[#0EA5E9] rounded-full px-4 py-1.5 text-xs font-bold tracking-wider mb-4">
             PLAN YOUR FINANCES
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
-            Calculate your <span className="text-[#5bc116]">EMI instantly</span>
+            Calculate your <span className="text-[#0EA5E9]">EMI instantly</span>
           </h2>
           <p className="text-gray-600 mb-10">
             Use our easy EMI calculator to figure out your monthly payments and plan your loan accordingly.
@@ -53,7 +53,7 @@ const EmiCalculator = () => {
             <div>
               <div className="flex justify-between mb-2">
                 <label className="font-semibold text-gray-800">Loan Amount</label>
-                <span className="font-bold text-[#5bc116] bg-[#f0fbf0] px-3 py-1 rounded-md">{formatCurrency(loanAmount)}</span>
+                <span className="font-bold text-[#0EA5E9] bg-[#f0fbf0] px-3 py-1 rounded-md">{formatCurrency(loanAmount)}</span>
               </div>
               <input 
                 type="range" 
@@ -62,9 +62,9 @@ const EmiCalculator = () => {
                 step="50000" 
                 value={loanAmount} 
                 onChange={(e) => setLoanAmount(Number(e.target.value))}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#5bc116]"
+                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#0EA5E9]"
               />
-              <div className="flex justify-between text-xs text-gray-400 mt-1">
+              <div className="flex justify-between text-xs text-slate-600 mt-1">
                 <span>₹50K</span>
                 <span>₹50L+</span>
               </div>
@@ -74,7 +74,7 @@ const EmiCalculator = () => {
             <div>
               <div className="flex justify-between mb-2">
                 <label className="font-semibold text-gray-800">Interest Rate (% p.a.)</label>
-                <span className="font-bold text-[#5bc116] bg-[#f0fbf0] px-3 py-1 rounded-md">{interestRate}%</span>
+                <span className="font-bold text-[#0EA5E9] bg-[#f0fbf0] px-3 py-1 rounded-md">{interestRate}%</span>
               </div>
               <input 
                 type="range" 
@@ -83,9 +83,9 @@ const EmiCalculator = () => {
                 step="0.1" 
                 value={interestRate} 
                 onChange={(e) => setInterestRate(Number(e.target.value))}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#5bc116]"
+                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#0EA5E9]"
               />
-              <div className="flex justify-between text-xs text-gray-400 mt-1">
+              <div className="flex justify-between text-xs text-slate-600 mt-1">
                 <span>5%</span>
                 <span>25%</span>
               </div>
@@ -95,7 +95,7 @@ const EmiCalculator = () => {
             <div>
               <div className="flex justify-between mb-2">
                 <label className="font-semibold text-gray-800">Loan Tenure (Years)</label>
-                <span className="font-bold text-[#5bc116] bg-[#f0fbf0] px-3 py-1 rounded-md">{loanTenure} Years</span>
+                <span className="font-bold text-[#0EA5E9] bg-[#f0fbf0] px-3 py-1 rounded-md">{loanTenure} Years</span>
               </div>
               <input 
                 type="range" 
@@ -104,9 +104,9 @@ const EmiCalculator = () => {
                 step="1" 
                 value={loanTenure} 
                 onChange={(e) => setLoanTenure(Number(e.target.value))}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#5bc116]"
+                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#0EA5E9]"
               />
-              <div className="flex justify-between text-xs text-gray-400 mt-1">
+              <div className="flex justify-between text-xs text-slate-600 mt-1">
                 <span>1 Yr</span>
                 <span>30 Yrs</span>
               </div>
@@ -116,29 +116,29 @@ const EmiCalculator = () => {
 
         {/* Right Side: Results */}
         <div className="w-full lg:w-1/2">
-          <div className="bg-[#030706] text-white rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
+          <div className="bg-[#F0F9FF] text-slate-900 rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
             {/* Decorative circles */}
-            <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#71d924] rounded-full mix-blend-screen filter blur-[80px] opacity-20"></div>
+            <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#0369A1] rounded-full mix-blend-screen filter blur-[80px] opacity-20"></div>
             
-            <h3 className="text-xl font-medium text-gray-300 mb-6 border-b border-gray-800 pb-4">Your EMI Details</h3>
+            <h3 className="text-xl font-medium text-slate-700 mb-6 border-b border-gray-800 pb-4">Your EMI Details</h3>
             
             <div className="mb-8">
-              <p className="text-gray-400 mb-2">Equated Monthly Installment (EMI)</p>
-              <div className="text-4xl md:text-5xl font-bold text-[#71d924]">{formatCurrency(emi)} <span className="text-lg font-normal text-gray-500">/mo</span></div>
+              <p className="text-slate-600 mb-2">Equated Monthly Installment (EMI)</p>
+              <div className="text-4xl md:text-5xl font-bold text-[#0369A1]">{formatCurrency(emi)} <span className="text-lg font-normal text-gray-500">/mo</span></div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <div className="bg-[#0f1f13] p-5 rounded-xl border border-gray-800">
-                <p className="text-gray-400 text-sm mb-1">Total Interest</p>
+              <div className="bg-[#BAE6FD] p-5 rounded-xl border border-gray-800">
+                <p className="text-slate-600 text-sm mb-1">Total Interest</p>
                 <p className="text-xl font-bold">{formatCurrency(totalInterest)}</p>
               </div>
-              <div className="bg-[#0f1f13] p-5 rounded-xl border border-gray-800">
-                <p className="text-gray-400 text-sm mb-1">Total Amount Payable</p>
+              <div className="bg-[#BAE6FD] p-5 rounded-xl border border-gray-800">
+                <p className="text-slate-600 text-sm mb-1">Total Amount Payable</p>
                 <p className="text-xl font-bold">{formatCurrency(totalPayment)}</p>
               </div>
             </div>
 
-            <button className="w-full bg-gradient-to-r from-[#eef200] to-[#1cf200] hover:from-[#d5d900] hover:to-[#17cc00] text-black font-bold py-4 px-6 rounded-xl shadow-[0_0_20px_rgba(28,242,0,0.2)] transition-all duration-300 hover:scale-[1.02]">
+            <button className="w-full  hover:] hover:] text-black font-bold py-4 px-6 rounded-xl shadow-[0_0_20px_rgba(28,242,0,0.2)] transition-all duration-300 hover:scale-[1.02]">
               Apply for Loan Now
             </button>
             <p className="text-center text-xs text-gray-500 mt-4">
