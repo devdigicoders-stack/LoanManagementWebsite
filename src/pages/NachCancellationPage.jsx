@@ -10,7 +10,7 @@ const NachCancellationPage = () => {
     <div className="bg-[#fcfcfc] min-h-screen pt-32 pb-20 px-6 md:px-10 text-gray-800">
       <div className="max-w-4xl mx-auto">
         <div className="mb-10 text-center">
-          <h1 className="text-3xl md:text-5xl font-extrabold text-[#FDFBF7] mb-4">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4">
             NACH/eNACH Cancellation
           </h1>
           <p className="text-gray-500 text-lg">
@@ -27,7 +27,7 @@ const NachCancellationPage = () => {
           </p>
 
           <div className="mb-10">
-            <h2 className="text-xl font-bold text-[#FDFBF7] mb-4 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
               <CheckCircle2 className="text-[#0EA5E9]" /> eNACH Mandate Registration Process
             </h2>
             <p className="text-gray-600 mb-4 text-[15px]">
@@ -42,7 +42,7 @@ const NachCancellationPage = () => {
           </div>
 
           <div className="mb-10">
-            <h2 className="text-xl font-bold text-[#FDFBF7] mb-4 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
               <AlertCircle className="text-[#0EA5E9]" /> eNACH Mandate Cancellation Process
             </h2>
             <p className="text-gray-600 mb-4 text-[15px]">

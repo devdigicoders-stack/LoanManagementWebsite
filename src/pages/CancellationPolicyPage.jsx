@@ -9,13 +9,13 @@ const CancellationPolicyPage = () => {
           <div className="inline-flex items-center gap-2 bg-[#E0F2FE] text-[#0369A1] px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
             <FileText size={14} /> Official Documentation
           </div>
-          <h1 className="text-3xl md:text-5xl font-extrabold text-[#FDFBF7] mb-3">NACH/eNACH Cancellation</h1>
+          <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-3">NACH/eNACH Cancellation</h1>
           <p className="text-gray-500 text-base">Important information about mandate registration and cancellation processes.</p>
         </div>
 
         <div className="w-full bg-white p-8 md:p-12 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-[#e8f5e9]">
           <div className="prose prose-green max-w-none prose-p:text-gray-500 prose-p:text-[14px] prose-p:leading-relaxed">
-            <h2 className="mt-4 mb-4 flex items-center gap-3 text-2xl font-extrabold text-[#FDFBF7] border-l-4 border-[#0EA5E9] pl-4">NACH/eNACH CANCELLATION FOR NUOG MONEY &amp; NUO-PAY LOANS</h2>
+            <h2 className="mt-4 mb-4 flex items-center gap-3 text-2xl font-extrabold text-slate-900 border-l-4 border-[#0EA5E9] pl-4">NACH/eNACH CANCELLATION FOR NUOG MONEY &amp; NUO-PAY LOANS</h2>
             <p>National Payments Corporation of India (NPCI) introduced centralized National Automated Clearing House (NACH) debit payment system, which is regulated by the Reserve Bank of India under the Payments and Settlement Act 2007.</p>
             <p>NuoG Housing Payments Limited offers all its MSME customers’ digital payment mandate registration option through Electronic NACH (eNACH), this helps customers to make their emi payments hassle free.</p>
 

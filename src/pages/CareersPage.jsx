@@ -13,7 +13,7 @@ const CareersPage = () => {
       {/* Hero Section */}
       <section className="pt-28 pb-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
         <div className="flex-1 text-center md:text-left">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-[#FDFBF7] mb-8 leading-[1.1]">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-slate-900 mb-8 leading-[1.1]">
             Unleash your potential.
           </h1>
           <p className="text-xl text-gray-500 mb-10 max-w-2xl mx-auto md:mx-0">
@@ -21,7 +21,7 @@ const CareersPage = () => {
           </p>
           <a 
             href="#open-positions" 
-            className="inline-block bg-[#FDFBF7] hover:bg-[#0EA5E9] text-white text-lg font-medium px-10 py-4 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
+            className="inline-block bg-[#0EA5E9] hover:bg-[#0284C7] text-white text-lg font-bold px-10 py-4 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
           >
             See all open positions
           </a>
@@ -41,7 +41,7 @@ const CareersPage = () => {
       {/* Mission Section */}
       <section className="py-24 px-6 md:px-12 bg-white">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-          <h2 className="text-3xl md:text-5xl font-extrabold mb-8 text-[#FDFBF7]">Our mission</h2>
+          <h2 className="text-3xl md:text-5xl font-extrabold mb-8 text-slate-900">Our mission</h2>
           <p className="text-xl md:text-2xl text-gray-500 font-medium leading-relaxed max-w-3xl">
             We aim to build an ecosystem for the youth that solves all their financial needs and make their lives epic!
           </p>
@@ -51,7 +51,7 @@ const CareersPage = () => {
       {/* Stats Section */}
       <section className="py-24 px-6 md:px-12 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-16 text-[#FDFBF7]">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-16 text-cyan-500">
             We go big. We go beyond.
           </h2>
           
@@ -60,7 +60,7 @@ const CareersPage = () => {
               <div className="w-20 h-20 mx-auto bg-[#E0F2FE] text-[#0EA5E9] rounded-full flex items-center justify-center mb-6">
                 <Users size={36} strokeWidth={2.5} />
               </div>
-              <h3 className="text-2xl font-bold mb-2 text-[#FDFBF7]">14.79 Lakh+</h3>
+              <h3 className="text-2xl font-bold mb-2 text-gray-800">14.79 Lakh+</h3>
               <p className="text-gray-500 text-lg">registered customers</p>
             </div>
             
@@ -68,7 +68,7 @@ const CareersPage = () => {
               <div className="w-20 h-20 mx-auto bg-[#E0F2FE] text-[#0EA5E9] rounded-full flex items-center justify-center mb-6">
                 <MapPin size={36} strokeWidth={2.5} />
               </div>
-              <h3 className="text-2xl font-bold mb-2 text-[#FDFBF7]">21 branches</h3>
+              <h3 className="text-2xl font-bold mb-2 text-gray-800">21 branches</h3>
               <p className="text-gray-500 text-lg">across India &amp; expanding</p>
             </div>
             
@@ -76,7 +76,7 @@ const CareersPage = () => {
               <div className="w-20 h-20 mx-auto bg-[#E0F2FE] text-[#0EA5E9] rounded-full flex items-center justify-center mb-6">
                 <Building2 size={36} strokeWidth={2.5} />
               </div>
-              <h3 className="text-2xl font-bold mb-2 text-[#FDFBF7]">374+ workforce</h3>
+              <h3 className="text-2xl font-bold mb-2 text-gray-800">374+ workforce</h3>
               <p className="text-gray-500 text-lg">and many more to join</p>
             </div>
             
@@ -84,7 +84,7 @@ const CareersPage = () => {
               <div className="w-20 h-20 mx-auto bg-[#E0F2FE] text-[#0EA5E9] rounded-full flex items-center justify-center mb-6">
                 <StatsIcon size={36} strokeWidth={2.5} />
               </div>
-              <h3 className="text-2xl font-bold mb-2 text-[#FDFBF7]">₹0.74 Lakh Cr+</h3>
+              <h3 className="text-2xl font-bold mb-2 text-gray-800">₹0.74 Lakh Cr+</h3>
               <p className="text-gray-500 text-lg">Assets Under Management</p>
             </div>
           </div>
@@ -94,38 +94,38 @@ const CareersPage = () => {
       {/* Perks Section */}
       <section className="py-24 px-6 md:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-16 text-[#FDFBF7]">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-16 text-gray-900">
             We take care of you
           </h2>
           
           <div className="flex flex-wrap justify-center gap-6 md:gap-8">
             <div className="bg-[#fcfcfc] p-8 md:p-10 rounded-[2rem] border border-gray-100 text-center w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] hover:shadow-lg transition-shadow duration-300">
               <HeartPulse size={48} className="mx-auto text-[#0EA5E9] mb-6" strokeWidth={1.5} />
-              <h3 className="text-xl font-bold mb-3 text-[#FDFBF7]">Health comes first</h3>
+              <h3 className="text-xl font-bold mb-3 text-slate-900">Health comes first</h3>
               <p className="text-gray-500">Extensive medical insurance for you &amp; your family</p>
             </div>
             
             <div className="bg-[#fcfcfc] p-8 md:p-10 rounded-[2rem] border border-gray-100 text-center w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] hover:shadow-lg transition-shadow duration-300">
               <Clock size={48} className="mx-auto text-[#0EA5E9] mb-6" strokeWidth={1.5} />
-              <h3 className="text-xl font-bold mb-3 text-[#FDFBF7]">Flexible working hours</h3>
+              <h3 className="text-xl font-bold mb-3 text-slate-900">Flexible working hours</h3>
               <p className="text-gray-500">Define your own schedule to maximise productivity</p>
             </div>
             
             <div className="bg-[#fcfcfc] p-8 md:p-10 rounded-[2rem] border border-gray-100 text-center w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] hover:shadow-lg transition-shadow duration-300">
               <CalendarHeart size={48} className="mx-auto text-[#0EA5E9] mb-6" strokeWidth={1.5} />
-              <h3 className="text-xl font-bold mb-3 text-[#FDFBF7]">Take time off</h3>
+              <h3 className="text-xl font-bold mb-3 text-slate-900">Take time off</h3>
               <p className="text-gray-500">Tailored leave policies for all your important moments</p>
             </div>
             
             <div className="bg-[#fcfcfc] p-8 md:p-10 rounded-[2rem] border border-gray-100 text-center w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] hover:shadow-lg transition-shadow duration-300">
               <Trophy size={48} className="mx-auto text-[#0EA5E9] mb-6" strokeWidth={1.5} />
-              <h3 className="text-xl font-bold mb-3 text-[#FDFBF7]">Rewards</h3>
+              <h3 className="text-xl font-bold mb-3 text-slate-900">Rewards</h3>
               <p className="text-gray-500">A reward system to celebrate your hard work &amp; impact</p>
             </div>
             
             <div className="bg-[#fcfcfc] p-8 md:p-10 rounded-[2rem] border border-gray-100 text-center w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] hover:shadow-lg transition-shadow duration-300">
               <TrendingUp size={48} className="mx-auto text-[#0EA5E9] mb-6" strokeWidth={1.5} />
-              <h3 className="text-xl font-bold mb-3 text-[#FDFBF7]">Learn and grow</h3>
+              <h3 className="text-xl font-bold mb-3 text-slate-900">Learn and grow</h3>
               <p className="text-gray-500">Fuelling your growth with impactful learning opportunities</p>
             </div>
           </div>

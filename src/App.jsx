@@ -31,6 +31,7 @@ import HospfinsureLoanPage from './pages/HospfinsureLoanPage';
 import TerminatedVendorsPage from './pages/TerminatedVendorsPage';
 import NachCancellationPage from './pages/NachCancellationPage';
 import CareersPage from './pages/CareersPage';
+import JobDetailsPage from './pages/JobDetailsPage';
 
 // New Un-Secured Service Pages
 import BusinessLoanPage from './pages/BusinessLoanPage';
@@ -82,6 +83,7 @@ function App() {
             <Route path="/terminated-vendors" element={<TerminatedVendorsPage />} />
             <Route path="/nach-cancellation" element={<NachCancellationPage />} />
             <Route path="/careers" element={<CareersPage />} />
+            <Route path="/careers/:jobId" element={<JobDetailsPage />} />
             
             {/* HAUS Nuo-Pay Routes */}
             <Route path="/services/multi-single-emi" element={<MultiSingleEmiPage />} />

@@ -55,7 +55,7 @@ const AppFeatures = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <div key={index} className="bg-[#111814] p-8 rounded-3xl border border-[#E0F2FE] hover:border-[#0EA5E9] transition-colors group">
-              <div className="w-14 h-14 bg-[#FDFBF7] text-[#0EA5E9] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#0EA5E9] group-hover:text-[#FDFBF7] transition-all duration-300">
+              <div className="w-14 h-14 bg-[#FDFBF7] text-[#0EA5E9] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#0EA5E9] group-hover:text-slate-900 transition-all duration-300">
                 {feature.icon}
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-[#0EA5E9] transition-colors">{feature.title}</h3>

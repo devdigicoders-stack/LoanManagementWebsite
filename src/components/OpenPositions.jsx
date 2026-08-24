@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Search, MapPin, Clock, Folder, ChevronDown } from 'lucide-react';
+import { Search, MapPin, Clock, Folder, ChevronDown, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { jobs } from '../data/jobs';
 
 // Custom Dropdown Component with search filter
 const FilterDropdown = ({ options, value, onChange, placeholder, icon: Icon }) => {
@@ -21,7 +23,7 @@ const FilterDropdown = ({ options, value, onChange, placeholder, icon: Icon }) =
 
   return (
     <div className="relative w-full md:w-64" ref={dropdownRef}>
-      <button 
+      <button
         className="w-full flex items-center justify-between px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-700 hover:border-gray-300 transition-colors focus:outline-none focus:border-[#0EA5E9]"
         onClick={() => setIsOpen(!isOpen)}
       >
@@ -37,9 +39,9 @@ const FilterDropdown = ({ options, value, onChange, placeholder, icon: Icon }) =
           <div className="p-2 border-b border-gray-100">
             <div className="relative">
               <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-              <input 
-                type="text" 
-                placeholder="Search..." 
+              <input
+                type="text"
+                placeholder="Search..."
                 className="w-full pl-8 pr-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm outline-none focus:border-[#0EA5E9] focus:bg-white transition-colors"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -47,14 +49,14 @@ const FilterDropdown = ({ options, value, onChange, placeholder, icon: Icon }) =
             </div>
           </div>
           <div className="max-h-56 overflow-y-auto">
-            <div 
+            <div
               className={`px-4 py-2.5 text-sm cursor-pointer hover:bg-[#E0F2FE] transition-colors ${!value ? 'font-bold text-[#0EA5E9]' : 'text-gray-700'}`}
               onClick={() => { onChange(''); setIsOpen(false); setSearch(''); }}
             >
               {placeholder}
             </div>
             {filteredOptions.map((opt, i) => (
-              <div 
+              <div
                 key={i}
                 className={`px-4 py-2.5 text-sm cursor-pointer hover:bg-[#E0F2FE] transition-colors ${value === opt ? 'font-bold text-[#0EA5E9]' : 'text-gray-700'}`}
                 onClick={() => { onChange(opt); setIsOpen(false); setSearch(''); }}
@@ -76,18 +78,6 @@ const OpenPositions = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [department, setDepartment] = useState('');
   const [location, setLocation] = useState('');
-
-  // Sample job listings
-  const jobs = [
-    { id: 1, title: 'Product Designer', department: 'Design', location: 'Bengaluru, Karnataka, India', type: 'Full Time', workspace: 'On-Site' },
-    { id: 2, title: 'SDE 2 - Backend', department: 'Technology', location: 'Bengaluru, Karnataka, India', type: 'Full Time', workspace: 'On-Site' },
-    { id: 3, title: 'Growth Manager', department: 'Marketing', location: 'Mumbai, Maharashtra, India', type: 'Full Time', workspace: 'Hybrid' },
-    { id: 4, title: 'Frontend Developer', department: 'Technology', location: 'Remote', type: 'Full Time', workspace: 'Remote' },
-    { id: 5, title: 'HR Executive', department: 'Human Resources', location: 'Delhi, India', type: 'Full Time', workspace: 'On-Site' },
-    { id: 6, title: 'Product Manager', department: 'Product', location: 'Bengaluru, Karnataka, India', type: 'Full Time', workspace: 'Hybrid' },
-    { id: 7, title: 'Customer Support Agent', department: 'Operations', location: 'Hyderabad, Telangana, India', type: 'Full Time', workspace: 'On-Site' },
-    { id: 8, title: 'Senior UX Researcher', department: 'Design', location: 'Remote', type: 'Full Time', workspace: 'Remote' },
-  ];
 
   const departments = [...new Set(jobs.map(j => j.department))].sort();
   const locations = [...new Set(jobs.map(j => j.location))].sort();
@@ -111,27 +101,27 @@ const OpenPositions = () => {
         <div className="mb-10 space-y-4">
           <div className="relative">
             <Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
-            <input 
-              type="text" 
-              placeholder="Search roles or departments..." 
+            <input
+              type="text"
+              placeholder="Search roles or departments..."
               className="w-full pl-12 pr-4 py-3.5 bg-white border border-gray-200 rounded-xl outline-none focus:border-[#0EA5E9] focus:ring-4 focus:ring-[#0EA5E9]/10 transition-all text-gray-800 font-medium"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
-            <FilterDropdown 
-              options={departments} 
-              value={department} 
-              onChange={setDepartment} 
-              placeholder="All departments" 
+            <FilterDropdown
+              options={departments}
+              value={department}
+              onChange={setDepartment}
+              placeholder="All departments"
               icon={Folder}
             />
-            <FilterDropdown 
-              options={locations} 
-              value={location} 
-              onChange={setLocation} 
-              placeholder="All locations" 
+            <FilterDropdown
+              options={locations}
+              value={location}
+              onChange={setLocation}
+              placeholder="All locations"
               icon={MapPin}
             />
           </div>
@@ -144,9 +134,9 @@ const OpenPositions = () => {
               <div className="inline-block bg-white px-5 py-2 rounded-full text-sm font-bold text-slate-700 w-max mb-6 shadow-sm border border-gray-100 group-hover:text-[#0EA5E9] transition-colors">
                 {job.department}
               </div>
-              
+
               <h3 className="text-2xl font-extrabold text-slate-900 mb-6">{job.title}</h3>
-              
+
               <div className="space-y-3 mb-8 text-slate-600 flex-grow font-medium">
                 <div className="flex items-center gap-3">
                   <MapPin size={18} className="text-gray-400" />
@@ -157,13 +147,16 @@ const OpenPositions = () => {
                   <span>{job.type} • {job.workspace}</span>
                 </div>
               </div>
-              
-              <a href={`mailto:careers@hausnuo.com?subject=Application for ${job.title}`} className="inline-flex justify-center items-center w-max bg-[#0EA5E9] hover:bg-[#0284C7] text-white font-bold px-8 py-3.5 rounded-full transition-colors shadow-md hover:shadow-lg">
-                Apply Now
-              </a>
+
+              <Link
+                to={`/careers/${job.id}`}
+                className="inline-flex justify-center items-center gap-2 w-max bg-[#0EA5E9] hover:bg-[#0284C7] text-white font-bold px-8 py-3.5 rounded-full transition-colors shadow-md hover:shadow-lg"
+              >
+                Apply Now <ArrowRight size={16} />
+              </Link>
             </div>
           ))}
-          
+
           {filteredJobs.length === 0 && (
             <div className="col-span-1 md:col-span-2 text-center py-16 px-6 bg-[#fcfcfc] border border-gray-100 rounded-3xl">
               <div className="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4 text-gray-400">

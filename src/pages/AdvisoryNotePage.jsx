@@ -9,7 +9,7 @@ const AdvisoryNotePage = () => {
           <div className="inline-flex items-center gap-2 bg-[#E0F2FE] text-[#0369A1] px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
             <FileText size={14} /> Official Documentation
           </div>
-          <h1 className="text-3xl md:text-5xl font-extrabold text-[#FDFBF7] mb-3">Advisory Note</h1>
+          <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-3">Advisory Note</h1>
           <p className="text-gray-500 text-base">This Advisory is issued in the public interest to caution the general public against fraudulent activities.</p>
         </div>
 
@@ -26,12 +26,12 @@ const AdvisoryNotePage = () => {
               </div>
             </div>
 
-            <h2 className="mt-8 mb-4 flex items-center gap-3 text-xl font-extrabold text-[#FDFBF7] border-l-4 border-[#0EA5E9] pl-4">Purpose</h2>
+            <h2 className="mt-8 mb-4 flex items-center gap-3 text-xl font-extrabold text-slate-900 border-l-4 border-[#0EA5E9] pl-4">Purpose</h2>
             <p>It has Come to Our Notice that Certain Fraudsters Make Fictitious Loan Offers (through Advertisements or e-Mails) at Attractive Terms So as to Defraud Gullible Loan Seekers by Inducing them to Pay to the Fraudsters Processing Fees, Stamp Duty Charges, etc. for Such Loans.</p>
             <p>These Payments are Sought to be Made in Cash, Cheque or into Bank Accounts Controlled by the Fraudsters and are Misappropriated by the Fraudsters who then Abscond with the Same. Anyone Dealing with Such Fraudster will be Doing so at his/her Own Risk and Company will Not be Held Responsible for Such Loss or Damage Suffered Directly or Indirectly.</p>
             <p>For the Purpose of Illustration, we have Identified the few of the Modus Operandi Under which Such Activities Usually take Place or Might take Place.</p>
 
-            <h2 className="mt-8 mb-4 flex items-center gap-3 text-xl font-extrabold text-[#FDFBF7] border-l-4 border-[#0EA5E9] pl-4">Modus Operandi</h2>
+            <h2 className="mt-8 mb-4 flex items-center gap-3 text-xl font-extrabold text-slate-900 border-l-4 border-[#0EA5E9] pl-4">Modus Operandi</h2>
             <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 mb-6">
               <ul className="space-y-4">
                 <li className="flex gap-3">
@@ -45,7 +45,7 @@ const AdvisoryNotePage = () => {
               </ul>
             </div>
 
-            <h2 className="mt-8 mb-4 flex items-center gap-3 text-xl font-extrabold text-[#FDFBF7] border-l-4 border-[#0EA5E9] pl-4">Steps to be taken in Case of Receipt of Any Such Communication</h2>
+            <h2 className="mt-8 mb-4 flex items-center gap-3 text-xl font-extrabold text-slate-900 border-l-4 border-[#0EA5E9] pl-4">Steps to be taken in Case of Receipt of Any Such Communication</h2>
             <div className="bg-[#F8FAFC] p-6 rounded-xl border border-[#BAE6FD] mt-6">
               <ul className="space-y-4">
                 <li className="flex gap-3 items-start">

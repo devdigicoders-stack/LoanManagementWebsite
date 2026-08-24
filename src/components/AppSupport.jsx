@@ -23,7 +23,7 @@ const AppSupport = () => {
               </p>
               <Link 
                 to="/contact" 
-                className="inline-flex items-center gap-2 bg-[#0EA5E9] text-[#FDFBF7] px-6 py-3 rounded-full font-bold hover:bg-[#0369A1] transition-colors group"
+                className="inline-flex items-center gap-2 bg-[#0EA5E9] text-slate-900 px-6 py-3 rounded-full font-bold hover:bg-[#0369A1] transition-colors group"
               >
                 Contact Support <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </Link>

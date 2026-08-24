@@ -9,7 +9,7 @@ const FloatingAppQR = () => {
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-24 right-6 md:right-8 z-50 bg-[#0284C7] hover:bg-[#0EA5E9] text-[#FDFBF7] w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110"
+        className="fixed bottom-24 right-6 md:right-8 z-50 bg-[#0284C7] hover:bg-[#0EA5E9] text-slate-900 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110"
         title="Download Apps"
       >
         <QrCode size={26} className="animate-pulse" />

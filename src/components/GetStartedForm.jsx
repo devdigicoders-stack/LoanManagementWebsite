@@ -179,7 +179,7 @@ const GetStartedForm = () => {
               </div>
             </div>
 
-            <button type="button" className="w-full bg-[#0EA5E9] text-[#FDFBF7] font-bold text-lg py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-[#0369A1] transition-colors shadow-lg shadow-[#0EA5E9]/20 group">
+            <button type="button" className="w-full bg-[#0EA5E9] text-slate-900 font-bold text-lg py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-[#0369A1] transition-colors shadow-lg shadow-[#0EA5E9]/20 group">
               Submit & Continue
               <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </button>

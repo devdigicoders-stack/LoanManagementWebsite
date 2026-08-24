@@ -33,7 +33,7 @@ const GetStartedFinalCTA = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button 
             onClick={scrollToForm}
-            className="w-full sm:w-auto bg-[#0EA5E9] text-[#FDFBF7] px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-[#0369A1] transition-colors group shadow-lg shadow-[#0EA5E9]/20"
+            className="w-full sm:w-auto bg-[#0EA5E9] text-slate-900 px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-[#0369A1] transition-colors group shadow-lg shadow-[#0EA5E9]/20"
           >
             Start My Enquiry <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </button>

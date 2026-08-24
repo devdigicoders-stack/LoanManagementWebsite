@@ -65,7 +65,7 @@ const ContactHoursFeedback = () => {
           <div className="mt-8">
             <Link 
               to="/feedback" 
-              className="inline-flex items-center gap-2 bg-[#0EA5E9] text-[#FDFBF7] px-6 py-3 rounded-full font-bold hover:bg-[#0369A1] transition-colors group"
+              className="inline-flex items-center gap-2 bg-[#0EA5E9] text-slate-900 px-6 py-3 rounded-full font-bold hover:bg-[#0369A1] transition-colors group"
             >
               <MessageSquareHeart size={18} />
               Share Your Feedback

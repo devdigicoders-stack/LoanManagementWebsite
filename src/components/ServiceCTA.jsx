@@ -10,7 +10,7 @@ const ServiceCTA = () => {
         <p className="text-slate-600 text-[15px] mb-8">
           Get started with a simple enquiry.
         </p>
-        <button className="bg-white hover:bg-gray-100 text-[#FDFBF7] font-bold py-3 px-10 rounded-xl transition-all duration-300 shadow-md hover:scale-105">
+        <button className="bg-white hover:bg-gray-100 text-slate-900 font-bold py-3 px-10 rounded-xl transition-all duration-300 shadow-md hover:scale-105">
           Enquire Now
         </button>
       </div>

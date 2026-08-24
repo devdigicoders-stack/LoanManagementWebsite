@@ -56,7 +56,7 @@ const AppExperience = () => {
           {experiences.map((item, index) => (
             <div key={index} className="bg-[#FDFBF7] p-8 rounded-3xl border border-[#E0F2FE] hover:border-[#0EA5E9] hover:shadow-[0_0_25px_rgba(91,193,22,0.1)] transition-all duration-300 group">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-[#111814] text-[#0EA5E9] rounded-xl flex items-center justify-center shrink-0 border border-[#E0F2FE] group-hover:bg-[#0EA5E9] group-hover:text-[#FDFBF7] transition-colors">
+                <div className="w-12 h-12 bg-[#111814] text-[#0EA5E9] rounded-xl flex items-center justify-center shrink-0 border border-[#E0F2FE] group-hover:bg-[#0EA5E9] group-hover:text-slate-900 transition-colors">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 group-hover:text-[#0EA5E9] transition-colors">{item.title}</h3>

@@ -24,7 +24,7 @@ const ContactFinalCTA = () => {
           
           <Link 
             to="/services" 
-            className="w-full sm:w-auto bg-[#0EA5E9] text-[#FDFBF7] px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-[#0369A1] transition-colors group shadow-lg shadow-[#0EA5E9]/20"
+            className="w-full sm:w-auto bg-[#0EA5E9] text-slate-900 px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-[#0369A1] transition-colors group shadow-lg shadow-[#0EA5E9]/20"
           >
             Explore Our Services
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
