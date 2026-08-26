@@ -4,7 +4,7 @@ import { jobs } from '../data/jobs';
 import {
   MapPin, Clock, Briefcase, Monitor, ArrowLeft,
   Upload, User, Mail, Phone, Link2, Code2, Globe,
-  GraduationCap, Building2, ChevronDown, CheckCircle2, Plus, Trash2
+  GraduationCap, Building2, ChevronDown, CheckCircle2, Plus, Trash2, HeartHandshake, ShieldCheck, HandCoins, Baby
 } from 'lucide-react';
 
 // ─── Reusable form components ───────────────────────────────────────────────
@@ -40,24 +40,6 @@ const FormSelect = ({ label, required, placeholder, options }) => (
   </div>
 );
 
-const PhoneInput = () => (
-  <div>
-    <label className="block text-sm font-semibold text-slate-700 mb-1.5">
-      Phone<span className="text-red-500 ml-0.5">*</span>
-    </label>
-    <div className="flex gap-2">
-      <div className="flex items-center gap-1.5 px-3 py-3 border border-gray-200 rounded-xl bg-white text-sm text-gray-700 whitespace-nowrap">
-        🇮🇳 +91
-      </div>
-      <input
-        type="tel"
-        placeholder="Add phone number"
-        className="flex-1 px-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 placeholder-gray-400 bg-white outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all"
-      />
-    </div>
-  </div>
-);
-
 const FileUpload = ({ label, required, accept = '.pdf,.docx', maxSize = '10 MB', hint }) => {
   const inputRef = useRef(null);
   const [fileName, setFileName] = useState('');
@@ -84,8 +66,8 @@ const FileUpload = ({ label, required, accept = '.pdf,.docx', maxSize = '10 MB',
           <p className="text-sm font-semibold text-[#0EA5E9]">{fileName}</p>
         ) : (
           <>
-            <p className="text-sm font-semibold text-gray-700">Drag and drop files or click to upload</p>
-            <p className="text-xs text-gray-400 mt-1">Supported files: .pdf & .docx, up to {maxSize}</p>
+            <p className="text-sm font-semibold text-gray-700">Drag and drop files or Click to Upload</p>
+            <p className="text-xs text-gray-400 mt-1">Supported files: {accept}, up to {maxSize}</p>
           </>
         )}
       </div>
@@ -117,18 +99,18 @@ const EducationBlock = ({ index, onRemove, canRemove }) => (
       )}
     </div>
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <FormInput label="Institution" required placeholder="Search institution" />
-      <FormInput label="Discipline" placeholder="Search discipline" />
+      <FormInput label="Institution" required placeholder="Enter institution" />
+      <FormInput label="District/State" placeholder="Enter district/state" />
     </div>
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <FormSelect label="Degree" required placeholder="Search degree" options={["Bachelor's", "Master's", "PhD", "Diploma", "Other"]} />
-      <FormInput label="Location" placeholder="Search city, state or country" icon={MapPin} />
+      <FormInput label="Degree" required placeholder="Enter degree" />
+      <FormInput label="Location" placeholder="Enter location" icon={MapPin} />
     </div>
-    <FormInput label="Summary" placeholder="Enter summary" />
     <div className="grid grid-cols-2 gap-4">
       <DateSelect label="Start Date" />
       <DateSelect label="End Date" />
     </div>
+    <FormInput label="Summary" placeholder="Enter summary" />
   </div>
 );
 
@@ -146,17 +128,17 @@ const ExperienceBlock = ({ index, onRemove, canRemove }) => (
     </div>
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <FormInput label="Title" required placeholder="Enter title" />
-      <FormInput label="Company" required placeholder="Search company" icon={Building2} />
+      <FormInput label="Company" required placeholder="Enter company" icon={Building2} />
     </div>
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <FormInput label="Industry" placeholder="Search industry" />
-      <FormInput label="Location" placeholder="Search city, state or country" icon={MapPin} />
+      <FormInput label="Industry" placeholder="Enter industry" />
+      <FormInput label="Location" placeholder="Enter location" icon={MapPin} />
     </div>
-    <FormInput label="Summary" placeholder="Enter summary" />
     <div className="grid grid-cols-2 gap-4">
       <DateSelect label="Start Date" />
       <DateSelect label="End Date" />
     </div>
+    <FormInput label="Summary" placeholder="Enter summary" />
   </div>
 );
 
@@ -174,13 +156,44 @@ const ApplicationForm = ({ job }) => {
   return (
     <div className="space-y-10">
 
-      {/* Autofill from Resume */}
-      <div className="bg-[#F0F9FF] border border-[#BAE6FD] rounded-2xl p-6">
-        <h3 className="font-bold text-slate-900 text-lg mb-1 flex items-center gap-2">
-          <Upload size={18} className="text-[#0EA5E9]" /> Autofill from resume
-        </h3>
-        <p className="text-sm text-slate-500 mb-4">Save time by uploading your resume. (Only PDF or DOCX format supported)</p>
-        <FileUpload accept=".pdf,.docx" maxSize="10 MB" />
+      <div className="text-center pb-6 border-b border-gray-100">
+        <h2 className="text-3xl font-extrabold text-slate-900 mb-2">Application Form</h2>
+        <p className="text-slate-500">Please fill out the form below to apply for the HAUS NUO-Pay Offer- Liability position.</p>
+      </div>
+
+      {/* Policies & Benefits */}
+      <div className="bg-[#F0F9FF] border border-[#BAE6FD] rounded-2xl p-6 md:p-8">
+        <h3 className="font-bold text-slate-900 text-xl mb-6">Policies & Benefits</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="flex gap-4 items-start">
+            <HeartHandshake className="text-[#0EA5E9] shrink-0 mt-1" size={24} />
+            <div>
+              <h4 className="font-bold text-slate-900 mb-1">Equal Employment Opportunity and Inclusion</h4>
+              <p className="text-sm text-slate-600">We never discriminate on the basis of any protected class or characteristic.</p>
+            </div>
+          </div>
+          <div className="flex gap-4 items-start">
+            <ShieldCheck className="text-[#0EA5E9] shrink-0 mt-1" size={24} />
+            <div>
+              <h4 className="font-bold text-slate-900 mb-1">Comprehensive Insurance Coverage</h4>
+              <p className="text-sm text-slate-600">Coverage – Including Medical Insurance, Personal Accident Insurance and Group Life Insurance</p>
+            </div>
+          </div>
+          <div className="flex gap-4 items-start">
+            <HandCoins className="text-[#0EA5E9] shrink-0 mt-1" size={24} />
+            <div>
+              <h4 className="font-bold text-slate-900 mb-1">Loan & Advance Facilities</h4>
+              <p className="text-sm text-slate-600">Supporting Our Employees’ Dreams of Owning Loan Facility Provides Financial Assistance Make ‘Ghar ki Baat’</p>
+            </div>
+          </div>
+          <div className="flex gap-4 items-start">
+            <Baby className="text-[#0EA5E9] shrink-0 mt-1" size={24} />
+            <div>
+              <h4 className="font-bold text-slate-900 mb-1">Day Care Benefit Program</h4>
+              <p className="text-sm text-slate-600">We offer specialized day care support for working parents.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Personal Information */}
@@ -189,25 +202,45 @@ const ApplicationForm = ({ job }) => {
           <User size={18} className="text-[#0EA5E9]" /> Personal Information
         </h3>
         <div className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <FormInput label="First name" required placeholder="Enter first name" />
-            <FormInput label="Last name" required placeholder="Enter last name" />
+          <div className="grid grid-cols-1 gap-4">
+            <FormInput label="Name" required placeholder="Enter full name" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <FormInput label="Email" required placeholder="Enter email" type="email" icon={Mail} />
-            <PhoneInput />
+            <FormInput label="Father Name" placeholder="Enter father name" />
+            <FormInput label="Mother Name" placeholder="Enter mother name" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <FormInput label="LinkedIn URL" placeholder="Enter linkedin url" icon={Link2} />
-            <FormInput label="Github URL" placeholder="Enter github url" icon={Code2} />
+            <FormSelect label="Marital Status" placeholder="Select marital status" options={['Single', 'Married', 'Divorced', 'Widowed']} />
+            <FormInput label="Spouse Name" placeholder="Enter spouse name (if applicable)" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <FormInput label="e-Mail" required placeholder="Enter email" type="email" icon={Mail} />
+            <div>
+              <label className="block text-sm font-semibold text-slate-700 mb-1.5">Phone<span className="text-red-500 ml-0.5">*</span></label>
+              <div className="relative">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium">+91</span>
+                <input type="tel" className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all" />
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-slate-700 mb-1.5">Alternate Phone<span className="text-red-500 ml-0.5">*</span></label>
+              <div className="relative">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium">+91</span>
+                <input type="tel" className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all" />
+              </div>
+            </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <FormInput label="Website URL" placeholder="Enter website url" icon={Globe} />
-            <FormInput label="Address" placeholder="Search city, state or country" icon={MapPin} />
+            <FormInput label="Aadhaar Card" placeholder="Enter Aadhaar Number" />
+            <FormInput label="PAN Card" placeholder="Enter PAN Number" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <FormInput label="Address (Presented)" placeholder="Enter current address" />
+            <FormInput label="Address (Permanented)" placeholder="Enter permanent address" />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-slate-700 mb-1.5">Photo</label>
-            <FileUpload accept="image/*" maxSize="5 MB" hint="Upload a professional photo (optional)" />
+            <label className="block text-sm font-semibold text-slate-700 mb-1.5">Profile Photo</label>
+            <FileUpload accept="image/*" maxSize="5 MB" hint="Upload a professional photo" />
           </div>
         </div>
       </div>
@@ -215,7 +248,7 @@ const ApplicationForm = ({ job }) => {
       {/* Education */}
       <div>
         <h3 className="font-bold text-slate-900 text-lg mb-2 flex items-center gap-2">
-          <GraduationCap size={18} className="text-[#0EA5E9]" /> Education<span className="text-red-500">*</span>
+          <GraduationCap size={18} className="text-[#0EA5E9]" /> Education
         </h3>
         <div className="space-y-4">
           {educations.map((_, i) => (
@@ -238,7 +271,7 @@ const ApplicationForm = ({ job }) => {
       {/* Experience */}
       <div>
         <h3 className="font-bold text-slate-900 text-lg mb-2 flex items-center gap-2">
-          <Briefcase size={18} className="text-[#0EA5E9]" /> Experience<span className="text-red-500">*</span>
+          <Briefcase size={18} className="text-[#0EA5E9]" /> Experience
         </h3>
         <div className="space-y-4">
           {experiences.map((_, i) => (
@@ -258,22 +291,26 @@ const ApplicationForm = ({ job }) => {
         </div>
       </div>
 
-      {/* Documents */}
+      {/* Salary & Notice Period */}
       <div>
-        <h3 className="font-bold text-slate-900 text-lg mb-5">Documents</h3>
-        <div className="space-y-5">
-          <FileUpload label="Resume" required maxSize="20 MB" />
-          <FileUpload label="Cover Letter" maxSize="20 MB" />
+        <h3 className="font-bold text-slate-900 text-lg mb-5">Salary & NP</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <FormInput label="Yearly Gross Salary" required placeholder="Enter yearly gross salary" type="number" />
+          <FormInput label="Monthly Net In-Hand Salary" required placeholder="Enter monthly net salary" type="number" />
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+          <FormInput label="Expected Salary" required placeholder="Enter expected salary" type="number" />
+          <FormInput label="Notice Period" required placeholder="Enter notice period (Days/Months)" />
+          <FormInput label="Reason of Leaving" placeholder="Enter reason" />
         </div>
       </div>
 
-      {/* Salary & Notice Period */}
+      {/* Documents */}
       <div>
-        <h3 className="font-bold text-slate-900 text-lg mb-5">Salary & Notice Period</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <FormInput label="Current Salary (in Lakhs)" required placeholder="Enter current salary" type="number" />
-          <FormInput label="Expected Salary (in Lakhs)" required placeholder="Enter expected salary" type="number" />
-          <FormInput label="Notice Period (in Days)" required placeholder="Enter notice period" type="number" />
+        <h3 className="font-bold text-slate-900 text-lg mb-5">Documents</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <FileUpload label="Resume" accept=".pdf,.docx,.doc" />
+          <FileUpload label="Cover Letter" accept=".pdf,.docx,.doc" />
         </div>
       </div>
 
@@ -289,17 +326,34 @@ const ApplicationForm = ({ job }) => {
 
 const JobDetails = ({ job }) => (
   <div className="space-y-8 text-slate-700 leading-relaxed">
+    
+    {/* HAUS NUO-Pay Offer- Liability Hero Section */}
+    <div className="bg-gradient-to-r from-[#F0F9FF] to-[#E0F2FE] rounded-2xl p-6 md:p-8 border border-[#BAE6FD] mb-10">
+        <h2 className="text-2xl md:text-3xl font-extrabold text-[#0284C7] mb-2">HAUS NUO-Pay Offer- Liability</h2>
+        <p className="text-slate-600 font-medium text-sm md:text-base">Join our rapidly growing team and shape the future of financial services.</p>
+    </div>
+
     {/* About the Role */}
     <div>
-      <h3 className="text-xl font-bold text-slate-900 mb-3">About the role:</h3>
-      <p className="text-[15px]">{job.aboutRole}</p>
+      <h3 className="text-xl font-bold text-slate-900 mb-3">About the Role:</h3>
+      <p className="text-[15px] mb-4">
+        As a HAUS NUO-Pay Offer – Liability, You will be Responsible for Acquiring and Managing Customer Relationships, Driving Financial Growth, and Ensuring High-quality Service Delivery. You will Work Closely with Branch Teams, Customers, and Internal Stakeholders to Meet Business Targets and Enhance Customer Satisfaction.
+      </p>
     </div>
 
     {/* What you will do */}
     <div>
       <h3 className="text-xl font-bold text-slate-900 mb-4">What you will do:</h3>
       <ul className="space-y-3">
-        {job.whatYouWillDo.map((item, i) => (
+        {[
+          "Build and Manage a Portfolio of Retail Customers for Loans, Insurance, and Investment Products",
+          "Drive Financial Acquisition and Achieve Assigned Business Targets",
+          "Provide Personalized Financial Solutions Based on Customer Needs",
+          "Maintain Strong Relationships with Customers and Act as the First Point of Contact for Queries",
+          "Collaborate with Nearest Branch and Product Teams to Ensure Smooth Onboarding and Service Delivery",
+          "Ensure Compliance with Regulatory Guidelines, Internal Policies, and Operational Standards",
+          "Prepare Reports and MIS on Portfolio Growth, Customer Engagement, and Target Achievement",
+        ].map((item, i) => (
           <li key={i} className="flex items-start gap-3">
             <div className="w-1.5 h-1.5 rounded-full bg-[#0EA5E9] shrink-0 mt-2"></div>
             <span className="text-[15px]">{item}</span>
@@ -308,32 +362,63 @@ const JobDetails = ({ job }) => (
       </ul>
     </div>
 
-    {/* What you need */}
+    {/* What You will Need */}
     <div>
-      <h3 className="text-xl font-bold text-slate-900 mb-4">What you will need:</h3>
-      <ul className="space-y-3">
-        {job.whatYouNeed.map((item, i) => (
-          <li key={i} className="flex items-start gap-3">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#0EA5E9] shrink-0 mt-2"></div>
-            <span className="text-[15px]">{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-
-    {/* Life at NuoG */}
-    <div className="bg-[#F0F9FF] border border-[#BAE6FD] rounded-2xl p-8">
-      <h3 className="text-xl font-bold text-slate-900 mb-4">Life at NuoG:</h3>
-      <p className="text-slate-600 mb-4 font-medium">Life so good, you'd think we're kidding:</p>
+      <h3 className="text-xl font-bold text-slate-900 mb-4">What You will Need:</h3>
       <ul className="space-y-3">
         {[
-          'Competitive salaries. Period.',
-          "An extensive medical insurance that looks out for our employees & their dependents. We'll love you and take care of you, our promise.",
-          "Flexible working hours. Just don't call us at 3AM, we like our sleep schedule.",
-          'Tailored vacation & leave policies so that you enjoy every important moment in your life.',
-          'A reward system that celebrates hard work and milestones throughout the year. Expect a gift coming your way anytime you kill it here.',
-          'Learning and upskilling opportunities. Seriously, not kidding.',
-          'Good food, games, and a cool office to make you feel like home.',
+          "Bachelor’s Degree in any Discipline; Relevant Certifications in Banking/Finance are a Plus",
+          "2–5 Years of Experience in Retail Banking and Financial, Liability Sales, or Relationship Management",
+          "Strong Interpersonal, Communication, and Customer Engagement Skills",
+          "Knowledge of Deposit Products, Financial Operations, and Regulatory Guidelines",
+          "Target-Oriented Mindset with Ability to Drive Results Independently",
+          "Ability to Multitask, Solve Problems, and Work in a Fast-Paced Environment",
+          "Proficiency in MS Office and Financial Systems",
+        ].map((item, i) => (
+          <li key={i} className="flex items-start gap-3">
+            <div className="w-1.5 h-1.5 rounded-full bg-[#0EA5E9] shrink-0 mt-2"></div>
+            <span className="text-[15px]">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    {/* About the Role (Variant 2) */}
+    <div>
+      <h3 className="text-xl font-bold text-slate-900 mb-4 mt-8">Additional Role Responsibilities:</h3>
+      <ul className="space-y-3">
+        {[
+          "Good Communication in Hindi,English Purely sales guy in finance sector",
+          "Understand the entire Loan process journey Field Visit Mandatory",
+          "Good Negotiation skills Basic knowledge of Excel",
+          "Primary & Key Responsibility is to Negotiate the Terms & Conditions of the Loan Details Shared with the Customers (ROI, Charges etc)",
+          "Outbound Calling of About 200 -250 Calls Per Day to the Interested Customers",
+          "To Ensure Conversion of the Loan Applications at the Highest Rates Possible.",
+          "Ensure Loans are Processed as Per Established Company Procedures and Policies",
+          "Process, Close, Present, Service and Record Loan Related Notes and Disbursements etc.",
+          "Explaining Product Benefits to Customer and Informed Him in Detail All Benefits and Convince for Loan Processing."
+        ].map((item, i) => (
+          <li key={i} className="flex items-start gap-3">
+            <div className="w-1.5 h-1.5 rounded-full bg-[#0EA5E9] shrink-0 mt-2"></div>
+            <span className="text-[15px]">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    {/* Life at NUO-Pay */}
+    <div className="bg-[#F0F9FF] border border-[#BAE6FD] rounded-2xl p-8 my-8">
+      <h3 className="text-xl font-bold text-slate-900 mb-4">Life at NUO-Pay:</h3>
+      <p className="text-slate-600 mb-4 font-medium">Life So Good, you’d think We’re Kidding:</p>
+      <ul className="space-y-3">
+        {[
+          'Competitive Salaries. Period.',
+          "An Extensive Medical Insurance that Looks Out for Our Employees & Their Dependents. We’ll Love You and Take Care of You, Our Promise.",
+          "Flexible Working Hours. Just Don’t Call Us at 03:00 AM, We Like Our Sleep Schedule.",
+          'Tailored Vacation & Leave Policies So that You Enjoy Every Important Moment in Your Life.',
+          'A Reward System that Celebrates Hard Work and Milestones Throughout the Year. Expect a Gift Coming Your Way Anytime You Kill it Here.',
+          'Learning and Upskilling Opportunities. Seriously, Not Kidding.',
+          'Good Food, Games, and a Cool Office to Make You Feel Like Home. An Environment So Good, You’ll Forget the Term “Colleagues Can’t be Your Friends”.',
         ].map((item, i) => (
           <li key={i} className="flex items-start gap-3">
             <CheckCircle2 size={18} className="text-[#0EA5E9] shrink-0 mt-0.5" />
@@ -343,13 +428,33 @@ const JobDetails = ({ job }) => (
       </ul>
     </div>
 
-    {/* Diversity */}
+    {/* Equality Statement */}
     <div>
-      <h3 className="text-xl font-bold text-slate-900 mb-3">We believe in equality. Period.</h3>
+      <h3 className="text-xl font-bold text-slate-900 mb-3">We Believe in Equality. Period.</h3>
+      <p className="text-[15px] text-slate-600 mb-4">
+        At HAUS NUO-Pay, We are Committed to Building a Diverse and Talented Workforce. We Never Discriminate on the Basis of Race, Sex, Religion, Colour, National Origin, Gender, Gender Identity, Sexual Orientation, Age, Marital Status, Veteran Status, Medical Condition, Disability, or Any Other Class or Characteristic Protected by the Applicable law.
+      </p>
       <p className="text-[15px] text-slate-600">
-        At NuoG, we are committed to building a diverse and talented workforce. We never discriminate on the basis of race, sex, religion, colour, national origin, gender, gender identity, sexual orientation, age, marital status, veteran status, medical condition, disability, or any other class or characteristic protected by the applicable law.
+        We Consider All Qualified Job-Seekers with Criminal Histories in a Manner Consistent with the Applicable Law. Additionally, We are Committed to Providing Reasonable Accommodations to Qualified Individuals with Physical or Mental Disabilities in Order to Participate in the Job Application or Interview Process, Perform Essential Job Functions, and Receive other Benefits and Privileges of Employment.
+      </p>
+      <p className="text-[15px] font-bold text-[#0EA5E9] mt-4 text-lg">Come Join Our Crew!</p>
+    </div>
+
+    {/* About NUO-Pay */}
+    <div className="bg-slate-900 text-white rounded-2xl p-8 my-8 shadow-xl">
+      <h3 className="text-xl font-bold mb-3"><a href="https://slice.bank.in/" target="_blank" rel="noreferrer" className="text-[#38BDF8] hover:underline">About NUO-Pay:</a></h3>
+      <h4 className="font-bold text-lg mb-2">HAUS NUO-Pay - A New Financial for a New India</h4>
+      <p className="text-[14px] text-slate-300 mb-4">
+        HAUS NUO-Pay’s Purpose is to Make the World Better at Using Money and Time, with a Major Focus on Building the Best Consumer Experience for Your Money. We’ve All Felt How Slow, Confusing, and Complicated Financial Services Can be. So, We’re Reimagining it. We’re Building Every Product from Scratch to be Fast, Transparent, and Feel Good, Because We Believe that the Best Products Transcend Demographics, Like How Great Music Touches Most of Us.
+      </p>
+      <p className="text-[14px] text-slate-300 mb-4">
+        Our Cornerstone Products and Services: HAUS NUO-Pay Loans, Insurance, Investment, and Grow Your Business are Designed to be Simple, Rewarding, and Completely in Your Control. At HAUS NUO-Pay, you’ll get to Build things You’d Use Yourself and Shape the Future of Financial Services in India. We Tailor Our Working Experience with the Belief that the Present Moment is the Only Real thing in Life. And We have Harmony in the Present the Most when We feel Happy and Successful Together.
+      </p>
+      <p className="text-[14px] font-bold text-[#38BDF8]">
+        We’re Backed by Some of the World’s Leading Investors, Including Tiger Global and Insight Partners.
       </p>
     </div>
+
   </div>
 );
 
@@ -358,7 +463,15 @@ const JobDetails = ({ job }) => (
 const JobDetailsPage = () => {
   const { jobId } = useParams();
   const [activeTab, setActiveTab] = useState('details');
-  const job = jobs.find(j => j.id === jobId);
+  
+  // We mock the job object slightly to enforce the HAUS NUO-Pay Offer- Liability title if needed,
+  // but we'll try to find the actual job first.
+  let job = jobs.find(j => j.id === jobId);
+  
+  if (job) {
+    // Override title if specifically requested for all views
+    job = { ...job, title: "HAUS NUO-Pay Offer- Liability" };
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0);

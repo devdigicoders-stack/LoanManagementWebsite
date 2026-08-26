@@ -11,12 +11,12 @@ const CareersPage = () => {
     <div className="w-full bg-[#fcfcfc] min-h-screen text-gray-900 font-sans">
       
       {/* Hero Section */}
-      <section className="pt-28 pb-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-        <div className="flex-1 text-center md:text-left">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-slate-900 mb-8 leading-[1.1]">
+      <section className="pt-28 pb-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8 lg:gap-12 overflow-hidden">
+        <div className="w-full md:w-[55%] text-center md:text-left">
+          <h1 className="text-4xl sm:text-5xl md:text-[2.8rem] lg:text-6xl xl:text-[4rem] font-extrabold tracking-tight text-slate-900 mb-8 leading-[1.1] whitespace-nowrap">
             Unleash your potential.
           </h1>
-          <p className="text-xl text-gray-500 mb-10 max-w-2xl mx-auto md:mx-0">
+          <p className="text-xl text-gray-500 mb-10 max-w-2xl mx-auto md:mx-0 pr-4">
             Come build a new-age financial experience that challenges the status quo and makes life epic.
           </p>
           <a 
@@ -26,7 +26,7 @@ const CareersPage = () => {
             See all open positions
           </a>
         </div>
-        <div className="flex-1 w-full">
+        <div className="w-full md:w-[45%] shrink-0">
           <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
             <div className="absolute inset-0 mix-blend-overlay z-10"></div>
             <img 

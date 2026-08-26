@@ -33,7 +33,7 @@ const Header = () => {
  ];
 
   return (
-    <header className="w-full bg-[#F0F9FF] text-slate-900 border-b border-gray-800 shadow-sm sticky top-0 z-50">
+    <header className="w-full bg-[#F0F9FF] text-slate-900 border-b border-gray-800 shadow-sm sticky top-0 z-[100]">
 
       {/* Main Navigation */}
       <div className="max-w-7xl mx-auto py-4 px-6 md:px-10 flex items-center justify-between relative">

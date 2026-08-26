@@ -80,15 +80,15 @@ const Footer = () => {
 
           {/* Column 3: Help & Support */}
           <div className="flex flex-col">
-            <h4 className="text-slate-900 font-semibold text-lg mb-6">Help &amp; Support</h4>
-            <ul className="flex flex-col gap-5">
-              <div className="flex items-center gap-3 mb-4">
+            <h4 className="text-slate-900 font-semibold text-lg mb-4">Help &amp; Support</h4>
+            <ul className="flex flex-col gap-3">
+              <div className="flex items-center gap-3 mb-2">
                 <div className="w-10 h-10 rounded-full bg-[#7DD3FC] flex items-center justify-center text-[#0284C7] shrink-0">
                   <Phone size={18} />
                 </div>
                 <span className="text-slate-600 text-sm">+91 9755 766 018</span>
               </div>
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 mb-2">
                 <div className="w-10 h-10 rounded-full bg-[#7DD3FC] flex items-center justify-center text-[#0284C7] shrink-0">
                   <Mail size={18} />
                 </div>

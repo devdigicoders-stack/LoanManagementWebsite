@@ -60,8 +60,8 @@ const ServicesWhyChoose = () => {
                 <div className="w-12 h-12 bg-[#FDFBF7] border border-[#E0F2FE] text-[#0EA5E9] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#0EA5E9] group-hover:text-white transition-colors">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
-                <p className="text-slate-600 text-[14px] leading-relaxed">
+                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                <p className="text-slate-300 text-[14px] leading-relaxed">
                   {item.desc}
                 </p>
               </div>
