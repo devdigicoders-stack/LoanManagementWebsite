@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Search, MapPin, Clock, Folder, ChevronDown, ArrowRight, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { jobs } from '../data/jobs';
 import { locationData, DEPARTMENTS, departmentDesignations } from '../data/locations';
 
 // Custom Dropdown Component with search filter and multi-select
@@ -48,38 +47,39 @@ const FilterDropdown = ({ options, value, onChange, placeholder, icon: Icon }) =
       >
         <div className="flex items-center gap-2 truncate">
           {Icon && <Icon size={18} className="text-gray-500 shrink-0" />}
-          <span className="text-sm font-medium truncate">{displayValue}</span>
+          <span className="font-medium truncate">{displayValue}</span>
         </div>
-        <ChevronDown size={18} className={`text-gray-500 shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown size={18} className={`text-gray-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
       {isOpen && (
-        <div className="absolute top-full left-0 w-full mt-2 bg-white border border-gray-200 rounded-xl shadow-xl z-50 overflow-hidden flex flex-col max-h-80">
-          <div className="p-2 border-b border-gray-100 shrink-0">
-            <div className="relative">
-              <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search..."
-                className="w-full pl-8 pr-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm outline-none focus:border-[#0EA5E9] focus:bg-white transition-colors"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </div>
+        <div className="absolute z-50 w-full mt-2 bg-white border border-gray-200 rounded-xl shadow-xl max-h-80 flex flex-col">
+          <div className="p-3 border-b border-gray-100 sticky top-0 bg-white z-10">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#0EA5E9]"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              onClick={(e) => e.stopPropagation()}
+            />
           </div>
-          <div className="overflow-y-auto flex-1">
-            <div
-              className={`px-4 py-2.5 text-sm cursor-pointer hover:bg-[#E0F2FE] transition-colors ${value.length === 0 ? 'font-bold text-[#0EA5E9]' : 'text-gray-700'}`}
-              onClick={clearSelection}
-            >
-              Clear Selection
-            </div>
-            {filteredOptions.map((opt, i) => {
+          
+          <div className="overflow-y-auto p-2 flex-1 custom-scrollbar">
+            {value.length > 0 && (
+              <button 
+                onClick={(e) => { e.stopPropagation(); clearSelection(); }}
+                className="w-full text-left px-3 py-2 text-sm text-red-500 hover:bg-red-50 rounded-lg mb-1 font-medium transition-colors"
+              >
+                Clear Selection
+              </button>
+            )}
+            {filteredOptions.map((opt, idx) => {
               const isSelected = value.includes(opt);
               return (
-                <div
-                  key={i}
-                  className={`px-4 py-2.5 text-sm cursor-pointer hover:bg-[#E0F2FE] transition-colors flex items-center gap-3 ${isSelected ? 'bg-[#F0F9FF] text-[#0EA5E9] font-medium' : 'text-gray-700'}`}
+                <div 
+                  key={idx}
+                  className={`flex items-center gap-3 px-3 py-2.5 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors ${isSelected ? 'bg-blue-50/50' : ''}`}
                   onClick={() => toggleOption(opt)}
                 >
                   <input 
@@ -88,7 +88,7 @@ const FilterDropdown = ({ options, value, onChange, placeholder, icon: Icon }) =
                     readOnly
                     className="w-4 h-4 text-[#0EA5E9] rounded border-gray-300 focus:ring-[#0EA5E9] cursor-pointer"
                   />
-                  <span className="truncate">{opt}</span>
+                  <span className="truncate text-sm">{opt}</span>
                 </div>
               );
             })}
@@ -103,26 +103,38 @@ const FilterDropdown = ({ options, value, onChange, placeholder, icon: Icon }) =
 };
 
 const OpenPositions = () => {
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDepartments, setSelectedDepartments] = useState([]);
   const [selectedDesignations, setSelectedDesignations] = useState([]);
   const [selectedStates, setSelectedStates] = useState([]);
   const [selectedDistricts, setSelectedDistricts] = useState([]);
 
-  // Get list of states from locationData
+  useEffect(() => {
+    fetch('http://localhost:5000/api/recruitment/jobs?status=Open')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) setJobs(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error(err);
+        setLoading(false);
+      });
+  }, []);
+
   const states = Object.keys(locationData).sort();
 
-  // Get list of districts based on selected states
   const availableDistricts = selectedStates.length > 0 
     ? selectedStates.flatMap(state => locationData[state] || []).sort()
     : states.flatMap(state => locationData[state] || []).sort();
 
-  // Get list of designations based on selected departments
   const availableDesignations = selectedDepartments.length > 0
     ? selectedDepartments.flatMap(dept => departmentDesignations[dept] || []).sort()
     : Object.keys(departmentDesignations).flatMap(dept => departmentDesignations[dept]).sort();
 
-  // Clear district selection if it's no longer available based on state selection
   useEffect(() => {
     if (selectedStates.length > 0) {
       const validDistricts = selectedDistricts.filter(dist => availableDistricts.includes(dist));
@@ -132,7 +144,6 @@ const OpenPositions = () => {
     }
   }, [selectedStates]);
 
-  // Clear designation selection if it's no longer available based on department selection
   useEffect(() => {
     if (selectedDepartments.length > 0) {
       const validDesignations = selectedDesignations.filter(des => availableDesignations.includes(des));
@@ -144,7 +155,7 @@ const OpenPositions = () => {
 
   const filteredJobs = jobs.filter(job => {
     const matchSearch = job.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                        job.department?.toLowerCase().includes(searchQuery.toLowerCase());
+                        (job.department && job.department.toLowerCase().includes(searchQuery.toLowerCase()));
     
     const matchDept = selectedDepartments.length > 0 
       ? selectedDepartments.includes(job.department) 
@@ -155,21 +166,17 @@ const OpenPositions = () => {
       : true;
 
     const matchState = selectedStates.length > 0 
-      ? selectedStates.includes(job.state) 
+      ? selectedStates.some(st => job.location.includes(st)) 
       : true;
 
     const matchDistrict = selectedDistricts.length > 0 
-      ? selectedDistricts.includes(job.district) 
+      ? selectedDistricts.some(dt => job.location.includes(dt)) 
       : true;
 
     return matchSearch && matchDept && matchDesig && matchState && matchDistrict;
   });
 
-  const isSearchActive = searchQuery.trim() !== '' || 
-                         selectedDepartments.length > 0 || 
-                         selectedDesignations.length > 0 ||
-                         selectedStates.length > 0 || 
-                         selectedDistricts.length > 0;
+  const isSearchActive = true; 
 
   return (
     <section id="open-positions" className="py-24 px-6 md:px-12 bg-white text-slate-900">
@@ -179,7 +186,6 @@ const OpenPositions = () => {
           <p className="text-gray-500 text-lg md:text-xl">Come, join the NuoG crew!</p>
         </div>
 
-        {/* Search & Filters */}
         <div className="mb-10 space-y-4">
           <div className="relative max-w-2xl mx-auto mb-6">
             <Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
@@ -227,36 +233,48 @@ const OpenPositions = () => {
           </div>
         </div>
 
-        {/* Job Cards Grid */}
-        {isSearchActive && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {filteredJobs.map(job => (
-              <div key={job.id} className="bg-[#fcfcfc] rounded-3xl p-8 hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#E0F2FE] flex flex-col h-full group hover:-translate-y-1">
-                <div className="inline-block bg-white px-5 py-2 rounded-full text-sm font-bold text-slate-700 w-max mb-6 shadow-sm border border-gray-100 group-hover:text-[#0EA5E9] transition-colors">
-                  {job.department}
-                </div>
-
-                <h3 className="text-2xl font-extrabold text-slate-900 mb-6">{job.title}</h3>
-
-                <div className="space-y-3 mb-8 text-slate-600 flex-grow font-medium">
-                  <div className="flex items-center gap-3">
-                    <MapPin size={18} className="text-gray-400" />
-                    <span>{job.location}</span>
+        {loading ? (
+          <div className="text-center py-10">Loading open positions...</div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {filteredJobs.map(job => {
+              const openingsLeft = (job.openings || 1) - (job.hiredCount || 0);
+              
+              return (
+                <div key={job._id} className="bg-[#fcfcfc] rounded-2xl p-5 hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-[#E0F2FE] flex flex-col group hover:-translate-y-0.5">
+                  <div className="flex justify-between items-start mb-3">
+                    <div className="inline-block bg-white px-3 py-1 rounded-full text-xs font-bold text-slate-600 shadow-sm border border-gray-100 group-hover:text-[#0EA5E9] transition-colors">
+                      {job.department}
+                    </div>
+                    {openingsLeft > 0 && (
+                      <div className="inline-block bg-[#E0F2FE] text-[#0284C7] px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">
+                        {openingsLeft} {openingsLeft === 1 ? 'Seat' : 'Seats'} Left
+                      </div>
+                    )}
                   </div>
-                  <div className="flex items-center gap-3">
-                    <Clock size={18} className="text-gray-400" />
-                    <span>{job.type} • {job.workspace}</span>
-                  </div>
-                </div>
 
-                <Link
-                  to={`/careers/${job.id}`}
-                  className="inline-flex justify-center items-center gap-2 w-max bg-[#0EA5E9] hover:bg-[#0284C7] text-white font-bold px-8 py-3.5 rounded-full transition-colors shadow-md hover:shadow-lg"
-                >
-                  Apply Now <ArrowRight size={16} />
-                </Link>
-              </div>
-            ))}
+                  <h3 className="text-base font-bold text-slate-900 mb-3 leading-snug flex-grow">{job.title}</h3>
+
+                  <div className="space-y-1.5 mb-4 text-slate-500">
+                    <div className="flex items-center gap-2">
+                      <MapPin size={13} className="text-gray-400 shrink-0" />
+                      <span className="text-xs">{job.location}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Clock size={13} className="text-gray-400 shrink-0" />
+                      <span className="text-xs">{job.type}</span>
+                    </div>
+                  </div>
+
+                  <Link
+                    to={`/careers/${job._id}`}
+                    className="inline-flex items-center gap-1.5 w-max bg-[#0EA5E9] hover:bg-[#0284C7] text-white text-xs font-bold px-4 py-2 rounded-full transition-colors shadow-sm"
+                  >
+                    Apply Now <ArrowRight size={13} />
+                  </Link>
+                </div>
+              );
+            })}
 
             {filteredJobs.length === 0 && (
               <div className="col-span-1 md:col-span-2 text-center py-16 px-6 bg-[#fcfcfc] border border-gray-100 rounded-3xl">

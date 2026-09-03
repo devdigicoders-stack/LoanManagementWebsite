@@ -44,7 +44,7 @@ const AppHowItWorks = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         
         <div className="text-center mb-20">
-          <div className="inline-block bg-[#111814] border border-[#E0F2FE] text-[#0EA5E9] rounded-full px-5 py-2 text-sm font-bold tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(91,193,22,0.1)]">
+          <div className="inline-block bg-[#F0F9FF] border border-[#0EA5E9]/20 text-[#0EA5E9] rounded-full px-5 py-2 text-sm font-bold tracking-widest uppercase mb-6 shadow-sm">
             How The App Works
           </div>
           <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
@@ -67,12 +67,12 @@ const AppHowItWorks = () => {
                   
                   {/* Content Card */}
                   <div className={`w-full sm:w-1/2 ${isEven ? 'sm:pl-16' : 'sm:pr-16 text-left sm:text-right'}`}>
-                    <div className="bg-[#111814] p-8 rounded-3xl border border-[#E0F2FE] shadow-sm hover:border-[#0EA5E9] hover:shadow-[0_0_20px_rgba(91,193,22,0.1)] transition-all relative overflow-hidden">
-                      <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#0EA5E9] rounded-full blur-[60px] opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                    <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:-translate-y-1 hover:border-[#0EA5E9]/30 hover:shadow-xl transition-all duration-300 relative overflow-hidden group/card">
+                      <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#0EA5E9]/10 rounded-full blur-[40px] opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
                       
-                      <div className={`text-5xl font-black text-transparent bg-clip-text   mb-4 group-hover:] group-hover:] transition-all ${!isEven ? 'sm:ml-auto' : ''}`}>{step.num}</div>
-                      <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-[#0EA5E9] transition-colors">{step.title}</h3>
-                      <p className="text-slate-600 text-[15px] leading-relaxed group-hover:text-slate-700 transition-colors">{step.desc}</p>
+                      <div className={`text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-gray-200 to-gray-300 mb-4 group-hover/card:from-[#0EA5E9] group-hover/card:to-[#38BDF8] transition-all ${!isEven ? 'sm:ml-auto' : ''}`}>{step.num}</div>
+                      <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover/card:text-[#0EA5E9] transition-colors">{step.title}</h3>
+                      <p className="text-slate-500 text-[15px] leading-relaxed group-hover/card:text-slate-700 transition-colors">{step.desc}</p>
                     </div>
                   </div>
 

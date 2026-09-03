@@ -46,11 +46,11 @@ const AboutTrust = () => {
         <div className="w-full md:w-2/3">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {trustPoints.map((item, index) => (
-              <div key={index} className="bg-[#111814] p-8 rounded-2xl border border-[#E0F2FE] hover:border-[#2a3a2c] transition-colors">
-                <div className="w-12 h-12 bg-[#FDFBF7] border border-[#E0F2FE] text-[#0EA5E9] rounded-xl flex items-center justify-center mb-6">
+              <div key={index} className="bg-white p-8 rounded-2xl border border-slate-100 hover:border-[#0EA5E9]/30 hover:shadow-xl transition-colors">
+                <div className="w-12 h-12 bg-[#FDFBF7] border border-slate-100 text-[#0EA5E9] rounded-xl flex items-center justify-center mb-6">
                   {item.icon}
                 </div>
-                <h3 className="text-lg font-bold text-white mb-3">{item.title}</h3>
+                <h3 className="text-lg font-bold text-slate-900 mb-3">{item.title}</h3>
                 <p className="text-slate-300 text-[14px] leading-relaxed">
                   {item.desc}
                 </p>
@@ -65,3 +65,4 @@ const AboutTrust = () => {
 };
 
 export default AboutTrust;
+

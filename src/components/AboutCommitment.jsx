@@ -29,7 +29,7 @@ const AboutCommitment = () => {
 
         {/* Right Side - List */}
         <div className="w-full md:w-1/2">
-          <div className="bg-[#111814] border border-[#E0F2FE] p-8 rounded-3xl shadow-xl">
+          <div className="bg-white border border-slate-100 p-8 rounded-3xl shadow-xl">
             <h3 className="text-xl font-bold text-slate-900 mb-6">What We Focus On</h3>
             <ul className="space-y-4">
               {[
@@ -39,7 +39,7 @@ const AboutCommitment = () => {
                 "Full transparency on tenure and applicable charges",
                 "Convenient digital experience for all customers"
               ].map((item, index) => (
-                <li key={index} className="flex items-start gap-4 p-4 rounded-xl hover:bg-[#E0F2FE] transition-colors group border border-transparent hover:border-[#2a3a2c]">
+                <li key={index} className="flex items-start gap-4 p-4 rounded-xl hover:bg-[#E0F2FE] transition-colors group border border-transparent hover:border-[#0EA5E9]/30 hover:shadow-xl">
                   <CheckCircle2 className="text-[#0EA5E9] shrink-0 mt-0.5 group-hover:scale-110 transition-transform" size={20} />
                   <span className="text-slate-700 text-[14px] leading-relaxed group-hover:text-slate-900 transition-colors">{item}</span>
                 </li>
@@ -54,3 +54,4 @@ const AboutCommitment = () => {
 };
 
 export default AboutCommitment;
+

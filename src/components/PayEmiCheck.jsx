@@ -22,7 +22,7 @@ const PayEmiCheck = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm px-4">
-      <div className="w-full max-w-4xl bg-[#111814] border border-[#E0F2FE] rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+      <div className="w-full max-w-4xl bg-white border border-slate-100 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
         
         {/* Close Button */}
         <button 
@@ -49,7 +49,7 @@ const PayEmiCheck = ({ isOpen, onClose }) => {
                 type="text" 
                 name="mobile"
                 placeholder="10-digit number"
-                className="w-full bg-[#F0F9FF] border border-[#E0F2FE] text-slate-900 placeholder:text-gray-600 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0EA5E9] transition-colors"
+                className="w-full bg-[#F0F9FF] border border-slate-100 text-slate-900 placeholder:text-gray-600 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0EA5E9] transition-colors"
                 value={formData.mobile}
                 onChange={handleChange}
                 required
@@ -61,7 +61,7 @@ const PayEmiCheck = ({ isOpen, onClose }) => {
                 type="text" 
                 name="aadhar"
                 placeholder="12-digit number"
-                className="w-full bg-[#F0F9FF] border border-[#E0F2FE] text-slate-900 placeholder:text-gray-600 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0EA5E9] transition-colors"
+                className="w-full bg-[#F0F9FF] border border-slate-100 text-slate-900 placeholder:text-gray-600 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0EA5E9] transition-colors"
                 value={formData.aadhar}
                 onChange={handleChange}
                 required
@@ -73,7 +73,7 @@ const PayEmiCheck = ({ isOpen, onClose }) => {
                 type="text" 
                 name="pan"
                 placeholder="ABCDE1234F"
-                className="w-full bg-[#F0F9FF] border border-[#E0F2FE] text-slate-900 placeholder:text-gray-600 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0EA5E9] transition-colors uppercase"
+                className="w-full bg-[#F0F9FF] border border-slate-100 text-slate-900 placeholder:text-gray-600 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0EA5E9] transition-colors uppercase"
                 value={formData.pan}
                 onChange={handleChange}
                 required
@@ -95,3 +95,4 @@ const PayEmiCheck = ({ isOpen, onClose }) => {
 };
 
 export default PayEmiCheck;
+

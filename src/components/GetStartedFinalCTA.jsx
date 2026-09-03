@@ -18,7 +18,7 @@ const GetStartedFinalCTA = () => {
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         
-        <div className="inline-block bg-[#111814] border border-[#E0F2FE] text-[#0EA5E9] rounded-full px-5 py-2 text-sm font-bold tracking-widest uppercase mb-6">
+        <div className="inline-block bg-[#F0F9FF] border border-[#0EA5E9]/20 text-[#0EA5E9] rounded-full shadow-sm px-5 py-2 text-sm font-bold tracking-widest uppercase mb-6">
           Your Property. Your Goals. Let's Get Started.
         </div>
         
@@ -59,3 +59,4 @@ const GetStartedFinalCTA = () => {
 };
 
 export default GetStartedFinalCTA;
+

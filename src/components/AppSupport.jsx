@@ -14,7 +14,7 @@ const AppSupport = () => {
           <div className="relative z-10 flex flex-col md:flex-row gap-12 items-center">
             
             <div className="w-full md:w-1/2 text-center md:text-left">
-              <div className="inline-block bg-[#111814] border border-[#E0F2FE] text-[#0EA5E9] rounded-full px-4 py-1 text-sm font-bold tracking-wider mb-4 uppercase">
+              <div className="inline-block bg-[#F0F9FF] border border-[#0EA5E9]/20 text-[#0EA5E9] rounded-full px-4 py-1 text-sm font-bold tracking-wider mb-4 uppercase shadow-sm">
                 Need Help?
               </div>
               <h2 className="text-3xl font-bold text-slate-900 mb-4">We're Here for You</h2>
@@ -30,34 +30,34 @@ const AppSupport = () => {
             </div>
 
             <div className="w-full md:w-1/2">
-              <div className="bg-[#111814] border border-[#E0F2FE] rounded-2xl p-6 space-y-5">
+              <div className="bg-white border border-slate-100 shadow-sm rounded-2xl p-6 space-y-5">
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-[#FDFBF7] text-[#0EA5E9] rounded-lg flex items-center justify-center shrink-0 border border-[#E0F2FE]">
+                  <div className="w-10 h-10 bg-[#F8FAFC] text-[#0EA5E9] rounded-lg flex items-center justify-center shrink-0 border border-slate-100">
                     <Phone size={18} />
                   </div>
                   <div>
-                    <div className="text-gray-500 text-[12px] font-bold uppercase tracking-wider mb-1">Phone</div>
+                    <div className="text-slate-500 text-[12px] font-bold uppercase tracking-wider mb-1">Phone</div>
                     <div className="text-slate-900 font-medium">+91 9755 766 018</div>
                   </div>
                 </div>
                 
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-[#FDFBF7] text-[#0EA5E9] rounded-lg flex items-center justify-center shrink-0 border border-[#E0F2FE]">
+                  <div className="w-10 h-10 bg-[#F8FAFC] text-[#0EA5E9] rounded-lg flex items-center justify-center shrink-0 border border-slate-100">
                     <Mail size={18} />
                   </div>
                   <div>
-                    <div className="text-gray-500 text-[12px] font-bold uppercase tracking-wider mb-1">Email</div>
+                    <div className="text-slate-500 text-[12px] font-bold uppercase tracking-wider mb-1">Email</div>
                     <a href="mailto:haustouch@hausnuo.com" className="text-slate-900 font-medium hover:text-[#0EA5E9] transition-colors">haustouch@hausnuo.com</a>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-[#FDFBF7] text-[#0EA5E9] rounded-lg flex items-center justify-center shrink-0 border border-[#E0F2FE]">
+                  <div className="w-10 h-10 bg-[#F8FAFC] text-[#0EA5E9] rounded-lg flex items-center justify-center shrink-0 border border-slate-100">
                     <Clock size={18} />
                   </div>
                   <div>
-                    <div className="text-gray-500 text-[12px] font-bold uppercase tracking-wider mb-1">Customer Support</div>
-                    <div className="text-slate-900 font-medium">Monday – Saturday<br/>9:00 AM – 6:00 PM</div>
+                    <div className="text-slate-500 text-[12px] font-bold uppercase tracking-wider mb-1">Customer Support</div>
+                    <div className="text-slate-900 font-medium">Monday — Saturday<br/>9:00 AM — 6:00 PM</div>
                   </div>
                 </div>
               </div>

@@ -36,7 +36,7 @@ const ServicesWhyChoose = () => {
  ];
 
   return (
-    <section className="w-full bg-[#FDFBF7] py-24 px-6 md:px-10 border-t border-[#E0F2FE]">
+    <section className="w-full bg-[#FDFBF7] py-24 px-6 md:px-10 border-t border-slate-100">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-20">
         
         {/* Left Side */}
@@ -56,11 +56,11 @@ const ServicesWhyChoose = () => {
         <div className="w-full lg:w-2/3">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {reasons.map((item, index) => (
-              <div key={index} className="bg-[#111814] p-8 rounded-2xl border border-[#E0F2FE] hover:border-[#2a3a2c] transition-colors group">
-                <div className="w-12 h-12 bg-[#FDFBF7] border border-[#E0F2FE] text-[#0EA5E9] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#0EA5E9] group-hover:text-white transition-colors">
+              <div key={index} className="bg-white p-8 rounded-2xl border border-slate-100 hover:border-[#0EA5E9]/30 hover:shadow-xl transition-colors group">
+                <div className="w-12 h-12 bg-[#FDFBF7] border border-slate-100 text-[#0EA5E9] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#0EA5E9] group-hover:text-slate-900 transition-colors">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
                 <p className="text-slate-300 text-[14px] leading-relaxed">
                   {item.desc}
                 </p>
@@ -75,3 +75,4 @@ const ServicesWhyChoose = () => {
 };
 
 export default ServicesWhyChoose;
+

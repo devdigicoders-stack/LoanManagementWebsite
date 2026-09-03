@@ -3,11 +3,11 @@ import { User, Phone, Mail, MapPin, Home, IndianRupee, Briefcase, FileText, Send
 
 const GetStartedForm = () => {
   return (
-    <section id="enquiry-form" className="w-full bg-[#FDFBF7] py-24 px-6 md:px-10 border-t border-[#E0F2FE]">
+    <section id="enquiry-form" className="w-full bg-[#FDFBF7] py-24 px-6 md:px-10 border-t border-slate-100">
       <div className="max-w-4xl mx-auto">
         
         <div className="text-center mb-16">
-          <div className="inline-block bg-[#111814] border border-[#E0F2FE] text-[#0EA5E9] rounded-full px-5 py-2 text-sm font-bold tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(91,193,22,0.1)]">
+          <div className="inline-block bg-[#F0F9FF] border border-[#0EA5E9]/20 text-[#0EA5E9] rounded-full shadow-sm px-5 py-2 text-sm font-bold tracking-widest uppercase mb-6 shadow-sm">
             Tell Us About Your Requirement
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
@@ -193,3 +193,4 @@ const GetStartedForm = () => {
 };
 
 export default GetStartedForm;
+

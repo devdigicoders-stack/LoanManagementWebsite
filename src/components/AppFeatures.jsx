@@ -44,7 +44,7 @@ const AppFeatures = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         
         <div className="text-center mb-16">
-          <div className="inline-block bg-[#111814] border border-[#E0F2FE] text-[#0EA5E9] rounded-full px-5 py-2 text-sm font-bold tracking-widest uppercase mb-6">
+          <div className="inline-block bg-[#F0F9FF] border border-[#0EA5E9]/20 text-[#0EA5E9] rounded-full px-5 py-2 text-sm font-bold tracking-widest uppercase mb-6">
             Our App Features
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
@@ -54,12 +54,12 @@ const AppFeatures = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="bg-[#111814] p-8 rounded-3xl border border-[#E0F2FE] hover:border-[#0EA5E9] transition-colors group">
-              <div className="w-14 h-14 bg-[#FDFBF7] text-[#0EA5E9] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#0EA5E9] group-hover:text-slate-900 transition-all duration-300">
+            <div key={index} className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-[#0EA5E9]/30 transition-all duration-300 group">
+              <div className="w-14 h-14 bg-[#F0F9FF] text-[#0EA5E9] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#0EA5E9] group-hover:text-white transition-all duration-300">
                 {feature.icon}
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-[#0EA5E9] transition-colors">{feature.title}</h3>
-              <p className="text-slate-600 text-[15px] leading-relaxed">
+              <p className="text-slate-500 text-[15px] leading-relaxed">
                 {feature.desc}
               </p>
             </div>

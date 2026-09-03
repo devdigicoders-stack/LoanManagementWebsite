@@ -43,13 +43,13 @@ const Header = () => {
             <img 
               src="/loanlogo.png" 
               alt="HAUS NUO-Pay Logo" 
-              className="h-12 object-contain"
+              className="h-16 md:h-20 object-contain"
             />
           </Link>
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-6 text-sm font-medium">
+        <nav className="hidden lg:flex items-center space-x-6 text-base font-semibold">
           {navItems.map((item) => (
             <div 
               key={item.name} 
@@ -60,9 +60,9 @@ const Header = () => {
               <Link
                 to={item.path}
                 onClick={() => setActive(item.name)}
-                className={`transition-all duration-300 px-3 py-2 rounded-md flex items-center gap-1 ${
+                className={`transition-all duration-300 px-4 py-2.5 rounded-md flex items-center gap-1.5 ${
                   active === item.name || (item.hasDropdown && dropdownOpen === item.dropdownId)
-                    ? 'bg-[#BAE6FD] text-[#0284C7] border-b-2 border-[#0284C7]'
+                    ? 'bg-[#BAE6FD] text-[#0284C7] border-b-[3px] border-[#0284C7]'
                     : 'text-slate-700 hover:text-slate-900 hover:bg-white/5'
                 }`}
               >

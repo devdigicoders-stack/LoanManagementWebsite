@@ -22,7 +22,7 @@ const AppFinalCTA = () => {
           
           <Link 
             to="#"
-            className="w-full sm:w-auto inline-flex items-center justify-center bg-black text-slate-900 rounded-xl px-5 py-2.5 hover:bg-gray-900 transition-colors border border-gray-800 shadow-lg shadow-black/20 group"
+            className="w-full sm:w-auto inline-flex items-center justify-center bg-black text-white rounded-xl px-5 py-2.5 hover:bg-gray-900 transition-colors border border-gray-800 shadow-lg shadow-black/20 group"
           >
             <div className="mr-3">
               <svg viewBox="0 0 512 512" width="28" height="28" fill="currentColor">
@@ -33,14 +33,14 @@ const AppFinalCTA = () => {
               </svg>
             </div>
             <div className="text-left">
-              <div className="text-[10px] uppercase tracking-wide font-medium leading-tight text-slate-700">GET IT ON</div>
+              <div className="text-[10px] uppercase tracking-wide font-medium leading-tight text-gray-400">GET IT ON</div>
               <div className="text-xl font-semibold leading-tight tracking-tight font-sans">Google Play</div>
             </div>
           </Link>
           
           <Link 
             to="#"
-            className="w-full sm:w-auto inline-flex items-center justify-center bg-black text-slate-900 rounded-xl px-5 py-2.5 hover:bg-gray-900 transition-colors border border-gray-800 shadow-lg shadow-black/20 group"
+            className="w-full sm:w-auto inline-flex items-center justify-center bg-black text-white rounded-xl px-5 py-2.5 hover:bg-gray-900 transition-colors border border-gray-800 shadow-lg shadow-black/20 group"
           >
             <div className="mr-3">
               <svg viewBox="0 0 384 512" width="30" height="30" fill="currentColor">
@@ -48,7 +48,7 @@ const AppFinalCTA = () => {
               </svg>
             </div>
             <div className="text-left">
-              <div className="text-[10px] tracking-wide font-medium leading-tight text-slate-700">Download on the</div>
+              <div className="text-[10px] tracking-wide font-medium leading-tight text-gray-400">Download on the</div>
               <div className="text-xl font-semibold leading-tight tracking-tight font-sans">App Store</div>
             </div>
           </Link>
