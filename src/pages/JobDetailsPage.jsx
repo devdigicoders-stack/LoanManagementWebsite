@@ -198,7 +198,8 @@ const ApplicationForm = ({ job }) => {
   const [files, setFiles] = useState({
     profilePhoto: null,
     resume: null,
-    coverLetter: null
+    coverLetter: null,
+    salarySlip: null
   });
 
   const [educations, setEducations] = useState([{}]);
@@ -300,6 +301,7 @@ const ApplicationForm = ({ job }) => {
       if (files.profilePhoto) submitData.append('profilePhoto', files.profilePhoto);
       if (files.resume) submitData.append('resume', files.resume);
       if (files.coverLetter) submitData.append('coverLetter', files.coverLetter);
+      if (files.salarySlip) submitData.append('salarySlip', files.salarySlip);
 
       const response = await fetch(`http://localhost:5000/api/recruitment/jobs/${job._id}/apply`, {
         method: 'POST',
@@ -527,9 +529,10 @@ const ApplicationForm = ({ job }) => {
       {/* Documents */}
       <div>
         <h3 className="font-bold text-slate-900 text-lg mb-5">Documents</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <FileUpload onChange={file => setFiles({...files, resume: file})} required label="Resume" accept=".pdf,.docx,.doc" />
           <FileUpload onChange={file => setFiles({...files, coverLetter: file})} label="Cover Letter" accept=".pdf,.docx,.doc" />
+          <FileUpload onChange={file => setFiles({...files, salarySlip: file})} label="Salary Slip (Optional)" accept=".pdf,.jpeg,.jpg,.png" />
         </div>
       </div>
 
