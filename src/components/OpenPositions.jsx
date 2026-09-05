@@ -113,7 +113,7 @@ const OpenPositions = () => {
   const [selectedDistricts, setSelectedDistricts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/recruitment/jobs?status=Open')
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/recruitment/jobs?status=Open`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) setJobs(data);

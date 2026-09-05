@@ -303,7 +303,7 @@ const ApplicationForm = ({ job }) => {
       if (files.coverLetter) submitData.append('coverLetter', files.coverLetter);
       if (files.salarySlip) submitData.append('salarySlip', files.salarySlip);
 
-      const response = await fetch(`http://localhost:5000/api/recruitment/jobs/${job._id}/apply`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/recruitment/jobs/${job._id}/apply`, {
         method: 'POST',
         body: submitData
       });
@@ -576,7 +576,7 @@ const JobDetailsPage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    fetch(`http://localhost:5000/api/recruitment/jobs/${jobId}`)
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/recruitment/jobs/${jobId}`)
       .then(res => res.json())
       .then(data => {
         setJob(data);
