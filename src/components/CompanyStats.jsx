@@ -38,7 +38,7 @@ const CompanyStats = () => {
 
   return (
     <section className="w-full bg-[#fcfcfc] py-16 px-6 md:px-10">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row shadow-lg border border-gray-200">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto flex flex-col lg:flex-row shadow-lg border border-gray-200">
         
         {/* Left Section (Brand) */}
         <div className="lg:w-1/3 bg-[#FDFBF7] text-slate-900 p-10 md:p-14 flex flex-col justify-center relative overflow-hidden">

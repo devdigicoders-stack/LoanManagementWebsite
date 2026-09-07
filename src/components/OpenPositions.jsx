@@ -153,8 +153,16 @@ const OpenPositions = () => {
     }
   }, [selectedDepartments]);
 
-  const filteredJobs = jobs.filter(job => {
-    const matchSearch = job.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+  const hasActiveFilter = 
+    searchQuery.trim().length > 0 ||
+    selectedDepartments.length > 0 ||
+    selectedDesignations.length > 0 ||
+    selectedStates.length > 0 ||
+    selectedDistricts.length > 0;
+
+  const filteredJobs = hasActiveFilter ? jobs.filter(job => {
+    const matchSearch = searchQuery.trim() === '' || 
+                        job.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                         (job.department && job.department.toLowerCase().includes(searchQuery.toLowerCase()));
     
     const matchDept = selectedDepartments.length > 0 
@@ -174,9 +182,7 @@ const OpenPositions = () => {
       : true;
 
     return matchSearch && matchDept && matchDesig && matchState && matchDistrict;
-  });
-
-  const isSearchActive = true; 
+  }) : [];
 
   return (
     <section id="open-positions" className="py-24 px-6 md:px-12 bg-white text-slate-900">
@@ -202,7 +208,7 @@ const OpenPositions = () => {
               options={DEPARTMENTS}
               value={selectedDepartments}
               onChange={setSelectedDepartments}
-              placeholder="All Departments"
+              placeholder="Select Department"
               icon={Folder}
             />
             {selectedDepartments.length > 0 && (
@@ -210,7 +216,7 @@ const OpenPositions = () => {
                 options={availableDesignations}
                 value={selectedDesignations}
                 onChange={setSelectedDesignations}
-                placeholder="All Designations"
+                placeholder="Select Designation"
                 icon={Folder}
               />
             )}
@@ -218,7 +224,7 @@ const OpenPositions = () => {
               options={states}
               value={selectedStates}
               onChange={setSelectedStates}
-              placeholder="All States"
+              placeholder="Select State"
               icon={MapPin}
             />
             {selectedStates.length > 0 && (
@@ -226,7 +232,7 @@ const OpenPositions = () => {
                 options={availableDistricts}
                 value={selectedDistricts}
                 onChange={setSelectedDistricts}
-                placeholder="All Districts"
+                placeholder="Select District"
                 icon={MapPin}
               />
             )}
@@ -235,6 +241,16 @@ const OpenPositions = () => {
 
         {loading ? (
           <div className="text-center py-10">Loading open positions...</div>
+        ) : !hasActiveFilter ? (
+          <div className="text-center py-16 px-6 bg-[#fcfcfc] border border-gray-100 rounded-3xl max-w-2xl mx-auto">
+            <div className="w-16 h-16 mx-auto bg-sky-50 text-[#0EA5E9] rounded-full flex items-center justify-center mb-4">
+              <Folder size={28} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-2">Select a Filter to View Openings</h3>
+            <p className="text-gray-500 text-sm">
+              Please choose a department or state from the filters above (or search by role) to view available jobs.
+            </p>
+          </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredJobs.map(job => {
@@ -277,12 +293,12 @@ const OpenPositions = () => {
             })}
 
             {filteredJobs.length === 0 && (
-              <div className="col-span-1 md:col-span-2 text-center py-16 px-6 bg-[#fcfcfc] border border-gray-100 rounded-3xl">
+              <div className="col-span-full text-center py-16 px-6 bg-[#fcfcfc] border border-gray-100 rounded-3xl">
                 <div className="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4 text-gray-400">
                   <Search size={28} />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">No positions found</h3>
-                <p className="text-gray-500">We couldn't find any open roles matching your search criteria. Try adjusting your filters.</p>
+                <p className="text-gray-500">We couldn't find any open roles matching your selected filters. Try adjusting your selections.</p>
               </div>
             )}
           </div>

@@ -31,7 +31,7 @@ const ContactInfo = () => {
 
   return (
     <section className="w-full bg-[#fcfcfc] py-20 px-6 md:px-10 border-b border-gray-100">
-      <div className="max-w-7xl mx-auto space-y-16">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto space-y-16">
 
         {/* Header */}
         <div className="text-center mb-16">

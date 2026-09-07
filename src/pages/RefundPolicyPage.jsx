@@ -4,7 +4,7 @@ import { FileText } from 'lucide-react';
 const RefundPolicyPage = () => {
   return (
     <div className="w-full bg-[#fcfcfc] min-h-screen pt-32 pb-20 px-6 md:px-10 text-gray-800">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto">
         <div className="mb-10 border-b border-gray-200 pb-8">
           <div className="inline-flex items-center gap-2 bg-[#E0F2FE] text-[#0369A1] px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
             <FileText size={14} /> Official Documentation

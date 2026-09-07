@@ -1,41 +1,61 @@
 import React from 'react';
-import { Building2 } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const ServicesHero = () => {
   return (
-    <section className="relative w-full h-[350px] md:h-[450px] lg:h-[500px] bg-[#F0F9FF] flex items-center overflow-hidden">
-      
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 w-full h-full"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      ></div>
-      
-      {/* Dark gradient overlay for perfect readability */}
-      <div className="absolute inset-0 bg-slate-900/60"></div>
-      <div className="absolute inset-0 bg-slate-900/70 md:hidden"></div>
-
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-10 relative z-30 flex flex-col justify-center">
+    <div className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] bg-[#041424] overflow-hidden font-sans shadow-sm">
+      <div className="w-full h-full relative flex items-center overflow-hidden">
         
-        <div className="inline-flex items-center gap-2 bg-[#E0F2FE]/80 border border-[#0284C7]/30 text-[#0284C7] px-4 py-2 rounded-full mb-6 backdrop-blur-sm self-start">
-          <Building2 size={16} />
-          <span className="text-sm font-bold tracking-widest uppercase">Our Services</span>
+        {/* 1. Right Side Image */}
+        <div className="absolute top-0 right-0 w-[75%] sm:w-[70%] lg:w-[65%] h-full z-0">
+          <img
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80"
+            alt="Our Services"
+            className="w-full h-full object-cover object-center"
+          />
         </div>
 
-        <h1 className="text-4xl md:text-5xl lg:text-[56px] font-extrabold text-white mb-6 leading-tight max-w-4xl drop-shadow-lg">
-          Property & Financial Solutions Designed <br className="hidden md:block"/> Around <span className="text-[#0284C7]">Your Goals</span>
-        </h1>
+        {/* 2. Cyan Accent Line (Diagonal) */}
+        <div className="absolute top-0 left-0 w-full h-full bg-[#0EA5E9] z-10 hero-clip-accent"></div>
+
+        {/* 3. Main Dark Blue Diagonal Background */}
+        <div className="absolute top-0 left-0 w-full h-full bg-[#041424] z-20 hero-clip-bg">
+          {/* Subtle Geometric Triangles Pattern Overlay */}
+          <div 
+            className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+            style={{ 
+              backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M30 0l30 60H0L30 0z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E")', 
+              backgroundSize: '60px 60px' 
+            }}
+          ></div>
+        </div>
         
-        <p className="text-gray-200 text-[15px] md:text-lg leading-relaxed max-w-3xl mb-8 drop-shadow">
-          At HAUS NUO-Pay, we aim to make property-related financial information easier to understand and access. Whether you are planning to purchase a home, construct a property, renovate your existing home, or explore financing against an eligible property, our platform helps you understand available financial solutions and important considerations.
-        </p>
+        {/* 4. Left Content */}
+        <div className="relative z-30 w-[72%] sm:w-[65%] lg:w-[55%] px-5 sm:px-8 lg:px-12 xl:px-16 flex flex-col justify-center h-full">
+          <div className="inline-block text-[#0EA5E9] font-bold text-xs tracking-wider uppercase mb-1">
+            OUR SERVICES
+          </div>
+          
+          <h1 className="font-display text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 lg:mb-3 leading-tight drop-shadow-md">
+            Property & Financial Solutions <br />
+            <span className="text-[#0EA5E9]">Designed Around Your Goals</span>
+          </h1>
+          
+          <p className="text-gray-300 text-xs md:text-sm lg:text-base mb-3 max-w-md leading-relaxed hidden sm:block">
+            Explore tailored property and financial solutions designed with transparent terms and flexible repayment options.
+          </p>
+          
+          {/* Breadcrumbs */}
+          <div className="flex items-center gap-2 text-xs md:text-sm font-medium">
+            <Link to="/" className="text-gray-400 hover:text-white transition-colors">Home</Link>
+            <ChevronRight className="text-gray-500" size={14} strokeWidth={2.5} />
+            <span className="text-[#0EA5E9] font-semibold">Our Services</span>
+          </div>
+        </div>
 
       </div>
-    </section>
+    </div>
   );
 };
 

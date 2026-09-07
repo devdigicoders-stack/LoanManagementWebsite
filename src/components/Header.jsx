@@ -33,23 +33,23 @@ const Header = () => {
  ];
 
   return (
-    <header className="w-full bg-[#F0F9FF] text-slate-900 border-b border-gray-800 shadow-sm sticky top-0 z-[100]">
+    <header className="w-full bg-[#F0F9FF] text-slate-900 border-b border-[#E0F2FE] shadow-sm sticky top-0 z-[100]">
 
       {/* Main Navigation */}
-      <div className="max-w-7xl mx-auto py-4 px-6 md:px-10 flex items-center justify-between relative">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto py-4 px-6 md:px-10 flex items-center justify-between relative">
         {/* Logo */}
         <div className="flex-shrink-0 cursor-pointer">
           <Link to="/" onClick={() => setActive('Home')}>
             <img 
               src="/loanlogo.png" 
               alt="HAUS NUO-Pay Logo" 
-              className="h-16 md:h-20 object-contain"
+              className="h-12 md:h-14 object-contain drop-shadow-sm transition-transform hover:scale-105"
             />
           </Link>
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-6 text-base font-semibold">
+        <nav className="hidden lg:flex items-center space-x-2 xl:space-x-4 text-[15px] font-semibold">
           {navItems.map((item) => (
             <div 
               key={item.name} 
@@ -60,16 +60,16 @@ const Header = () => {
               <Link
                 to={item.path}
                 onClick={() => setActive(item.name)}
-                className={`transition-all duration-300 px-4 py-2.5 rounded-md flex items-center gap-1.5 ${
+                className={`transition-all duration-300 px-5 py-2.5 rounded-full flex items-center gap-1.5 ${
                   active === item.name || (item.hasDropdown && dropdownOpen === item.dropdownId)
-                    ? 'bg-[#BAE6FD] text-[#0284C7] border-b-[3px] border-[#0284C7]'
-                    : 'text-slate-700 hover:text-slate-900 hover:bg-white/5'
+                    ? 'bg-gradient-to-r from-blue-50 to-blue-100/50 text-[#0284C7] shadow-[0_2px_10px_-3px_rgba(2,132,199,0.2)] border border-blue-200/50'
+                    : 'text-slate-600 hover:text-[#0284C7] hover:bg-slate-100/50 hover:shadow-sm'
                 }`}
               >
                 {item.name}
                 {item.hasDropdown && (
-                  <svg className={`w-4 h-4 transition-transform ${dropdownOpen === item.dropdownId ? 'rotate-180 text-[#0284C7]' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <svg className={`w-4 h-4 transition-transform duration-300 ${dropdownOpen === item.dropdownId ? 'rotate-180 text-[#0284C7]' : 'text-slate-400 group-hover:text-[#0284C7]'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
                   </svg>
                 )}
               </Link>
@@ -77,7 +77,7 @@ const Header = () => {
               {/* Dropdown for About Us */}
               {item.dropdownId === 'about' && dropdownOpen === 'about' && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 pt-1 w-[200px] z-50">
-                  <div className="bg-[#F0F9FF] border border-gray-800 rounded-lg shadow-2xl p-3">
+                  <div className="bg-[#F0F9FF] rounded-lg shadow-2xl p-3">
                     <ul className="space-y-1">
                       <li><Link to="/about#who-we-are" onClick={() => setDropdownOpen(null)} className="text-slate-700 hover:text-slate-900 flex items-center gap-2 px-3 py-2 hover:bg-white/10 rounded-md transition-colors"><span className="w-1.5 h-1.5 rounded-full bg-[#0284C7]"></span>Who We Are</Link></li>
                       <li><Link to="/about#our-values" onClick={() => setDropdownOpen(null)} className="text-slate-700 hover:text-slate-900 flex items-center gap-2 px-3 py-2 hover:bg-white/10 rounded-md transition-colors"><span className="w-1.5 h-1.5 rounded-full bg-[#0284C7]"></span>Our Values</Link></li>
@@ -91,10 +91,10 @@ const Header = () => {
               {/* Mega Menu for Services */}
               {item.dropdownId === 'services' && dropdownOpen === 'services' && (
                 <div className="absolute top-full right-0 pt-1 w-[800px] z-50">
-                  <div className="bg-[#F0F9FF] border border-gray-800 rounded-lg shadow-2xl p-6 max-h-[85vh] overflow-y-auto no-scrollbar">
+                  <div className="bg-[#F0F9FF] rounded-lg shadow-2xl p-6 max-h-[85vh] overflow-y-auto no-scrollbar">
                     
                     <div className="mb-6">
-                      <h2 className="text-[#0284C7] font-bold text-lg mb-4 border-b border-gray-800 pb-2">Financial Services</h2>
+                      <h2 className="text-[#0284C7] font-bold text-lg mb-4 pb-2">Financial Services</h2>
                       <div className="grid grid-cols-3 gap-6">
                         {/* HAUS Nuo-Pay */}
                         <div>
@@ -131,7 +131,7 @@ const Header = () => {
                     </div>
 
                     <div>
-                      <h2 className="text-[#0284C7] font-bold text-lg mb-4 border-b border-gray-800 pb-2">Properties Management</h2>
+                      <h2 className="text-[#0284C7] font-bold text-lg mb-4 pb-2">Properties Management</h2>
                       <div className="grid grid-cols-3 gap-6">
                         {/* Rental-Pay */}
                         <div>
@@ -220,7 +220,7 @@ const Header = () => {
                 
                 {/* Mobile Sub-menus */}
                 {item.hasDropdown && dropdownOpen === item.dropdownId && (
-                  <div className="mt-2 ml-4 pl-4 border-l border-gray-800 space-y-2">
+                  <div className="mt-2 ml-4 pl-4 border-l border-slate-200 space-y-2">
                     {item.dropdownId === 'about' && (
                       <>
                         <Link to="/about#who-we-are" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-sm text-slate-600 hover:text-[#0284C7]">Who We Are</Link>

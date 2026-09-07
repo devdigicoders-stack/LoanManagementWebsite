@@ -27,7 +27,7 @@ const AboutPhilosophy = () => {
 
   return (
     <section className="w-full bg-[#fcfcfc] py-20 px-6 md:px-10 border-b border-gray-100">
-      <div className="max-w-7xl mx-auto text-center">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto text-center">
         
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
           Our Customer-First Philosophy

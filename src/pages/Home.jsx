@@ -18,23 +18,26 @@ const Home = () => {
   const [isEmiModalOpen, setIsEmiModalOpen] = useState(false);
 
   return (
-    <div className="bg-[#FDFBF7]">
+    <div className="bg-slate-50 min-h-screen pb-20 overflow-hidden">
       <HeroSlider />
       
-      <ScrollReveal>
-        <QuickActions onPayEmiClick={() => setIsEmiModalOpen(true)} />
-      </ScrollReveal>
-      
-      <ScrollReveal><Services /></ScrollReveal>
-      <ScrollReveal><EmiCalculator /></ScrollReveal>
-      <ScrollReveal><WhyChooseUs /></ScrollReveal>
-      <ScrollReveal><CompanyStats /></ScrollReveal>
-      <ScrollReveal><HowItWorks /></ScrollReveal>
-      <ScrollReveal><HomeCTA /></ScrollReveal>
-      <ScrollReveal><AboutBottomStats /></ScrollReveal>
-      <ScrollReveal><NewsAndPress /></ScrollReveal>
-      <ScrollReveal><HappyClients /></ScrollReveal>
-      <ScrollReveal><FAQ /></ScrollReveal>
+      {/* Main Sections */}
+      <div className="flex flex-col gap-12 md:gap-20">
+        <ScrollReveal>
+          <QuickActions onPayEmiClick={() => setIsEmiModalOpen(true)} />
+        </ScrollReveal>
+        
+        <ScrollReveal><Services /></ScrollReveal>
+        <ScrollReveal><EmiCalculator /></ScrollReveal>
+        <ScrollReveal><WhyChooseUs /></ScrollReveal>
+        <ScrollReveal><CompanyStats /></ScrollReveal>
+        <ScrollReveal><HowItWorks /></ScrollReveal>
+        <ScrollReveal><HomeCTA /></ScrollReveal>
+        <ScrollReveal><AboutBottomStats /></ScrollReveal>
+        <ScrollReveal><NewsAndPress /></ScrollReveal>
+        <ScrollReveal><HappyClients /></ScrollReveal>
+        <ScrollReveal><FAQ /></ScrollReveal>
+      </div>
 
       {/* EMI Modal */}
       <PayEmiCheck 

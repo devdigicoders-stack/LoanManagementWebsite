@@ -4,7 +4,7 @@ import { ArrowRight, ShieldCheck, Cpu, UserCheck } from 'lucide-react';
 const AboutUs = () => {
   return (
     <section className="w-full bg-white pt-48 pb-24 px-6 md:px-10">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-16">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto flex flex-col lg:flex-row items-center justify-between gap-16">
 
         {/* Left Content */}
         <div className="lg:w-1/2 flex flex-col items-start text-left">

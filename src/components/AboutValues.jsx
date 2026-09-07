@@ -27,7 +27,7 @@ const AboutValues = () => {
 
   return (
     <section className="w-full bg-white pb-20 px-6 md:px-10">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto">
         <div className="bg-[#f8fcf5] rounded-[2rem] py-8 px-6 md:px-12 relative border border-[#eaf7e3]">
           
           {/* Header */}

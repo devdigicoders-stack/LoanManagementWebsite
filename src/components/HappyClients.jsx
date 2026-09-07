@@ -37,7 +37,7 @@ const HappyClients = () => {
         <div className="absolute bottom-10 right-10 w-[250px] h-[250px] bg-[#0EA5E9]/5 rounded-full blur-[80px]"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto relative z-10">
         
         {/* Section Header */}
         <div className="text-center mb-16">

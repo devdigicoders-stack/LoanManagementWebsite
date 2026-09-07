@@ -3,7 +3,7 @@ import { Apple, Play, QrCode } from 'lucide-react';
 const DownloadApp = () => {
   return (
     <section className="w-full bg-white py-16 px-6 md:px-10">
-      <div className="max-w-7xl mx-auto rounded-[40px] relative overflow-hidden bg-[#F8FAFC] flex flex-col lg:flex-row shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-[#e8f5e9]">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto rounded-[40px] relative overflow-hidden bg-[#F8FAFC] flex flex-col lg:flex-row shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-[#e8f5e9]">
         
         {/* Background Decorative Shapes */}
         <div className="absolute inset-0 w-full h-full pointer-events-none">

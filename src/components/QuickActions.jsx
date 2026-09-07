@@ -50,7 +50,7 @@ const QuickActions = ({ onPayEmiClick }) => {
     <div className="w-full flex flex-col z-40 bg-white border-b border-gray-200">
       {/* Marquee Section */}
       <div className="w-full bg-[#fff5f5] text-[#d32f2f] py-1.5 px-4 text-xs md:text-sm font-medium border-b border-[#ffeaea] overflow-hidden">
-        <div className="max-w-7xl mx-auto flex items-center">
+        <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto flex items-center">
           <span className="font-bold whitespace-nowrap mr-2">Beware of Frauds!</span>
           <marquee scrollamount="5" className="flex-1">
             NuoG never asks you to pay cash or transfer money to the bank accounts of any 3rd party for providing loans or jobs.
@@ -60,7 +60,7 @@ const QuickActions = ({ onPayEmiClick }) => {
 
       {/* Action Cards Section */}
       <div className="w-full shadow-sm overflow-x-auto no-scrollbar">
-        <div className="max-w-7xl mx-auto flex items-center justify-between min-w-max md:min-w-0">
+        <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto flex items-center justify-between min-w-max md:min-w-0">
           {actions.map((action, idx) => (
             <Link 
               to={action.link} 

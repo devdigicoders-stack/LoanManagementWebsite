@@ -57,7 +57,7 @@ const ServicesList = () => {
 
   return (
     <section className="w-full bg-[#fcfcfc] py-24 px-6 md:px-10 border-b border-gray-100">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto">
         
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -117,7 +117,7 @@ const ServicesList = () => {
                   Know More
                 </Link>
                 <Link 
-                  to="/get-started"
+                  to="/contact"
                   className="inline-flex items-center gap-1 text-[#0EA5E9] font-bold hover:text-[#0369A1] transition-colors text-sm"
                 >
                   Apply Now <ArrowRight size={16} />

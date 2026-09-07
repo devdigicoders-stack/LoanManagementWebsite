@@ -9,16 +9,14 @@ const HeroSlider = () => {
       id: 1, 
       src: '/home_loan.jpg', 
       title: 'Build Your Dream Home', 
-      subtitle: 'NuoG Home & Property Loans',
       desc: 'Get fast approval and competitive interest rates for your new home or property extension.',
-      btnText: 'Apply Now',
+      btnText: 'Know More',
       link: '/services/home-loan'
     },
     { 
       id: 2, 
       src: '/car_loan.jpg', 
       title: 'Drive Your Success', 
-      subtitle: 'New & Used Car Loans',
       desc: 'Upgrade your vehicle with flexible repayment options and minimal documentation.',
       btnText: 'Know More',
       link: '/services/car-loan'
@@ -27,39 +25,19 @@ const HeroSlider = () => {
       id: 3, 
       src: '/financial_loan.jpg', 
       title: 'Empower Your Business', 
-      subtitle: 'SME & MSME Loans',
       desc: 'Fuel your business growth with our tailored financial solutions designed for entrepreneurs.',
-      btnText: 'Explore Options',
+      btnText: 'Know More',
       link: '/services/sme-msme-loan'
     },
     { 
       id: 4, 
       src: '/health_loan.jpg', 
       title: 'Your Health, Our Priority', 
-      subtitle: 'Medical & Emergency Loans',
       desc: 'Instant financial support for medical emergencies so you can focus on what matters most.',
-      btnText: 'Get Assistance',
-      link: '/services'
-    },
-    { 
-      id: 5, 
-      src: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1600&q=80', 
-      title: 'Hit the Road Faster', 
-      subtitle: 'Two Wheeler Loans',
-      desc: 'Finance your dream bike or scooter with minimal down payment and easy EMIs.',
-      btnText: 'Apply Now',
-      link: '/services/two-wheeler'
-    },
-    { 
-      id: 6, 
-      src: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80', 
-      title: 'Unlock Your Property’s Value', 
-      subtitle: 'Loan Against Property',
-      desc: 'Leverage your residential or commercial property to meet big financial goals.',
       btnText: 'Know More',
-      link: '/services/loan-against-property'
+      link: '/services'
     }
- ];
+  ];
 
   const numSlides = slides.length;
 
@@ -71,87 +49,71 @@ const HeroSlider = () => {
   }, [numSlides]);
 
   return (
-    <div className="relative w-full h-[350px] md:h-[450px] bg-[#F0F9FF] overflow-hidden group">
+    <div className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] bg-[#041424] overflow-hidden font-sans shadow-sm">
       
       {/* Slides Container */}
-      {slides.map((slide, index) => {
-        const isActive = index === currentSlide;
-        
-        return (
+      <div 
+        className="absolute inset-0 z-30 flex transition-transform duration-700 ease-in-out"
+        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+      >
+        {slides.map((slide) => (
           <div 
             key={slide.id}
-            className={`absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out ${isActive ? 'opacity-100 z-20 scale-100' : 'opacity-0 z-0 scale-105'}`}
+            className="w-full h-full flex-shrink-0 relative flex items-center overflow-hidden"
           >
-            {/* Background Image */}
-            <div 
-              className="absolute inset-0 w-full h-full"
-              style={{
-                backgroundImage: `url('${slide.src}')`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
-            ></div>
-            
-            {/* Solid Dark Overlay for perfect readability (No gradients) */}
-            <div className="absolute inset-0 bg-slate-900/40"></div>
-            
-            {/* Mobile bottom overlay */}
-            <div className="absolute inset-0 bg-slate-900/50 md:hidden"></div>
-
-            {/* Text Content */}
-            <div className="relative z-30 w-full h-full max-w-7xl mx-auto px-6 md:px-10 flex flex-col justify-center">
-              <div className="max-w-2xl mt-8 md:mt-0">
-                <p className="text-[#0EA5E9] font-bold tracking-wider uppercase text-sm md:text-base mb-3 drop-shadow">
-                  {slide.subtitle}
-                </p>
-                <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 leading-tight drop-shadow-lg">
-                  {slide.title}
-                </h1>
-                <p className="text-gray-200 text-sm md:text-lg mb-8 max-w-xl drop-shadow">
-                  {slide.desc}
-                </p>
-                <div>
-                  <Link to={slide.link} className="inline-block bg-[#0EA5E9] hover:bg-[#0284C7] text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-[0_4px_15px_rgba(14,165,233,0.3)]">
-                    {slide.btnText}
-                  </Link>
-                </div>
-              </div>
+            {/* 1. Right Side: The Slide Image positioned to show the subject */}
+            <div className="absolute top-0 right-0 w-[75%] sm:w-[70%] lg:w-[65%] h-full z-0">
+              <img
+                src={slide.src}
+                alt={slide.title}
+                className="w-full h-full object-cover object-center"
+              />
             </div>
+
+            {/* 2. Cyan Accent Line (Diagonal) */}
+            <div className="absolute top-0 left-0 w-full h-full bg-[#0EA5E9] z-10 hero-clip-accent"></div>
+
+            {/* 3. Main Dark Blue Diagonal Background (Website Theme) */}
+            <div className="absolute top-0 left-0 w-full h-full bg-[#041424] z-20 hero-clip-bg">
+              {/* Subtle Geometric Triangles Pattern Overlay */}
+              <div 
+                className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+                style={{ 
+                  backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M30 0l30 60H0L30 0z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E")', 
+                  backgroundSize: '60px 60px' 
+                }}
+              ></div>
+            </div>
+            
+            {/* 4. Left Content (Text & Button) */}
+            <div className="relative z-30 w-[72%] sm:w-[65%] lg:w-[55%] px-5 sm:px-8 lg:px-12 xl:px-16 flex flex-col justify-center h-full">
+              <h1 className="font-display text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 lg:mb-4 leading-tight drop-shadow-md">
+                {slide.title}
+              </h1>
+              
+              <p className="text-gray-300 text-xs md:text-sm lg:text-base mb-3 lg:mb-6 max-w-md leading-relaxed hidden sm:block">
+                {slide.desc}
+              </p>
+              
+              <Link 
+                to={slide.link} 
+                className="inline-block bg-[#0EA5E9] hover:bg-[#0284C7] text-white font-bold py-1.5 px-4 sm:py-2 sm:px-6 lg:py-2.5 lg:px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-[0_4px_15px_rgba(14,165,233,0.3)] text-xs lg:text-sm w-max"
+              >
+                {slide.btnText}
+              </Link>
+            </div>
+
           </div>
-        );
-      })}
+        ))}
+      </div>
 
-      {/* Manual Navigation Arrows (Visible on hover) */}
-      <button 
-        onClick={(e) => {
-          e.stopPropagation();
-          setCurrentSlide((prev) => (prev - 1 + numSlides) % numSlides);
-        }}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-40 w-12 h-12 bg-[#E0F2FE]/60 hover:bg-[#0284C7] text-white hover:text-black rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-sm"
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
-      </button>
-
-      <button 
-        onClick={(e) => {
-          e.stopPropagation();
-          setCurrentSlide((prev) => (prev + 1) % numSlides);
-        }}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-40 w-12 h-12 bg-[#E0F2FE]/60 hover:bg-[#0284C7] text-white hover:text-black rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-sm"
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
-      </button>
-
-      {/* Custom Pagination Dots */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-40 flex gap-3">
+      {/* Specific Square Pagination Dots (Bottom Left inside the Blue area) */}
+      <div className="absolute bottom-3 left-5 lg:bottom-5 lg:left-12 xl:left-16 z-40 flex gap-2">
         {slides.map((_, index) => (
           <button
             key={index}
-            onClick={(e) => {
-              e.stopPropagation();
-              setCurrentSlide(index);
-            }}
-            className={`h-2 transition-all duration-300 rounded-full shadow-lg ${index === currentSlide ? 'w-10 bg-[#0284C7]' : 'w-2 bg-gray-500 hover:bg-white'}`}
+            onClick={() => setCurrentSlide(index)}
+            className={`h-1.5 transition-all duration-300 ${index === currentSlide ? 'w-4 bg-[#0EA5E9]' : 'w-1.5 bg-slate-600 hover:bg-slate-400'}`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}

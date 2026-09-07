@@ -11,78 +11,59 @@ const CareersPage = () => {
     <div className="w-full bg-[#fcfcfc] min-h-screen text-gray-900 font-sans">
       
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 px-6 md:px-12 bg-gradient-to-br from-[#0c1f3d] via-[#0f2e5a] to-[#0c1f3d] overflow-hidden rounded-b-[3rem] shadow-2xl">
-        {/* Decorative Gradients */}
-        <div className="absolute top-[-10%] left-[-5%] w-[400px] h-[400px] bg-[#0EA5E9] rounded-full blur-[150px] opacity-20 pointer-events-none" />
-        <div className="absolute bottom-[-10%] right-[-5%] w-[400px] h-[400px] bg-[#38BDF8] rounded-full blur-[150px] opacity-10 pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16 relative z-10">
+      <div className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] bg-[#041424] overflow-hidden font-sans shadow-sm">
+        <div className="w-full h-full relative flex items-center overflow-hidden">
           
-          <div className="w-full lg:w-[55%] text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 bg-[#0EA5E9]/10 border border-[#0EA5E9]/20 text-[#38BDF8] px-4 py-1.5 rounded-full mb-6">
-              <span className="w-2 h-2 rounded-full bg-[#38BDF8] animate-pulse"></span>
-              <span className="text-sm font-bold tracking-widest uppercase">Join Our Team</span>
+          {/* 1. Right Side Image */}
+          <div className="absolute top-0 right-0 w-[75%] sm:w-[70%] lg:w-[65%] h-full z-0">
+            <img
+              src="/careers-hero.jpg"
+              alt="HAUS NUO-Pay Careers"
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
+
+          {/* 2. Cyan Accent Line (Diagonal) */}
+          <div className="absolute top-0 left-0 w-full h-full bg-[#0EA5E9] z-10 hero-clip-accent"></div>
+
+          {/* 3. Main Dark Blue Diagonal Background */}
+          <div className="absolute top-0 left-0 w-full h-full bg-[#041424] z-20 hero-clip-bg">
+            {/* Subtle Geometric Triangles Pattern Overlay */}
+            <div 
+              className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+              style={{ 
+                backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M30 0l30 60H0L30 0z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E")', 
+                backgroundSize: '60px 60px' 
+              }}
+            ></div>
+          </div>
+          
+          {/* 4. Left Content */}
+          <div className="relative z-30 w-[72%] sm:w-[65%] lg:w-[55%] px-5 sm:px-8 lg:px-12 xl:px-16 flex flex-col justify-center h-full">
+            <div className="inline-block text-[#0EA5E9] font-bold text-xs tracking-wider uppercase mb-1">
+              CAREERS AT NUO-PAY
             </div>
             
-            <h1 className="text-5xl md:text-6xl lg:text-[4.5rem] font-black tracking-tight text-white mb-8 leading-[1.1]">
-              Unleash your <br className="hidden md:block"/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] to-[#0EA5E9]">potential.</span>
+            <h1 className="font-display text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 lg:mb-3 leading-tight drop-shadow-md">
+              Unleash Your <span className="text-[#0EA5E9]">Potential</span>
             </h1>
             
-            <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
-              Come build a new-age financial experience that challenges the status quo and makes life epic. Be a part of our incredible journey.
+            <p className="text-gray-300 text-xs md:text-sm lg:text-base mb-3 max-w-md leading-relaxed hidden sm:block">
+              Come build a new-age financial experience with a passionate team. Explore open opportunities today.
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+            <div className="flex items-center gap-4">
               <a 
                 href="#open-positions" 
-                className="w-full sm:w-auto inline-flex items-center justify-center bg-[#0EA5E9] hover:bg-[#0284C7] text-white text-lg font-bold px-8 py-4 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-[0_10px_30px_rgba(14,165,233,0.3)]"
+                className="inline-block bg-[#0EA5E9] hover:bg-[#0284C7] text-white font-bold py-2 px-6 lg:py-2.5 lg:px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-[0_4px_15px_rgba(14,165,233,0.3)] text-xs lg:text-sm w-max"
               >
-                See all open positions
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                See Open Positions
               </a>
             </div>
-
-            {/* Quick Stats */}
-            <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 gap-6 pt-8 border-t border-white/10">
-              <div>
-                <div className="text-3xl font-black text-white">50+</div>
-                <div className="text-sm text-gray-400 font-medium mt-1">Team Members</div>
-              </div>
-              <div>
-                <div className="text-3xl font-black text-white">4.8★</div>
-                <div className="text-sm text-gray-400 font-medium mt-1">Glassdoor Rating</div>
-              </div>
-              <div className="hidden sm:block">
-                <div className="text-3xl font-black text-white">4</div>
-                <div className="text-sm text-gray-400 font-medium mt-1">Office Locations</div>
-              </div>
-            </div>
           </div>
 
-          <div className="w-full lg:w-[45%] shrink-0 relative mt-10 lg:mt-0">
-            {/* Image Container with Glow */}
-            <div className="relative z-10 rounded-[2.5rem] overflow-hidden border-[8px] border-white/5 shadow-2xl group">
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0c1f3d] via-transparent to-transparent opacity-60 z-10"></div>
-              <img 
-                src="/careers-hero.jpg" 
-                alt="HAUS NUO-Pay Team" 
-                className="w-full h-[450px] lg:h-[550px] object-cover group-hover:scale-110 transition-transform duration-1000 ease-out"
-              />
-              <div className="absolute bottom-6 left-6 z-20 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl flex items-center gap-4">
-                <div className="w-12 h-12 bg-[#0EA5E9] rounded-xl flex items-center justify-center">
-                  <Trophy className="text-white" size={24} />
-                </div>
-                <div>
-                  <div className="text-white font-bold">Great Place to Work</div>
-                  <div className="text-gray-300 text-sm">Certified 2026</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
         </div>
-      </section>
+      </div>
 
       {/* Mission Section */}
       <section className="py-24 px-6 md:px-12 bg-white">
@@ -96,7 +77,7 @@ const CareersPage = () => {
 
       {/* Stats Section */}
       <section className="py-24 px-6 md:px-12 bg-[#F8FAFC]">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto">
           <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-16 text-cyan-500">
             We go big. We go beyond.
           </h2>
@@ -139,7 +120,7 @@ const CareersPage = () => {
 
       {/* Perks Section */}
       <section className="py-24 px-6 md:px-12 bg-white">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto">
           <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-16 text-gray-900">
             We take care of you
           </h2>

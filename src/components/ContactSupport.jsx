@@ -19,7 +19,7 @@ const ContactSupport = () => {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full blur-[120px] pointer-events-none transform translate-x-1/3 -translate-y-1/3"></div>
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-50 rounded-full blur-[100px] pointer-events-none transform -translate-x-1/2 translate-y-1/3"></div>
 
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 items-center relative z-10">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 items-center relative z-10">
         
         {/* Left Side */}
         <div className="w-full lg:w-[45%]">

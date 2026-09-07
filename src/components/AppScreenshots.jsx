@@ -3,7 +3,7 @@ import React from 'react';
 const AppScreenshots = () => {
   return (
     <section className="w-full bg-[#fcfcfc] py-20 px-6 md:px-10">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
             App Screenshots

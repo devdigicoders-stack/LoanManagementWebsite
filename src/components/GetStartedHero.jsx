@@ -16,19 +16,19 @@ const GetStartedHero = () => {
           <span className="text-sm font-bold tracking-widest uppercase">Get Started</span>
         </div>
         
-        <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 leading-tight tracking-wide">
+        <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-slate-900 mb-6 leading-tight tracking-wide">
           Start Your Property <br/>
-          <span className="text-[#0EA5E9] drop-shadow-[0_0_20px_rgba(91,193,22,0.3)]">Finance Journey</span>
+          <span className="text-[#0EA5E9]">Finance Journey</span>
         </h1>
         
-        <p className="text-gray-300 text-[16px] md:text-lg leading-relaxed mb-8 max-w-3xl mx-auto">
+        <p className="text-slate-600 text-[16px] md:text-lg leading-relaxed mb-8 max-w-3xl mx-auto">
           Take the first step toward understanding your property and financial requirements.
         </p>
-        <p className="text-gray-300 text-[16px] md:text-lg leading-relaxed mb-10 max-w-3xl mx-auto">
+        <p className="text-slate-600 text-[16px] md:text-lg leading-relaxed mb-10 max-w-3xl mx-auto">
           Whether you are planning to purchase a home, construct a property, renovate your existing property, or explore financing against an eligible property, HAUS NUO-Pay provides a simple digital experience to help you get started.
         </p>
         
-        <div className="text-xl md:text-2xl font-bold text-white mb-12">
+        <div className="text-xl md:text-2xl font-bold text-slate-900 mb-12">
           Explore Your Options. <span className="text-[#0EA5E9]">Share Your Requirement.</span> Take an Informed Step.
         </div>
         

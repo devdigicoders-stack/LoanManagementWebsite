@@ -32,7 +32,7 @@ const GetStartedWhyUs = () => {
 
   return (
     <section className="w-full bg-[#F8FAFC] py-24 px-6 md:px-10 border-t border-[#E0F2FE]">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto">
         
         <div className="text-center mb-16">
           <div className="inline-block bg-[#E0F2FE] text-[#0369A1] rounded-full px-5 py-2 text-sm font-bold tracking-widest uppercase mb-6">

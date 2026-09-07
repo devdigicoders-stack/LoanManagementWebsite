@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <footer className="w-full bg-[#FDFBF7] border-t border-[#E0F2FE] pt-16 pb-6 px-6 md:px-10">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto">
 
         {/* Top Section - Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
@@ -150,7 +150,7 @@ const Footer = () => {
 
       {/* Full Width Copyright & Links Row (Black Bar) */}
       <div className="w-full bg-[#F0F9FF] border-t border-[#E0F2FE] py-4 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-900 text-sm text-center md:text-left">
             Copyright © {new Date().getFullYear()} NuoG Housing Payment's Limited.
           </p>

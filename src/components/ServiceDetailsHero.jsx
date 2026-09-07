@@ -20,7 +20,7 @@ const ServiceDetailsHero = ({ title, breadcrumbs, description, imageUrl, cardDat
       <div className="absolute inset-0 bg-slate-900/60"></div>
       <div className="absolute inset-0 bg-slate-900/70 md:hidden"></div>
 
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-10 relative z-30 flex flex-col lg:flex-row items-center justify-between gap-10 mt-10 md:mt-0">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto w-full px-6 md:px-10 relative z-30 flex flex-col lg:flex-row items-center justify-between gap-10 mt-10 md:mt-0">
         
         {/* Left Side (Text content) */}
         <div className="w-full lg:w-1/2 flex flex-col">

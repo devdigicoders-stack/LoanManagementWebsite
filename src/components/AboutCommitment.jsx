@@ -8,7 +8,7 @@ const AboutCommitment = () => {
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#0EA5E9] rounded-full blur-[150px] opacity-10"></div>
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#0EA5E9] rounded-full blur-[120px] opacity-5"></div>
 
-      <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto relative z-10 flex flex-col md:flex-row items-center gap-12 lg:gap-20">
         
         {/* Left Side - Content */}
         <div className="w-full md:w-1/2">

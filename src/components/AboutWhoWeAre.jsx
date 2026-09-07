@@ -3,7 +3,7 @@ import { Users, ShieldCheck, Rocket, Target } from 'lucide-react';
 const AboutWhoWeAre = () => {
   return (
     <section className="w-full bg-white pt-10 pb-20 px-6 md:px-10">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto flex flex-col lg:flex-row gap-16 items-center">
         
         {/* Left Side - Content */}
         <div className="w-full lg:w-[55%] flex flex-col">

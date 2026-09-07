@@ -12,7 +12,7 @@ const ServiceBenefits = () => {
 
   return (
     <section className="w-full bg-white py-20 px-6 md:px-10">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto flex flex-col lg:flex-row items-center gap-16">
         
         {/* Left Side - Content */}
         <div className="w-full lg:w-1/2 flex flex-col">

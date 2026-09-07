@@ -1,41 +1,61 @@
 import React from 'react';
-import { PhoneCall } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const ContactHero = () => {
   return (
-    <section className="relative w-full h-[350px] md:h-[450px] lg:h-[500px] bg-[#F0F9FF] flex items-center overflow-hidden">
-      
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 w-full h-full"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1516387938699-a93567ec168e?auto=format&fit=crop&w=1600&q=80')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      ></div>
-      
-      {/* Dark gradient overlay for perfect readability */}
-      <div className="absolute inset-0 bg-slate-900/60"></div>
-      <div className="absolute inset-0 bg-slate-900/70 md:hidden"></div>
-
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-10 relative z-30 flex flex-col justify-center">
+    <div className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] bg-[#041424] overflow-hidden font-sans shadow-sm">
+      <div className="w-full h-full relative flex items-center overflow-hidden">
         
-        <div className="inline-flex items-center gap-2 bg-[#E0F2FE]/80 border border-[#0284C7]/30 text-[#0284C7] px-4 py-2 rounded-full mb-6 backdrop-blur-sm self-start">
-          <PhoneCall size={16} />
-          <span className="text-sm font-bold tracking-widest uppercase">Contact Us</span>
+        {/* 1. Right Side Image */}
+        <div className="absolute top-0 right-0 w-[75%] sm:w-[70%] lg:w-[65%] h-full z-0">
+          <img
+            src="https://images.unsplash.com/photo-1516387938699-a93567ec168e?auto=format&fit=crop&w=1600&q=80"
+            alt="Contact Us"
+            className="w-full h-full object-cover object-center"
+          />
         </div>
 
-        <h1 className="text-4xl md:text-5xl lg:text-[56px] font-extrabold text-white mb-6 leading-tight max-w-4xl drop-shadow-lg">
-          Let's Talk About Your <br className="hidden md:block"/> <span className="text-[#0284C7]">Financial Goals</span>
-        </h1>
+        {/* 2. Cyan Accent Line (Diagonal) */}
+        <div className="absolute top-0 left-0 w-full h-full bg-[#0EA5E9] z-10 hero-clip-accent"></div>
+
+        {/* 3. Main Dark Blue Diagonal Background */}
+        <div className="absolute top-0 left-0 w-full h-full bg-[#041424] z-20 hero-clip-bg">
+          {/* Subtle Geometric Triangles Pattern Overlay */}
+          <div 
+            className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+            style={{ 
+              backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M30 0l30 60H0L30 0z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E")', 
+              backgroundSize: '60px 60px' 
+            }}
+          ></div>
+        </div>
         
-        <p className="text-gray-200 text-[15px] md:text-lg leading-relaxed max-w-2xl mb-8 drop-shadow">
-          Have questions about property finance, home loans, Loan Against Property, construction finance, renovation finance or our digital services? The HAUS NUO-Pay team is here to help you understand our services and provide assistance with your enquiries.
-        </p>
+        {/* 4. Left Content */}
+        <div className="relative z-30 w-[72%] sm:w-[65%] lg:w-[55%] px-5 sm:px-8 lg:px-12 xl:px-16 flex flex-col justify-center h-full">
+          <div className="inline-block text-[#0EA5E9] font-bold text-xs tracking-wider uppercase mb-1">
+            CONTACT US
+          </div>
+          
+          <h1 className="font-display text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 lg:mb-3 leading-tight drop-shadow-md">
+            Let's Talk About Your <br />
+            <span className="text-[#0EA5E9]">Financial Goals</span>
+          </h1>
+          
+          <p className="text-gray-300 text-xs md:text-sm lg:text-base mb-3 max-w-md leading-relaxed hidden sm:block">
+            Have questions about property finance, home loans, or our digital services? The HAUS NUO-Pay team is here to help.
+          </p>
+          
+          {/* Breadcrumbs */}
+          <div className="flex items-center gap-2 text-xs md:text-sm font-medium">
+            <Link to="/" className="text-gray-400 hover:text-white transition-colors">Home</Link>
+            <ChevronRight className="text-gray-500" size={14} strokeWidth={2.5} />
+            <span className="text-[#0EA5E9] font-semibold">Contact Us</span>
+          </div>
+        </div>
 
       </div>
-    </section>
+    </div>
   );
 };
 

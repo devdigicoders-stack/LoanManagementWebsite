@@ -24,80 +24,61 @@ const ServiceDetailsLayout = ({
     <div className="bg-[#FAFAFA] min-h-screen font-sans text-gray-800 overflow-hidden">
       
       {/* Hero Section */}
-      <section className="relative w-full min-h-[500px] md:min-h-[650px] flex items-center overflow-hidden pt-24 pb-16 md:py-24">
-        
-        {/* Background Image with modern gradient overlay */}
-        <div className="absolute inset-0 z-0">
-          <div 
-            className="absolute inset-0 w-full h-full scale-105 transform origin-center animate-[kenburns_20s_ease-out_infinite_alternate]"
-            style={{
-              backgroundImage: `url(${image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          ></div>
-          {/* Stunning gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
-        </div>
+      <div className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] bg-[#041424] overflow-hidden font-sans shadow-sm">
+        <div className="w-full h-full relative flex items-center overflow-hidden">
+          
+          {/* 1. Right Side Image */}
+          <div className="absolute top-0 right-0 w-[80%] md:w-[70%] lg:w-[65%] h-full z-0">
+            <img
+              src={image}
+              alt={title}
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
 
-        <div className="max-w-7xl mx-auto w-full px-6 md:px-10 lg:px-20 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 mt-10 md:mt-0">
-          
-          {/* Left Side (Text content) */}
-          <div className="lg:w-[55%] text-left">
-            <ScrollReveal>
-              <div className="inline-flex items-center gap-2.5 bg-white/10 text-blue-300 border border-white/20 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-8 backdrop-blur-md shadow-lg">
-                {Icon && <Icon size={16} strokeWidth={2.5} />} {tagline}
-              </div>
-            </ScrollReveal>
-            <ScrollReveal>
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-black mb-6 leading-[1.1] text-white drop-shadow-lg tracking-tight">
-                {title} <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">{highlight}</span>
-              </h1>
-            </ScrollReveal>
-            <ScrollReveal>
-              <p className="text-slate-300 text-lg md:text-xl mb-10 leading-relaxed max-w-xl font-medium">
-                {description}
-              </p>
-            </ScrollReveal>
-            <ScrollReveal>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_10px_30px_-10px_rgba(59,130,246,0.6)] flex items-center justify-center gap-2 group">
-                  Apply Now <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </button>
-                <button className="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold px-8 py-4 rounded-xl transition-all duration-300 backdrop-blur-md">
-                  Check Eligibility
-                </button>
-              </div>
-            </ScrollReveal>
+          {/* 2. Cyan Accent Line (Diagonal) */}
+          <div className="absolute top-0 left-0 w-full h-full bg-[#0EA5E9] z-10 hero-clip-accent"></div>
+
+          {/* 3. Main Dark Blue Diagonal Background */}
+          <div className="absolute top-0 left-0 w-full h-full bg-[#041424] z-20 hero-clip-bg">
+            {/* Subtle Geometric Triangles Pattern Overlay */}
+            <div 
+              className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+              style={{ 
+                backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M30 0l30 60H0L30 0z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E")', 
+                backgroundSize: '60px 60px' 
+              }}
+            ></div>
           </div>
           
-          {/* Right Side (Floating Badge) */}
-          <div className="lg:w-[45%] relative flex justify-center lg:justify-end mt-8 lg:mt-0">
-            <ScrollReveal>
-              <div className="bg-white/10 backdrop-blur-xl border border-white/20 p-8 rounded-3xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] flex items-center gap-6 z-20 transform transition-all duration-500 hover:scale-105 hover:bg-white/15 hover:border-white/30 group">
-                <div className="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center text-blue-300 group-hover:bg-blue-500/30 transition-colors">
-                  {BadgeIcon && <BadgeIcon size={32} strokeWidth={2.5}/>}
-                </div>
-                <div>
-                  <p className="text-slate-300 text-sm font-semibold mb-1 tracking-wide uppercase">{badgeTitle}</p>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-4xl md:text-5xl font-black text-white">{badgeValue}</span>
-                    <span className="text-blue-300 font-bold text-lg">{badgeSubtitle}</span>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
+          {/* 4. Left Content */}
+          <div className="relative z-30 w-[72%] sm:w-[65%] lg:w-[55%] px-5 sm:px-8 lg:px-12 xl:px-16 flex flex-col justify-center h-full">
+            <div className="inline-block text-[#0EA5E9] font-bold text-xs tracking-wider uppercase mb-1">
+              {tagline || "LOAN SOLUTION"}
+            </div>
+            
+            <h1 className="font-display text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 lg:mb-3 leading-tight drop-shadow-md">
+              {title} <span className="text-[#0EA5E9]">{highlight}</span>
+            </h1>
+            
+            <p className="text-gray-300 text-xs md:text-sm lg:text-base mb-4 max-w-md leading-relaxed hidden sm:block">
+              {description}
+            </p>
+            
+            <div className="flex items-center gap-4">
+              <button className="inline-block bg-[#0EA5E9] hover:bg-[#0284C7] text-white font-bold py-2 px-6 lg:py-2.5 lg:px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-[0_4px_15px_rgba(14,165,233,0.3)] text-xs lg:text-sm w-max">
+                Apply Now
+              </button>
+            </div>
           </div>
-          
+
         </div>
-      </section>
+      </div>
 
       {/* Features Section */}
       <section className="py-24 px-6 md:px-10 bg-white relative">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full blur-[120px] opacity-60 pointer-events-none transform translate-x-1/2 -translate-y-1/2"></div>
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto relative z-10">
           <div className="text-center mb-20">
             <ScrollReveal>
               <span className="text-blue-600 font-bold tracking-widest uppercase text-sm mb-3 block">Premium Features</span>
@@ -126,7 +107,7 @@ const ServiceDetailsLayout = ({
       {/* Eligibility & Documents */}
       <section className="py-24 px-6 md:px-10 bg-slate-50 relative overflow-hidden">
         <div className="absolute left-0 bottom-0 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[100px] pointer-events-none transform -translate-x-1/2 translate-y-1/2"></div>
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 relative z-10">
+        <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 relative z-10">
           <div className="lg:w-1/2">
             <ScrollReveal>
               <div className="bg-white p-10 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] border border-slate-100 h-full">

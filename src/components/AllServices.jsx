@@ -47,7 +47,7 @@ const AllServices = () => {
 
   return (
     <section className="w-full bg-[#fcfcfc] py-16 px-6 md:px-10">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto">
         
         {/* Header */}
         <div className="mb-14 text-left">

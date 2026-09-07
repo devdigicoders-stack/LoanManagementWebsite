@@ -9,7 +9,7 @@ const AboutTech = () => {
       <div className="absolute top-10 left-10 w-20 h-20 border-4 border-[#0EA5E9] rounded-full opacity-20 hidden md:block"></div>
       <div className="absolute bottom-10 right-10 w-32 h-32 border-4 border-[#0EA5E9] rounded-full opacity-20 hidden md:block"></div>
 
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
         
         {/* Left Content */}
         <div className="w-full lg:w-1/2">

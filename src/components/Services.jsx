@@ -42,26 +42,18 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="relative w-full bg-[#fafdf9] py-16 px-6 md:px-10 overflow-hidden">
-      {/* Background Dotted Patterns */}
-      <div className="absolute top-10 left-0 w-32 md:w-64 h-full opacity-40 pointer-events-none">
-        <svg width="100%" height="100%">
-          <defs>
-            <pattern id="dots-left" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-              <circle fill="#d1e8c9" cx="2" cy="2" r="2"></circle>
-            </pattern>
-          </defs>
-          <rect x="0" y="0" width="100%" height="100%" fill="url(#dots-left)"></rect>
-        </svg>
-      </div>
+    <section className="relative w-full bg-transparent py-20 px-6 md:px-10 overflow-hidden">
+      {/* Background Decorative Elements */}
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-[#0EA5E9] opacity-10 blur-[100px] rounded-full pointer-events-none"></div>
+      <div className="absolute bottom-10 left-10 w-72 h-72 bg-[#0EA5E9] opacity-5 blur-[80px] rounded-full pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-12 flex flex-col items-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-black leading-[1.3] mb-4">
-            Explore Our <span className="text-[#4b9b22]">Loan Products</span>
+        <div className="text-center mb-16 flex flex-col items-center">
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-slate-900 leading-[1.3] mb-6">
+            Explore Our <span className="text-[#0EA5E9]">Loan Products</span>
           </h2>
-          <p className="text-gray-600 max-w-2xl text-center">
+          <p className="text-slate-600 max-w-2xl text-center text-lg">
             Find the perfect financial solution tailored to your personal and business needs with our comprehensive range of loans.
           </p>
         </div>
@@ -71,25 +63,25 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-6 shadow-[0_5px_20px_rgba(0,0,0,0.04)] border border-[#f0f5ef] hover:shadow-[0_15px_30px_rgba(91,193,22,0.1)] transition-all duration-300 group flex flex-col h-full"
+              className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:border-[#0EA5E9]/50 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group flex flex-col h-full"
             >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-14 h-14 bg-[#f0fbf0] text-[#0EA5E9] rounded-xl flex items-center justify-center group-hover:bg-[#0EA5E9] group-hover:text-white transition-colors duration-300">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 bg-[#F0F9FF] text-[#0EA5E9] rounded-xl flex items-center justify-center border border-[#E0F2FE] group-hover:bg-[#0EA5E9] group-hover:text-white group-hover:border-[#0EA5E9] group-hover:shadow-md transition-all duration-300 transform group-hover:scale-110">
                   <service.icon size={28} strokeWidth={2} />
                 </div>
-                <h3 className="text-xl font-bold text-black">{service.title}</h3>
+                <h3 className="font-display text-xl lg:text-2xl font-bold text-slate-900 group-hover:text-[#0EA5E9] transition-colors">{service.title}</h3>
               </div>
               
-              <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+              <p className="text-slate-600 text-base leading-relaxed mb-8 flex-grow group-hover:text-slate-700 transition-colors">
                 {service.description}
               </p>
 
-              <div className="flex items-center justify-between border-t border-gray-100 pt-4 mt-auto">
-                <Link to={service.link} className="text-black font-semibold hover:text-[#0EA5E9] transition-colors text-sm flex items-center gap-1">
+              <div className="flex items-center justify-between border-t border-slate-100 pt-5 mt-auto">
+                <Link to={service.link} className="text-slate-500 font-semibold hover:text-slate-900 transition-colors text-sm flex items-center gap-1">
                   Know More
                 </Link>
-                <Link to="/get-started" className="text-[#0EA5E9] font-semibold hover:text-[#419822] transition-colors text-sm flex items-center gap-1">
-                  Apply Now <ArrowRight size={16} />
+                <Link to="/contact" className="text-[#0EA5E9] font-bold hover:text-[#0284C7] transition-colors text-sm flex items-center gap-2 group/btn">
+                  Apply Now <ArrowRight size={16} className="transform group-hover/btn:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </div>

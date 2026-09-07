@@ -37,7 +37,7 @@ const AboutStats = () => {
 
       {/* Principles Section underneath */}
       <div className="w-full bg-[#fcfcfc] py-20 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {principles.map((p, index) => (
             <div key={index} className="flex flex-col items-center text-center">
               <div className="w-16 h-16 rounded-full bg-[#f0fbf0] text-[#0EA5E9] flex items-center justify-center mb-6">

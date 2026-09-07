@@ -1,50 +1,61 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const AboutHero = () => {
   return (
-    <section className="relative w-full h-[350px] md:h-[450px] lg:h-[500px] bg-[#F0F9FF] flex items-center overflow-hidden">
-      
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 w-full h-full"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      ></div>
-      
-      {/* Dark gradient overlay for perfect readability */}
-      <div className="absolute inset-0 bg-slate-900/60"></div>
-      <div className="absolute inset-0 bg-slate-900/70 md:hidden"></div>
+    <div className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] bg-[#041424] overflow-hidden font-sans shadow-sm">
+      <div className="w-full h-full relative flex items-center overflow-hidden">
+        
+        {/* 1. Right Side Image */}
+        <div className="absolute top-0 right-0 w-[75%] sm:w-[70%] lg:w-[65%] h-full z-0">
+          <img
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80"
+            alt="About Us"
+            className="w-full h-full object-cover object-center"
+          />
+        </div>
 
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-10 relative z-30 pt-10">
-        <div className="max-w-2xl">
-          
-          <div className="text-[#0284C7] font-bold text-[12px] tracking-widest mb-4 uppercase drop-shadow">
+        {/* 2. Cyan Accent Line (Diagonal) */}
+        <div className="absolute top-0 left-0 w-full h-full bg-[#0EA5E9] z-10 hero-clip-accent"></div>
+
+        {/* 3. Main Dark Blue Diagonal Background */}
+        <div className="absolute top-0 left-0 w-full h-full bg-[#041424] z-20 hero-clip-bg">
+          {/* Subtle Geometric Triangles Pattern Overlay */}
+          <div 
+            className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+            style={{ 
+              backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M30 0l30 60H0L30 0z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E")', 
+              backgroundSize: '60px 60px' 
+            }}
+          ></div>
+        </div>
+        
+        {/* 4. Left Content */}
+        <div className="relative z-30 w-[72%] sm:w-[65%] lg:w-[55%] px-5 sm:px-8 lg:px-12 xl:px-16 flex flex-col justify-center h-full">
+          <div className="inline-block text-[#0EA5E9] font-bold text-xs tracking-wider uppercase mb-1">
             ABOUT US
           </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-[56px] font-extrabold text-white mb-6 leading-[1.1] drop-shadow-lg">
+          <h1 className="font-display text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 lg:mb-3 leading-tight drop-shadow-md">
             Building Financial Confidence <br />
-            <span className="text-[#0284C7]">Through Better Information</span>
+            <span className="text-[#0EA5E9]">Through Better Information</span>
           </h1>
           
-          <p className="text-gray-200 text-[15px] md:text-lg leading-relaxed mb-10 max-w-xl drop-shadow">
+          <p className="text-gray-300 text-xs md:text-sm lg:text-base mb-3 max-w-md leading-relaxed hidden sm:block">
             We are committed to making property-related financial information easier to understand and access.
           </p>
-
-          {/* Breadcrumbs */}
-          <div className="flex items-center gap-2 text-[15px] font-medium">
-            <a href="#" className="text-white hover:text-gray-200 transition-colors">Home</a>
-            <ChevronRight className="text-gray-500 mt-0.5" size={14} strokeWidth={3} />
-            <span className="text-[#0EA5E9]">About Us</span>
-          </div>
           
+          {/* Breadcrumbs */}
+          <div className="flex items-center gap-2 text-xs md:text-sm font-medium">
+            <Link to="/" className="text-gray-400 hover:text-white transition-colors">Home</Link>
+            <ChevronRight className="text-gray-500" size={14} strokeWidth={2.5} />
+            <span className="text-[#0EA5E9] font-semibold">About Us</span>
+          </div>
         </div>
+
       </div>
-    </section>
+    </div>
   );
 };
 

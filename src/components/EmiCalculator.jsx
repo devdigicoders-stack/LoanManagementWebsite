@@ -34,7 +34,7 @@ const EmiCalculator = () => {
 
   return (
     <section className="relative w-full bg-white py-20 px-6 md:px-10 border-t border-gray-100">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 items-center">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto flex flex-col lg:flex-row gap-12 items-center">
         
         {/* Left Side: Text and Controls */}
         <div className="w-full lg:w-1/2">
@@ -120,7 +120,7 @@ const EmiCalculator = () => {
             {/* Decorative circles */}
             <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#0369A1] rounded-full mix-blend-screen filter blur-[80px] opacity-20"></div>
             
-            <h3 className="text-xl font-medium text-slate-700 mb-6 border-b border-gray-800 pb-4">Your EMI Details</h3>
+            <h3 className="text-xl font-medium text-slate-700 mb-6 border-b border-slate-200 pb-4">Your EMI Details</h3>
             
             <div className="mb-8">
               <p className="text-slate-600 mb-2">Equated Monthly Installment (EMI)</p>
@@ -128,17 +128,17 @@ const EmiCalculator = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <div className="bg-[#BAE6FD] p-5 rounded-xl border border-gray-800">
+              <div className="bg-[#BAE6FD] p-5 rounded-xl border border-[#93C5FD]">
                 <p className="text-slate-600 text-sm mb-1">Total Interest</p>
                 <p className="text-xl font-bold">{formatCurrency(totalInterest)}</p>
               </div>
-              <div className="bg-[#BAE6FD] p-5 rounded-xl border border-gray-800">
+              <div className="bg-[#BAE6FD] p-5 rounded-xl border border-[#93C5FD]">
                 <p className="text-slate-600 text-sm mb-1">Total Amount Payable</p>
                 <p className="text-xl font-bold">{formatCurrency(totalPayment)}</p>
               </div>
             </div>
 
-            <button className="w-full  hover:] hover:] text-black font-bold py-4 px-6 rounded-xl shadow-[0_0_20px_rgba(28,242,0,0.2)] transition-all duration-300 hover:scale-[1.02]">
+            <button className="w-full bg-[#0EA5E9] hover:bg-[#0284C7] text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-[#0EA5E9]/25 transition-all duration-300 hover:scale-[1.02]">
               Apply for Loan Now
             </button>
             <p className="text-center text-xs text-gray-500 mt-4">

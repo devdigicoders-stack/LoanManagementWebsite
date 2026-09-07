@@ -20,7 +20,7 @@ const DownloadHero = () => {
       <div className="absolute inset-0 bg-slate-900/60"></div>
       <div className="absolute inset-0 bg-slate-900/70 md:hidden"></div>
 
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-10 relative z-30 flex flex-col lg:flex-row items-center gap-10">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto w-full px-6 md:px-10 relative z-30 flex flex-col lg:flex-row items-center gap-10">
         
         {/* Left Side */}
         <div className="w-full lg:w-1/2 flex flex-col pt-4">

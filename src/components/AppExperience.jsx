@@ -41,7 +41,7 @@ const AppExperience = () => {
       {/* Background Gradients */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#0EA5E9] rounded-full blur-[200px] opacity-5 pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto flex flex-col items-center">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto flex flex-col items-center">
         
         <div className="text-center mb-20 relative z-10">
           <div className="inline-block bg-[#E0F2FE] border border-slate-100 text-[#0369A1] rounded-full px-5 py-2 text-sm font-bold tracking-widest uppercase mb-6 shadow-sm">

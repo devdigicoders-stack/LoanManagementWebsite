@@ -52,16 +52,16 @@ const NewsAndPress = () => {
 
   return (
     <section className="w-full bg-[#fafdf9] py-20 px-6 md:px-10">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto">
         
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <div>
-            <div className="inline-block bg-[#0284C7]/10 border border-[#0284C7]/30 text-[#15a300] rounded-full px-4 py-1.5 text-xs font-bold tracking-wider mb-4">
+            <div className="inline-block bg-[#0EA5E9]/10 border border-[#0EA5E9]/30 text-[#0EA5E9] rounded-full px-4 py-1.5 text-xs font-bold tracking-wider mb-4">
               LATEST UPDATES
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-slate-900">
-              News & <span className="text-[#0284C7]">Press Releases</span>
+              News & <span className="text-[#0EA5E9]">Press Releases</span>
             </h2>
           </div>
           
@@ -70,19 +70,19 @@ const NewsAndPress = () => {
             <div className="flex gap-2">
               <button 
                 onClick={scrollLeft}
-                className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-[#0284C7] hover:text-black hover:border-transparent transition-all"
+                className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-[#0EA5E9] hover:text-white hover:border-transparent transition-all"
               >
                 <ChevronLeft size={20} />
               </button>
               <button 
                 onClick={scrollRight}
-                className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-[#0284C7] hover:text-black hover:border-transparent transition-all"
+                className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-[#0EA5E9] hover:text-white hover:border-transparent transition-all"
               >
                 <ChevronRight size={20} />
               </button>
             </div>
             
-            <Link to="#" className="hidden md:flex items-center gap-2 text-sm font-bold text-slate-800 hover:text-[#0284C7] transition-colors group">
+            <Link to="#" className="hidden md:flex items-center gap-2 text-sm font-bold text-slate-800 hover:text-[#0EA5E9] transition-colors group">
               View All News
               <ArrowRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -101,7 +101,7 @@ const NewsAndPress = () => {
               className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 group flex flex-col min-w-[320px] md:min-w-[380px] max-w-[380px] shrink-0 snap-start relative overflow-hidden"
             >
               {/* Top Accent Line */}
-              <div className="absolute top-0 left-0 w-full h-1 group-hover:] group-hover:] transition-all duration-300"></div>
+              <div className="absolute top-0 left-0 w-full h-1 bg-[#0EA5E9] transition-all duration-300"></div>
               
               {/* Meta Data */}
               <div className="flex items-center gap-4 mb-5 text-sm">

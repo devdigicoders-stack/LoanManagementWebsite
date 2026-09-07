@@ -41,7 +41,7 @@ const AppFeatures = () => {
       {/* Background Element */}
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#0EA5E9] rounded-full blur-[200px] opacity-10 pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto relative z-10">
         
         <div className="text-center mb-16">
           <div className="inline-block bg-[#F0F9FF] border border-[#0EA5E9]/20 text-[#0EA5E9] rounded-full px-5 py-2 text-sm font-bold tracking-widest uppercase mb-6">

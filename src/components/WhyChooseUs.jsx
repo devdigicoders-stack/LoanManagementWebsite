@@ -3,7 +3,7 @@ import { Zap, FileText, Banknote, ShieldCheck } from 'lucide-react';
 const WhyChooseUs = () => {
   return (
     <section className="w-full bg-[#fafdf9] py-16 px-6 md:px-10">
-      <div className="max-w-7xl mx-auto bg-[#FDFBF7] rounded-[40px] overflow-hidden flex flex-col lg:flex-row shadow-2xl">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto bg-[#FDFBF7] rounded-[40px] overflow-hidden flex flex-col lg:flex-row shadow-2xl">
         
         {/* Left Content */}
         <div className="lg:w-1/2 p-8 md:p-12 flex flex-col justify-center relative z-10">
@@ -18,8 +18,8 @@ const WhyChooseUs = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             
             {/* Feature 1 */}
-            <div className="flex flex-col">
-              <div className="w-14 h-14 rounded-xl border border-[#2af500] flex items-center justify-center text-[#0284C7] shadow-[inset_0_0_15px_rgba(42,245,0,0.2),0_0_15px_rgba(42,245,0,0.3)] mb-5">
+            <div className="flex flex-col group">
+              <div className="w-14 h-14 rounded-2xl border border-[#BAE6FD] bg-[#F0F9FF] flex items-center justify-center text-[#0EA5E9] shadow-sm mb-5 transition-all">
                 <Zap size={26} strokeWidth={1.5} />
               </div>
               <h4 className="text-slate-900 font-bold text-lg mb-2">Fast Processing</h4>
@@ -29,8 +29,8 @@ const WhyChooseUs = () => {
             </div>
             
             {/* Feature 2 */}
-            <div className="flex flex-col">
-              <div className="w-14 h-14 rounded-xl border border-[#2af500] flex items-center justify-center text-[#0284C7] shadow-[inset_0_0_15px_rgba(42,245,0,0.2),0_0_15px_rgba(42,245,0,0.3)] mb-5">
+            <div className="flex flex-col group">
+              <div className="w-14 h-14 rounded-2xl border border-[#BAE6FD] bg-[#F0F9FF] flex items-center justify-center text-[#0EA5E9] shadow-sm mb-5 transition-all">
                 <FileText size={26} strokeWidth={1.5} />
               </div>
               <h4 className="text-slate-900 font-bold text-lg mb-2">Minimum Documentation</h4>
@@ -40,8 +40,8 @@ const WhyChooseUs = () => {
             </div>
             
             {/* Feature 3 */}
-            <div className="flex flex-col">
-              <div className="w-14 h-14 rounded-xl border border-[#2af500] flex items-center justify-center text-[#0284C7] shadow-[inset_0_0_15px_rgba(42,245,0,0.2),0_0_15px_rgba(42,245,0,0.3)] mb-5">
+            <div className="flex flex-col group">
+              <div className="w-14 h-14 rounded-2xl border border-[#BAE6FD] bg-[#F0F9FF] flex items-center justify-center text-[#0EA5E9] shadow-sm mb-5 transition-all">
                 <Banknote size={26} strokeWidth={1.5} />
               </div>
               <h4 className="text-slate-900 font-bold text-lg mb-2">Flexible Repayment</h4>
@@ -51,8 +51,8 @@ const WhyChooseUs = () => {
             </div>
             
             {/* Feature 4 */}
-            <div className="flex flex-col">
-              <div className="w-14 h-14 rounded-xl border border-[#2af500] flex items-center justify-center text-[#0284C7] shadow-[inset_0_0_15px_rgba(42,245,0,0.2),0_0_15px_rgba(42,245,0,0.3)] mb-5">
+            <div className="flex flex-col group">
+              <div className="w-14 h-14 rounded-2xl border border-[#BAE6FD] bg-[#F0F9FF] flex items-center justify-center text-[#0EA5E9] shadow-sm mb-5 transition-all">
                 <ShieldCheck size={26} strokeWidth={1.5} />
               </div>
               <h4 className="text-slate-900 font-bold text-lg mb-2">100% Transparency</h4>
@@ -65,11 +65,11 @@ const WhyChooseUs = () => {
         </div>
 
         {/* Right Content - Image */}
-        <div className="lg:w-1/2 relative min-h-[300px] lg:min-h-full">
+        <div className="lg:w-1/2 flex items-end justify-center pt-8 lg:pt-12 bg-gradient-to-t from-[#E0F2FE]/50 to-transparent px-4">
           <img 
             src="/home/why.png" 
             alt="Family holding glowing house" 
-            className="absolute inset-0 w-full h-full object-cover lg:object-contain object-right-bottom"
+            className="w-full max-w-[350px] lg:max-w-full h-auto object-contain object-bottom drop-shadow-xl"
           />
         </div>
         

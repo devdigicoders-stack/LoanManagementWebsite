@@ -24,7 +24,7 @@ const ContactMap = () => {
 
   return (
     <section className="w-full bg-[#fcfcfc] py-20 px-6 md:px-10 border-t border-gray-100">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto">
 
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-[#E0F2FE] text-[#0369A1] rounded-full px-4 py-1 text-sm font-bold tracking-wider mb-4 uppercase">

@@ -37,7 +37,7 @@ const AboutExplore = () => {
 
   return (
     <section className="w-full bg-[#fcfcfc] py-20 px-6 md:px-10 border-t border-b border-gray-100">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto">
         
         <div className="flex flex-col md:flex-row items-end justify-between gap-6 mb-16">
           <div className="max-w-xl">

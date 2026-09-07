@@ -53,7 +53,7 @@ const AboutBottomStats = () => {
 
   return (
     <section className="w-full bg-[#FDFBF7] py-16 px-6 md:px-10 border-t border-[#E0F2FE]">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 lg:gap-y-0 relative z-10">
           {stats.map((stat, index) => (
             <motion.div 

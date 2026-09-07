@@ -55,7 +55,7 @@ const AboutJourney = () => {
 
   return (
     <section className="w-full bg-[#fcfcfc] py-16 px-4 md:px-10 border-t border-b border-gray-100 overflow-hidden relative group">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Journey</h2>
           <div className="w-20 h-1.5 bg-[#0EA5E9] mx-auto rounded-full"></div>
