@@ -22,8 +22,8 @@ const ContactUsPage = () => {
       <ContactHero />
       
       {/* Contact Mode Toggle */}
-      <div className="w-full px-6 lg:px-12 xl:px-16 mx-auto px-6 md:px-10 py-12 flex justify-center">
-        <div className="bg-white border border-gray-200 p-2 rounded-2xl inline-flex flex-col md:flex-row gap-2 shadow-sm relative z-10 -mt-20">
+      <div className="relative z-40 w-full px-6 lg:px-12 xl:px-16 mx-auto md:px-10 py-12 flex justify-center">
+        <div className="bg-white border border-gray-200 p-2 rounded-2xl inline-flex flex-col md:flex-row gap-2 shadow-sm relative z-40 -mt-20">
           <button
             onClick={() => setActiveView('enquiry')}
             className={`px-8 py-3 rounded-xl font-semibold transition-all cursor-pointer ${
