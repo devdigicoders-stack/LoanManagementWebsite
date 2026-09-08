@@ -22,8 +22,7 @@ const AboutStats = () => {
       icon: <ShieldCheck size={24} strokeWidth={2} />,
       title: "Responsibility",
       desc: "We promote informed and responsible borrowing."
-    }
- ;
+    };
 
   return (
     <section className="w-full">
