@@ -203,7 +203,7 @@ const Terms = () => {
 
               {/* Section 15 */}
               <h2 id="section-15" className="scroll-mt-32 mt-12 mb-4 flex items-center gap-3 text-2xl font-extrabold text-slate-900 border-l-4 border-[#0EA5E9] pl-4">15. FEEDBACK</h2>
-              <p>Your feedback makes use of NuoG’s Services and Services better; please feel free to share it with NuoG on <a href="mailto:support@HAUS NUO-Paypl.com" className="text-[#0EA5E9] hover:underline font-medium">support@hausnuo.com </a>. Unless specifically admitted by NuoG or as required by law all feedback shall be non-confidential in nature.</p>
+              <p>Your feedback makes use of NuoG’s Services and Services better; please feel free to share it with NuoG on <a href="mailto:support@hausnuo.com" className="text-[#0EA5E9] hover:underline font-medium">support@hausnuo.com </a>. Unless specifically admitted by NuoG or as required by law all feedback shall be non-confidential in nature.</p>
               <p>NuoG will assume no responsibility for reviewing unsolicited ideas and will not incur any liability as a result of any similarities between those ideas and materials that may appear in future programs of NuoG.</p>
               <p>Please do not reveal trade secrets or other confidential information in your messages to NuoG. Any and all rights to materials submitted to NuoG become the exclusive property of NuoG.</p>
 

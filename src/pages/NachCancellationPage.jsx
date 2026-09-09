@@ -31,7 +31,7 @@ const NachCancellationPage = () => {
               <CheckCircle2 className="text-[#0EA5E9]" /> eNACH Mandate Registration Process
             </h2>
             <p className="text-gray-600 mb-4 text-[15px]">
-              To register eNACH mandate, customers are requested to contact concerned relationship officers of NuoG Housing Payments Limited Branch / send email request to <a href="mailto:enach.support@nuobnk.com" className="text-[#0EA5E9] hover:underline font-semibold">“enach.support@nuobnk.com”</a> with the following details:
+              To register eNACH mandate, customers are requested to contact concerned relationship officers of NuoG Housing Payments Limited Branch / send email request to <a href="mailto:enach.support@hausnuo.com" className="text-[#0EA5E9] hover:underline font-semibold">“enach.support@hausnuo.com”</a> with the following details:
             </p>
             <ul className="list-decimal pl-5 space-y-2 text-gray-600 text-[15px] marker:text-[#0EA5E9] marker:font-bold">
               <li>Your Application Number/Loan Account Number</li>
@@ -49,7 +49,7 @@ const NachCancellationPage = () => {
               As per directions issued by NPCI vide circular NPCI/2025-26/NACH/Circular No. 025 dated 08/11/2025 &amp; NPCI/2025-26/NACH/Circular No. 028 dated 08/11/, NuoG Provides the NACH Cancellation facility for its customers as per the below process:
             </p>
             <ul className="list-decimal pl-5 space-y-2 text-gray-600 text-[15px] marker:text-[#0EA5E9] marker:font-bold">
-              <li>For cancellation of registered eNACH, the customer can contact their relationship officers of NuoG Branch for the same or send e-Mail to <a href="mailto:enach.support@nuobnk.com" className="text-[#0EA5E9] hover:underline font-semibold">“enach.support@nuobnk.com”</a> with the following details:</li>
+              <li>For cancellation of registered eNACH, the customer can contact their relationship officers of NuoG Branch for the same or send e-Mail to <a href="mailto:enach.support@hausnuo.com" className="text-[#0EA5E9] hover:underline font-semibold">“enach.support@hausnuo.com”</a> with the following details:</li>
               <li>Your Application Number/Loan Account Number</li>
               <li>Registered Mobile Number</li>
               <li>Reason for NACH Cancellation Request</li>
@@ -61,7 +61,7 @@ const NachCancellationPage = () => {
           <div className="bg-[#F8FAFC] border border-[#BAE6FD] rounded-2xl p-6">
             <h2 className="text-lg font-bold text-[#0369A1] mb-3">Customer Grievance Mechanism</h2>
             <p className="text-[#0284C7] mb-4 text-[14px]">
-              For any query on eNACH, please write to <a href="mailto:enach.support@nuobnk.com" className="font-bold hover:underline">“enach.support@nuobnk.com”</a> or call us on <strong className="font-bold">9755 766 018</strong> (Monday to Friday - 10 AM to 06 PM) or visit your nearest NuoG Branch.
+              For any query on eNACH, please write to <a href="mailto:enach.support@hausnuo.com" className="font-bold hover:underline">“enach.support@hausnuo.com”</a> or call us on <strong className="font-bold">9755 766 018</strong> (Monday to Friday - 10 AM to 06 PM) or visit your nearest NuoG Branch.
             </p>
             <p className="text-[13px] text-[#0369A1] italic font-medium">
               *Please note above process is applicable only for NuoG Housing Payments Limited Customers.
