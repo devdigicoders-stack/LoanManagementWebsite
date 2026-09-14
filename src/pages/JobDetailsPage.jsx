@@ -6,10 +6,19 @@ import {
   GraduationCap, Building2, ChevronDown, CheckCircle2, Plus, Trash2, HeartHandshake, ShieldCheck, HandCoins, Baby, Navigation, FileText, Download, CalendarHeart
 } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { 
+  validateMobile, 
+  validateEmail, 
+  validateAadhar, 
+  validatePAN, 
+  validatePincode,
+  sanitizeDigitsOnly, 
+  sanitizePAN 
+} from '../utils/validation';
 
 // ─── Reusable form components ───────────────────────────────────────────────
 
-const FormInput = ({ label, required, placeholder, type = 'text', icon: Icon, value, onChange, name }) => (
+const FormInput = ({ label, required, placeholder, type = 'text', icon: Icon, value, onChange, name, maxLength, inputMode, className = '' }) => (
   <div>
     <label className="block text-sm font-semibold text-slate-700 mb-1.5">
       {label}{required && <span className="text-red-500 ml-0.5">*</span>}
@@ -23,7 +32,9 @@ const FormInput = ({ label, required, placeholder, type = 'text', icon: Icon, va
         value={value || ''}
         onChange={onChange}
         placeholder={placeholder}
-        className={`w-full ${Icon ? 'pl-10' : 'pl-4'} pr-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 placeholder-gray-400 bg-white outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all`}
+        maxLength={maxLength}
+        inputMode={inputMode}
+        className={`w-full ${Icon ? 'pl-10' : 'pl-4'} pr-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 placeholder-gray-400 bg-white outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all ${className}`}
       />
     </div>
   </div>
@@ -232,10 +243,21 @@ const ApplicationForm = ({ job }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    let sanitized = value;
+    if (name === 'phone' || name === 'alternatePhone') {
+      sanitized = sanitizeDigitsOnly(value, 10);
+    } else if (name === 'aadhaar') {
+      sanitized = sanitizeDigitsOnly(value, 12);
+    } else if (name === 'pan') {
+      sanitized = sanitizePAN(value);
+    } else if (name === 'pincode') {
+      sanitized = sanitizeDigitsOnly(value, 6);
+    }
+
+    setFormData(prev => ({ ...prev, [name]: sanitized }));
     
-    if (name === 'pincode' && value.length === 6) {
-      fetchPincodeDetails(value);
+    if (name === 'pincode' && sanitized.length === 6) {
+      fetchPincodeDetails(sanitized);
     }
   };
 
@@ -287,6 +309,57 @@ const ApplicationForm = ({ job }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // 1. Email check
+    const emailCheck = validateEmail(formData.email, true);
+    if (!emailCheck.valid) {
+      toast.error(emailCheck.message);
+      return;
+    }
+
+    // 2. Primary Phone check
+    const phoneCheck = validateMobile(formData.phone);
+    if (!phoneCheck.valid) {
+      toast.error(`Phone: ${phoneCheck.message}`);
+      return;
+    }
+
+    // 3. Alternate Phone check (if provided)
+    if (formData.alternatePhone) {
+      const altCheck = validateMobile(formData.alternatePhone);
+      if (!altCheck.valid) {
+        toast.error(`Alternate Phone: ${altCheck.message}`);
+        return;
+      }
+    }
+
+    // 4. Aadhaar check (if provided)
+    if (formData.aadhaar) {
+      const aadharCheck = validateAadhar(formData.aadhaar);
+      if (!aadharCheck.valid) {
+        toast.error(aadharCheck.message);
+        return;
+      }
+    }
+
+    // 5. PAN check (if provided)
+    if (formData.pan) {
+      const panCheck = validatePAN(formData.pan);
+      if (!panCheck.valid) {
+        toast.error(panCheck.message);
+        return;
+      }
+    }
+
+    // 6. Pincode check (if provided)
+    if (formData.pincode) {
+      const pinCheck = validatePincode(formData.pincode);
+      if (!pinCheck.valid) {
+        toast.error(pinCheck.message);
+        return;
+      }
+    }
+
     setSubmitting(true);
     
     try {
@@ -388,20 +461,20 @@ const ApplicationForm = ({ job }) => {
               <label className="block text-sm font-semibold text-slate-700 mb-1.5">Phone<span className="text-red-500 ml-0.5">*</span></label>
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium">+91</span>
-                <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all" />
+                <input required type="tel" inputMode="numeric" maxLength="10" name="phone" placeholder="10-digit number" value={formData.phone} onChange={handleChange} className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all font-mono" />
               </div>
             </div>
             <div>
               <label className="block text-sm font-semibold text-slate-700 mb-1.5">Alternate Phone</label>
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium">+91</span>
-                <input type="tel" name="alternatePhone" value={formData.alternatePhone} onChange={handleChange} className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all" />
+                <input type="tel" inputMode="numeric" maxLength="10" name="alternatePhone" placeholder="10-digit number (optional)" value={formData.alternatePhone} onChange={handleChange} className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all font-mono" />
               </div>
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <FormInput name="aadhaar" value={formData.aadhaar} onChange={handleChange} label="Aadhaar Card" placeholder="Enter Aadhaar Number" />
-            <FormInput name="pan" value={formData.pan} onChange={handleChange} label="PAN Card" placeholder="Enter PAN Number" />
+            <FormInput name="aadhaar" value={formData.aadhaar} onChange={handleChange} label="Aadhaar Card" placeholder="12-digit Aadhaar number" maxLength="12" inputMode="numeric" className="font-mono" />
+            <FormInput name="pan" value={formData.pan} onChange={handleChange} label="PAN Card" placeholder="ABCDE1234F" maxLength="10" className="uppercase font-mono" />
           </div>
 
           <div className="bg-gray-50 border border-gray-100 rounded-2xl p-6 mt-4">

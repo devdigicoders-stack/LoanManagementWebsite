@@ -79,57 +79,171 @@ const ContactForm = () => {
 
         {/* Right Side - Form */}
         <div className="w-full lg:w-[60%]">
-          <form className="bg-white rounded-3xl p-8 md:p-10 shadow-lg border border-gray-100 flex flex-col gap-6">
-            
-            <div className="flex flex-col md:flex-row gap-6">
-              <div className="w-full">
-                <label className="block text-gray-600 text-[13px] font-medium mb-2">First Name</label>
-                <input type="text" placeholder="Enter First Name" className="w-full bg-[#f9f9f9] border border-gray-200 rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-[#0EA5E9] focus:ring-1 focus:ring-[#0EA5E9] transition-all" />
-              </div>
-              <div className="w-full">
-                <label className="block text-gray-600 text-[13px] font-medium mb-2">Last Name</label>
-                <input type="text" placeholder="Enter Last Name" className="w-full bg-[#f9f9f9] border border-gray-200 rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-[#0EA5E9] focus:ring-1 focus:ring-[#0EA5E9] transition-all" />
-              </div>
-            </div>
-
-            <div className="w-full">
-              <label className="block text-gray-600 text-[13px] font-medium mb-2">Email Address</label>
-              <input type="email" placeholder="Enter Email Address" className="w-full bg-[#f9f9f9] border border-gray-200 rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-[#0EA5E9] focus:ring-1 focus:ring-[#0EA5E9] transition-all" />
-            </div>
-
-            <div className="w-full">
-              <label className="block text-gray-600 text-[13px] font-medium mb-2">Property Type</label>
-              <select className="w-full bg-[#f9f9f9] border border-gray-200 rounded-xl px-4 py-3 text-[14px] text-gray-600 focus:outline-none focus:border-[#0EA5E9] focus:ring-1 focus:ring-[#0EA5E9] transition-all appearance-none cursor-pointer">
-                <option>Select Property Type</option>
-                <option>Residential</option>
-                <option>Commercial</option>
-              </select>
-            </div>
-
-            <div className="w-full">
-              <label className="block text-gray-600 text-[13px] font-medium mb-2">Financial Requirement</label>
-              <select className="w-full bg-[#f9f9f9] border border-gray-200 rounded-xl px-4 py-3 text-[14px] text-gray-600 focus:outline-none focus:border-[#0EA5E9] focus:ring-1 focus:ring-[#0EA5E9] transition-all appearance-none cursor-pointer">
-                <option>Select Requirement</option>
-                <option>Home Loan</option>
-                <option>Loan Against Property</option>
-                <option>Construction Finance</option>
-              </select>
-            </div>
-
-            <div className="w-full">
-              <label className="block text-gray-600 text-[13px] font-medium mb-2">Message</label>
-              <textarea rows="4" placeholder="Type your message here..." className="w-full bg-[#f9f9f9] border border-gray-200 rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-[#0EA5E9] focus:ring-1 focus:ring-[#0EA5E9] transition-all resize-none"></textarea>
-            </div>
-
-            <button type="button" className="w-full bg-[#FDFBF7] hover:bg-gray-800 text-slate-900 font-bold py-3.5 rounded-xl transition-all shadow-md mt-2">
-              Submit Enquiry
-            </button>
-            
-          </form>
+          <ContactInnerForm />
         </div>
 
       </div>
     </section>
+  );
+};
+
+const ContactInnerForm = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    propertyType: '',
+    requirement: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    let sanitized = value;
+    if (name === 'phone') {
+      sanitized = sanitizeDigitsOnly(value, 10);
+    }
+    setFormData(prev => ({ ...prev, [name]: sanitized }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!formData.firstName.trim()) {
+      toast.error('Please enter your first name');
+      return;
+    }
+
+    const emailCheck = validateEmail(formData.email, true);
+    if (!emailCheck.valid) {
+      toast.error(emailCheck.message);
+      return;
+    }
+
+    if (formData.phone) {
+      const phoneCheck = validateMobile(formData.phone);
+      if (!phoneCheck.valid) {
+        toast.error(phoneCheck.message);
+        return;
+      }
+    }
+
+    toast.success('Thank you! Your enquiry has been submitted successfully.');
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      propertyType: '',
+      requirement: '',
+      message: ''
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="bg-white rounded-3xl p-8 md:p-10 shadow-lg border border-gray-100 flex flex-col gap-6">
+      
+      <div className="flex flex-col md:flex-row gap-6">
+        <div className="w-full">
+          <label className="block text-gray-600 text-[13px] font-medium mb-2">First Name <span className="text-red-500">*</span></label>
+          <input 
+            type="text" 
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            required
+            placeholder="Enter First Name" 
+            className="w-full bg-[#f9f9f9] border border-gray-200 rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-[#0EA5E9] focus:ring-1 focus:ring-[#0EA5E9] transition-all" 
+          />
+        </div>
+        <div className="w-full">
+          <label className="block text-gray-600 text-[13px] font-medium mb-2">Last Name</label>
+          <input 
+            type="text" 
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+            placeholder="Enter Last Name" 
+            className="w-full bg-[#f9f9f9] border border-gray-200 rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-[#0EA5E9] focus:ring-1 focus:ring-[#0EA5E9] transition-all" 
+          />
+        </div>
+      </div>
+
+      <div className="flex flex-col md:flex-row gap-6">
+        <div className="w-full">
+          <label className="block text-gray-600 text-[13px] font-medium mb-2">Email Address <span className="text-red-500">*</span></label>
+          <input 
+            type="email" 
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            placeholder="Enter Email Address" 
+            className="w-full bg-[#f9f9f9] border border-gray-200 rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-[#0EA5E9] focus:ring-1 focus:ring-[#0EA5E9] transition-all" 
+          />
+        </div>
+        <div className="w-full">
+          <label className="block text-gray-600 text-[13px] font-medium mb-2">Mobile Number</label>
+          <input 
+            type="tel" 
+            inputMode="numeric"
+            maxLength={10}
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="10-digit mobile number" 
+            className="w-full bg-[#f9f9f9] border border-gray-200 rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-[#0EA5E9] focus:ring-1 focus:ring-[#0EA5E9] transition-all font-mono" 
+          />
+        </div>
+      </div>
+
+      <div className="w-full">
+        <label className="block text-gray-600 text-[13px] font-medium mb-2">Property Type</label>
+        <select 
+          name="propertyType"
+          value={formData.propertyType}
+          onChange={handleChange}
+          className="w-full bg-[#f9f9f9] border border-gray-200 rounded-xl px-4 py-3 text-[14px] text-gray-600 focus:outline-none focus:border-[#0EA5E9] focus:ring-1 focus:ring-[#0EA5E9] transition-all appearance-none cursor-pointer"
+        >
+          <option value="">Select Property Type</option>
+          <option value="Residential">Residential</option>
+          <option value="Commercial">Commercial</option>
+        </select>
+      </div>
+
+      <div className="w-full">
+        <label className="block text-gray-600 text-[13px] font-medium mb-2">Financial Requirement</label>
+        <select 
+          name="requirement"
+          value={formData.requirement}
+          onChange={handleChange}
+          className="w-full bg-[#f9f9f9] border border-gray-200 rounded-xl px-4 py-3 text-[14px] text-gray-600 focus:outline-none focus:border-[#0EA5E9] focus:ring-1 focus:ring-[#0EA5E9] transition-all appearance-none cursor-pointer"
+        >
+          <option value="">Select Requirement</option>
+          <option value="Home Loan">Home Loan</option>
+          <option value="Loan Against Property">Loan Against Property</option>
+          <option value="Construction Finance">Construction Finance</option>
+        </select>
+      </div>
+
+      <div className="w-full">
+        <label className="block text-gray-600 text-[13px] font-medium mb-2">Message</label>
+        <textarea 
+          rows="4" 
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          placeholder="Type your message here..." 
+          className="w-full bg-[#f9f9f9] border border-gray-200 rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-[#0EA5E9] focus:ring-1 focus:ring-[#0EA5E9] transition-all resize-none"
+        ></textarea>
+      </div>
+
+      <button type="submit" className="w-full bg-[#0EA5E9] hover:bg-[#0369A1] text-white font-bold py-3.5 rounded-xl transition-all shadow-md mt-2">
+        Submit Enquiry
+      </button>
+      
+    </form>
   );
 };
 

@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
 import { Search, X } from 'lucide-react';
+import toast from 'react-hot-toast';
+import { 
+  validateMobile, 
+  validateAadhar, 
+  validatePAN, 
+  sanitizeDigitsOnly, 
+  sanitizePAN 
+} from '../utils/validation';
 
 const PayEmiCheck = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
@@ -9,12 +17,38 @@ const PayEmiCheck = ({ isOpen, onClose }) => {
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    let sanitized = value;
+    if (name === 'mobile') sanitized = sanitizeDigitsOnly(value, 10);
+    else if (name === 'aadhar') sanitized = sanitizeDigitsOnly(value, 12);
+    else if (name === 'pan') sanitized = sanitizePAN(value);
+    
+    setFormData({ ...formData, [name]: sanitized });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    const mobCheck = validateMobile(formData.mobile);
+    if (!mobCheck.valid) {
+      toast.error(mobCheck.message);
+      return;
+    }
+
+    const aadharCheck = validateAadhar(formData.aadhar, true);
+    if (!aadharCheck.valid) {
+      toast.error(aadharCheck.message);
+      return;
+    }
+
+    const panCheck = validatePAN(formData.pan, true);
+    if (!panCheck.valid) {
+      toast.error(panCheck.message);
+      return;
+    }
+
     // Logic for checking EMI will go here
+    toast.success("Details verified successfully! Checking EMI status...");
     alert("Checking EMI for Mobile: " + formData.mobile);
   };
 
@@ -46,10 +80,12 @@ const PayEmiCheck = ({ isOpen, onClose }) => {
             <div className="w-full">
               <label className="block text-xs font-semibold text-slate-600 mb-2 uppercase tracking-wider">Mobile Number</label>
               <input 
-                type="text" 
+                type="tel" 
+                inputMode="numeric"
                 name="mobile"
+                maxLength={10}
                 placeholder="10-digit number"
-                className="w-full bg-[#F0F9FF] border border-slate-100 text-slate-900 placeholder:text-gray-600 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0EA5E9] transition-colors"
+                className="w-full bg-[#F0F9FF] border border-slate-100 text-slate-900 placeholder:text-gray-600 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0EA5E9] transition-colors font-mono"
                 value={formData.mobile}
                 onChange={handleChange}
                 required
@@ -59,9 +95,11 @@ const PayEmiCheck = ({ isOpen, onClose }) => {
               <label className="block text-xs font-semibold text-slate-600 mb-2 uppercase tracking-wider">Aadhaar Number</label>
               <input 
                 type="text" 
+                inputMode="numeric"
                 name="aadhar"
+                maxLength={12}
                 placeholder="12-digit number"
-                className="w-full bg-[#F0F9FF] border border-slate-100 text-slate-900 placeholder:text-gray-600 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0EA5E9] transition-colors"
+                className="w-full bg-[#F0F9FF] border border-slate-100 text-slate-900 placeholder:text-gray-600 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0EA5E9] transition-colors font-mono"
                 value={formData.aadhar}
                 onChange={handleChange}
                 required
@@ -72,8 +110,9 @@ const PayEmiCheck = ({ isOpen, onClose }) => {
               <input 
                 type="text" 
                 name="pan"
+                maxLength={10}
                 placeholder="ABCDE1234F"
-                className="w-full bg-[#F0F9FF] border border-slate-100 text-slate-900 placeholder:text-gray-600 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0EA5E9] transition-colors uppercase"
+                className="w-full bg-[#F0F9FF] border border-slate-100 text-slate-900 placeholder:text-gray-600 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0EA5E9] transition-colors uppercase font-mono"
                 value={formData.pan}
                 onChange={handleChange}
                 required

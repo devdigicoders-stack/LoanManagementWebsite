@@ -49,10 +49,12 @@ import RentalPayTenantPage from './pages/RentalPayTenantPage';
 import SocietiesInsuredPage from './pages/SocietiesInsuredPage';
 import NuoHausBuilderPage from './pages/NuoHausBuilderPage';
 import NuoHausIndividualPage from './pages/NuoHausIndividualPage';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
     <Router>
+      <Toaster position="top-right" toastOptions={{ duration: 4000 }} />
       <ScrollToTop />
       <div className="min-h-screen bg-[#FDFBF7] text-slate-900 font-sans flex flex-col">
         <Header />
