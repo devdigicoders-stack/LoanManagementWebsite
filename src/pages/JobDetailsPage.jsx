@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import {
   MapPin, Clock, Briefcase, Monitor, ArrowLeft,
   Upload, User, Mail, Phone, Link2, Code2, Globe,
-  GraduationCap, Building2, ChevronDown, CheckCircle2, Plus, Trash2, HeartHandshake, ShieldCheck, HandCoins, Baby, Navigation, FileText, Download, CalendarHeart
+  GraduationCap, Building2, ChevronDown, CheckCircle2, Plus, Trash2, HeartHandshake, ShieldCheck, HandCoins, Baby, Navigation, FileText, Download, CalendarHeart, Sparkles, Award
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { 
@@ -199,6 +199,9 @@ const ApplicationForm = ({ job }) => {
   const [fetchingLocation, setFetchingLocation] = useState(false);
   const [areaOptions, setAreaOptions] = useState([]);
   
+  // 'Fresher' or 'Experienced'
+  const [candidateType, setCandidateType] = useState('Fresher');
+  
   const [formData, setFormData] = useState({
     name: '', fatherName: '', motherName: '', maritalStatus: '', spouseName: '',
     email: '', phone: '', alternatePhone: '', aadhaar: '', pan: '',
@@ -210,7 +213,9 @@ const ApplicationForm = ({ job }) => {
     profilePhoto: null,
     resume: null,
     coverLetter: null,
-    salarySlip: null
+    salarySlip: null,
+    experienceLetter: null,
+    relievingLetter: null
   });
 
   const [educations, setEducations] = useState([{}]);
@@ -360,6 +365,12 @@ const ApplicationForm = ({ job }) => {
       }
     }
 
+    // 7. Resume check (mandatory for both fresher and experienced)
+    if (!files.resume) {
+      toast.error("Please upload your Resume/CV.");
+      return;
+    }
+
     setSubmitting(true);
     
     try {
@@ -368,13 +379,27 @@ const ApplicationForm = ({ job }) => {
         submitData.append(key, formData[key]);
       });
       
+      submitData.append('candidateType', candidateType);
       submitData.append('education', JSON.stringify(educations));
-      submitData.append('experience', JSON.stringify(experiences));
       
+      // Send experience only if candidate is experienced
+      if (candidateType === 'Experienced') {
+        submitData.append('experience', JSON.stringify(experiences));
+      } else {
+        submitData.append('experience', JSON.stringify([]));
+      }
+      
+      // Consolidated documents
       if (files.profilePhoto) submitData.append('profilePhoto', files.profilePhoto);
       if (files.resume) submitData.append('resume', files.resume);
-      if (files.coverLetter) submitData.append('coverLetter', files.coverLetter);
-      if (files.salarySlip) submitData.append('salarySlip', files.salarySlip);
+      
+      // Experienced extra documents
+      if (candidateType === 'Experienced') {
+        if (files.coverLetter) submitData.append('coverLetter', files.coverLetter);
+        if (files.salarySlip) submitData.append('salarySlip', files.salarySlip);
+        if (files.experienceLetter) submitData.append('experienceLetter', files.experienceLetter);
+        if (files.relievingLetter) submitData.append('relievingLetter', files.relievingLetter);
+      }
 
       const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/recruitment/jobs/${job._id}/apply`, {
         method: 'POST',
@@ -401,6 +426,71 @@ const ApplicationForm = ({ job }) => {
       <div className="text-center pb-6 border-b border-gray-100">
         <h2 className="text-3xl font-extrabold text-slate-900 mb-2">Application Form</h2>
         <p className="text-slate-500">Please fill out the form below to apply for the {job.title} position.</p>
+      </div>
+
+      {/* ── 0. CANDIDATE TYPE SELECTOR (FRESHER vs EXPERIENCED) ── */}
+      <div className="bg-gradient-to-r from-sky-50 via-indigo-50 to-purple-50 border-2 border-[#0EA5E9]/30 rounded-2xl p-6 shadow-sm">
+        <div className="text-center mb-4">
+          <span className="inline-flex items-center gap-1 text-[11px] font-extrabold text-[#0284C7] uppercase tracking-wider bg-white px-3 py-1 rounded-full border border-sky-100 shadow-xs mb-1">
+            <Sparkles size={13} className="text-[#0EA5E9]" /> Select Candidate Experience Level
+          </span>
+          <h3 className="text-xl font-black text-slate-900">Are you a Fresher or Experienced?</h3>
+          <p className="text-xs text-slate-500 mt-0.5">Form fields and document requirements will dynamically adjust based on your choice</p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto">
+          {/* Option: Fresher */}
+          <button
+            type="button"
+            onClick={() => setCandidateType('Fresher')}
+            className={`p-5 rounded-xl border-2 transition-all flex items-center gap-4 text-left ${
+              candidateType === 'Fresher'
+                ? 'bg-white border-[#0EA5E9] shadow-md ring-2 ring-[#0EA5E9]/20'
+                : 'bg-white/70 border-slate-200 hover:border-slate-300 text-slate-600'
+            }`}
+          >
+            <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 text-xl font-bold ${
+              candidateType === 'Fresher' ? 'bg-[#0EA5E9] text-white' : 'bg-slate-100 text-slate-500'
+            }`}>
+              <GraduationCap size={24} />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h4 className="font-bold text-slate-900 text-base">Fresher</h4>
+                {candidateType === 'Fresher' && (
+                  <span className="text-[10px] bg-emerald-100 text-emerald-700 font-bold px-2 py-0.5 rounded-full">Selected</span>
+                )}
+              </div>
+              <p className="text-xs text-slate-500 mt-0.5">No prior experience. Requires only <strong>Resume & Photo</strong>.</p>
+            </div>
+          </button>
+
+          {/* Option: Experienced */}
+          <button
+            type="button"
+            onClick={() => setCandidateType('Experienced')}
+            className={`p-5 rounded-xl border-2 transition-all flex items-center gap-4 text-left ${
+              candidateType === 'Experienced'
+                ? 'bg-white border-[#0EA5E9] shadow-md ring-2 ring-[#0EA5E9]/20'
+                : 'bg-white/70 border-slate-200 hover:border-slate-300 text-slate-600'
+            }`}
+          >
+            <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 text-xl font-bold ${
+              candidateType === 'Experienced' ? 'bg-[#0EA5E9] text-white' : 'bg-slate-100 text-slate-500'
+            }`}>
+              <Briefcase size={24} />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h4 className="font-bold text-slate-900 text-base">Experienced</h4>
+                {candidateType === 'Experienced' && (
+                  <span className="text-[10px] bg-emerald-100 text-emerald-700 font-bold px-2 py-0.5 rounded-full">Selected</span>
+                )}
+              </div>
+              <p className="text-xs text-slate-500 mt-0.5">Prior work history, salary slips & experience documents required.</p>
+            </div>
+          </button>
+        </div>
       </div>
 
       {/* Policies & Benefits */}
@@ -526,10 +616,6 @@ const ApplicationForm = ({ job }) => {
               <FormInput name="permanentAddress" value={formData.permanentAddress} onChange={handleChange} label="Permanent Address" placeholder="Enter permanent address" />
             </div>
           </div>
-          <div>
-            <label className="block text-sm font-semibold text-slate-700 mb-1.5">Profile Photo</label>
-            <FileUpload onChange={file => setFiles({...files, profilePhoto: file})} accept="image/*" maxSize="5 MB" hint="Upload a professional photo" />
-          </div>
         </div>
       </div>
 
@@ -559,59 +645,152 @@ const ApplicationForm = ({ job }) => {
         </div>
       </div>
 
-      {/* Experience */}
+      {/* ── 3. EXPERIENCE SECTION (VISIBLE ONLY FOR EXPERIENCED) ── */}
+      {candidateType === 'Experienced' && (
+        <div className="transition-all duration-300">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="font-bold text-slate-900 text-lg flex items-center gap-2">
+              <Briefcase size={18} className="text-[#0EA5E9]" /> Work Experience
+            </h3>
+            <span className="text-xs bg-indigo-50 text-indigo-700 font-bold px-2.5 py-1 rounded-full border border-indigo-100">
+              Experienced Candidate
+            </span>
+          </div>
+          <div className="space-y-4">
+            {experiences.map((exp, i) => (
+              <ExperienceBlock
+                key={i}
+                index={i}
+                exp={exp}
+                onChange={updateExperience}
+                canRemove={experiences.length > 1}
+                onRemove={() => removeExperience(i)}
+              />
+            ))}
+            <button
+              type="button"
+              onClick={addExperience}
+              className="flex items-center gap-2 text-sm font-bold text-[#0EA5E9] hover:text-[#0284C7] transition-colors px-2 py-1"
+            >
+              <Plus size={16} /> Add Experience
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ── 4. SALARY & NOTICE PERIOD ── */}
       <div>
-        <h3 className="font-bold text-slate-900 text-lg mb-2 flex items-center gap-2">
-          <Briefcase size={18} className="text-[#0EA5E9]" /> Experience
+        <h3 className="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
+          <HandCoins size={18} className="text-[#0EA5E9]" />
+          {candidateType === 'Experienced' ? 'Salary & Notice Period Details' : 'Expected Compensation'}
         </h3>
-        <div className="space-y-4">
-          {experiences.map((exp, i) => (
-            <ExperienceBlock
-              key={i}
-              index={i}
-              exp={exp}
-              onChange={updateExperience}
-              canRemove={experiences.length > 1}
-              onRemove={() => removeExperience(i)}
-            />
-          ))}
-          <button
-            type="button"
-            onClick={addExperience}
-            className="flex items-center gap-2 text-sm font-bold text-[#0EA5E9] hover:text-[#0284C7] transition-colors px-2 py-1"
-          >
-            <Plus size={16} /> Add Experience
-          </button>
-        </div>
+        
+        {candidateType === 'Experienced' ? (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <FormInput name="yearlyGrossSalary" value={formData.yearlyGrossSalary} onChange={handleChange} label="Yearly Gross Salary" placeholder="Enter yearly gross salary" type="number" />
+              <FormInput name="monthlyNetSalary" value={formData.monthlyNetSalary} onChange={handleChange} label="Monthly Net In-Hand Salary" placeholder="Enter monthly net salary" type="number" />
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+              <FormInput name="expectedSalary" value={formData.expectedSalary} onChange={handleChange} label="Expected Salary *" required placeholder="Enter expected salary" type="number" />
+              <FormInput name="noticePeriod" value={formData.noticePeriod} onChange={handleChange} label="Notice Period *" required placeholder="Enter notice period (Days/Months)" />
+              <FormInput name="reasonOfLeaving" value={formData.reasonOfLeaving} onChange={handleChange} label="Reason of Leaving" placeholder="Enter reason" />
+            </div>
+          </>
+        ) : (
+          <div className="max-w-md">
+            <FormInput name="expectedSalary" value={formData.expectedSalary} onChange={handleChange} label="Expected Monthly / Yearly CTC *" required placeholder="e.g. 300000" type="number" />
+          </div>
+        )}
       </div>
 
-      {/* Salary & Notice Period */}
-      <div>
-        <h3 className="font-bold text-slate-900 text-lg mb-5">Salary & NP</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <FormInput name="yearlyGrossSalary" value={formData.yearlyGrossSalary} onChange={handleChange} label="Yearly Gross Salary" placeholder="Enter yearly gross salary" type="number" />
-          <FormInput name="monthlyNetSalary" value={formData.monthlyNetSalary} onChange={handleChange} label="Monthly Net In-Hand Salary" placeholder="Enter monthly net salary" type="number" />
+      {/* ── 5. UNIFIED DOCUMENTS SECTION (EK HI JAGAH SAARE UPLOAD VALE) ── */}
+      <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 md:p-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-6 border-b border-slate-200 gap-2">
+          <div>
+            <h3 className="font-bold text-slate-900 text-xl flex items-center gap-2">
+              <FileText size={20} className="text-[#0EA5E9]" />
+              Documents & Photo Upload
+            </h3>
+            <p className="text-xs text-slate-500 mt-0.5">
+              {candidateType === 'Fresher'
+                ? 'Fresher requirements: Upload your Profile Photo and Resume / CV'
+                : 'Experienced requirements: Upload Photo, Resume, and previous work documentation'}
+            </p>
+          </div>
+          <span className={`px-3 py-1 rounded-full text-xs font-bold w-max ${
+            candidateType === 'Fresher' ? 'bg-emerald-100 text-emerald-800' : 'bg-indigo-100 text-indigo-800'
+          }`}>
+            {candidateType === 'Fresher' ? '🎓 Fresher Mode (Resume + Pic only)' : '💼 Experienced Mode (All Documents)'}
+          </span>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
-          <FormInput name="expectedSalary" value={formData.expectedSalary} onChange={handleChange} label="Expected Salary" required placeholder="Enter expected salary" type="number" />
-          <FormInput name="noticePeriod" value={formData.noticePeriod} onChange={handleChange} label="Notice Period" required placeholder="Enter notice period (Days/Months)" />
-          <FormInput name="reasonOfLeaving" value={formData.reasonOfLeaving} onChange={handleChange} label="Reason of Leaving" placeholder="Enter reason" />
-        </div>
-      </div>
 
-      {/* Documents */}
-      <div>
-        <h3 className="font-bold text-slate-900 text-lg mb-5">Documents</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <FileUpload onChange={file => setFiles({...files, resume: file})} required label="Resume" accept=".pdf,.docx,.doc" />
-          <FileUpload onChange={file => setFiles({...files, coverLetter: file})} label="Cover Letter" accept=".pdf,.docx,.doc" />
-          <FileUpload onChange={file => setFiles({...files, salarySlip: file})} label="Salary Slip (Optional)" accept=".pdf,.jpeg,.jpg,.png" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Document 1: Profile Photo (Always required for both) */}
+          <FileUpload
+            onChange={file => setFiles({...files, profilePhoto: file})}
+            label="Candidate Profile Photo / Pic"
+            accept="image/*"
+            maxSize="5 MB"
+            hint="Upload a clear professional photo"
+          />
+
+          {/* Document 2: Resume (Always required for both) */}
+          <FileUpload
+            onChange={file => setFiles({...files, resume: file})}
+            required
+            label="Resume / CV *"
+            accept=".pdf,.docx,.doc"
+            maxSize="10 MB"
+            hint="PDF or Word format"
+          />
+
+          {/* Documents for Experienced ONLY */}
+          {candidateType === 'Experienced' && (
+            <>
+              {/* Document 3: Salary Slip */}
+              <FileUpload
+                onChange={file => setFiles({...files, salarySlip: file})}
+                label="Latest Salary Slip"
+                accept=".pdf,.jpeg,.jpg,.png"
+                maxSize="10 MB"
+                hint="Last 1-3 months salary slip"
+              />
+
+              {/* Document 4: Experience Letter */}
+              <FileUpload
+                onChange={file => setFiles({...files, experienceLetter: file})}
+                label="Experience Letter"
+                accept=".pdf,.docx,.doc,.jpeg,.jpg,.png"
+                maxSize="10 MB"
+                hint="From previous employer"
+              />
+
+              {/* Document 5: Relieving Letter */}
+              <FileUpload
+                onChange={file => setFiles({...files, relievingLetter: file})}
+                label="Relieving / Resignation Acceptance"
+                accept=".pdf,.docx,.doc,.jpeg,.jpg,.png"
+                maxSize="10 MB"
+                hint="Proof of release / notice period"
+              />
+
+              {/* Document 6: Cover Letter */}
+              <FileUpload
+                onChange={file => setFiles({...files, coverLetter: file})}
+                label="Cover Letter (Optional)"
+                accept=".pdf,.docx,.doc"
+                maxSize="10 MB"
+                hint="Brief intro & motivation"
+              />
+            </>
+          )}
         </div>
       </div>
 
       {/* Submit */}
       <button disabled={submitting} type="submit" className="w-full bg-[#0EA5E9] hover:bg-[#0284C7] text-white font-bold py-4 rounded-2xl transition-colors shadow-lg hover:shadow-xl text-base flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed">
-        <CheckCircle2 size={20} /> {submitting ? 'Submitting...' : 'Submit Application'}
+        <CheckCircle2 size={20} /> {submitting ? 'Submitting Application...' : `Submit Application (${candidateType})`}
       </button>
     </form>
   );
