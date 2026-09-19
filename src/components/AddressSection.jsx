@@ -111,8 +111,8 @@ const AddressSection = ({
 
     try {
       let data = null;
-      try {
-        const res = await fetch(`http://localhost:5000/api/location/pincode/${pin}`);
+        const apiBase = import.meta.env.VITE_API_BASE_URL || 'https://loan-management-backend-wu4y.onrender.com/api';
+        const res = await fetch(`${apiBase}/location/pincode/${pin}`);
         if (res.ok) data = await res.json();
       } catch (e) {}
 
@@ -182,7 +182,8 @@ const AddressSection = ({
         try {
           let resData = null;
           try {
-            const resp = await fetch('http://localhost:5000/api/location/reverse-geocode', {
+            const apiBase = import.meta.env.VITE_API_BASE_URL || 'https://loan-management-backend-wu4y.onrender.com/api';
+            const resp = await fetch(`${apiBase}/location/reverse-geocode`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ latitude, longitude })
