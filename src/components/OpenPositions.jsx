@@ -158,9 +158,21 @@ const OpenPositions = () => {
     ? selectedStates.flatMap(state => locationData[state] || []).sort()
     : [];
 
-  const availableDesignations = selectedDepartments.length > 0
-    ? selectedDepartments.flatMap(dept => departmentDesignations[dept] || []).sort()
-    : [];
+  const availableDesignations = (() => {
+    if (selectedDepartments.length === 0) return [];
+    
+    // 1. Static standard designations for selected departments
+    const staticList = selectedDepartments.flatMap(dept => departmentDesignations[dept] || []);
+    
+    // 2. Dynamic live job titles from the backend for selected departments
+    const liveJobTitles = jobs
+      .filter(job => selectedDepartments.some(d => (job.department || '').toLowerCase() === d.toLowerCase()))
+      .map(job => job.title)
+      .filter(Boolean);
+
+    // Combine and deduplicate
+    return Array.from(new Set([...staticList, ...liveJobTitles])).sort();
+  })();
 
   useEffect(() => {
     if (selectedStates.length > 0) {
@@ -207,7 +219,11 @@ const OpenPositions = () => {
     
     const matchDept = selectedDepartments.some(d => (job.department || '').toLowerCase() === d.toLowerCase());
       
-    const matchDesig = selectedDesignations.some(desig => (job.title || '').toLowerCase() === desig.toLowerCase());
+    const matchDesig = selectedDesignations.some(desig => {
+      const d = desig.toLowerCase().trim();
+      const t = (job.title || '').toLowerCase().trim();
+      return t === d || t.includes(d) || d.includes(t);
+    });
 
     const matchState = selectedStates.some(st => (job.location || '').toLowerCase().includes(st.toLowerCase()));
 
@@ -419,9 +435,15 @@ const OpenPositions = () => {
                       )}
                     </div>
 
-                    <h3 className="text-base font-black text-slate-900 mb-3 leading-snug group-hover:text-[#0EA5E9] transition-colors flex-grow">
-                      {job.title}
-                    </h3>
+                    <div className="mb-3">
+                      <h3 className="text-base font-black text-slate-900 leading-snug group-hover:text-[#0EA5E9] transition-colors">
+                        HAUS NUO-Pay Offer – Liability
+                      </h3>
+                      <p className="text-xs font-bold text-[#0284C7] mt-1 flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0EA5E9]"></span>
+                        {job.designation || job.title}
+                      </p>
+                    </div>
 
                     <div className="space-y-2 mb-5 text-slate-500 text-xs font-medium border-t border-slate-100 pt-3">
                       <div className="flex items-center gap-2">

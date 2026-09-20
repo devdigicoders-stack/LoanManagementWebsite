@@ -425,7 +425,9 @@ const ApplicationForm = ({ job }) => {
 
       <div className="text-center pb-6 border-b border-gray-100">
         <h2 className="text-3xl font-extrabold text-slate-900 mb-2">Application Form</h2>
-        <p className="text-slate-500">Please fill out the form below to apply for the {job.title} position.</p>
+        <p className="text-slate-500">
+          Please fill out the form below to apply for <strong className="text-slate-800">HAUS NUO-Pay Offer – Liability</strong> {job.designation ? `(${job.designation})` : (job.title ? `(${job.title})` : '')}.
+        </p>
       </div>
 
       {/* ── 0. CANDIDATE TYPE SELECTOR (FRESHER vs EXPERIENCED) ── */}
@@ -868,12 +870,22 @@ const JobDetailsPage = () => {
 
       {/* Job Header */}
       <div className="max-w-4xl mx-auto px-6 pb-8">
-        <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-8 md:p-10">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 text-center">{job.title}</h1>
+        <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-8 md:p-10 text-center">
+          {/* Main Global Header */}
+          <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-2">
+            HAUS NUO-Pay Offer – Liability
+          </h1>
+
+          {/* Sub Role / Specific Designation */}
+          {(job.title || job.designation) && (
+            <p className="text-lg md:text-xl font-bold text-[#0284C7] mb-4">
+              {job.designation ? `${job.designation}${job.title && job.title !== job.designation ? ` (${job.title})` : ''}` : job.title}
+            </p>
+          )}
 
           {/* Meta */}
           <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-slate-600 mb-6">
-            <span className="flex items-center gap-1.5"><Briefcase size={14} className="text-gray-400" /><b>Job type:</b> {job.type}</span>
+            <span className="flex items-center gap-1.5"><Briefcase size={14} className="text-gray-400" /><b>Job type:</b> {job.type || 'Full Time'}</span>
             <span className="text-gray-300">·</span>
             <span className="flex items-center gap-1.5"><Building2 size={14} className="text-gray-400" /><b>Department:</b> {job.department}</span>
           </div>
