@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { 
-  Search, MapPin, Clock, Folder, ChevronDown, ArrowRight, Check, CheckCircle2, 
+import {
+  Search, MapPin, Clock, Folder, ChevronDown, ArrowRight, Check, CheckCircle2,
   Circle, RotateCcw, Briefcase, Sparkles, Filter, Building, Compass, UserCheck
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -39,8 +39,8 @@ const FilterDropdown = ({ options, value, onChange, placeholder, stepNumber, ico
   };
 
   const isSelected = value.length > 0;
-  const displayValue = isSelected 
-    ? (value.length === 1 ? value[0] : `${value.length} Selected`) 
+  const displayValue = isSelected
+    ? (value.length === 1 ? value[0] : `${value.length} Selected`)
     : (disabled && disabledMessage ? disabledMessage : placeholder);
 
   return (
@@ -49,22 +49,20 @@ const FilterDropdown = ({ options, value, onChange, placeholder, stepNumber, ico
         type="button"
         disabled={disabled}
         onClick={() => !disabled && setIsOpen(!isOpen)}
-        className={`w-full flex items-center justify-between px-4 py-3.5 rounded-2xl text-xs font-bold transition-all duration-200 focus:outline-none select-none border ${
-          disabled 
+        className={`w-full flex items-center justify-between px-4 py-3.5 rounded-2xl text-xs font-bold transition-all duration-200 focus:outline-none select-none border ${disabled
             ? 'bg-slate-50/80 border-slate-200/70 text-slate-400 cursor-not-allowed'
             : isSelected
               ? 'bg-sky-50/80 border-sky-400 text-sky-900 shadow-sm ring-2 ring-sky-400/20'
               : 'bg-white border-slate-200 text-slate-700 hover:border-sky-300 hover:bg-slate-50/50 shadow-xs'
-        }`}
+          }`}
       >
         <div className="flex items-center gap-2.5 truncate">
-          <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-[10px] font-black shrink-0 ${
-            disabled 
-              ? 'bg-slate-100 text-slate-400' 
-              : isSelected 
-                ? 'bg-[#0EA5E9] text-white shadow-xs' 
+          <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-[10px] font-black shrink-0 ${disabled
+              ? 'bg-slate-100 text-slate-400'
+              : isSelected
+                ? 'bg-[#0EA5E9] text-white shadow-xs'
                 : 'bg-slate-100 text-slate-600'
-          }`}>
+            }`}>
             {isSelected ? <Check size={12} strokeWidth={3} /> : stepNumber}
           </div>
           <span className="truncate">{displayValue}</span>
@@ -73,7 +71,7 @@ const FilterDropdown = ({ options, value, onChange, placeholder, stepNumber, ico
       </button>
 
       {isOpen && !disabled && (
-        <div className="absolute z-50 w-full mt-2 bg-white border border-slate-200 rounded-2xl shadow-2xl max-h-80 flex flex-col overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150">
+        <div className="absolute z-50 left-0 sm:left-auto w-full sm:w-80 mt-2 bg-white border border-slate-200 rounded-2xl shadow-2xl max-h-72 flex flex-col overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150">
           <div className="p-3 border-b border-slate-100 sticky top-0 bg-slate-50/90 backdrop-blur-xs z-10">
             <div className="relative">
               <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
@@ -87,10 +85,10 @@ const FilterDropdown = ({ options, value, onChange, placeholder, stepNumber, ico
               />
             </div>
           </div>
-          
+
           <div className="overflow-y-auto p-2 flex-1 custom-scrollbar">
             {isSelected && (
-              <button 
+              <button
                 type="button"
                 onClick={(e) => { e.stopPropagation(); clearSelection(); }}
                 className="w-full text-left px-3 py-2 text-xs text-red-500 hover:bg-red-50 rounded-xl mb-1 font-bold transition-colors flex items-center justify-between"
@@ -102,15 +100,14 @@ const FilterDropdown = ({ options, value, onChange, placeholder, stepNumber, ico
             {filteredOptions.map((opt, idx) => {
               const optionActive = value.includes(opt);
               return (
-                <div 
+                <div
                   key={idx}
-                  className={`flex items-center gap-2.5 px-3 py-2.5 hover:bg-slate-50 rounded-xl cursor-pointer transition-colors text-xs ${
-                    optionActive ? 'bg-sky-50/80 font-bold text-sky-900' : 'text-slate-700 font-medium'
-                  }`}
+                  className={`flex items-center gap-2.5 px-3 py-2.5 hover:bg-slate-50 rounded-xl cursor-pointer transition-colors text-xs ${optionActive ? 'bg-sky-50/80 font-bold text-sky-900' : 'text-slate-700 font-medium'
+                    }`}
                   onClick={() => toggleOption(opt)}
                 >
-                  <input 
-                    type="checkbox" 
+                  <input
+                    type="checkbox"
                     checked={optionActive}
                     readOnly
                     className="w-4 h-4 text-[#0EA5E9] rounded border-slate-300 focus:ring-[#0EA5E9] accent-[#0EA5E9] cursor-pointer"
@@ -154,7 +151,14 @@ const OpenPositions = () => {
 
   const states = Object.keys(locationData).sort();
 
-  const availableDistricts = selectedStates.length > 0 
+  const availableDepartments = Array.from(
+    new Set([
+      ...DEPARTMENTS,
+      ...jobs.map(j => j.department).filter(Boolean)
+    ])
+  ).sort();
+
+  const availableDistricts = selectedStates.length > 0
     ? selectedStates.flatMap(state => locationData[state] || []).sort()
     : [];
 
@@ -163,7 +167,7 @@ const OpenPositions = () => {
     const staticList = selectedDepartments.length > 0
       ? selectedDepartments.flatMap(dept => departmentDesignations[dept] || [])
       : Object.values(departmentDesignations).flat();
-    
+
     // 2. Dynamic live job titles and designations from the backend
     const liveJobTitles = jobs
       .filter(job => selectedDepartments.length === 0 || selectedDepartments.some(d => (job.department || '').toLowerCase() === d.toLowerCase()))
@@ -196,7 +200,7 @@ const OpenPositions = () => {
     }
   }, [selectedDepartments]);
 
-  const hasAnyFilter = 
+  const hasAnyFilter =
     selectedDepartments.length > 0 ||
     selectedDesignations.length > 0 ||
     selectedStates.length > 0 ||
@@ -212,14 +216,14 @@ const OpenPositions = () => {
   };
 
   const filteredJobs = jobs.filter(job => {
-    const matchSearch = searchQuery.trim() === '' || 
-                        (job.title && job.title.toLowerCase().includes(searchQuery.toLowerCase())) || 
-                        (job.designation && job.designation.toLowerCase().includes(searchQuery.toLowerCase())) || 
-                        (job.department && job.department.toLowerCase().includes(searchQuery.toLowerCase())) ||
-                        (job.location && job.location.toLowerCase().includes(searchQuery.toLowerCase()));
-    
+    const matchSearch = searchQuery.trim() === '' ||
+      (job.title && job.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (job.designation && job.designation.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (job.department && job.department.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (job.location && job.location.toLowerCase().includes(searchQuery.toLowerCase()));
+
     const matchDept = selectedDepartments.length === 0 || selectedDepartments.some(d => (job.department || '').toLowerCase() === d.toLowerCase());
-      
+
     const matchDesig = selectedDesignations.length === 0 || selectedDesignations.some(desig => {
       const d = desig.toLowerCase().trim();
       const t = (job.title || '').toLowerCase().trim();
@@ -246,13 +250,13 @@ const OpenPositions = () => {
   const allFiltersSelected = completedCount === 4;
 
   return (
-    <section id="open-positions" className="py-24 px-6 md:px-12 bg-slate-50/50 text-slate-900 relative overflow-hidden">
-      
+    <section id="open-positions" className="py-24 px-6 md:px-12 bg-slate-50/50 text-slate-900 relative overflow-visible min-h-[550px]">
+
       {/* Background ambient glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-96 bg-gradient-to-b from-sky-100/40 via-blue-50/20 to-transparent blur-3xl pointer-events-none -z-10" />
 
-      <div className="max-w-6xl mx-auto">
-        
+      <div className="max-w-6xl mx-auto pb-12">
+
         {/* Section Heading */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-100/80 text-[#0284C7] text-xs font-black uppercase tracking-wider mb-4 border border-sky-200/60 shadow-xs">
@@ -267,8 +271,8 @@ const OpenPositions = () => {
         </div>
 
         {/* Filter Container Card */}
-        <div className="bg-white/90 backdrop-blur-md rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm mb-10">
-          
+        <div className="bg-white/90 backdrop-blur-md rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm mb-10 relative z-20">
+
           {/* Progress tracker bar */}
           <div className="mb-6 pb-6 border-b border-slate-100">
             <div className="flex items-center justify-between text-xs font-bold text-slate-600 mb-2">
@@ -280,10 +284,10 @@ const OpenPositions = () => {
                 {completedCount} of 4 Filters Selected ({progressPercent}%)
               </span>
             </div>
-            
+
             {/* Progress bar track */}
             <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-              <div 
+              <div
                 className="h-full bg-gradient-to-r from-sky-400 to-[#0EA5E9] transition-all duration-300 rounded-full"
                 style={{ width: `${progressPercent}%` }}
               />
@@ -308,7 +312,7 @@ const OpenPositions = () => {
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 md:gap-4">
             <FilterDropdown
               stepNumber={1}
-              options={DEPARTMENTS}
+              options={availableDepartments}
               value={selectedDepartments}
               onChange={setSelectedDepartments}
               placeholder="1. Department"
@@ -368,20 +372,11 @@ const OpenPositions = () => {
             Loading available positions...
           </div>
         ) : !allFiltersSelected ? (
-          /* Empty / Prompt State until ALL 4 filters are selected */
-          <div className="bg-white rounded-3xl border border-dashed border-slate-300 p-12 md:p-16 text-center shadow-xs">
-            <div className="w-16 h-16 mx-auto rounded-2xl bg-sky-50 text-[#0EA5E9] flex items-center justify-center mb-4 border border-sky-100 shadow-2xs">
-              <Filter size={28} />
-            </div>
-            <h3 className="text-xl font-black text-slate-800 mb-2">
-              Select All 4 Filters to View Open Positions
-            </h3>
-            <p className="text-slate-500 text-xs md:text-sm font-medium max-w-md mx-auto mb-6 leading-relaxed">
-              Please select all 4 criteria above &mdash; <strong>Department</strong>, <strong>Designation</strong>, <strong>State</strong>, and <strong>District</strong> ({completedCount}/4 Selected) to unlock and view matching positions.
+          <div className="text-center py-12 px-4">
+            <p className="text-slate-400 font-semibold text-sm md:text-base flex items-center justify-center gap-2">
+              <Filter size={16} className="text-[#0EA5E9]" />
+              <span>First select all filters to view available jobs.</span>
             </p>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-200 text-slate-600 text-xs font-bold">
-              <Sparkles size={14} className="text-[#0EA5E9]" /> {completedCount} of 4 Selected &bull; {4 - completedCount} More Required
-            </div>
           </div>
         ) : (
           /* Job Listings Grid */
@@ -407,10 +402,10 @@ const OpenPositions = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {filteredJobs.map(job => {
                 const openingsLeft = (job.openings || 1) - (job.hiredCount || 0);
-                
+
                 return (
-                  <div 
-                    key={job._id} 
+                  <div
+                    key={job._id}
                     className="bg-white rounded-3xl p-6 border border-slate-200 hover:border-sky-300 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col group hover:-translate-y-1"
                   >
                     <div className="flex justify-between items-start mb-4">
