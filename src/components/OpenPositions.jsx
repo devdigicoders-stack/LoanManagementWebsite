@@ -159,15 +159,15 @@ const OpenPositions = () => {
     : [];
 
   const availableDesignations = (() => {
-    if (selectedDepartments.length === 0) return [];
+    // 1. Static standard designations
+    const staticList = selectedDepartments.length > 0
+      ? selectedDepartments.flatMap(dept => departmentDesignations[dept] || [])
+      : Object.values(departmentDesignations).flat();
     
-    // 1. Static standard designations for selected departments
-    const staticList = selectedDepartments.flatMap(dept => departmentDesignations[dept] || []);
-    
-    // 2. Dynamic live job titles from the backend for selected departments
+    // 2. Dynamic live job titles and designations from the backend
     const liveJobTitles = jobs
-      .filter(job => selectedDepartments.some(d => (job.department || '').toLowerCase() === d.toLowerCase()))
-      .map(job => job.title)
+      .filter(job => selectedDepartments.length === 0 || selectedDepartments.some(d => (job.department || '').toLowerCase() === d.toLowerCase()))
+      .flatMap(job => [job.designation, job.title])
       .filter(Boolean);
 
     // Combine and deduplicate
@@ -196,12 +196,12 @@ const OpenPositions = () => {
     }
   }, [selectedDepartments]);
 
-  // All 4 filter fields must be selected to display opportunities
-  const allFiltersSelected = 
-    selectedDepartments.length > 0 &&
-    selectedDesignations.length > 0 &&
-    selectedStates.length > 0 &&
-    selectedDistricts.length > 0;
+  const hasAnyFilter = 
+    selectedDepartments.length > 0 ||
+    selectedDesignations.length > 0 ||
+    selectedStates.length > 0 ||
+    selectedDistricts.length > 0 ||
+    searchQuery.trim() !== '';
 
   const resetAllFilters = () => {
     setSelectedDepartments([]);
@@ -211,26 +211,28 @@ const OpenPositions = () => {
     setSearchQuery('');
   };
 
-  const filteredJobs = allFiltersSelected ? jobs.filter(job => {
+  const filteredJobs = jobs.filter(job => {
     const matchSearch = searchQuery.trim() === '' || 
                         (job.title && job.title.toLowerCase().includes(searchQuery.toLowerCase())) || 
+                        (job.designation && job.designation.toLowerCase().includes(searchQuery.toLowerCase())) || 
                         (job.department && job.department.toLowerCase().includes(searchQuery.toLowerCase())) ||
                         (job.location && job.location.toLowerCase().includes(searchQuery.toLowerCase()));
     
-    const matchDept = selectedDepartments.some(d => (job.department || '').toLowerCase() === d.toLowerCase());
+    const matchDept = selectedDepartments.length === 0 || selectedDepartments.some(d => (job.department || '').toLowerCase() === d.toLowerCase());
       
-    const matchDesig = selectedDesignations.some(desig => {
+    const matchDesig = selectedDesignations.length === 0 || selectedDesignations.some(desig => {
       const d = desig.toLowerCase().trim();
       const t = (job.title || '').toLowerCase().trim();
-      return t === d || t.includes(d) || d.includes(t);
+      const dg = (job.designation || '').toLowerCase().trim();
+      return t === d || t.includes(d) || d.includes(t) || dg === d || dg.includes(d) || d.includes(dg);
     });
 
-    const matchState = selectedStates.some(st => (job.location || '').toLowerCase().includes(st.toLowerCase()));
+    const matchState = selectedStates.length === 0 || selectedStates.some(st => (job.location || '').toLowerCase().includes(st.toLowerCase()));
 
-    const matchDistrict = selectedDistricts.some(dt => (job.location || '').toLowerCase().includes(dt.toLowerCase()));
+    const matchDistrict = selectedDistricts.length === 0 || selectedDistricts.some(dt => (job.location || '').toLowerCase().includes(dt.toLowerCase()));
 
     return matchSearch && matchDept && matchDesig && matchState && matchDistrict;
-  }) : [];
+  });
 
   const filterSteps = [
     { name: 'Department', selected: selectedDepartments.length > 0, count: selectedDepartments.length, desc: 'Choose division' },
@@ -241,6 +243,7 @@ const OpenPositions = () => {
 
   const completedCount = filterSteps.filter(s => s.selected).length;
   const progressPercent = (completedCount / 4) * 100;
+  const allFiltersSelected = completedCount === 4;
 
   return (
     <section id="open-positions" className="py-24 px-6 md:px-12 bg-slate-50/50 text-slate-900 relative overflow-hidden">
@@ -365,54 +368,40 @@ const OpenPositions = () => {
             Loading available positions...
           </div>
         ) : !allFiltersSelected ? (
-          /* Guided Filter Step Cards */
-          <div className="bg-white rounded-3xl border border-slate-200/80 p-8 md:p-12 text-center max-w-2xl mx-auto shadow-sm">
-            <div className="w-14 h-14 mx-auto bg-sky-50 text-[#0EA5E9] rounded-2xl flex items-center justify-center mb-4 shadow-xs">
-              <Folder size={26} />
+          /* Empty / Prompt State until ALL 4 filters are selected */
+          <div className="bg-white rounded-3xl border border-dashed border-slate-300 p-12 md:p-16 text-center shadow-xs">
+            <div className="w-16 h-16 mx-auto rounded-2xl bg-sky-50 text-[#0EA5E9] flex items-center justify-center mb-4 border border-sky-100 shadow-2xs">
+              <Filter size={28} />
             </div>
-            
-            <h3 className="text-xl font-black text-slate-900 mb-2">Complete 4 Selection Steps to View Jobs</h3>
-            <p className="text-slate-500 text-xs md:text-sm max-w-md mx-auto mb-8 font-medium">
-              Pick your target department, designation, state, and district above to view open openings.
+            <h3 className="text-xl font-black text-slate-800 mb-2">
+              Select All 4 Filters to View Open Positions
+            </h3>
+            <p className="text-slate-500 text-xs md:text-sm font-medium max-w-md mx-auto mb-6 leading-relaxed">
+              Please select all 4 criteria above &mdash; <strong>Department</strong>, <strong>Designation</strong>, <strong>State</strong>, and <strong>District</strong> ({completedCount}/4 Selected) to unlock and view matching positions.
             </p>
-
-            {/* Step Badges */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {filterSteps.map((step, idx) => (
-                <div 
-                  key={idx} 
-                  className={`p-3.5 rounded-2xl border text-left transition-all ${
-                    step.selected 
-                      ? 'bg-sky-50/80 border-[#0EA5E9] text-slate-900 shadow-xs ring-1 ring-[#0EA5E9]/20' 
-                      : 'bg-slate-50/60 border-slate-200 text-slate-400'
-                  }`}
-                >
-                  <div className="flex items-center gap-1.5 mb-1.5">
-                    {step.selected ? (
-                      <CheckCircle2 size={16} className="text-[#0EA5E9] shrink-0" />
-                    ) : (
-                      <Circle size={16} className="text-slate-300 shrink-0" />
-                    )}
-                    <span className="text-[11px] font-black uppercase">Step {idx + 1}</span>
-                  </div>
-                  <p className={`text-xs font-black truncate ${step.selected ? 'text-sky-950' : 'text-slate-600'}`}>
-                    {step.name}
-                  </p>
-                  <p className="text-[10px] font-semibold mt-0.5 text-slate-400 truncate">
-                    {step.selected ? `${step.count} chosen` : step.desc}
-                  </p>
-                </div>
-              ))}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-200 text-slate-600 text-xs font-bold">
+              <Sparkles size={14} className="text-[#0EA5E9]" /> {completedCount} of 4 Selected &bull; {4 - completedCount} More Required
             </div>
           </div>
         ) : (
-          /* Filtered Job Listings Grid */
+          /* Job Listings Grid */
           <div>
-            <div className="flex items-center justify-between mb-6 px-1">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 px-1">
               <div className="text-xs font-bold text-slate-600 flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>Found <strong className="text-[#0EA5E9] text-sm">{filteredJobs.length}</strong> matching {filteredJobs.length === 1 ? 'position' : 'positions'}</span>
+                <span>
+                  Filtered Opportunities:{' '}
+                  <strong className="text-[#0EA5E9] text-sm">{filteredJobs.length}</strong>{' '}
+                  {filteredJobs.length === 1 ? 'position found' : 'positions found'}
+                </span>
               </div>
+              <button
+                type="button"
+                onClick={resetAllFilters}
+                className="text-xs font-bold text-red-500 hover:text-red-700 flex items-center gap-1 self-start sm:self-auto cursor-pointer"
+              >
+                <RotateCcw size={12} /> Clear Filter
+              </button>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -437,7 +426,7 @@ const OpenPositions = () => {
 
                     <div className="mb-3">
                       <h3 className="text-base font-black text-slate-900 leading-snug group-hover:text-[#0EA5E9] transition-colors">
-                        HAUS NUO-Pay Offer – Liability
+                        {job.title || 'HAUS NUO-Pay Career Opening'}
                       </h3>
                       <p className="text-xs font-bold text-[#0284C7] mt-1 flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#0EA5E9]"></span>
@@ -458,7 +447,7 @@ const OpenPositions = () => {
 
                     <Link
                       to={`/careers/${job._id}`}
-                      className="inline-flex items-center justify-center gap-2 w-full bg-[#0EA5E9] hover:bg-[#0284C7] text-white text-xs font-black py-2.5 px-4 rounded-xl transition-all shadow-xs group-hover:shadow-md"
+                      className="inline-flex items-center justify-center gap-2 w-full bg-[#0EA5E9] hover:bg-[#0284C7] text-white text-xs font-black py-2.5 px-4 rounded-xl transition-all shadow-xs group-hover:shadow-md mt-auto"
                     >
                       Apply Now <ArrowRight size={14} />
                     </Link>
