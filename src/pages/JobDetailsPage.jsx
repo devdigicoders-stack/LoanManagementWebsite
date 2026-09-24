@@ -18,12 +18,14 @@ import {
 
 // ─── Reusable form components ───────────────────────────────────────────────
 
-const FormInput = ({ label, required, placeholder, type = 'text', icon: Icon, value, onChange, name, maxLength, inputMode, className = '' }) => (
-  <div>
-    <label className="block text-sm font-semibold text-slate-700 mb-1.5">
-      {label}{required && <span className="text-red-500 ml-0.5">*</span>}
-    </label>
-    <div className="relative">
+const FormInput = ({ label, required, placeholder, type = 'text', icon: Icon, value, onChange, name, maxLength, inputMode, className = '', readOnly, disabled }) => (
+  <div className="flex flex-col">
+    {label && (
+      <label className="text-sm font-semibold text-slate-700 mb-1.5 min-h-[20px] flex items-center">
+        {label}{required && <span className="text-red-500 ml-0.5">*</span>}
+      </label>
+    )}
+    <div className="relative mt-auto">
       {Icon && <Icon size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />}
       <input
         required={required}
@@ -34,18 +36,22 @@ const FormInput = ({ label, required, placeholder, type = 'text', icon: Icon, va
         placeholder={placeholder}
         maxLength={maxLength}
         inputMode={inputMode}
-        className={`w-full ${Icon ? 'pl-10' : 'pl-4'} pr-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 placeholder-gray-400 bg-white outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all ${className}`}
+        readOnly={readOnly}
+        disabled={disabled}
+        className={`w-full ${Icon ? 'pl-10' : 'pl-4'} pr-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 placeholder-gray-400 bg-white outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all ${readOnly || disabled ? 'bg-slate-100 text-slate-500 cursor-not-allowed border-slate-200' : ''} ${className}`}
       />
     </div>
   </div>
 );
 
 const FormSelect = ({ label, required, placeholder, options, value, onChange, name }) => (
-  <div>
-    <label className="block text-sm font-semibold text-slate-700 mb-1.5">
-      {label}{required && <span className="text-red-500 ml-0.5">*</span>}
-    </label>
-    <div className="relative">
+  <div className="flex flex-col">
+    {label && (
+      <label className="text-sm font-semibold text-slate-700 mb-1.5 min-h-[20px] flex items-center">
+        {label}{required && <span className="text-red-500 ml-0.5">*</span>}
+      </label>
+    )}
+    <div className="relative mt-auto">
       <select 
         required={required}
         name={name}
@@ -123,70 +129,133 @@ const EducationBlock = ({ index, edu, onChange, onRemove, canRemove }) => {
   const handleChange = (e) => {
     onChange(index, { ...edu, [e.target.name]: e.target.value });
   };
-  const handleDateChange = (field, e) => {
-    onChange(index, { ...edu, [field]: e.target.value });
-  };
 
   return (
     <div className="bg-gray-50 border border-gray-100 rounded-2xl p-6 space-y-4 relative">
       <div className="flex items-center justify-between mb-2">
-        <h4 className="font-bold text-slate-800">Education #{index + 1}</h4>
+        <h4 className="font-bold text-slate-800">Qualification #{index + 1}</h4>
         {canRemove && (
           <button type="button" onClick={onRemove} className="text-red-400 hover:text-red-600 transition-colors">
             <Trash2 size={16} />
           </button>
         )}
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <FormInput label="Institution" required name="institution" value={edu.institution} onChange={handleChange} placeholder="Enter institution" />
-        <FormInput label="District/State" name="districtState" value={edu.districtState} onChange={handleChange} placeholder="Enter district/state" />
+
+      {/* Row 1: Examinations/Degree | University / Institute | Subject */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <FormInput label="Examinations/Degree" required name="degree" value={edu.degree} onChange={handleChange} placeholder="e.g. 10th / 12th / Graduation" />
+        <FormInput label="University / Institute" required name="institution" value={edu.institution} onChange={handleChange} placeholder="Enter University / Institute" />
+        <FormInput label="Subject" name="subject" value={edu.subject} onChange={handleChange} placeholder="e.g. Commerce / Science / Arts" />
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <FormInput label="Degree" required name="degree" value={edu.degree} onChange={handleChange} placeholder="Enter degree" />
-        <FormInput label="Location" name="location" value={edu.location} onChange={handleChange} placeholder="Enter location" icon={MapPin} />
+
+      {/* Row 2: Passing Yrs | Grade | % Marks */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <FormInput label="Passing Yrs" name="passingYear" value={edu.passingYear} onChange={handleChange} placeholder="e.g. 2022" maxLength="4" inputMode="numeric" />
+        <FormInput label="Grade" name="grade" value={edu.grade} onChange={handleChange} placeholder="e.g. A+ / First Division" />
+        <FormInput label="% Marks" name="percentage" value={edu.percentage} onChange={handleChange} placeholder="e.g. 85%" />
       </div>
-      <div className="grid grid-cols-2 gap-4">
-        <DateSelect label="Start Date" value={edu.startDate} onChange={(e) => handleDateChange('startDate', e)} />
-        <DateSelect label="End Date" value={edu.endDate} onChange={(e) => handleDateChange('endDate', e)} />
-      </div>
-      <FormInput label="Summary" name="summary" value={edu.summary} onChange={handleChange} placeholder="Enter summary" />
     </div>
   );
 };
 
 // ─── Experience Block ─────────────────────────────────────────────────────────
 
+// ─── Experience Block (Experienced++) ─────────────────────────────────────────
+
 const ExperienceBlock = ({ index, exp, onChange, onRemove, canRemove }) => {
   const handleChange = (e) => {
     onChange(index, { ...exp, [e.target.name]: e.target.value });
   };
-  const handleDateChange = (field, e) => {
-    onChange(index, { ...exp, [field]: e.target.value });
-  };
 
   return (
-    <div className="bg-gray-50 border border-gray-100 rounded-2xl p-6 space-y-4 relative">
-      <div className="flex items-center justify-between mb-2">
-        <h4 className="font-bold text-slate-800">Experience #{index + 1}</h4>
+    <div className="bg-slate-50/70 border border-slate-200/80 rounded-2xl p-6 space-y-6 relative shadow-sm">
+      <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+        <h4 className="font-bold text-slate-800 text-sm flex items-center gap-2">
+          <span className="w-6 h-6 rounded-full bg-[#0EA5E9]/10 text-[#0EA5E9] flex items-center justify-center text-xs font-black">
+            {index + 1}
+          </span>
+          Experience Record #{index + 1}
+        </h4>
         {canRemove && (
-          <button type="button" onClick={onRemove} className="text-red-400 hover:text-red-600 transition-colors">
-            <Trash2 size={16} />
+          <button
+            type="button"
+            onClick={onRemove}
+            className="flex items-center gap-1.5 text-xs text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 px-3 py-1.5 rounded-lg font-medium transition-colors"
+          >
+            <Trash2 size={14} /> Remove Record
           </button>
         )}
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <FormInput label="Title" required name="title" value={exp.title} onChange={handleChange} placeholder="Enter title" />
-        <FormInput label="Company" required name="company" value={exp.company} onChange={handleChange} placeholder="Enter company" icon={Building2} />
+
+      {/* Basic Job Details */}
+      <div className="space-y-4">
+        <h5 className="font-bold text-xs uppercase text-slate-500 tracking-wider">Company & Role Details</h5>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <FormInput label="Employer / Company Name" required name="company" value={exp.company} onChange={handleChange} placeholder="e.g. Acme Corp" />
+          <FormInput label="Department" name="department" value={exp.department} onChange={handleChange} placeholder="e.g. Sales / IT / Accounts" />
+          <FormInput label="Designation" required name="designation" value={exp.designation} onChange={handleChange} placeholder="e.g. Senior Executive" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <FormInput label="Period (DOJ - Date of Joining)" name="doj" value={exp.doj} onChange={handleChange} type="date" />
+          <FormInput label="Period (END - Leaving Date)" name="endDate" value={exp.endDate} onChange={handleChange} type="date" />
+          <FormSelect
+            name="noticePeriod"
+            value={exp.noticePeriod}
+            onChange={handleChange}
+            label="Notice Period"
+            placeholder="Select Notice Period"
+            options={["Immediate", "15 Day's", "30 Day's", "45 Day's", "60 Day's", "75 Day's", "90 Day's"]}
+          />
+        </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <FormInput label="Industry" name="industry" value={exp.industry} onChange={handleChange} placeholder="Enter industry" />
-        <FormInput label="Location" name="location" value={exp.location} onChange={handleChange} placeholder="Enter location" icon={MapPin} />
+
+      {/* Salary Details */}
+      <div className="bg-white border border-slate-200 rounded-xl p-5 space-y-4">
+        <h5 className="font-bold text-xs uppercase text-slate-500 tracking-wider">Salary Details</h5>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
+          <FormInput label="Monthly Gross Pay (₹)" name="grossPay" value={exp.grossPay} onChange={handleChange} placeholder="e.g. 45000" type="number" />
+          <FormInput label="Monthly Net Pay (₹)" name="netPay" value={exp.netPay} onChange={handleChange} placeholder="e.g. 38000" type="number" />
+          <FormInput label="Joined Starting Salary" name="startingSalary" value={exp.startingSalary} onChange={handleChange} placeholder="e.g. 30000" type="number" />
+          <FormInput label="Joined Ending Salary" name="endingSalary" value={exp.endingSalary} onChange={handleChange} placeholder="e.g. 45000" type="number" />
+        </div>
       </div>
-      <div className="grid grid-cols-2 gap-4">
-        <DateSelect label="Start Date" value={exp.startDate} onChange={(e) => handleDateChange('startDate', e)} />
-        <DateSelect label="End Date" value={exp.endDate} onChange={(e) => handleDateChange('endDate', e)} />
+
+      {/* Reporting Manager Details */}
+      <div className="bg-white border border-slate-200 rounded-xl p-5 space-y-4">
+        <h5 className="font-bold text-xs uppercase text-slate-500 tracking-wider">Reporting Manager (RM) Details</h5>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <FormInput label="RM - Name" name="rmName" value={exp.rmName} onChange={handleChange} placeholder="Manager Full Name" />
+          <FormInput label="RM - Designation" name="rmDesignation" value={exp.rmDesignation} onChange={handleChange} placeholder="e.g. Team Lead / VP" />
+          <FormInput label="RM - Mobile No." name="rmPhone" value={exp.rmPhone} onChange={handleChange} placeholder="10-digit Mobile No." maxLength="10" inputMode="numeric" />
+          <FormInput label="RM - Email ID" name="rmEmail" value={exp.rmEmail} onChange={handleChange} placeholder="manager@company.com" type="email" />
+        </div>
       </div>
-      <FormInput label="Summary" name="summary" value={exp.summary} onChange={handleChange} placeholder="Enter summary" />
+
+      {/* Responsibilities Summary & Reason of Leaving */}
+      <div className="space-y-4">
+        <div>
+          <label className="block text-sm font-semibold text-slate-700 mb-1.5">Responsibilities Summary</label>
+          <textarea
+            name="responsibilitiesSummary"
+            value={exp.responsibilitiesSummary || ''}
+            onChange={handleChange}
+            rows={2}
+            placeholder="Brief overview of key job responsibilities & achievements..."
+            className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm text-gray-800 placeholder-gray-400 bg-white outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-semibold text-slate-700 mb-1.5">Reason of Leaving</label>
+          <input
+            type="text"
+            name="reasonOfLeaving"
+            value={exp.reasonOfLeaving || ''}
+            onChange={handleChange}
+            placeholder="Reason for leaving previous employment..."
+            className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm text-gray-800 placeholder-gray-400 bg-white outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all"
+          />
+        </div>
+      </div>
     </div>
   );
 };
@@ -196,16 +265,18 @@ const ExperienceBlock = ({ index, exp, onChange, onRemove, canRemove }) => {
 const ApplicationForm = ({ job }) => {
   const navigate = useNavigate();
   const [submitting, setSubmitting] = useState(false);
-  const [fetchingLocation, setFetchingLocation] = useState(false);
   const [areaOptions, setAreaOptions] = useState([]);
+  const [loadingPincode, setLoadingPincode] = useState(false);
   
   // 'Fresher' or 'Experienced'
   const [candidateType, setCandidateType] = useState('Fresher');
   
   const [formData, setFormData] = useState({
-    name: '', fatherName: '', motherName: '', maritalStatus: '', spouseName: '',
-    email: '', phone: '', alternatePhone: '', aadhaar: '', pan: '',
-    pincode: '', state: '', district: '', area: '', presentAddress: '', permanentAddress: '',
+    name: '', pan: '', aadhaar: '', dob: '', gender: '', religion: '', nationality: 'Indian', maritalStatus: '',
+    phone: '', alternatePhone: '', email: '',
+    fatherName: '', motherName: '', spouseName: '',
+    pincode: '', area: '', district: '', state: '', flatHouseFloor: '', societyName: '', landmark: '', presentAddress: '', permanentAddress: '',
+    expectedMonthlySalary: '', joinedComfortableDate: '',
     yearlyGrossSalary: '', monthlyNetSalary: '', expectedSalary: '', noticePeriod: '', reasonOfLeaving: ''
   });
   
@@ -223,25 +294,37 @@ const ApplicationForm = ({ job }) => {
 
   const fetchPincodeDetails = async (pin) => {
     if (pin.length === 6) {
+      setLoadingPincode(true);
       try {
         const res = await fetch(`https://api.postalpincode.in/pincode/${pin}`);
         const data = await res.json();
-        if (data[0].Status === "Success") {
-          const postOffices = data[0].PostOffice;
+        if (data && data[0] && data[0].Status === "Success") {
+          const postOffices = data[0].PostOffice || [];
           const po = postOffices[0];
-          setAreaOptions(postOffices.map(p => p.Name));
+          const areaNames = postOffices.map(p => p.Name);
+          setAreaOptions(areaNames);
           setFormData(prev => ({
             ...prev,
-            state: po.State,
-            district: po.District,
-            area: postOffices.length === 1 ? po.Name : prev.area
+            state: po.State || '',
+            district: po.District || '',
+            area: postOffices.length > 0 ? po.Name : prev.area
           }));
+          toast.success(`Location auto-filled for Pincode: ${pin}`);
         } else {
-           toast.error("Invalid Pincode");
-           setAreaOptions([]);
+          toast.error("Invalid Pincode. Please check your pincode.");
+          setAreaOptions([]);
+          setFormData(prev => ({
+            ...prev,
+            state: '',
+            district: '',
+            area: ''
+          }));
         }
       } catch(err) {
         console.error(err);
+        toast.error("Failed to auto-fetch pincode details.");
+      } finally {
+        setLoadingPincode(false);
       }
     }
   };
@@ -263,44 +346,6 @@ const ApplicationForm = ({ job }) => {
     
     if (name === 'pincode' && sanitized.length === 6) {
       fetchPincodeDetails(sanitized);
-    }
-  };
-
-  const getCurrentLocation = () => {
-    if ("geolocation" in navigator) {
-      setFetchingLocation(true);
-      navigator.geolocation.getCurrentPosition(async (position) => {
-        const { latitude, longitude } = position.coords;
-        try {
-          const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`);
-          const data = await res.json();
-          if (data && data.address) {
-            const addr = data.address;
-            const pin = addr.postcode || '';
-            setFormData(prev => ({
-              ...prev,
-              pincode: pin,
-              state: addr.state || prev.state,
-              district: addr.state_district || addr.city_district || addr.county || prev.district,
-              area: addr.suburb || addr.neighbourhood || addr.village || prev.area,
-              presentAddress: `${addr.road || ''} ${addr.house_number || ''}`.trim() || prev.presentAddress
-            }));
-            if (pin && pin.length === 6) {
-              fetchPincodeDetails(pin);
-            }
-            toast.success("Location fetched successfully!");
-          }
-        } catch (error) {
-          toast.error("Failed to fetch location details.");
-        } finally {
-          setFetchingLocation(false);
-        }
-      }, (error) => {
-        setFetchingLocation(false);
-        toast.error("Geolocation permission denied or failed.");
-      });
-    } else {
-      toast.error("Geolocation is not supported by your browser");
     }
   };
 
@@ -423,78 +468,6 @@ const ApplicationForm = ({ job }) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-10">
 
-      <div className="text-center pb-6 border-b border-gray-100">
-        <h2 className="text-3xl font-extrabold text-slate-900 mb-2">Application Form</h2>
-        <p className="text-slate-500">
-          Please fill out the form below to apply for <strong className="text-slate-800">HAUS NUO-Pay Offer – Liability</strong> {job.designation ? `(${job.designation})` : (job.title ? `(${job.title})` : '')}.
-        </p>
-      </div>
-
-      {/* ── 0. CANDIDATE TYPE SELECTOR (FRESHER vs EXPERIENCED) ── */}
-      <div className="bg-gradient-to-r from-sky-50 via-indigo-50 to-purple-50 border-2 border-[#0EA5E9]/30 rounded-2xl p-6 shadow-sm">
-        <div className="text-center mb-4">
-          <span className="inline-flex items-center gap-1 text-[11px] font-extrabold text-[#0284C7] uppercase tracking-wider bg-white px-3 py-1 rounded-full border border-sky-100 shadow-xs mb-1">
-            <Sparkles size={13} className="text-[#0EA5E9]" /> Select Candidate Experience Level
-          </span>
-          <h3 className="text-xl font-black text-slate-900">Are you a Fresher or Experienced?</h3>
-          <p className="text-xs text-slate-500 mt-0.5">Form fields and document requirements will dynamically adjust based on your choice</p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto">
-          {/* Option: Fresher */}
-          <button
-            type="button"
-            onClick={() => setCandidateType('Fresher')}
-            className={`p-5 rounded-xl border-2 transition-all flex items-center gap-4 text-left ${
-              candidateType === 'Fresher'
-                ? 'bg-white border-[#0EA5E9] shadow-md ring-2 ring-[#0EA5E9]/20'
-                : 'bg-white/70 border-slate-200 hover:border-slate-300 text-slate-600'
-            }`}
-          >
-            <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 text-xl font-bold ${
-              candidateType === 'Fresher' ? 'bg-[#0EA5E9] text-white' : 'bg-slate-100 text-slate-500'
-            }`}>
-              <GraduationCap size={24} />
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <h4 className="font-bold text-slate-900 text-base">Fresher</h4>
-                {candidateType === 'Fresher' && (
-                  <span className="text-[10px] bg-emerald-100 text-emerald-700 font-bold px-2 py-0.5 rounded-full">Selected</span>
-                )}
-              </div>
-              <p className="text-xs text-slate-500 mt-0.5">No prior experience. Requires only <strong>Resume & Photo</strong>.</p>
-            </div>
-          </button>
-
-          {/* Option: Experienced */}
-          <button
-            type="button"
-            onClick={() => setCandidateType('Experienced')}
-            className={`p-5 rounded-xl border-2 transition-all flex items-center gap-4 text-left ${
-              candidateType === 'Experienced'
-                ? 'bg-white border-[#0EA5E9] shadow-md ring-2 ring-[#0EA5E9]/20'
-                : 'bg-white/70 border-slate-200 hover:border-slate-300 text-slate-600'
-            }`}
-          >
-            <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 text-xl font-bold ${
-              candidateType === 'Experienced' ? 'bg-[#0EA5E9] text-white' : 'bg-slate-100 text-slate-500'
-            }`}>
-              <Briefcase size={24} />
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <h4 className="font-bold text-slate-900 text-base">Experienced</h4>
-                {candidateType === 'Experienced' && (
-                  <span className="text-[10px] bg-emerald-100 text-emerald-700 font-bold px-2 py-0.5 rounded-full">Selected</span>
-                )}
-              </div>
-              <p className="text-xs text-slate-500 mt-0.5">Prior work history, salary slips & experience documents required.</p>
-            </div>
-          </button>
-        </div>
-      </div>
-
       {/* Policies & Benefits */}
       <div className="bg-[#F0F9FF] border border-[#BAE6FD] rounded-2xl p-6 md:p-8">
         <h3 className="font-bold text-slate-900 text-xl mb-6">Policies & Benefits</h3>
@@ -530,101 +503,177 @@ const ApplicationForm = ({ job }) => {
         </div>
       </div>
 
-      {/* Personal Information */}
+
+
+      {/* PERSONAL DETAIL */}
       <div>
         <h3 className="font-bold text-slate-900 text-lg mb-5 flex items-center gap-2">
-          <User size={18} className="text-[#0EA5E9]" /> Personal Information
+          <User size={18} className="text-[#0EA5E9]" /> PERSONAL DETAIL
         </h3>
         <div className="space-y-4">
+          {/* Row 1: Name */}
           <div className="grid grid-cols-1 gap-4">
             <FormInput name="name" value={formData.name} onChange={handleChange} label="Name" required placeholder="Enter full name" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <FormInput name="fatherName" value={formData.fatherName} onChange={handleChange} label="Father Name" placeholder="Enter father name" />
-            <FormInput name="motherName" value={formData.motherName} onChange={handleChange} label="Mother Name" placeholder="Enter mother name" />
+
+          {/* Row 2: Identification & Personal (Spacious 4 columns) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <FormInput name="pan" value={formData.pan} onChange={handleChange} label="PAN Card" placeholder="ABCDE1234F" maxLength="10" className="uppercase font-mono" />
+            <FormInput name="aadhaar" value={formData.aadhaar} onChange={handleChange} label="Aadhaar Card" placeholder="12-digit Aadhaar" maxLength="12" inputMode="numeric" className="font-mono" />
+            <FormInput name="dob" value={formData.dob} onChange={handleChange} label="DOB" type="date" />
+            <FormSelect
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+              label="Gender"
+              placeholder="Select Gender"
+              options={['Male', 'Female', 'Transgender']}
+            />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <FormSelect name="maritalStatus" value={formData.maritalStatus} onChange={handleChange} label="Marital Status" placeholder="Select marital status" options={['Single', 'Married', 'Divorced', 'Widowed']} />
-            <FormInput name="spouseName" value={formData.spouseName} onChange={handleChange} label="Spouse Name" placeholder="Enter spouse name (if applicable)" />
+
+          {/* Row 3: Religion, Nationality, Marital Status & (Spouse Name if Married) */}
+          <div className={`grid grid-cols-1 sm:grid-cols-2 ${formData.maritalStatus === 'Married' ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-4 transition-all duration-300`}>
+            <FormSelect
+              name="religion"
+              value={formData.religion}
+              onChange={handleChange}
+              label="Religion"
+              placeholder="Select Religion"
+              options={['Hinduism', 'Christianity', 'Sikhism', 'Islam', 'Buddhism', 'Jainism']}
+            />
+            <FormSelect
+              name="nationality"
+              value={formData.nationality}
+              onChange={handleChange}
+              label="Nationality"
+              placeholder="Select Nationality"
+              options={['Indian', 'UAE', 'NRI']}
+            />
+            <FormSelect
+              name="maritalStatus"
+              value={formData.maritalStatus}
+              onChange={handleChange}
+              label="Marital Status"
+              placeholder="Select Marital Status"
+              options={['Single', 'Married', 'Divorced', 'Widowed']}
+            />
+            {formData.maritalStatus === 'Married' && (
+              <FormInput
+                name="spouseName"
+                value={formData.spouseName}
+                onChange={handleChange}
+                label="Spouse Name"
+                required
+                placeholder="Enter spouse full name"
+              />
+            )}
           </div>
+
+          {/* Row 4: Mob No | Alternative Mob No | e-Mail ID */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <FormInput name="email" value={formData.email} onChange={handleChange} label="e-Mail" required placeholder="Enter email" type="email" icon={Mail} />
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-1.5">Phone<span className="text-red-500 ml-0.5">*</span></label>
+              <label className="block text-sm font-semibold text-slate-700 mb-1.5">Mob No<span className="text-red-500 ml-0.5">*</span></label>
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium">+91</span>
                 <input required type="tel" inputMode="numeric" maxLength="10" name="phone" placeholder="10-digit number" value={formData.phone} onChange={handleChange} className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all font-mono" />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-1.5">Alternate Phone</label>
+              <label className="block text-sm font-semibold text-slate-700 mb-1.5">Alternative Mob No</label>
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium">+91</span>
                 <input type="tel" inputMode="numeric" maxLength="10" name="alternatePhone" placeholder="10-digit number (optional)" value={formData.alternatePhone} onChange={handleChange} className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all font-mono" />
               </div>
             </div>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <FormInput name="aadhaar" value={formData.aadhaar} onChange={handleChange} label="Aadhaar Card" placeholder="12-digit Aadhaar number" maxLength="12" inputMode="numeric" className="font-mono" />
-            <FormInput name="pan" value={formData.pan} onChange={handleChange} label="PAN Card" placeholder="ABCDE1234F" maxLength="10" className="uppercase font-mono" />
+            <FormInput name="email" value={formData.email} onChange={handleChange} label="e-Mail ID" required placeholder="Enter email address" type="email" icon={Mail} />
           </div>
 
+          {/* Row 5: Father Name | Mother Name */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <FormInput name="fatherName" value={formData.fatherName} onChange={handleChange} label="Father Name" placeholder="Enter father name" />
+            <FormInput name="motherName" value={formData.motherName} onChange={handleChange} label="Mother Name" placeholder="Enter mother name" />
+          </div>
+
+          {/* ── ADDRESS ── */}
           <div className="bg-gray-50 border border-gray-100 rounded-2xl p-6 mt-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-3">
-              <h4 className="font-bold text-slate-800 flex items-center gap-2"><MapPin size={18} className="text-[#0EA5E9]" /> Address Details</h4>
-              <button 
-                type="button" 
-                onClick={getCurrentLocation}
-                disabled={fetchingLocation}
-                className="inline-flex items-center gap-2 bg-[#0EA5E9]/10 text-[#0EA5E9] hover:bg-[#0EA5E9] hover:text-white px-4 py-2 rounded-xl text-sm font-semibold transition-all"
-              >
-                <Navigation size={16} className={fetchingLocation ? "animate-spin" : ""} />
-                {fetchingLocation ? "Fetching..." : "Use Current Location"}
-              </button>
+            <div className="mb-4">
+              <h4 className="font-bold text-slate-900 text-base flex items-center gap-2">
+                <MapPin size={18} className="text-[#0EA5E9]" /> Present Residential
+              </h4>
+         
+              {/* <p className="text-xs text-slate-500 mt-0.5">Enter your PIN Code to auto-fetch address details</p> */}
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-              <FormInput name="pincode" value={formData.pincode} onChange={handleChange} label="Pincode" placeholder="e.g. 226001" maxLength="6" />
-              <FormInput name="state" value={formData.state} onChange={handleChange} label="State" placeholder="State" />
-              <FormInput name="district" value={formData.district} onChange={handleChange} label="District" placeholder="District" />
-              
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-1.5">Area / Locality</label>
-                {areaOptions.length > 0 ? (
-                  <select
-                    name="area"
-                    value={formData.area}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-700 bg-white outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all appearance-none"
-                  >
-                    <option value="">Select Area</option>
-                    {areaOptions.map((opt, i) => <option key={i} value={opt}>{opt}</option>)}
-                  </select>
-                ) : (
-                  <input
-                    type="text"
-                    name="area"
-                    value={formData.area}
-                    onChange={handleChange}
-                    placeholder="Enter Area manually"
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all"
-                  />
+            {/* PIN Code Input */}
+            <div className="max-w-xs mb-4">
+              <div className="relative">
+                <FormInput
+                  name="pincode"
+                  value={formData.pincode}
+                  onChange={handleChange}
+                  label="PIN Code"
+                  required
+                  placeholder="Enter 6-digit PIN Code"
+                  maxLength="6"
+                  inputMode="numeric"
+                />
+                {loadingPincode && (
+                  <div className="absolute right-3 top-9 text-xs text-[#0EA5E9] font-semibold flex items-center gap-1">
+                    <span className="w-3 h-3 border-2 border-[#0EA5E9] border-t-transparent rounded-full animate-spin"></span>
+                    Fetching...
+                  </div>
                 )}
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <FormInput name="presentAddress" value={formData.presentAddress} onChange={handleChange} label="Street/House No (Present)" placeholder="Enter complete present address" />
-              <FormInput name="permanentAddress" value={formData.permanentAddress} onChange={handleChange} label="Permanent Address" placeholder="Enter permanent address" />
-            </div>
+            {/* Remaining Address Fields: Shown once PIN Code is entered */}
+            {formData.pincode && formData.pincode.length === 6 && (
+              <div className="space-y-4 pt-4 border-t border-gray-200/60 transition-all duration-300">
+                {/* Row: Area/Locality | District | State */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-1.5">Area / Locality</label>
+                    {areaOptions.length > 0 ? (
+                      <select
+                        name="area"
+                        value={formData.area}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-700 bg-white outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all"
+                      >
+                        <option value="">Select Area</option>
+                        {areaOptions.map((opt, i) => <option key={i} value={opt}>{opt}</option>)}
+                      </select>
+                    ) : (
+                      <input
+                        type="text"
+                        name="area"
+                        value={formData.area}
+                        onChange={handleChange}
+                        placeholder="Enter Area manually"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all bg-white"
+                      />
+                    )}
+                  </div>
+                  <FormInput name="district" value={formData.district} onChange={handleChange} label="District" placeholder="District" readOnly disabled />
+                  <FormInput name="state" value={formData.state} onChange={handleChange} label="State" placeholder="State" readOnly disabled />
+                </div>
+
+                {/* Row: Flat/House/Floor | Society Name | Landmark */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <FormInput name="flatHouseFloor" value={formData.flatHouseFloor} onChange={handleChange} label="Flat / House / Floor" placeholder="e.g. Flat 302, 3rd Floor" />
+                  <FormInput name="societyName" value={formData.societyName} onChange={handleChange} label="Society Name" placeholder="e.g. Palm Meadows" />
+                  <FormInput name="landmark" value={formData.landmark} onChange={handleChange} label="Landmark" placeholder="e.g. Near City Hospital" />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
 
-      {/* Education */}
+      {/* EDUCATIONAL QUALIFICATIONS */}
       <div>
         <h3 className="font-bold text-slate-900 text-lg mb-2 flex items-center gap-2">
-          <GraduationCap size={18} className="text-[#0EA5E9]" /> Education
+          <GraduationCap size={18} className="text-[#0EA5E9]" /> EDUCATIONAL QUALIFICATIONS
         </h3>
         <div className="space-y-4">
           {educations.map((edu, i) => (
@@ -642,23 +691,115 @@ const ApplicationForm = ({ job }) => {
             onClick={addEducation}
             className="flex items-center gap-2 text-sm font-bold text-[#0EA5E9] hover:text-[#0284C7] transition-colors px-2 py-1"
           >
-            <Plus size={16} /> Add Education
+            <Plus size={16} /> Add Qualification
           </button>
         </div>
       </div>
 
-      {/* ── 3. EXPERIENCE SECTION (VISIBLE ONLY FOR EXPERIENCED) ── */}
-      {candidateType === 'Experienced' && (
-        <div className="transition-all duration-300">
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="font-bold text-slate-900 text-lg flex items-center gap-2">
-              <Briefcase size={18} className="text-[#0EA5E9]" /> Work Experience
-            </h3>
-            <span className="text-xs bg-indigo-50 text-indigo-700 font-bold px-2.5 py-1 rounded-full border border-indigo-100">
-              Experienced Candidate
+      {/* ── WORKING PROFILE (CHOOSE FRESHER OR EXPERIENCED) ── */}
+      <div className="space-y-6">
+        <h3 className="font-bold text-slate-900 text-lg flex items-center gap-2">
+          <Briefcase size={18} className="text-[#0EA5E9]" /> WORKING PROFILE
+        </h3>
+
+        <div className="bg-gradient-to-r from-sky-50 via-indigo-50 to-purple-50 border-2 border-[#0EA5E9]/30 rounded-2xl p-6 shadow-sm">
+          <div className="text-center mb-4">
+            <span className="inline-flex items-center gap-1 text-[11px] font-extrabold text-[#0284C7] uppercase tracking-wider bg-white px-3 py-1 rounded-full border border-sky-100 shadow-xs mb-1">
+              <Sparkles size={13} className="text-[#0EA5E9]" /> Choose Experience Level
             </span>
+            <h3 className="text-xl font-black text-slate-900">Are you a Fresher or Experienced?</h3>
+            <p className="text-xs text-slate-500 mt-0.5">Select option to display appropriate salary & experience details</p>
           </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto">
+            {/* Option: Fresher */}
+            <button
+              type="button"
+              onClick={() => setCandidateType('Fresher')}
+              className={`p-5 rounded-xl border-2 transition-all flex items-center gap-4 text-left ${
+                candidateType === 'Fresher'
+                  ? 'bg-white border-[#0EA5E9] shadow-md ring-2 ring-[#0EA5E9]/20'
+                  : 'bg-white/70 border-slate-200 hover:border-slate-300 text-slate-600'
+              }`}
+            >
+              <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 text-xl font-bold ${
+                candidateType === 'Fresher' ? 'bg-[#0EA5E9] text-white' : 'bg-slate-100 text-slate-500'
+              }`}>
+                <GraduationCap size={24} />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h4 className="font-bold text-slate-900 text-base">Fresher</h4>
+                  {candidateType === 'Fresher' && (
+                    <span className="text-[10px] bg-emerald-100 text-emerald-700 font-bold px-2 py-0.5 rounded-full">Selected</span>
+                  )}
+                </div>
+                <p className="text-xs text-slate-500 mt-0.5">No prior experience. Requires <strong>Candidate Pic & Resume</strong>.</p>
+              </div>
+            </button>
+
+            {/* Option: Experienced */}
+            <button
+              type="button"
+              onClick={() => setCandidateType('Experienced')}
+              className={`p-5 rounded-xl border-2 transition-all flex items-center gap-4 text-left ${
+                candidateType === 'Experienced'
+                  ? 'bg-white border-[#0EA5E9] shadow-md ring-2 ring-[#0EA5E9]/20'
+                  : 'bg-white/70 border-slate-200 hover:border-slate-300 text-slate-600'
+              }`}
+            >
+              <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 text-xl font-bold ${
+                candidateType === 'Experienced' ? 'bg-[#0EA5E9] text-white' : 'bg-slate-100 text-slate-500'
+              }`}>
+                <Briefcase size={24} />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h4 className="font-bold text-slate-900 text-base">Experienced</h4>
+                  {candidateType === 'Experienced' && (
+                    <span className="text-[10px] bg-emerald-100 text-emerald-700 font-bold px-2 py-0.5 rounded-full">Selected</span>
+                  )}
+                </div>
+                <p className="text-xs text-slate-500 mt-0.5">Prior work history, salary details & <strong>Salary Slip</strong> required.</p>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        {/* ── FRESHER CASE: SALARY COMPENSATION ── */}
+        {candidateType === 'Fresher' && (
+          <div className="bg-gray-50 border border-gray-100 rounded-2xl p-6">
+            <h4 className="font-bold text-slate-900 text-base mb-4 flex items-center gap-2">
+              <HandCoins size={18} className="text-[#0EA5E9]" /> SALARY COMPENSATION
+            </h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <FormInput
+                label="Expectations Monthly Salary"
+                name="expectedMonthlySalary"
+                value={formData.expectedMonthlySalary}
+                onChange={handleChange}
+                placeholder="e.g. 25000"
+                type="number"
+              />
+              <FormInput
+                label="Joined Comfortable Date"
+                name="joinedComfortableDate"
+                value={formData.joinedComfortableDate}
+                onChange={handleChange}
+                type="date"
+              />
+            </div>
+          </div>
+        )}
+
+        {/* ── EXPERIENCED CASE: Experienced++ WORK PROFILE ── */}
+        {candidateType === 'Experienced' && (
           <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <h4 className="font-bold text-slate-900 text-base flex items-center gap-2">
+                <Briefcase size={18} className="text-[#0EA5E9]" /> Experienced Details
+              </h4>
+            </div>
             {experiences.map((exp, i) => (
               <ExperienceBlock
                 key={i}
@@ -674,70 +815,44 @@ const ApplicationForm = ({ job }) => {
               onClick={addExperience}
               className="flex items-center gap-2 text-sm font-bold text-[#0EA5E9] hover:text-[#0284C7] transition-colors px-2 py-1"
             >
-              <Plus size={16} /> Add Experience
+              <Plus size={16} /> Add More Experience
             </button>
-          </div>
-        </div>
-      )}
-
-      {/* ── 4. SALARY & NOTICE PERIOD ── */}
-      <div>
-        <h3 className="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
-          <HandCoins size={18} className="text-[#0EA5E9]" />
-          {candidateType === 'Experienced' ? 'Salary & Notice Period Details' : 'Expected Compensation'}
-        </h3>
-        
-        {candidateType === 'Experienced' ? (
-          <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <FormInput name="yearlyGrossSalary" value={formData.yearlyGrossSalary} onChange={handleChange} label="Yearly Gross Salary" placeholder="Enter yearly gross salary" type="number" />
-              <FormInput name="monthlyNetSalary" value={formData.monthlyNetSalary} onChange={handleChange} label="Monthly Net In-Hand Salary" placeholder="Enter monthly net salary" type="number" />
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
-              <FormInput name="expectedSalary" value={formData.expectedSalary} onChange={handleChange} label="Expected Salary *" required placeholder="Enter expected salary" type="number" />
-              <FormInput name="noticePeriod" value={formData.noticePeriod} onChange={handleChange} label="Notice Period *" required placeholder="Enter notice period (Days/Months)" />
-              <FormInput name="reasonOfLeaving" value={formData.reasonOfLeaving} onChange={handleChange} label="Reason of Leaving" placeholder="Enter reason" />
-            </div>
-          </>
-        ) : (
-          <div className="max-w-md">
-            <FormInput name="expectedSalary" value={formData.expectedSalary} onChange={handleChange} label="Expected Monthly / Yearly CTC *" required placeholder="e.g. 300000" type="number" />
           </div>
         )}
       </div>
 
-      {/* ── 5. UNIFIED DOCUMENTS SECTION (EK HI JAGAH SAARE UPLOAD VALE) ── */}
+      {/* ── DOCUMENT UPLOAD & PROVIDED ── */}
       <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 md:p-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-6 border-b border-slate-200 gap-2">
           <div>
             <h3 className="font-bold text-slate-900 text-xl flex items-center gap-2">
               <FileText size={20} className="text-[#0EA5E9]" />
-              Documents & Photo Upload
+              Document upload & provided
             </h3>
             <p className="text-xs text-slate-500 mt-0.5">
               {candidateType === 'Fresher'
-                ? 'Fresher requirements: Upload your Profile Photo and Resume / CV'
-                : 'Experienced requirements: Upload Photo, Resume, and previous work documentation'}
+                ? 'Fresher requirements: Upload Candidate Pic and Resume / CV'
+                : 'Experienced requirements: Upload Candidate Pic, Resume, and Salary Slip'}
             </p>
           </div>
           <span className={`px-3 py-1 rounded-full text-xs font-bold w-max ${
             candidateType === 'Fresher' ? 'bg-emerald-100 text-emerald-800' : 'bg-indigo-100 text-indigo-800'
           }`}>
-            {candidateType === 'Fresher' ? '🎓 Fresher Mode (Resume + Pic only)' : '💼 Experienced Mode (All Documents)'}
+            {candidateType === 'Fresher' ? '🎓 Fresher Mode (Candidate Pic + Resume)' : '💼 Experienced Mode (Candidate Pic + Resume + Salary Slip)'}
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Document 1: Profile Photo (Always required for both) */}
+        <div className={`grid grid-cols-1 ${candidateType === 'Experienced' ? 'md:grid-cols-3' : 'md:grid-cols-2'} gap-6`}>
+          {/* Document 1: Candidate Pic */}
           <FileUpload
             onChange={file => setFiles({...files, profilePhoto: file})}
-            label="Candidate Profile Photo / Pic"
+            label="Candidate Pic"
             accept="image/*"
             maxSize="5 MB"
-            hint="Upload a clear professional photo"
+            hint="Upload clear passport size photo"
           />
 
-          {/* Document 2: Resume (Always required for both) */}
+          {/* Document 2: Resume */}
           <FileUpload
             onChange={file => setFiles({...files, resume: file})}
             required
@@ -747,50 +862,20 @@ const ApplicationForm = ({ job }) => {
             hint="PDF or Word format"
           />
 
-          {/* Documents for Experienced ONLY */}
+          {/* Document 3 for Experienced ONLY: Salary Slip */}
           {candidateType === 'Experienced' && (
-            <>
-              {/* Document 3: Salary Slip */}
-              <FileUpload
-                onChange={file => setFiles({...files, salarySlip: file})}
-                label="Latest Salary Slip"
-                accept=".pdf,.jpeg,.jpg,.png"
-                maxSize="10 MB"
-                hint="Last 1-3 months salary slip"
-              />
-
-              {/* Document 4: Experience Letter */}
-              <FileUpload
-                onChange={file => setFiles({...files, experienceLetter: file})}
-                label="Experience Letter"
-                accept=".pdf,.docx,.doc,.jpeg,.jpg,.png"
-                maxSize="10 MB"
-                hint="From previous employer"
-              />
-
-              {/* Document 5: Relieving Letter */}
-              <FileUpload
-                onChange={file => setFiles({...files, relievingLetter: file})}
-                label="Relieving / Resignation Acceptance"
-                accept=".pdf,.docx,.doc,.jpeg,.jpg,.png"
-                maxSize="10 MB"
-                hint="Proof of release / notice period"
-              />
-
-              {/* Document 6: Cover Letter */}
-              <FileUpload
-                onChange={file => setFiles({...files, coverLetter: file})}
-                label="Cover Letter (Optional)"
-                accept=".pdf,.docx,.doc"
-                maxSize="10 MB"
-                hint="Brief intro & motivation"
-              />
-            </>
+            <FileUpload
+              onChange={file => setFiles({...files, salarySlip: file})}
+              label="Salary Slip"
+              accept=".pdf,.jpeg,.jpg,.png"
+              maxSize="10 MB"
+              hint="Latest 1-3 months salary slip"
+            />
           )}
         </div>
       </div>
 
-      {/* Submit */}
+      {/* Submit Button */}
       <button disabled={submitting} type="submit" className="w-full bg-[#0EA5E9] hover:bg-[#0284C7] text-white font-bold py-4 rounded-2xl transition-colors shadow-lg hover:shadow-xl text-base flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed">
         <CheckCircle2 size={20} /> {submitting ? 'Submitting Application...' : `Submit Application (${candidateType})`}
       </button>
@@ -877,9 +962,9 @@ const JobDetailsPage = () => {
           </h1>
 
           {/* Sub Role / Specific Designation */}
-          {(job.title || job.designation) && (
-            <p className="text-lg md:text-xl font-bold text-[#0284C7] mb-4">
-              {job.designation ? `${job.designation}${job.title && job.title !== job.designation ? ` (${job.title})` : ''}` : job.title}
+          {(job.designation || (job.title && !job.title.includes('HAUS NUO-Pay Offer'))) && (
+            <p className="text-lg md:text-xl font-bold text-[#0284C7] mb-4 text-center">
+              {job.designation || job.title}
             </p>
           )}
 
