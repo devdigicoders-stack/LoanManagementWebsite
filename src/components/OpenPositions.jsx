@@ -215,6 +215,17 @@ const OpenPositions = () => {
     setSearchQuery('');
   };
 
+  const filterSteps = [
+    { name: 'Department', selected: selectedDepartments.length > 0, count: selectedDepartments.length, desc: 'Choose division' },
+    { name: 'Designation', selected: selectedDesignations.length > 0, count: selectedDesignations.length, desc: 'Select role' },
+    { name: 'State', selected: selectedStates.length > 0, count: selectedStates.length, desc: 'Choose state' },
+    { name: 'District', selected: selectedDistricts.length > 0, count: selectedDistricts.length, desc: 'Select location' },
+  ];
+
+  const completedCount = filterSteps.filter(s => s.selected).length;
+  const progressPercent = (completedCount / 4) * 100;
+  const allFiltersSelected = completedCount === 4;
+
   const filteredJobs = jobs.filter(job => {
     const matchSearch = searchQuery.trim() === '' ||
       (job.title && job.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
@@ -238,17 +249,6 @@ const OpenPositions = () => {
     return matchSearch && matchDept && matchDesig && matchState && matchDistrict;
   });
 
-  const filterSteps = [
-    { name: 'Department', selected: selectedDepartments.length > 0, count: selectedDepartments.length, desc: 'Choose division' },
-    { name: 'Designation', selected: selectedDesignations.length > 0, count: selectedDesignations.length, desc: 'Select role' },
-    { name: 'State', selected: selectedStates.length > 0, count: selectedStates.length, desc: 'Choose state' },
-    { name: 'District', selected: selectedDistricts.length > 0, count: selectedDistricts.length, desc: 'Select location' },
-  ];
-
-  const completedCount = filterSteps.filter(s => s.selected).length;
-  const progressPercent = (completedCount / 4) * 100;
-  const allFiltersSelected = completedCount === 4;
-
   return (
     <section id="open-positions" className="py-24 px-6 md:px-12 bg-slate-50/50 text-slate-900 relative overflow-visible min-h-[550px]">
 
@@ -258,35 +258,39 @@ const OpenPositions = () => {
       <div className="max-w-6xl mx-auto pb-12">
 
         {/* Section Heading */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-100/80 text-[#0284C7] text-xs font-black uppercase tracking-wider mb-4 border border-sky-200/60 shadow-xs">
-            <Sparkles size={14} /> Career Opportunities
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 bg-sky-50 border border-sky-200 px-4 py-1.5 rounded-full mb-4 shadow-2xs">
+            <Sparkles size={14} className="text-[#0EA5E9]" />
+            <span className="text-[11px] font-black text-[#0284C7] tracking-wider uppercase">
+              Explore Career Opportunities
+            </span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight">
-            Find Your Dream Role
+
+          <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+            Find Your Dream Job at{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0EA5E9] to-[#0284C7]">
+              HAUS NUO-Pay
+            </span>
           </h2>
-          <p className="text-slate-500 text-sm md:text-base mt-2.5 max-w-xl mx-auto font-medium">
-            Discover opening positions tailored to your department, role, and location preference.
+
+          <p className="mt-4 text-slate-600 font-medium text-sm md:text-base max-w-2xl mx-auto">
+            Select your preferred department, designation, state, and district to find the perfect opening for you.
           </p>
         </div>
 
-        {/* Filter Container Card */}
-        <div className="bg-white/90 backdrop-blur-md rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm mb-10 relative z-20">
-
-          {/* Progress tracker bar */}
-          <div className="mb-6 pb-6 border-b border-slate-100">
-            <div className="flex items-center justify-between text-xs font-bold text-slate-600 mb-2">
+        {/* Filters Card */}
+        <div className="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-md mb-8">
+          
+          {/* Progress Indicator */}
+          <div className="mb-6">
+            <div className="flex justify-between items-center text-xs font-bold text-slate-500 mb-2">
               <span className="flex items-center gap-1.5">
                 <Filter size={14} className="text-[#0EA5E9]" />
-                <span>Filter Criteria Progress</span>
+                Filter Positions (Complete all 4 steps to view jobs)
               </span>
-              <span className="font-black text-[#0EA5E9]">
-                {completedCount} of 4 Filters Selected ({progressPercent}%)
-              </span>
+              <span>{completedCount} of 4 Selected</span>
             </div>
-
-            {/* Progress bar track */}
-            <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
               <div
                 className="h-full bg-gradient-to-r from-sky-400 to-[#0EA5E9] transition-all duration-300 rounded-full"
                 style={{ width: `${progressPercent}%` }}
@@ -294,7 +298,7 @@ const OpenPositions = () => {
             </div>
           </div>
 
-          {/* Search box if all filters selected */}
+          {/* Search box (when all filters are selected) */}
           {allFiltersSelected && (
             <div className="relative max-w-2xl mx-auto mb-6">
               <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
@@ -352,7 +356,7 @@ const OpenPositions = () => {
           </div>
 
           {/* Clear Filters Button if anything is selected */}
-          {(selectedDepartments.length > 0 || selectedDesignations.length > 0 || selectedStates.length > 0 || selectedDistricts.length > 0) && (
+          {hasAnyFilter && (
             <div className="flex justify-center mt-6 pt-4 border-t border-slate-100">
               <button
                 type="button"
@@ -372,10 +376,15 @@ const OpenPositions = () => {
             Loading available positions...
           </div>
         ) : !allFiltersSelected ? (
-          <div className="text-center py-12 px-4">
-            <p className="text-slate-400 font-semibold text-sm md:text-base flex items-center justify-center gap-2">
-              <Filter size={16} className="text-[#0EA5E9]" />
-              <span>First select all filters to view available jobs.</span>
+          <div className="text-center py-16 px-4 bg-white/60 border border-dashed border-slate-200 rounded-3xl">
+            <div className="w-12 h-12 rounded-2xl bg-sky-50 text-[#0EA5E9] flex items-center justify-center mx-auto mb-3">
+              <Filter size={22} />
+            </div>
+            <h3 className="text-base font-bold text-slate-800 mb-1">
+              Select all 4 filters to view matching job openings
+            </h3>
+            <p className="text-slate-500 text-xs max-w-md mx-auto">
+              Please choose <strong>Department</strong>, <strong>Designation</strong>, <strong>State</strong>, and <strong>District</strong> from above to view available vacancies.
             </p>
           </div>
         ) : (
@@ -457,12 +466,12 @@ const OpenPositions = () => {
                   </div>
                   <h3 className="text-lg font-black text-slate-900 mb-1">No Openings Match This Selection</h3>
                   <p className="text-slate-500 mb-5 text-xs max-w-md mx-auto font-medium">
-                    We currently do not have vacancies for this specific combination of department, designation, and district.
+                    We currently do not have vacancies for this specific combination of department, designation, state, and district.
                   </p>
                   <button
                     type="button"
                     onClick={resetAllFilters}
-                    className="inline-flex items-center gap-2 text-xs font-black text-[#0EA5E9] hover:underline"
+                    className="inline-flex items-center gap-2 text-xs font-black text-[#0EA5E9] hover:underline cursor-pointer"
                   >
                     <RotateCcw size={14} /> Try Another Filter Combination
                   </button>

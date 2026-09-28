@@ -265,7 +265,6 @@ const ExperienceBlock = ({ index, exp, onChange, onRemove, canRemove }) => {
 const ApplicationForm = ({ job }) => {
   const navigate = useNavigate();
   const [submitting, setSubmitting] = useState(false);
-  const [areaOptions, setAreaOptions] = useState([]);
   const [loadingPincode, setLoadingPincode] = useState(false);
   
   // 'Fresher' or 'Experienced'
@@ -301,23 +300,18 @@ const ApplicationForm = ({ job }) => {
         if (data && data[0] && data[0].Status === "Success") {
           const postOffices = data[0].PostOffice || [];
           const po = postOffices[0];
-          const areaNames = postOffices.map(p => p.Name);
-          setAreaOptions(areaNames);
           setFormData(prev => ({
             ...prev,
             state: po.State || '',
-            district: po.District || '',
-            area: postOffices.length > 0 ? po.Name : prev.area
+            district: po.District || ''
           }));
-          toast.success(`Location auto-filled for Pincode: ${pin}`);
+          toast.success(`District & State auto-filled for Pincode: ${pin}`);
         } else {
           toast.error("Invalid Pincode. Please check your pincode.");
-          setAreaOptions([]);
           setFormData(prev => ({
             ...prev,
             state: '',
-            district: '',
-            area: ''
+            district: ''
           }));
         }
       } catch(err) {
@@ -357,9 +351,12 @@ const ApplicationForm = ({ job }) => {
   const removeExperience = (i) => setExperiences(prev => prev.filter((_, idx) => idx !== i));
   const updateExperience = (i, data) => setExperiences(prev => prev.map((exp, idx) => idx === i ? data : exp));
 
+  const [submittedData, setSubmittedData] = useState(null);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Validations
     // 1. Email check
     const emailCheck = validateEmail(formData.email, true);
     if (!emailCheck.valid) {
@@ -451,19 +448,86 @@ const ApplicationForm = ({ job }) => {
         body: submitData
       });
 
+      const resData = await response.json().catch(() => ({}));
+
+      setSubmitting(false);
+
       if (response.ok) {
-        toast.success("Application submitted successfully!");
-        navigate('/careers');
+        setSubmittedData({
+          appNo: resData.applicationNo || 'APP-RECEIVED',
+          zone: resData.zone || 'Assigned Zone',
+          name: formData.name,
+          email: formData.email,
+          jobTitle: job.title
+        });
+        toast.success("Application Submitted Successfully!", { duration: 5000 });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        const error = await response.json();
-        toast.error(error.message || "Failed to submit application");
+        toast.error(resData.message || "Failed to submit application. Please try again.");
       }
     } catch (error) {
-      toast.error("Network error. Please try again.");
-    } finally {
       setSubmitting(false);
+      toast.error("Network error or request timeout. Please check your connection.");
     }
   };
+
+  if (submittedData) {
+    return (
+      <div className="bg-white rounded-3xl p-8 md:p-12 text-center max-w-xl mx-auto border border-emerald-100 shadow-xl space-y-6 animate-in zoom-in-95 duration-300">
+        <div className="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner">
+          <CheckCircle2 size={46} strokeWidth={2.5} />
+        </div>
+
+        <div className="space-y-2">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-50 text-emerald-700 border border-emerald-200">
+            <Sparkles size={14} /> Application Submitted Successfully
+          </span>
+          <h2 className="text-2xl md:text-3xl font-black text-slate-900">
+            Thank You, {submittedData.name}!
+          </h2>
+          <p className="text-slate-600 text-sm">
+            Your job application for <strong className="text-slate-900">{submittedData.jobTitle}</strong> has been received by the HR Recruitment Team.
+          </p>
+        </div>
+
+        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-left space-y-2.5 text-sm">
+          <div className="flex justify-between items-center py-1 border-b border-slate-200/60">
+            <span className="text-slate-500 font-medium">Application No:</span>
+            <span className="font-mono font-bold text-[#0EA5E9] bg-sky-50 px-2.5 py-0.5 rounded-lg border border-sky-100">{submittedData.appNo}</span>
+          </div>
+          <div className="flex justify-between items-center py-1 border-b border-slate-200/60">
+            <span className="text-slate-500 font-medium">Allocated Zone:</span>
+            <span className="font-bold text-slate-800">{submittedData.zone}</span>
+          </div>
+          <div className="flex justify-between items-center py-1">
+            <span className="text-slate-500 font-medium">Confirmation Email:</span>
+            <span className="font-bold text-slate-800">{submittedData.email}</span>
+          </div>
+        </div>
+
+        <div className="pt-2 flex flex-col sm:flex-row gap-3 justify-center">
+          <button
+            onClick={() => {
+              navigate('/careers');
+              window.scrollTo({ top: 0, behavior: 'instant' });
+            }}
+            className="w-full sm:w-auto bg-[#0EA5E9] hover:bg-[#0284C7] text-white font-bold px-8 py-3.5 rounded-xl transition-all shadow-md hover:shadow-lg"
+          >
+            Explore More Jobs
+          </button>
+          <button
+            onClick={() => {
+              navigate('/');
+              window.scrollTo({ top: 0, behavior: 'instant' });
+            }}
+            className="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-6 py-3.5 rounded-xl transition-all"
+          >
+            Go to Home
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-10">
@@ -626,46 +690,32 @@ const ApplicationForm = ({ job }) => {
               </div>
             </div>
 
-            {/* Remaining Address Fields: Shown once PIN Code is entered */}
-            {formData.pincode && formData.pincode.length === 6 && (
-              <div className="space-y-4 pt-4 border-t border-gray-200/60 transition-all duration-300">
-                {/* Row: Area/Locality | District | State */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-1.5">Area / Locality</label>
-                    {areaOptions.length > 0 ? (
-                      <select
-                        name="area"
-                        value={formData.area}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-700 bg-white outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all"
-                      >
-                        <option value="">Select Area</option>
-                        {areaOptions.map((opt, i) => <option key={i} value={opt}>{opt}</option>)}
-                      </select>
-                    ) : (
-                      <input
-                        type="text"
-                        name="area"
-                        value={formData.area}
-                        onChange={handleChange}
-                        placeholder="Enter Area manually"
-                        className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all bg-white"
-                      />
-                    )}
-                  </div>
-                  <FormInput name="district" value={formData.district} onChange={handleChange} label="District" placeholder="District" readOnly disabled />
-                  <FormInput name="state" value={formData.state} onChange={handleChange} label="State" placeholder="State" readOnly disabled />
+            {/* Address Details Fields */}
+            <div className="space-y-4 pt-4 border-t border-gray-200/60 transition-all duration-300">
+              {/* Row: Area/Locality | District | State */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-sm font-semibold text-slate-700 mb-1.5">Area / Locality</label>
+                  <input
+                    type="text"
+                    name="area"
+                    value={formData.area}
+                    onChange={handleChange}
+                    placeholder="e.g. Kalyanpur / Vikas Nagar"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 outline-none focus:border-[#0EA5E9] focus:ring-3 focus:ring-[#0EA5E9]/10 transition-all bg-white"
+                  />
                 </div>
-
-                {/* Row: Flat/House/Floor | Society Name | Landmark */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <FormInput name="flatHouseFloor" value={formData.flatHouseFloor} onChange={handleChange} label="Flat / House / Floor" placeholder="e.g. Flat 302, 3rd Floor" />
-                  <FormInput name="societyName" value={formData.societyName} onChange={handleChange} label="Society Name" placeholder="e.g. Palm Meadows" />
-                  <FormInput name="landmark" value={formData.landmark} onChange={handleChange} label="Landmark" placeholder="e.g. Near City Hospital" />
-                </div>
+                <FormInput name="district" value={formData.district} onChange={handleChange} label="District" placeholder="Auto-filled from PIN" readOnly disabled />
+                <FormInput name="state" value={formData.state} onChange={handleChange} label="State" placeholder="Auto-filled from PIN" readOnly disabled />
               </div>
-            )}
+
+              {/* Row: Flat/House/Floor | Society Name | Landmark */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <FormInput name="flatHouseFloor" value={formData.flatHouseFloor} onChange={handleChange} label="Flat / House / Floor" placeholder="e.g. Flat 302, 3rd Floor" />
+                <FormInput name="societyName" value={formData.societyName} onChange={handleChange} label="Society Name" placeholder="e.g. Palm Meadows" />
+                <FormInput name="landmark" value={formData.landmark} onChange={handleChange} label="Landmark" placeholder="e.g. Near City Hospital" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
