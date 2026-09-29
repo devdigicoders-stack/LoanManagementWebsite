@@ -416,11 +416,26 @@ const ApplicationForm = ({ job }) => {
     setSubmitting(true);
     
     try {
+      const composedAddr = [
+        formData.flatHouseFloor,
+        formData.societyName,
+        formData.landmark,
+        formData.area,
+        formData.district,
+        formData.state,
+        formData.pincode ? `PIN - ${formData.pincode}` : ''
+      ].filter(Boolean).join(', ');
+
       const submitData = new FormData();
       Object.keys(formData).forEach(key => {
         submitData.append(key, formData[key]);
       });
       
+      submitData.set('presentAddress', formData.presentAddress || composedAddr);
+      submitData.set('permanentAddress', formData.permanentAddress || composedAddr);
+      submitData.set('expectedSalary', formData.expectedSalary || formData.expectedMonthlySalary || '');
+      submitData.set('expectedMonthlySalary', formData.expectedMonthlySalary || formData.expectedSalary || '');
+
       submitData.append('candidateType', candidateType);
       submitData.append('education', JSON.stringify(educations));
       
