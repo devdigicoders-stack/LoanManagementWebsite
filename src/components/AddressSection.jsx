@@ -111,7 +111,7 @@ const AddressSection = ({
 
     try {
       let data = null;
-        const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5005/api';
+        const apiBase = import.meta.env.VITE_API_BASE_URL || 'https://loan-management-backend-3a23.onrender.com/api';
         const res = await fetch(`${apiBase}/location/pincode/${pin}`);
         if (res.ok) data = await res.json();
       } catch (e) {}
@@ -182,7 +182,7 @@ const AddressSection = ({
         try {
           let resData = null;
           try {
-            const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5005/api';
+            const apiBase = import.meta.env.VITE_API_BASE_URL || 'https://loan-management-backend-3a23.onrender.com/api';
             const resp = await fetch(`${apiBase}/location/reverse-geocode`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
