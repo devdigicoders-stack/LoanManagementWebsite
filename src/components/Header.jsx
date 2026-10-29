@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   CreditCard, 
@@ -15,9 +15,12 @@ import {
   ShieldCheck, 
   HardHat, 
   Users,
-  ChevronRight,
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  Info,
+  HeartHandshake,
+  Compass,
+  UserCheck
 } from 'lucide-react';
 
 const Header = () => {
@@ -26,6 +29,20 @@ const Header = () => {
   const [activeServiceTab, setActiveServiceTab] = useState('financial'); // 'financial' or 'properties'
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const dropdownTimeoutRef = useRef(null);
+
+  const handleMouseEnter = (id) => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+    setDropdownOpen(id);
+  };
+
+  const handleMouseLeave = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setDropdownOpen(null);
+    }, 180);
+  };
 
   useEffect(() => {
     if (location.pathname === '/about') {
@@ -52,35 +69,39 @@ const Header = () => {
     { name: 'Download App', path: '/download-app' },
   ];
 
+  const aboutLinks = [
+    { title: "Who We Are", path: "/about#who-we-are", icon: Info, desc: "Our mission, vision, and institutional roots" },
+    { title: "Our Values", path: "/about#our-values", icon: HeartHandshake, desc: "Integrity, transparency, and customer centricity" },
+    { title: "Our Journey", path: "/about#our-journey", icon: Compass, desc: "Milestones and fintech evolution timeline" },
+    { title: "Our Team", path: "/about#our-team", icon: UserCheck, desc: "Leadership driving financial empowerment" },
+  ];
+
   const financialGroups = [
     {
       title: "HAUS Nuo-Pay",
       tagline: "Smart Salary & Consolidated Payments",
-      badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
       items: [
-        { name: "Multi-Single EMI", path: "/services/multi-single-emi", icon: CreditCard, desc: "Consolidate multiple loans into one convenient single EMI" },
+        { name: "Multi-Single EMI", path: "/services/multi-single-emi", icon: CreditCard, desc: "Consolidate multiple EMIs into one easy monthly payment" },
         { name: "Salary Against Loan", path: "/services/salary-against-loan", icon: Wallet, desc: "Instant advance liquidity against your monthly salary income" },
       ]
     },
     {
       title: "Un-Secured Loans",
       tagline: "Collateral-Free Fast Approvals",
-      badgeColor: "bg-blue-50 text-blue-700 border-blue-200",
       items: [
-        { name: "Business Loan", path: "/services/business-loan", icon: Briefcase, desc: "Working capital & scale-up finance for enterprises" },
-        { name: "Personal Loan", path: "/services/personal-loan", icon: User, desc: "Flexible instant funds for medical, travel or personal needs" },
-        { name: "Doctor’s Loan", path: "/services/doctors-loan", icon: Stethoscope, desc: "Exclusive tailored credit for healthcare practitioners & clinics" },
+        { name: "Business Loan", path: "/services/business-loan", icon: Briefcase, desc: "Working capital & scale-up finance for growing businesses" },
+        { name: "Personal Loan", path: "/services/personal-loan", icon: User, desc: "Quick cash liquidity for emergency, travel or medical needs" },
+        { name: "Doctor’s Loan", path: "/services/doctors-loan", icon: Stethoscope, desc: "Tailored credit lines for clinics & certified practitioners" },
       ]
     },
     {
-      title: "Morgatage Loans",
+      title: "Mortgage Loans",
       tagline: "Asset-Backed High Value Funding",
-      badgeColor: "bg-amber-50 text-amber-700 border-amber-200",
       items: [
-        { name: "Gold Loan", path: "/services/gold-loan", icon: Coins, desc: "Instant cash liquidity against gold jewelry with lowest ROI" },
-        { name: "Home Loan", path: "/services/home-loan", icon: Home, desc: "Affordable housing finance for purchase & construction" },
-        { name: "Loan Against Properties", path: "/services/loan-against-properties", icon: Building2, desc: "High-value loans leveraging residential or commercial real estate" },
-        { name: "Loan Against Vehicle", path: "/services/loan-against-vehicle", icon: Car, desc: "Unlock liquidity against vehicle equity while you keep driving" },
+        { name: "Gold Loan", path: "/services/gold-loan", icon: Coins, desc: "Low interest instant loans pledged against gold ornaments" },
+        { name: "Home Loan", path: "/services/home-loan", icon: Home, desc: "Affordable housing finance for plot, flat or construction" },
+        { name: "Loan Against Property", path: "/services/loan-against-properties", icon: Building2, desc: "High ticket capital leveraging commercial or residential assets" },
+        { name: "Loan Against Vehicle", path: "/services/loan-against-vehicle", icon: Car, desc: "Unlock value on your car or commercial vehicle title" },
       ]
     }
   ];
@@ -89,27 +110,24 @@ const Header = () => {
     {
       title: "Rental-Pay",
       tagline: "Seamless Rent & Deposit Management",
-      badgeColor: "bg-indigo-50 text-indigo-700 border-indigo-200",
       items: [
-        { name: "Home-Owner / Landlord", path: "/services/properties/rental-pay-landlord", icon: Building, desc: "Guaranteed on-time monthly rent disbursement & tenant management" },
-        { name: "Renter / Tenant", path: "/services/properties/rental-pay-tenant", icon: KeyRound, desc: "Pay rental deposits & monthly rents via cards with flexible credit terms" },
+        { name: "Home-Owner / Landlord", path: "/services/properties/rental-pay-landlord", icon: Building, desc: "Guaranteed on-time rent disbursement & tenancy management" },
+        { name: "Renter / Tenant", path: "/services/properties/rental-pay-tenant", icon: KeyRound, desc: "Pay deposits & monthly rent easily with flexible card limits" },
       ]
     },
     {
       title: "Societies Insured",
       tagline: "Residential Community Protection",
-      badgeColor: "bg-teal-50 text-teal-700 border-teal-200",
       items: [
-        { name: "Societies", path: "/services/properties/societies-insured", icon: ShieldCheck, desc: "Comprehensive structural and common maintenance insurance coverage" },
+        { name: "Societies & RWAs", path: "/services/properties/societies-insured", icon: ShieldCheck, desc: "Structural, disaster and common equipment maintenance insurance" },
       ]
     },
     {
-      title: "NUO-HAUS",
-      tagline: "Real Estate & Direct Housing Solutions",
-      badgeColor: "bg-sky-50 text-sky-700 border-sky-200",
+      title: "NUO-HAUS Real Estate",
+      tagline: "Direct Housing & Developer Support",
       items: [
-        { name: "Builder's", path: "/services/properties/nuo-haus-builder", icon: HardHat, desc: "Project financing, sales enablement and buyer mortgage tie-ups" },
-        { name: "Individual", path: "/services/properties/nuo-haus-individual", icon: Users, desc: "End-to-end guidance for individual land and flat purchasers" },
+        { name: "Builder Solutions", path: "/services/properties/nuo-haus-builder", icon: HardHat, desc: "Project financing, escrow pipelines and buyer mortgage tie-ups" },
+        { name: "Individual Homebuyer", path: "/services/properties/nuo-haus-individual", icon: Users, desc: "Curated verified properties with pre-approved financing" },
       ]
     }
   ];
@@ -136,12 +154,15 @@ const Header = () => {
             <div 
               key={item.name} 
               className="relative"
-              onMouseEnter={() => item.hasDropdown && setDropdownOpen(item.dropdownId)}
-              onMouseLeave={() => setDropdownOpen(null)}
+              onMouseEnter={() => item.hasDropdown && handleMouseEnter(item.dropdownId)}
+              onMouseLeave={() => item.hasDropdown && handleMouseLeave()}
             >
               <Link
                 to={item.path}
-                onClick={() => setActive(item.name)}
+                onClick={() => {
+                  setActive(item.name);
+                  setDropdownOpen(null);
+                }}
                 className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
                   active === item.name 
                     ? 'bg-white text-[#0284C7] shadow-sm' 
@@ -156,188 +177,205 @@ const Header = () => {
                 )}
               </Link>
               
-              {/* Dropdown for About Us */}
+              {/* COMPACT & ELEGANT DROPDOWN FOR ABOUT US */}
               {item.dropdownId === 'about' && dropdownOpen === 'about' && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[220px] z-50">
-                  <div className="bg-white rounded-2xl shadow-xl border border-slate-100 p-2.5">
-                    <ul className="space-y-1">
-                      <li><Link to="/about#who-we-are" onClick={() => setDropdownOpen(null)} className="text-slate-700 hover:text-[#0284C7] flex items-center gap-2.5 px-3 py-2 hover:bg-slate-50 rounded-xl transition-colors font-medium text-sm"><span className="w-1.5 h-1.5 rounded-full bg-[#0284C7]"></span>Who We Are</Link></li>
-                      <li><Link to="/about#our-values" onClick={() => setDropdownOpen(null)} className="text-slate-700 hover:text-[#0284C7] flex items-center gap-2.5 px-3 py-2 hover:bg-slate-50 rounded-xl transition-colors font-medium text-sm"><span className="w-1.5 h-1.5 rounded-full bg-[#0284C7]"></span>Our Values</Link></li>
-                      <li><Link to="/about#our-journey" onClick={() => setDropdownOpen(null)} className="text-slate-700 hover:text-[#0284C7] flex items-center gap-2.5 px-3 py-2 hover:bg-slate-50 rounded-xl transition-colors font-medium text-sm"><span className="w-1.5 h-1.5 rounded-full bg-[#0284C7]"></span>Our Journey</Link></li>
-                      <li><Link to="/about#our-team" onClick={() => setDropdownOpen(null)} className="text-slate-700 hover:text-[#0284C7] flex items-center gap-2.5 px-3 py-2 hover:bg-slate-50 rounded-xl transition-colors font-medium text-sm"><span className="w-1.5 h-1.5 rounded-full bg-[#0284C7]"></span>Our Team</Link></li>
-                    </ul>
+                <div 
+                  className="absolute top-full left-0 pt-2 w-[320px] z-50 animate-in fade-in slide-in-from-top-2 duration-150"
+                  onMouseEnter={() => handleMouseEnter('about')}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <div className="bg-white rounded-2xl shadow-xl shadow-slate-200/70 border border-slate-100 p-3 ring-1 ring-slate-900/5">
+                    <div className="px-3 py-1.5 mb-1.5 flex items-center justify-between border-b border-slate-100 pb-2">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Company Overview</span>
+                      <Link 
+                        to="/about" 
+                        onClick={() => setDropdownOpen(null)}
+                        className="text-[11px] font-semibold text-[#0284C7] hover:underline"
+                      >
+                        Explore all &rarr;
+                      </Link>
+                    </div>
+                    <div className="space-y-1">
+                      {aboutLinks.map((sub, sIdx) => {
+                        const Icon = sub.icon;
+                        return (
+                          <Link 
+                            key={sIdx}
+                            to={sub.path} 
+                            onClick={() => setDropdownOpen(null)} 
+                            className="group flex items-start gap-3 p-2.5 hover:bg-sky-50/70 rounded-xl transition-colors"
+                          >
+                            <div className="w-8 h-8 rounded-lg bg-sky-50 text-[#0284C7] group-hover:bg-[#0284C7] group-hover:text-white flex items-center justify-center shrink-0 transition-colors mt-0.5">
+                              <Icon size={16} />
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <div className="flex items-center justify-between">
+                                <p className="text-[13px] font-bold text-slate-800 group-hover:text-[#0284C7] transition-colors">
+                                  {sub.title}
+                                </p>
+                                <ArrowRight size={12} className="text-slate-300 group-hover:text-[#0284C7] group-hover:translate-x-0.5 transition-all opacity-0 group-hover:opacity-100 shrink-0" />
+                              </div>
+                              <p className="text-[11px] text-slate-500 leading-snug line-clamp-1">
+                                {sub.desc}
+                              </p>
+                            </div>
+                          </Link>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
               )}
 
-              {/* MODERN FLOATING GLASSMORPHISM CARD-GRID DRAWER FOR OUR SERVICES */}
+              {/* COMPACT & BALANCED DROPDOWN FOR OUR SERVICES */}
               {item.dropdownId === 'services' && dropdownOpen === 'services' && (
-                <div className="absolute top-full right-[-80px] xl:right-[-40px] pt-3 w-[840px] z-50 animate-in fade-in zoom-in-95 duration-200">
-                  <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_60px_-15px_rgba(2,132,199,0.25)] border border-sky-100/80 overflow-hidden ring-1 ring-slate-900/5">
+                <div 
+                  className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[640px] z-50 animate-in fade-in slide-in-from-top-2 duration-150"
+                  onMouseEnter={() => handleMouseEnter('services')}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <div className="bg-white rounded-2xl shadow-2xl shadow-sky-950/15 border border-sky-100 overflow-hidden ring-1 ring-slate-900/5">
                     
-                    {/* Top Control Bar: Category Switcher & Direct Apply Action */}
-                    <div className="px-6 py-4 bg-gradient-to-r from-sky-50/80 via-white to-sky-50/50 border-b border-sky-100/60 flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Browse:</span>
-                        <div className="inline-flex p-1 bg-slate-100/90 rounded-2xl border border-slate-200/60">
-                          <button
-                            type="button"
-                            onClick={() => setActiveServiceTab('financial')}
-                            className={`flex items-center gap-2 px-4 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 ${
-                              activeServiceTab === 'financial'
-                                ? 'bg-gradient-to-r from-[#0284C7] to-[#0369A1] text-white shadow-md shadow-sky-500/20'
-                                : 'text-slate-600 hover:text-slate-900'
-                            }`}
-                          >
-                            <CreditCard size={14} />
-                            <span>Financial Services</span>
-                            <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
-                              activeServiceTab === 'financial' ? 'bg-white/25 text-white' : 'bg-slate-200 text-slate-600'
-                            }`}>9</span>
-                          </button>
-
-                          <button
-                            type="button"
-                            onClick={() => setActiveServiceTab('properties')}
-                            className={`flex items-center gap-2 px-4 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 ${
-                              activeServiceTab === 'properties'
-                                ? 'bg-gradient-to-r from-[#0284C7] to-[#0369A1] text-white shadow-md shadow-sky-500/20'
-                                : 'text-slate-600 hover:text-slate-900'
-                            }`}
-                          >
-                            <Building2 size={14} />
-                            <span>Properties Management</span>
-                            <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
-                              activeServiceTab === 'properties' ? 'bg-white/25 text-white' : 'bg-slate-200 text-slate-600'
-                            }`}>5</span>
-                          </button>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-2">
-                        <Link
-                          to="/services"
-                          onClick={() => setDropdownOpen(null)}
-                          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0284C7] hover:text-[#0369A1] px-3 py-1.5 rounded-xl hover:bg-sky-50 transition-colors"
+                    {/* Header Tabs: Financial vs Properties */}
+                    <div className="px-5 py-2.5 bg-gradient-to-r from-sky-50/90 via-white to-sky-50/60 border-b border-sky-100/70 flex items-center justify-between">
+                      <div className="flex items-center gap-1.5 p-1 bg-slate-100/90 rounded-xl border border-slate-200/50">
+                        <button
+                          type="button"
+                          onClick={() => setActiveServiceTab('financial')}
+                          className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold transition-all duration-200 ${
+                            activeServiceTab === 'financial'
+                              ? 'bg-gradient-to-r from-[#0284C7] to-[#0369A1] text-white shadow-sm'
+                              : 'text-slate-600 hover:text-slate-900'
+                          }`}
                         >
-                          View Catalog <ArrowRight size={13} />
-                        </Link>
+                          <CreditCard size={13} />
+                          <span>Financial Services</span>
+                          <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
+                            activeServiceTab === 'financial' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'
+                          }`}>9</span>
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => setActiveServiceTab('properties')}
+                          className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold transition-all duration-200 ${
+                            activeServiceTab === 'properties'
+                              ? 'bg-gradient-to-r from-[#0284C7] to-[#0369A1] text-white shadow-sm'
+                              : 'text-slate-600 hover:text-slate-900'
+                          }`}
+                        >
+                          <Building2 size={13} />
+                          <span>Properties</span>
+                          <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
+                            activeServiceTab === 'properties' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'
+                          }`}>5</span>
+                        </button>
                       </div>
+
+                      <Link
+                        to="/services"
+                        onClick={() => setDropdownOpen(null)}
+                        className="inline-flex items-center gap-1 text-xs font-bold text-[#0284C7] hover:text-[#0369A1] px-2.5 py-1 rounded-lg hover:bg-sky-50 transition-colors"
+                      >
+                        All Services <ArrowRight size={12} />
+                      </Link>
                     </div>
 
-                    {/* Cards Grid Body */}
-                    <div className="p-6">
+                    {/* Compact Scrollable Body if needed, max-h-[380px] */}
+                    <div className="p-4 max-h-[380px] overflow-y-auto space-y-3.5 divide-y divide-slate-100">
                       {activeServiceTab === 'financial' ? (
-                        <div className="space-y-5">
-                          {financialGroups.map((group, gIdx) => (
-                            <div key={gIdx} className="space-y-2.5">
-                              {/* Section Title with Badge */}
-                              <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                  <div className="w-2 h-2 rounded-full bg-[#0284C7]"></div>
-                                  <h4 className="text-[13px] font-extrabold text-slate-800 tracking-tight">{group.title}</h4>
-                                  <span className="text-[11px] text-slate-400 font-medium">— {group.tagline}</span>
-                                </div>
-                              </div>
-
-                              {/* Card Items Grid */}
-                              <div className="grid grid-cols-3 gap-3">
-                                {group.items.map((sub, sIdx) => {
-                                  const IconComp = sub.icon;
-                                  return (
-                                    <Link
-                                      key={sIdx}
-                                      to={sub.path}
-                                      onClick={() => setDropdownOpen(null)}
-                                      className="group relative flex flex-col justify-between p-3.5 rounded-2xl bg-white hover:bg-gradient-to-br hover:from-sky-50/70 hover:to-white border border-slate-100 hover:border-sky-300 shadow-sm hover:shadow-md transition-all duration-200"
-                                    >
-                                      <div className="flex items-start gap-3">
-                                        <div className="w-9 h-9 rounded-xl bg-sky-50 text-[#0284C7] group-hover:bg-[#0284C7] group-hover:text-white flex items-center justify-center shrink-0 transition-colors duration-200 shadow-sm">
-                                          <IconComp size={18} />
-                                        </div>
-                                        <div className="min-w-0 flex-1">
-                                          <div className="flex items-center justify-between">
-                                            <p className="text-[12.5px] font-bold text-slate-800 group-hover:text-[#0284C7] transition-colors truncate">
-                                              {sub.name}
-                                            </p>
-                                            <ArrowRight size={12} className="text-slate-300 group-hover:text-[#0284C7] group-hover:translate-x-1 transition-all opacity-0 group-hover:opacity-100 shrink-0" />
-                                          </div>
-                                          <p className="text-[11px] text-slate-500 mt-1 line-clamp-2 leading-relaxed">
-                                            {sub.desc}
-                                          </p>
-                                        </div>
-                                      </div>
-                                    </Link>
-                                  );
-                                })}
-                              </div>
+                        financialGroups.map((group, gIdx) => (
+                          <div key={gIdx} className={gIdx > 0 ? "pt-3 space-y-2" : "space-y-2"}>
+                            <div className="flex items-center justify-between">
+                              <span className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500">
+                                {group.title} <span className="font-normal lowercase text-slate-400">— {group.tagline}</span>
+                              </span>
                             </div>
-                          ))}
-                        </div>
+
+                            <div className="grid grid-cols-2 gap-2">
+                              {group.items.map((sub, sIdx) => {
+                                const IconComp = sub.icon;
+                                return (
+                                  <Link
+                                    key={sIdx}
+                                    to={sub.path}
+                                    onClick={() => setDropdownOpen(null)}
+                                    className="group flex items-start gap-2.5 p-2 rounded-xl bg-slate-50/50 hover:bg-sky-50/80 border border-transparent hover:border-sky-200 transition-all duration-150"
+                                  >
+                                    <div className="w-7 h-7 rounded-lg bg-sky-100/70 text-[#0284C7] group-hover:bg-[#0284C7] group-hover:text-white flex items-center justify-center shrink-0 transition-colors mt-0.5">
+                                      <IconComp size={14} />
+                                    </div>
+                                    <div className="min-w-0 flex-1">
+                                      <div className="flex items-center justify-between">
+                                        <p className="text-[12px] font-bold text-slate-800 group-hover:text-[#0284C7] truncate transition-colors">
+                                          {sub.name}
+                                        </p>
+                                        <ArrowRight size={11} className="text-slate-300 group-hover:text-[#0284C7] opacity-0 group-hover:opacity-100 shrink-0 transition-opacity" />
+                                      </div>
+                                      <p className="text-[10.5px] text-slate-500 leading-tight line-clamp-1">
+                                        {sub.desc}
+                                      </p>
+                                    </div>
+                                  </Link>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        ))
                       ) : (
-                        <div className="space-y-5">
-                          {propertiesGroups.map((group, gIdx) => (
-                            <div key={gIdx} className="space-y-2.5">
-                              {/* Section Title with Badge */}
-                              <div className="flex items-center gap-2">
-                                <div className="w-2 h-2 rounded-full bg-[#0284C7]"></div>
-                                <h4 className="text-[13px] font-extrabold text-slate-800 tracking-tight">{group.title}</h4>
-                                <span className="text-[11px] text-slate-400 font-medium">— {group.tagline}</span>
-                              </div>
-
-                              {/* Card Items Grid */}
-                              <div className="grid grid-cols-2 gap-3">
-                                {group.items.map((sub, sIdx) => {
-                                  const IconComp = sub.icon;
-                                  return (
-                                    <Link
-                                      key={sIdx}
-                                      to={sub.path}
-                                      onClick={() => setDropdownOpen(null)}
-                                      className="group relative flex flex-col justify-between p-3.5 rounded-2xl bg-white hover:bg-gradient-to-br hover:from-sky-50/70 hover:to-white border border-slate-100 hover:border-sky-300 shadow-sm hover:shadow-md transition-all duration-200"
-                                    >
-                                      <div className="flex items-start gap-3">
-                                        <div className="w-9 h-9 rounded-xl bg-sky-50 text-[#0284C7] group-hover:bg-[#0284C7] group-hover:text-white flex items-center justify-center shrink-0 transition-colors duration-200 shadow-sm">
-                                          <IconComp size={18} />
-                                        </div>
-                                        <div className="min-w-0 flex-1">
-                                          <div className="flex items-center justify-between">
-                                            <p className="text-[12.5px] font-bold text-slate-800 group-hover:text-[#0284C7] transition-colors truncate">
-                                              {sub.name}
-                                            </p>
-                                            <ArrowRight size={12} className="text-slate-300 group-hover:text-[#0284C7] group-hover:translate-x-1 transition-all opacity-0 group-hover:opacity-100 shrink-0" />
-                                          </div>
-                                          <p className="text-[11px] text-slate-500 mt-1 line-clamp-2 leading-relaxed">
-                                            {sub.desc}
-                                          </p>
-                                        </div>
-                                      </div>
-                                    </Link>
-                                  );
-                                })}
-                              </div>
+                        propertiesGroups.map((group, gIdx) => (
+                          <div key={gIdx} className={gIdx > 0 ? "pt-3 space-y-2" : "space-y-2"}>
+                            <div className="flex items-center justify-between">
+                              <span className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500">
+                                {group.title} <span className="font-normal lowercase text-slate-400">— {group.tagline}</span>
+                              </span>
                             </div>
-                          ))}
-                        </div>
+
+                            <div className="grid grid-cols-2 gap-2">
+                              {group.items.map((sub, sIdx) => {
+                                const IconComp = sub.icon;
+                                return (
+                                  <Link
+                                    key={sIdx}
+                                    to={sub.path}
+                                    onClick={() => setDropdownOpen(null)}
+                                    className="group flex items-start gap-2.5 p-2 rounded-xl bg-slate-50/50 hover:bg-sky-50/80 border border-transparent hover:border-sky-200 transition-all duration-150"
+                                  >
+                                    <div className="w-7 h-7 rounded-lg bg-sky-100/70 text-[#0284C7] group-hover:bg-[#0284C7] group-hover:text-white flex items-center justify-center shrink-0 transition-colors mt-0.5">
+                                      <IconComp size={14} />
+                                    </div>
+                                    <div className="min-w-0 flex-1">
+                                      <div className="flex items-center justify-between">
+                                        <p className="text-[12px] font-bold text-slate-800 group-hover:text-[#0284C7] truncate transition-colors">
+                                          {sub.name}
+                                        </p>
+                                        <ArrowRight size={11} className="text-slate-300 group-hover:text-[#0284C7] opacity-0 group-hover:opacity-100 shrink-0 transition-opacity" />
+                                      </div>
+                                      <p className="text-[10.5px] text-slate-500 leading-tight line-clamp-1">
+                                        {sub.desc}
+                                      </p>
+                                    </div>
+                                  </Link>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        ))
                       )}
                     </div>
 
-                    {/* Bottom Floating Glass Footer */}
-                    <div className="px-6 py-3 bg-gradient-to-r from-slate-900 via-sky-950 to-slate-900 text-white flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-6 h-6 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center">
-                          <Sparkles size={13} />
-                        </div>
-                        <div>
-                          <p className="text-[11.5px] font-semibold text-sky-100">Zero Processing Hassle • Instant Eligibility Check</p>
-                        </div>
+                    {/* Bottom Micro Footer */}
+                    <div className="px-5 py-2.5 bg-slate-900 text-white flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Sparkles size={13} className="text-sky-400" />
+                        <p className="text-[11px] font-medium text-slate-200">Zero Processing Hassle • Instant Eligibility</p>
                       </div>
                       <Link
                         to="/contact"
                         onClick={() => setDropdownOpen(null)}
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-sky-300 hover:text-white transition-colors"
+                        className="inline-flex items-center gap-1 text-[11px] font-bold text-sky-300 hover:text-white transition-colors"
                       >
-                        Talk to Loan Expert <ArrowRight size={12} />
+                        Talk to Expert <ArrowRight size={11} />
                       </Link>
                     </div>
 
@@ -431,10 +469,10 @@ const Header = () => {
                             </div>
 
                             <div>
-                              <p className="text-[10px] font-bold text-slate-400 uppercase mt-1">Morgatage</p>
+                              <p className="text-[10px] font-bold text-slate-400 uppercase mt-1">Mortgage</p>
                               <Link to="/services/gold-loan" onClick={() => setIsMobileMenuOpen(false)} className="block py-0.5 text-xs text-slate-700 hover:text-[#0284C7]">Gold Loan</Link>
                               <Link to="/services/home-loan" onClick={() => setIsMobileMenuOpen(false)} className="block py-0.5 text-xs text-slate-700 hover:text-[#0284C7]">Home Loan</Link>
-                              <Link to="/services/loan-against-properties" onClick={() => setIsMobileMenuOpen(false)} className="block py-0.5 text-xs text-slate-700 hover:text-[#0284C7]">Loan Against Properties</Link>
+                              <Link to="/services/loan-against-properties" onClick={() => setIsMobileMenuOpen(false)} className="block py-0.5 text-xs text-slate-700 hover:text-[#0284C7]">Loan Against Property</Link>
                               <Link to="/services/loan-against-vehicle" onClick={() => setIsMobileMenuOpen(false)} className="block py-0.5 text-xs text-slate-700 hover:text-[#0284C7]">Loan Against Vehicle</Link>
                             </div>
                           </div>
