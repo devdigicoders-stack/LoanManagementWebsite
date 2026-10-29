@@ -42,6 +42,7 @@ import EquipmentLoanPage from './pages/EquipmentLoanPage';
 import GoldLoanPage from './pages/GoldLoanPage';
 import HomeLoanPage from './pages/HomeLoanPage';
 import LoanAgainstPropertiesPage from './pages/LoanAgainstPropertiesPage';
+import LoanAgainstVehiclePage from './pages/LoanAgainstVehiclePage';
 
 // New Properties Management Pages
 import RentalPayLandlordPage from './pages/RentalPayLandlordPage';
@@ -102,6 +103,7 @@ function App() {
             <Route path="/services/gold-loan" element={<GoldLoanPage />} />
             <Route path="/services/home-loan" element={<HomeLoanPage />} />
             <Route path="/services/loan-against-properties" element={<LoanAgainstPropertiesPage />} />
+            <Route path="/services/loan-against-vehicle" element={<LoanAgainstVehiclePage />} />
             
             {/* Properties Management Routes */}
             <Route path="/services/properties/rental-pay-landlord" element={<RentalPayLandlordPage />} />

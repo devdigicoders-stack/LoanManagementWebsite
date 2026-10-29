@@ -4,7 +4,7 @@ import {
   Circle, RotateCcw, Briefcase, Sparkles, Filter, Building, Compass, UserCheck
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { locationData, DEPARTMENTS, departmentDesignations } from '../data/locations';
+import { locationData } from '../data/locations';
 
 // Custom Dropdown Component with search filter and multi-select
 const FilterDropdown = ({ options, value, onChange, placeholder, stepNumber, icon: Icon, disabled = false, disabledMessage = '' }) => {
@@ -128,6 +128,7 @@ const FilterDropdown = ({ options, value, onChange, placeholder, stepNumber, ico
 
 const OpenPositions = () => {
   const [jobs, setJobs] = useState([]);
+  const [filterMeta, setFilterMeta] = useState({ departments: [], departmentDesignations: {}, designations: [] });
   const [loading, setLoading] = useState(true);
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -137,45 +138,63 @@ const OpenPositions = () => {
   const [selectedDistricts, setSelectedDistricts] = useState([]);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_BASE_URL}/recruitment/jobs?status=Open`)
+    // 1. Fetch live jobs
+    const fetchJobs = fetch(`${import.meta.env.VITE_API_BASE_URL}/recruitment/jobs?status=Open`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) setJobs(data);
-        setLoading(false);
       })
-      .catch(err => {
-        console.error(err);
-        setLoading(false);
-      });
+      .catch(err => console.error('Error fetching jobs:', err));
+
+    // 2. Fetch backend dynamic filter options (strictly from added jobs)
+    const fetchFilters = fetch(`${import.meta.env.VITE_API_BASE_URL}/recruitment/jobs-filters`)
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.departments) {
+          setFilterMeta(data);
+        }
+      })
+      .catch(err => console.error('Error fetching filter options:', err));
+
+    Promise.all([fetchJobs, fetchFilters]).finally(() => {
+      setLoading(false);
+    });
   }, []);
 
   const states = Object.keys(locationData).sort();
 
-  const availableDepartments = Array.from(
-    new Set([
-      ...DEPARTMENTS,
-      ...jobs.map(j => j.department).filter(Boolean)
-    ])
-  ).sort();
+  // ONLY departments returned from backend for added jobs
+  const availableDepartments = (filterMeta.departments && filterMeta.departments.length > 0)
+    ? filterMeta.departments
+    : Array.from(new Set(jobs.map(j => (j.department || '').trim()).filter(Boolean))).sort();
 
   const availableDistricts = selectedStates.length > 0
     ? selectedStates.flatMap(state => locationData[state] || []).sort()
     : [];
 
+  // ONLY designations returned from backend for added jobs (filtered by selected department)
   const availableDesignations = (() => {
-    // 1. Static standard designations
-    const staticList = selectedDepartments.length > 0
-      ? selectedDepartments.flatMap(dept => departmentDesignations[dept] || [])
-      : Object.values(departmentDesignations).flat();
+    if (filterMeta.departmentDesignations && Object.keys(filterMeta.departmentDesignations).length > 0) {
+      if (selectedDepartments.length === 0) {
+        return filterMeta.designations || [];
+      }
+      const desigs = selectedDepartments.flatMap(dept => filterMeta.departmentDesignations[dept] || []);
+      return Array.from(new Set(desigs)).sort();
+    }
 
-    // 2. Dynamic live job titles and designations from the backend
-    const liveJobTitles = jobs
-      .filter(job => selectedDepartments.length === 0 || selectedDepartments.some(d => (job.department || '').toLowerCase() === d.toLowerCase()))
+    // Fallback based on loaded jobs
+    const relevantJobs = jobs.filter(job => {
+      if (selectedDepartments.length === 0) return true;
+      const jobDept = (job.department || '').trim().toLowerCase();
+      return selectedDepartments.some(d => d.trim().toLowerCase() === jobDept);
+    });
+
+    const designations = relevantJobs
       .flatMap(job => [job.designation, job.title])
+      .map(d => (d || '').trim())
       .filter(Boolean);
 
-    // Combine and deduplicate
-    return Array.from(new Set([...staticList, ...liveJobTitles])).sort();
+    return Array.from(new Set(designations)).sort();
   })();
 
   useEffect(() => {

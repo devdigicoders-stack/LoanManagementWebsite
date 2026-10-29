@@ -951,22 +951,25 @@ const ApplicationForm = ({ job }) => {
 // ─── Job Details Content ──────────────────────────────────────────────────────
 
 const JobDetails = ({ job }) => (
-  <div className="space-y-8 text-slate-700 leading-relaxed">
+  <div className="space-y-6 text-slate-700 leading-relaxed text-sm">
     {job.skills && (
-      <div className="bg-blue-50 border border-blue-100 rounded-xl p-6">
-        <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2">
-          <Briefcase size={18} className="text-[#0EA5E9]" /> Required Knowledge & Skills
+      <div className="bg-sky-50/70 border border-sky-100 rounded-2xl p-5">
+        <h3 className="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2.5 flex items-center gap-2">
+          <Briefcase size={15} className="text-[#0EA5E9]" /> Required Knowledge & Skills
         </h3>
         <div className="flex flex-wrap gap-2">
           {job.skills.split(',').map((skill, index) => (
-            <span key={index} className="bg-white px-3 py-1.5 rounded-full text-sm font-semibold text-slate-700 shadow-sm border border-gray-200">
+            <span key={index} className="bg-white px-2.5 py-1 rounded-full text-xs font-semibold text-slate-700 shadow-xs border border-sky-100">
               {skill.trim()}
             </span>
           ))}
         </div>
       </div>
     )}
-    <div dangerouslySetInnerHTML={{ __html: job.description?.replace(/\n/g, '<br />') }} className="prose max-w-none text-slate-700" />
+    <div 
+      dangerouslySetInnerHTML={{ __html: job.description?.replace(/\n/g, '<br />') }} 
+      className="prose prose-sm max-w-none text-slate-600 text-[13.5px] leading-relaxed [&>h1]:text-lg [&>h2]:text-base [&>h3]:text-sm [&>h4]:text-xs [&>p]:mb-2 [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:my-2 [&>li]:mb-1 [&>ol]:list-decimal [&>ol]:pl-5" 
+    />
   </div>
 );
 
@@ -1022,26 +1025,26 @@ const JobDetailsPage = () => {
       <div className="max-w-4xl mx-auto px-6 pb-8">
         <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-8 md:p-10 text-center">
           {/* Main Global Header */}
-          <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-2">
+          <h1 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-1.5">
             HAUS NUO-Pay Offer – Liability
           </h1>
 
           {/* Sub Role / Specific Designation */}
           {(job.designation || (job.title && !job.title.includes('HAUS NUO-Pay Offer'))) && (
-            <p className="text-lg md:text-xl font-bold text-[#0284C7] mb-4 text-center">
+            <p className="text-base md:text-lg font-bold text-[#0284C7] mb-3 text-center">
               {job.designation || job.title}
             </p>
           )}
 
           {/* Meta */}
-          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-slate-600 mb-6">
-            <span className="flex items-center gap-1.5"><Briefcase size={14} className="text-gray-400" /><b>Job type:</b> {job.type || 'Full Time'}</span>
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-1.5 text-xs text-slate-600 mb-4">
+            <span className="flex items-center gap-1.5"><Briefcase size={13} className="text-gray-400" /><b>Job type:</b> {job.type || 'Full Time'}</span>
             <span className="text-gray-300">·</span>
-            <span className="flex items-center gap-1.5"><Building2 size={14} className="text-gray-400" /><b>Department:</b> {job.department}</span>
+            <span className="flex items-center gap-1.5"><Building2 size={13} className="text-gray-400" /><b>Department:</b> {job.department}</span>
           </div>
           <div className="flex justify-center">
-            <span className="flex items-center gap-1.5 text-sm text-[#0EA5E9] font-semibold">
-              <MapPin size={14} /> {job.location}
+            <span className="flex items-center gap-1.5 text-xs text-[#0EA5E9] font-semibold">
+              <MapPin size={13} /> {job.location}
             </span>
           </div>
 
